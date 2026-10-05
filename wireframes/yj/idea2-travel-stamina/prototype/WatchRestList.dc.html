@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>워치 — 가까운 쉴 곳</title>
+<script src="./support.js"></script>
+<style>html{background:#E9E4DA}body{display:flex;justify-content:center;align-items:flex-start;min-height:100vh}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#FFFFFF}a:hover{color:#FFFFFF}
+</style>
+</helmet>
+<div style="width: 224px; height: 264px; box-sizing: border-box; padding: 16px 14px; background: #111111; color: #FFFFFF; font-family: 'Noto Sans KR', system-ui, sans-serif; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 11px; color: #A8A8A8">가까운 쉴 곳</div>
+<a href="WatchGuide.dc.html" style="display: flex; justify-content: space-between; align-items: center; gap: 6px; min-height: 44px; padding: 6px 10px; border-radius: 12px; background: #242424; text-decoration: none"><span style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700">그늘 벤치</span><span style="font-size: 11px; color: #A8A8A8">벤치 · 무료</span></span><span style="font-size: 12px; font-weight: 500; flex-shrink: 0">[n]분</span></a>
+<a href="WatchGuide.dc.html" style="display: flex; justify-content: space-between; align-items: center; gap: 6px; min-height: 44px; padding: 6px 10px; border-radius: 12px; background: #242424; text-decoration: none"><span style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700">[성당 이름]</span><span style="font-size: 11px; color: #A8A8A8">실내 · 무료</span></span><span style="font-size: 12px; font-weight: 500; flex-shrink: 0">[n]분</span></a>
+<a href="WatchGuide.dc.html" style="display: flex; justify-content: space-between; align-items: center; gap: 6px; min-height: 44px; padding: 6px 10px; border-radius: 12px; background: #242424; text-decoration: none"><span style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700">공중화장실</span><span style="font-size: 11px; color: #A8A8A8">화장실 · 유료</span></span><span style="font-size: 12px; font-weight: 500; flex-shrink: 0">[n]분</span></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":224,"height":264}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

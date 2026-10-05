@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>유럽 미식 가이드 프로토타입</title>
+<script src="./support.js"></script>
+<style>html{background:#E9E4DA}body{display:flex;justify-content:center;min-height:100vh}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0;font-family:'Noto Sans KR',system-ui,sans-serif}
+.app{width:390px;height:844px;background:#FDFBF6;color:#1E1B18;font-size:15px;line-height:1.45;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.app.big{font-size:18px}
+.app *{box-sizing:border-box}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 12px 6px;min-height:60px;border-bottom:1px solid #EEE9E0}
+.hdr .ttl{font-weight:700;font-size:1.1em}
+.icon{min-width:44px;min-height:44px;border:0;background:none;font:inherit;color:#1E1B18;cursor:pointer;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:.85em;font-weight:500}
+.spacer{min-width:44px}
+.screen{flex:1;display:flex;flex-direction:column;min-height:0}
+.scroll{flex:1;overflow-y:auto;padding:20px 20px 20px;display:flex;flex-direction:column;gap:16px}
+.cta{padding:12px 20px 24px;display:flex;flex-direction:column;gap:6px;background:#FDFBF6}
+h1{margin:0;font-size:1.6em;line-height:1.3;font-weight:500}
+h2{margin:0;font-size:1.05em;font-weight:700}
+p{margin:0}
+.muted{color:#6B645D;font-size:.9em}
+.btn{border:0;border-radius:16px;min-height:56px;padding:0 18px;font:inherit;font-weight:700;font-size:1.05em;background:#BF4F25;color:#fff;cursor:pointer;box-shadow:0 6px 14px rgba(191,79,37,.25)}
+.btn.ghost{background:#fff;color:#BF4F25;border:1.5px solid #BF4F25;box-shadow:none}
+.btn.link{background:none;color:#4A443E;min-height:44px;text-decoration:underline;font-weight:500;box-shadow:none;font-size:.95em}
+.btn:disabled{opacity:.4;cursor:default}
+.chip{border:1px solid #D9D3C9;background:#fff;border-radius:999px;padding:6px 14px;min-height:44px;font:inherit;color:#1E1B18;cursor:pointer}
+.chip.on{background:#1E1B18;color:#fff;border-color:#1E1B18}
+.chip.warn.on{background:#9B2C1A;border-color:#9B2C1A}
+.chip.good.on{background:#1F6B4A;border-color:#1F6B4A}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.card{background:#fff;border:1px solid #E8E3DA;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.card.tap{cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
+.card.on{border:2px solid #BF4F25;background:#FDF0E8}
+.seg{display:flex;background:#ECE8E0;border-radius:18px;padding:4px;gap:4px}
+.segbtn{flex:1;min-height:48px;border:0;background:none;border-radius:14px;font:inherit;font-weight:500;color:#4A443E;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.segbtn.on{background:#fff;color:#1E1B18;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.av{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8em;font-weight:700;background:#DCE8D6;color:#2D4B2A}
+.av.p{background:#F4D9D2;color:#7A2E1F}
+.tick{color:#BF4F25;font-weight:700}
+.prog{display:flex;align-items:baseline;gap:8px}
+.prog b{color:#BF4F25}
+.bar{height:8px;border-radius:999px;background:#E6E1D7;overflow:hidden}
+.barfill{height:100%;background:#BF4F25;border-radius:999px}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:64px;border:1.5px solid #E6E1D7;background:#fff;border-radius:18px;padding:0 18px;font:inherit;color:#1E1B18;cursor:pointer;text-align:left;width:100%}
+.opt.on{border-color:#BF4F25;background:#FDF0E8;color:#9A3B16;font-weight:700}
+.opt.sm{min-height:56px;padding:0 14px}
+.rad{width:28px;height:28px;border-radius:50%;border:2px solid #CFC9BF;display:flex;align-items:center;justify-content:center;color:transparent;font-size:.8em;flex-shrink:0;background:#fff}
+.rad.on{background:#BF4F25;border-color:#BF4F25;color:#fff}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.in{width:100%;min-height:52px;border:1px solid #D9D3C9;border-radius:14px;padding:0 14px;font:inherit;background:#fff;color:#1E1B18}
+.photo{background:#ECE7DD;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#6B645D;overflow:hidden;position:relative}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.analogy{font-weight:700;color:#1F6B4A}
+.warnbadge{background:#FDE7E2;color:#9B2C1A;border-radius:8px;padding:4px 8px;font-size:.82em;font-weight:700}
+.maybe{background:#FFF1D6;color:#7A4300;border-radius:8px;padding:4px 8px;font-size:.82em;font-weight:700}
+.uncertain{border:2px dashed #A87100}
+.band{background:#EEEAE2;margin:0 -20px;padding:12px 20px;font-weight:700;color:#4A443E}
+.mrow{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #EEE9E0;align-items:flex-start}
+.mtext{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0}
+.mthumb{width:112px;height:112px;flex-shrink:0}
+.thumbbtn{position:absolute;width:34px;height:34px;border-radius:50%;border:0;display:flex;align-items:center;justify-content:center;font:inherit;cursor:pointer}
+.tinfo{left:8px;top:8px;background:rgba(30,27,24,.6);color:#fff;font-size:.85em}
+.tadd{right:8px;bottom:8px;background:#fff;color:#BF4F25;font-size:1.3em;font-weight:500;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.mbar{border-top:1px solid #EEE9E0;padding:8px 20px 24px;background:#FDFBF6;display:flex;flex-direction:column;gap:8px}
+.mnote{font-size:.72em;color:#6B645D;text-align:center}
+.cartchip{background:rgba(255,255,255,.28);border-radius:999px;padding:2px 12px;font-size:.9em}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:88%;background:#fff;border-radius:22px 22px 0 0;box-shadow:0 -10px 30px rgba(0,0,0,.25);display:flex;flex-direction:column}
+.scrim{position:absolute;left:0;right:0;top:0;bottom:0;background:rgba(10,14,12,.45)}
+.camscreen{flex:1;background:#000;display:flex;flex-direction:column;color:#fff;min-height:0}
+.camtop{display:flex;align-items:center;justify-content:center;position:relative;min-height:64px;padding-top:12px}
+.camtop .x{position:absolute;left:12px;top:16px;color:#fff}
+.vf{flex:1;position:relative;background:radial-gradient(ellipse at 50% 30%,#3A3936 0%,#161614 70%);overflow:hidden;min-height:0}
+.paper{position:absolute;left:12%;right:14%;top:7%;bottom:10%;background:#FFF6E8;transform:rotate(-1.6deg);padding:26px 18px;color:#2A2118;font-family:Georgia,'Times New Roman',serif;box-shadow:0 6px 24px rgba(0,0,0,.5)}
+.paper .t1{text-align:center;font-size:1.55em;letter-spacing:.06em}
+.paper .t2{text-align:center;font-weight:700;font-size:.8em;letter-spacing:.08em;margin-top:6px}
+.paper .rule{height:1px;background:#8A7556;margin:14px 6px 18px}
+.paper .li{display:flex;justify-content:space-between;font-size:.82em;padding:9px 0}
+.guide{position:absolute;left:9%;right:9%;top:5%;bottom:8%;border:1px solid rgba(255,255,255,.7);border-radius:6px}
+.cpill{position:absolute;left:5%;right:5%;bottom:12px;background:rgba(0,0,0,.65);border-radius:999px;text-align:center;padding:10px 12px;font-size:.78em}
+.mode{background:#000;text-align:center;color:#FFD04A;font-weight:700;font-size:.85em;padding:14px 0 4px}
+.ctrls{background:#000;display:flex;align-items:center;justify-content:space-around;padding:10px 24px 34px}
+.cbtn{width:56px;height:56px;border-radius:50%;background:#2A2A2A;border:0;color:#fff;font:inherit;cursor:pointer;font-size:.8em}
+.shutter{width:80px;height:80px;border-radius:50%;border:4px solid #fff;background:#000;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.shutter i{display:block;width:62px;height:62px;border-radius:50%;background:#fff}
+.preview{position:relative;background:#E7E3DA;border-radius:18px;height:340px;overflow:hidden;flex-shrink:0}
+.preview .paper{left:14%;right:14%;top:6%;bottom:8%;transform:rotate(-1.2deg)}
+.zoom{position:absolute;right:14px;bottom:14px;background:rgba(40,38,36,.85);color:#fff;border-radius:999px;padding:8px 16px;font-size:.78em}
+.switch{min-height:44px;min-width:76px;border-radius:999px;border:1px solid #D9D3C9;background:#fff;font:inherit;cursor:pointer;padding:0 14px}
+.switch.on{background:#1F6B4A;color:#fff;border-color:#1F6B4A}
+.big-local{font-size:1.45em;font-weight:700;line-height:1.35}
+.sep{height:1px;background:#E8E3DA;flex-shrink:0}
+</style>
+</helmet>
+<div class="app {{bigCls}}">
+
+<sc-if value="{{showHdr}}" hint-placeholder-val="{{ true }}">
+<div class="hdr">
+<sc-if value="{{showBack}}" hint-placeholder-val="{{ true }}">
+<button class="icon" aria-label="뒤로" onClick="{{back}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E1B18" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+</sc-if>
+<sc-if value="{{noBack}}" hint-placeholder-val="{{ false }}"><span class="spacer"></span></sc-if>
+<span class="ttl">{{title}}</span>
+<sc-if value="{{showGear}}" hint-placeholder-val="{{ false }}"><button class="icon" aria-label="설정" onClick="{{openSettings}}">설정</button></sc-if>
+<sc-if value="{{showGallery}}" hint-placeholder-val="{{ false }}"><button class="icon" aria-label="메뉴판 사진 다시 보기" onClick="{{go.confirm}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E1B18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5"/></svg></button></sc-if>
+<sc-if value="{{noRight}}" hint-placeholder-val="{{ true }}"><span class="spacer"></span></sc-if>
+</div>
+</sc-if>
+
+<!-- 1 로그인 -->
+<sc-if value="{{s.login}}" hint-placeholder-val="{{ true }}">
+<div class="screen">
+<div class="scroll">
+<h1>한국인의 입맛으로<br>풀어주는 유럽 식탁</h1>
+<p class="muted">메뉴판을 찍으면 우리가 아는 음식에 빗대어 알려 드려요.</p>
+<label for="nick" style="font-weight:700">별명</label>
+<input id="nick" class="in" placeholder="예: 연주" value="{{nick}}" onChange="{{onNick}}">
+<button class="btn ghost" onClick="{{go.companion}}">구글 계정으로 계속하기</button>
+</div>
+<div class="cta"><button class="btn" disabled="{{nickEmpty}}" onClick="{{go.companion}}">시작하기</button></div>
+</div>
+</sc-if>
+
+<!-- 2 동반인 추가 -->
+<sc-if value="{{s.companion}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>함께 여행하는 분이 있나요?</h1>
+<p class="muted">동반인의 입맛과 알레르기까지 함께 챙겨 드려요. 나중에 추가해도 돼요.</p>
+<label for="pname" style="font-weight:700">동반인 이름</label>
+<input id="pname" class="in" placeholder="이름 또는 별명을 입력해 주세요" value="{{partnerName}}" onChange="{{onPartner}}">
+<div class="card">
+<h2>초대코드로 연결</h2>
+<p style="font-weight:700;font-size:1.3em;letter-spacing:.1em">EURO-4821</p>
+<p class="muted">동반인 휴대폰에서 코드를 입력하거나 QR을 스캔하면 입맛 설정이 함께 연결돼요. (데모용 코드)</p>
+</div>
+</div>
+<div class="cta">
+<button class="btn" disabled="{{partnerEmpty}}" onClick="{{savePartner}}">동반인 추가하고 다음으로</button>
+<button class="btn link" onClick="{{skipPartner}}">건너뛰기</button>
+</div>
+</div>
+</sc-if>
+
+<!-- 3 입맛 알레르기 -->
+<sc-if value="{{s.taste}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<sc-if value="{{partnerOn}}" hint-placeholder-val="{{ true }}">
+<div class="seg">
+<button class="{{segMe.cls}}" onClick="{{segMe.fn}}"><span class="av">{{segMe.init}}</span>{{segMe.label}}<span class="tick">{{segMe.check}}</span></button>
+<button class="{{segPartner.cls}}" onClick="{{segPartner.fn}}"><span class="av p">{{segPartner.init}}</span>{{segPartner.label}}<span class="tick">{{segPartner.check}}</span></button>
+</div>
+</sc-if>
+<div class="prog"><b>{{stepNum}}/3</b><span class="muted">입맛 설정</span></div>
+<div class="bar"><div class="barfill" style="width: {{barPct}}"></div></div>
+<h1>{{question}}</h1>
+<p class="muted">{{questionSub}}</p>
+<sc-if value="{{step1}}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{spicyOpts}}" as="o" hint-placeholder-count="4"><button class="{{o.cls}}" onClick="{{o.fn}}"><span>{{o.label}}</span><span class="{{o.rad}}">✓</span></button></sc-for>
+</sc-if>
+<sc-if value="{{step2}}" hint-placeholder-val="{{ false }}">
+<div class="grid2"><sc-for list="{{dislikeOpts}}" as="o" hint-placeholder-count="6"><button class="{{o.cls}}" onClick="{{o.fn}}"><span>{{o.label}}</span><span class="{{o.rad}}">✓</span></button></sc-for></div>
+<p class="muted" style="margin:14px 0 6px">목록에 없다면 직접 추가해 주세요.</p>
+<div style="display:flex;gap:8px"><input class="in" aria-label="싫어하는 음식 직접 추가" placeholder="예: 앤초비, 가지" value="{{dlText}}" onChange="{{onDl}}"><button class="chip on" style="min-width:64px" onClick="{{addDlBtn}}">추가</button></div>
+</sc-if>
+<sc-if value="{{step3}}" hint-placeholder-val="{{ false }}">
+<button class="{{noAl.cls}}" onClick="{{noAl.fn}}"><span>{{noAl.label}}</span><span class="{{noAl.rad}}">✓</span></button>
+<p class="muted" style="margin:10px 0 8px">해당되는 항목을 모두 골라 주세요.</p>
+<div class="grid2"><sc-for list="{{allergyOpts}}" as="o" hint-placeholder-count="6"><button class="{{o.cls}}" onClick="{{o.fn}}"><span>{{o.label}}</span><span class="{{o.rad}}">✓</span></button></sc-for></div>
+</sc-if>
+</div>
+<div class="cta"><button class="btn" onClick="{{tasteNext}}">{{tasteCta}}</button></div>
+</div>
+</sc-if>
+
+<!-- 4 여행 국가 -->
+<sc-if value="{{s.country}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>어느 나라로 떠나세요?</h1>
+<sc-for list="{{countries}}" as="c" hint-placeholder-count="3">
+<button class="{{c.cls}}" onClick="{{c.fn}}"><span style="font-weight:700;font-size:1.05em">{{c.label}}</span><span class="muted">{{c.sub}}</span></button>
+</sc-for>
+</div>
+<div class="cta"><button class="btn" onClick="{{go.home}}">이 나라로 시작하기</button></div>
+</div>
+</sc-if>
+
+<!-- 5 홈 -->
+<sc-if value="{{s.home}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<p style="font-size:1.1em;font-weight:700">{{greeting}}</p>
+<button class="btn" style="min-height:132px;font-size:1.35em;border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px" onClick="{{go.capture}}"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.6"/></svg>메뉴판 찍기</button>
+<div class="row" style="flex-wrap:nowrap">
+<button class="card tap" onClick="{{go.articles}}" style="flex:1"><h2>식문화 아티클</h2><span class="muted">입장부터 계산까지</span></button>
+<button class="card tap" onClick="{{go.wish}}" style="flex:1"><h2>꼭 먹어볼 음식</h2><span class="muted">{{wishCountText}}</span></button>
+</div>
+<h2 style="margin-bottom:0">근처 식당 추천</h2>
+<div class="card" style="background:#FDF0E8;border-color:#F0D3C2;flex-direction:row;align-items:center;gap:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#BF4F25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span style="flex:1"><b>현재 위치 · 로마 중심가</b><br><span class="muted" style="font-size:.88em">내 입맛과 평점을 함께 반영했어요</span></span></div>
+<sc-for list="{{restaurants}}" as="r" hint-placeholder-count="3">
+<button class="card tap" onClick="{{r.fn}}">
+<div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:700">{{r.name}}</span><span class="muted">★ {{r.rating}}</span></div>
+<span class="muted">{{r.kind}} · 도보 {{r.dist}}</span>
+<sc-if value="{{r.learned}}" hint-placeholder-val="{{ false }}"><span class="analogy" style="font-size:.9em">입맛 반영 · 추천 순위가 올라갔어요</span></sc-if>
+<sc-if value="{{r.open}}" hint-placeholder-val="{{ false }}"><span>대표 메뉴: {{r.menu}}</span></sc-if>
+</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<!-- 6 아티클 목록 -->
+<sc-if value="{{s.articles}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>{{countryName}} 식당, 이렇게 달라요</h1>
+<sc-for list="{{articles}}" as="a" hint-placeholder-count="4">
+<button class="card tap" onClick="{{a.fn}}"><h2>{{a.title}}</h2><span class="muted">{{a.lead}}</span></button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<!-- 6 아티클 상세 -->
+<sc-if value="{{s.article}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>{{article.title}}</h1>
+<p>{{article.lead}}</p>
+<sc-for list="{{article.steps}}" as="st" hint-placeholder-count="3">
+<div class="card" style="flex-direction:row;gap:12px;align-items:flex-start"><span style="font-weight:700;color:#BF4F25">{{st.n}}</span><span>{{st.text}}</span></div>
+</sc-for>
+<div class="card" style="background:#E3F0E8;border-color:#BCD8C6"><span class="analogy">한국과 다른 점</span><span>{{article.diff}}</span></div>
+</div>
+<div class="cta"><button class="btn ghost" onClick="{{back}}">목록으로</button></div>
+</div>
+</sc-if>
+
+<!-- 7 대표 음식 찜 -->
+<sc-if value="{{s.wish}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>꼭 먹어볼 음식을 찜해 두세요</h1>
+<p class="muted">찜한 음식은 현지 메뉴판에서 하트로 알려 드려요.</p>
+<sc-for list="{{wishCards}}" as="w" hint-placeholder-count="4">
+<div class="card">
+<div class="photo" style="height:150px"><sc-if value="{{w.hasImg}}" hint-placeholder-val="{{ false }}"><img src="{{w.img}}" alt="{{w.ko}}"></sc-if><sc-if value="{{w.noImg}}" hint-placeholder-val="{{ true }}"><span class="muted">음식 사진</span></sc-if></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div><div style="font-weight:700">{{w.ko}}</div><div class="muted">{{w.it}}</div></div>
+<button class="{{w.cls}}" aria-label="{{w.aria}}" onClick="{{w.fn}}">{{w.heartText}}</button></div>
+<sc-if value="{{w.hasAnalogy}}" hint-placeholder-val="{{ true }}"><span class="analogy">{{w.analogy}}</span></sc-if>
+<sc-if value="{{w.hasWarn}}" hint-placeholder-val="{{ false }}"><span class="warnbadge">{{w.warn}}</span></sc-if>
+</div>
+</sc-for>
+</div>
+<div class="cta"><button class="btn" onClick="{{go.capture}}">식당에서 메뉴판 찍으러 가기</button></div>
+</div>
+</sc-if>
+
+<!-- 8 촬영 -->
+<sc-if value="{{s.capture}}" hint-placeholder-val="{{ false }}">
+<div class="camscreen">
+<div class="camtop"><button class="icon x" aria-label="닫기" onClick="{{back}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><span style="font-weight:700">메뉴판 촬영</span></div>
+<div class="vf">
+<div class="paper"><div class="t1">TRATTORIA</div><div class="t2">MENU DEL GIORNO</div><div class="rule"></div>
+<div class="li"><span>Spaghetti alle vongole</span><span>€16</span></div>
+<div class="li"><span>Tagliatelle al ragù</span><span>€15</span></div>
+<div class="li"><span>Tagliata di manzo</span><span>€22</span></div></div>
+<div class="guide"></div>
+<div class="cpill">메뉴판 글자가 선명하게 보이도록 맞춰주세요.</div>
+</div>
+<div class="mode">사진</div>
+<div class="ctrls">
+<button class="cbtn" aria-label="앨범에서 선택" onClick="{{shoot}}">앨범</button>
+<button class="shutter" aria-label="촬영" onClick="{{shoot}}"><i></i></button>
+<button class="cbtn" aria-label="플래시">플래시</button>
+</div>
+</div>
+</sc-if>
+
+<!-- 8 메뉴판 확인 -->
+<sc-if value="{{s.confirm}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<div class="preview">
+<div class="paper"><div class="t1">TRATTORIA</div><div class="t2">MENU DEL GIORNO</div><div class="rule"></div>
+<div class="li"><span>Spaghetti alle vongole</span><span>€16</span></div>
+<div class="li"><span>Tagliatelle al ragù</span><span>€15</span></div>
+<div class="li"><span>Tagliata di manzo</span><span>€22</span></div></div>
+<div class="zoom">− &nbsp; 100% &nbsp; +</div>
+</div>
+<h1>이 사진으로 메뉴판 해석을 시작할까요?</h1>
+<p class="muted">메뉴 이름과 가격이 잘 보이는지 확인해주세요. 지금까지 {{shotsText}} 찍었어요.</p>
+</div>
+<div class="cta">
+<div style="display:flex;gap:10px"><button class="btn ghost" style="flex:1" onClick="{{reshoot}}">다시 찍기</button><button class="btn" style="flex:1.3" onClick="{{recognize}}">메뉴판 해석하기</button></div>
+<button class="btn link" onClick="{{moreShot}}">다른 페이지도 찍기</button>
+<button class="btn link" onClick="{{failDemo}}">인식 실패 화면 미리보기</button>
+</div>
+</div>
+</sc-if>
+
+<!-- 재촬영 안내 -->
+<sc-if value="{{s.retake}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>글자를 읽기 어려웠어요</h1>
+<p class="muted">아래 방법을 하나씩 해 보고 다시 찍어 주세요.</p>
+<div class="card"><h2>사진이 흔들렸어요</h2><span>두 손으로 폰을 잡고, 찍는 순간 잠깐 멈춰 주세요.</span></div>
+<div class="card"><h2>조금 어두워요</h2><span>더 밝은 곳이나 조명 가까이에서 찍어 보세요.</span></div>
+<div class="card"><h2>빛이 반사됐어요</h2><span>메뉴판을 살짝 기울여 반짝이는 부분을 피해 주세요.</span></div>
+</div>
+<div class="cta"><button class="btn" onClick="{{retake}}">다시 촬영하기</button></div>
+</div>
+</sc-if>
+
+<!-- 인식 중 -->
+<sc-if value="{{s.loading}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll" style="justify-content:center;align-items:center;text-align:center">
+<h1>메뉴판을 한글로 풀고 있어요</h1>
+<p class="muted">{{loadingText}}</p>
+</div>
+</div>
+</sc-if>
+
+<!-- 9 한글 메뉴판 -->
+<sc-if value="{{s.menu}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll" style="gap:0;padding-top:0">
+<sc-for list="{{sections}}" as="sec" hint-placeholder-count="2">
+<div class="band" style="margin-top:16px">{{sec.label}}</div>
+<sc-for list="{{sec.items}}" as="it" hint-placeholder-count="2">
+<div class="mrow">
+<div class="mtext">
+<span class="muted" style="font-size:.82em">{{it.it}}</span>
+<span style="font-weight:500;font-size:1.15em;line-height:1.3">{{it.title}}</span>
+<sc-if value="{{it.hasAnalogy}}" hint-placeholder-val="{{ true }}"><span class="analogy">{{it.analogy}}</span></sc-if>
+<sc-if value="{{it.noAnalogy}}" hint-placeholder-val="{{ false }}"><span class="muted">{{it.gloss}}</span></sc-if>
+<div class="row" style="gap:6px">
+<sc-if value="{{it.wished}}" hint-placeholder-val="{{ false }}"><span class="maybe" style="background:#FDE7E2;color:#9B2C1A">♥ 찜한 음식</span></sc-if>
+<sc-if value="{{it.hasWarn}}" hint-placeholder-val="{{ false }}"><span class="warnbadge">{{it.warn}}</span></sc-if>
+<sc-if value="{{it.uncertain}}" hint-placeholder-val="{{ false }}"><span class="maybe">정확하지 않을 수 있어요</span></sc-if>
+</div>
+<span style="font-weight:700;font-size:1.05em">{{it.eurText}}</span>
+<span class="muted" style="font-size:.82em">{{it.krwText}}</span>
+</div>
+<div class="photo mthumb {{it.uncCls}}">
+<sc-if value="{{it.hasImg}}" hint-placeholder-val="{{ false }}"><img src="{{it.img}}" alt="{{it.title}}"></sc-if>
+<sc-if value="{{it.noImg}}" hint-placeholder-val="{{ true }}"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9A9288" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/></svg></sc-if>
+<button class="thumbbtn tinfo" aria-label="{{it.title}} 상세 보기" onClick="{{it.open}}">i</button>
+<button class="thumbbtn tadd" aria-label="{{it.title}} 담기" onClick="{{it.add}}">{{it.addMark}}</button>
+</div>
+</div>
+</sc-for>
+</sc-for>
+</div>
+<div class="mbar">
+<p class="mnote">AI 정보는 실제와 다를 수 있어요. 알레르기 성분은 직원에게 확인해주세요.</p>
+<button class="btn" style="display:flex;align-items:center;justify-content:center;gap:12px" onClick="{{go.cart}}"><span class="cartchip">{{cartCountText}}</span><span>예상 금액 보기</span></button>
+</div>
+
+<sc-if value="{{sheetOn}}" hint-placeholder-val="{{ false }}">
+<div class="scrim" onClick="{{closeSheet}}"></div>
+<div class="sheet">
+<div style="display:flex;justify-content:flex-end;padding:8px 8px 0"><button class="icon" aria-label="닫기" onClick="{{closeSheet}}">닫기</button></div>
+<div style="overflow-y:auto;padding:0 20px 12px;display:flex;flex-direction:column;gap:12px">
+<div class="photo" style="height:170px"><sc-if value="{{d.hasImg}}" hint-placeholder-val="{{ false }}"><img src="{{d.img}}" alt="{{d.title}}"></sc-if><sc-if value="{{d.noImg}}" hint-placeholder-val="{{ true }}"><span class="muted">대표 이미지 · 실제 음식과 다를 수 있어요</span></sc-if></div>
+<div><div style="font-weight:700;font-size:1.2em">{{d.title}}</div><div class="muted">{{d.it}}</div></div>
+<sc-if value="{{d.hasAnalogy}}" hint-placeholder-val="{{ true }}"><span class="analogy" style="font-size:1.2em">{{d.analogy}}</span></sc-if>
+<p>{{d.gloss}}</p>
+<sc-if value="{{d.hasWarn}}" hint-placeholder-val="{{ false }}"><span class="warnbadge">{{d.warn}}</span></sc-if>
+<div class="sep"></div>
+<p><b>재료</b> {{d.ingredients}}</p>
+<p><b>맛·식감</b> {{d.taste}}</p>
+<p><b>어울리는 음료</b> {{d.pair}} · 무알코올: {{d.nonalc}}</p>
+<p><b>현지처럼 즐기기</b> {{d.tip}}</p>
+<p class="muted">{{d.eurText}} · {{d.krwText}}</p>
+</div>
+<div class="cta" style="border-radius:0"><button class="btn" onClick="{{d.addClose}}">장바구니에 담기</button></div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<!-- 11 장바구니 -->
+<sc-if value="{{s.cart}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>담은 메뉴</h1>
+<sc-if value="{{cartEmpty}}" hint-placeholder-val="{{ false }}"><p class="muted">아직 담은 메뉴가 없어요. 메뉴판에서 담아 주세요.</p></sc-if>
+<sc-for list="{{cartRows}}" as="r" hint-placeholder-count="3">
+<div class="card" style="flex-direction:row;justify-content:space-between;align-items:center;gap:8px">
+<div><div style="font-weight:700">{{r.title}}</div><div class="muted">{{r.price}}</div></div>
+<div style="display:flex;align-items:center;gap:6px"><button class="chip" aria-label="수량 줄이기" onClick="{{r.dec}}">−</button><span style="min-width:20px;text-align:center;font-weight:700">{{r.qty}}</span><button class="chip" aria-label="수량 늘리기" onClick="{{r.inc}}">+</button></div>
+</div>
+</sc-for>
+<div class="card" style="background:#E3F0E8;border-color:#BCD8C6"><span class="muted">총액</span><span style="font-weight:700;font-size:1.25em">{{totalText}}</span><span class="muted">1유로 = 1,600원 기준(샘플 환율, 2026.10.04 기준)</span></div>
+</div>
+<div class="cta"><button class="btn" disabled="{{cartEmpty}}" onClick="{{go.show}}">주문 보여주기 준비하기</button></div>
+</div>
+</sc-if>
+
+<!-- 12 주문 보여주기 준비 -->
+<sc-if value="{{s.show}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>직원에게 보여 줄 주문</h1>
+<div class="card"><sc-for list="{{orderLines}}" as="l" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:700">{{l.it}}</span><span style="font-weight:700">{{l.qty}}</span></div></sc-for></div>
+<h2>자주 쓰는 요청</h2>
+<div class="row"><sc-for list="{{reqChips}}" as="c" hint-placeholder-count="4"><button class="{{c.cls}}" onClick="{{c.fn}}">{{c.label}}</button></sc-for></div>
+<div style="display:flex;gap:8px"><input class="in" aria-label="요청 직접 입력" placeholder="직접 입력 (예: 맵지 않게 해 주세요)" value="{{reqText}}" onChange="{{onReq}}"><button class="chip on" style="min-width:64px" onClick="{{addReqBtn}}">추가</button></div>
+<span class="muted">한국어로 적으면 현지어로 바꿔서 직원 화면에 보여 줘요.</span>
+<sc-if value="{{hasAllergyLine}}" hint-placeholder-val="{{ false }}"><div class="card" style="background:#FDE7E2;border-color:#F0BDB2"><span class="warnbadge" style="align-self:flex-start">알레르기 문장이 자동으로 들어가요</span><span>{{allergyKo}}</span></div></sc-if>
+</div>
+<div class="cta"><button class="btn" onClick="{{go.staff}}">직원에게 보여주기</button></div>
+</div>
+</sc-if>
+
+<!-- 13 직원에게 주문 -->
+<sc-if value="{{s.staff}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll" style="background:#fff">
+<p class="muted">Per favore / 이 화면을 직원에게 보여 주세요</p>
+<sc-for list="{{orderLines}}" as="l" hint-placeholder-count="3"><div><div class="big-local">{{l.qty}} × {{l.it}}</div><div class="muted">{{l.ko}}</div></div></sc-for>
+<sc-if value="{{hasReqs}}" hint-placeholder-val="{{ false }}"><div class="sep"></div></sc-if>
+<sc-for list="{{reqLines}}" as="q" hint-placeholder-count="1"><div><div class="big-local">{{q.it}}</div><div class="muted">{{q.ko}}</div></div></sc-for>
+<sc-if value="{{hasAllergyLine}}" hint-placeholder-val="{{ false }}"><div class="sep"></div><div><div class="big-local" style="color:#9B2C1A">{{allergyIt}}</div><div class="muted">{{allergyKo}}</div></div></sc-if>
+</div>
+<div class="cta"><button class="btn" onClick="{{go.guide}}">주문했어요</button></div>
+</div>
+</sc-if>
+
+<!-- 14 미식 가이드 -->
+<sc-if value="{{s.guide}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>맛있게 먹는 법</h1>
+<sc-for list="{{guideCards}}" as="g" hint-placeholder-count="3">
+<div class="card">
+<div style="font-weight:700;font-size:1.05em">{{g.title}}</div>
+<span class="analogy">먹는 법</span><span>{{g.eat}}</span>
+<span class="analogy">알아두면 좋은 문화</span><span>{{g.culture}}</span>
+</div>
+</sc-for>
+</div>
+<div class="cta"><button class="btn" onClick="{{go.review}}">식사를 마쳤어요</button></div>
+</div>
+</sc-if>
+
+<!-- 15 식사 후 평가 -->
+<sc-if value="{{s.review}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>오늘 드신 메뉴는 어땠나요?</h1>
+<sc-for list="{{reviewCards}}" as="c" hint-placeholder-count="3">
+<div class="card"><div style="font-weight:700">{{c.title}}</div>
+<div class="row"><sc-for list="{{c.opts}}" as="o" hint-placeholder-count="3"><button class="{{o.cls}}" onClick="{{o.fn}}">{{o.label}}</button></sc-for></div></div>
+</sc-for>
+</div>
+<div class="cta"><button class="btn" onClick="{{finishReview}}">평가 완료</button></div>
+</div>
+</sc-if>
+
+<!-- 16 입맛 업데이트 -->
+<sc-if value="{{s.update}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<h1>입맛이 업데이트됐어요</h1>
+<sc-if value="{{hasUp}}" hint-placeholder-val="{{ true }}"><div class="card"><h2>더 자주 추천할게요</h2><div class="row"><sc-for list="{{upTags}}" as="t" hint-placeholder-count="2"><span class="chip good on">{{t.label}}</span></sc-for></div></div></sc-if>
+<sc-if value="{{hasDown}}" hint-placeholder-val="{{ false }}"><div class="card"><h2>덜 추천할게요</h2><div class="row"><sc-for list="{{downTags}}" as="t" hint-placeholder-count="1"><span class="chip warn on">{{t.label}}</span></sc-for></div></div></sc-if>
+<sc-if value="{{noChange}}" hint-placeholder-val="{{ false }}"><p>이번 평가로는 달라진 취향이 없었어요.</p></sc-if>
+<p class="muted">다음 식당 추천에 반영돼요. 마이페이지에서 입맛은 언제든 직접 고칠 수 있어요.</p>
+</div>
+<div class="cta"><button class="btn" onClick="{{nextRestaurant}}">다음 식당 찾으러 가기</button></div>
+</div>
+</sc-if>
+
+<!-- 설정 -->
+<sc-if value="{{s.settings}}" hint-placeholder-val="{{ false }}">
+<div class="screen">
+<div class="scroll">
+<div class="card"><h2>큰 글씨 모드</h2>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span class="muted">카드와 목록 글씨가 커져요</span><button class="{{bigSwitchCls}}" aria-pressed="{{big}}" onClick="{{toggleBig}}">{{bigSwitchText}}</button></div></div>
+<div class="card"><h2>닉네임</h2><input class="in" aria-label="닉네임" value="{{nick}}" onChange="{{onNick}}"></div>
+<button class="card tap" onClick="{{go.taste}}"><h2>입맛·알레르기 수정</h2><span class="muted">본인과 동반인 설정을 다시 고쳐요</span></button>
+</div>
+<div class="cta"><button class="btn" onClick="{{back}}">저장하고 돌아가기</button></div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"screen":{"editor":null,"default":""},"$preview":{"width":390,"height":844}}'>
+const RATE = 1600;
+const fmt = (n) => Math.round(n).toLocaleString('ko-KR');
+const IMG = {ragu:'images/ragu.jpg',vongole:'images/vongole.jpg',risotto:'images/risotto.jpg',tagliata:'images/tagliata.jpg',bruschetta:'images/bruschetta.jpg',burrata:'images/burrata.jpg',frittura:'images/frittura.jpg',vino:'images/vino.jpg',fritto:'images/fritto.jpg',espresso:'images/espresso.jpg',acqua:'images/acqua.jpg'};
+const AL = [['글루텐','glutine'],['갑각류','crostacei'],['달걀','uova'],['생선','pesce'],['땅콩','arachidi'],['대두','soia'],['우유','latte'],['견과류','frutta a guscio'],['셀러리','sedano'],['겨자','senape'],['참깨','sesamo'],['아황산염','solfiti'],['루핀','lupini'],['연체류','molluschi']];
+const DISLIKES = ['고수','내장류','날생선','치즈','버섯','올리브'];
+const SPICY = ['매운 음식은 못 먹어요','진라면 매운맛 정도','신라면 정도','불닭볶음면 오리지널 정도'];
+const SECTIONS = [['전채','Antipasti · 전채'],['파스타','Primi · 파스타'],['메인','Secondi · 메인 요리'],['음료','Bevande · 음료']];
+const ITEMS = [
+{id:'bruschetta',cat:'전채',it:'Bruschetta al pomodoro',ko:'토마토 브루스케타',gloss:'구운 빵 위에 토마토와 바질을 올린 전채예요.',analogy:'',eur:6,al:['글루텐'],tags:['빵','토마토'],ingredients:'구운 빵, 토마토, 마늘, 올리브유, 바질',taste:'새콤하고 바삭해요',pair:'가벼운 화이트 와인',nonalc:'탄산수',tip:'메인 전에 입맛을 돋우는 가벼운 전채예요.',eat:'손으로 집어 한입에 먹어요. 떨어진 토핑은 빵에 다시 올려 드세요.',culture:'전채는 메인 전에 가볍게 먹는 순서의 첫 접시예요.'},
+{id:'burrata',cat:'전채',it:'Burrata con pomodorini',ko:'부라타와 방울토마토',gloss:'얇은 치즈막 안에 크림처럼 부드러운 생치즈가 들어 있어요.',analogy:'순두부 같은 말랑한 치즈',eur:12,al:['우유'],tags:['치즈','토마토'],ingredients:'부라타 치즈, 방울토마토, 올리브유',taste:'고소하고 크리미해요',pair:'가벼운 화이트 와인',nonalc:'탄산수',tip:'신선한 치즈라 나오자마자 드시는 게 좋아요.',eat:'가운데를 갈라 안의 크림을 토마토와 함께 떠먹어요.',culture:'신선한 치즈라 나오면 바로 먹는 게 맛있어요.'},
+{id:'vongole',cat:'파스타',it:'Spaghetti alle vongole',ko:'조개 스파게티',gloss:'바지락을 마늘·올리브유·화이트 와인과 볶아 면에 입힌 파스타예요.',analogy:'국물 없는 바지락 칼국수',eur:16,al:['글루텐','연체류'],tags:['해산물','면'],ingredients:'스파게티, 바지락, 마늘, 올리브유, 화이트 와인, 파슬리',taste:'짭짤하고 바다 향이 진해요',pair:'차갑게 마시는 화이트 와인',nonalc:'탄산수',tip:'해산물 파스타에는 치즈를 뿌리지 않는 경우가 많아요.',eat:'남은 소스를 빵으로 닦아 먹는 건 닭갈비 양념에 밥을 볶아 먹는 것과 비슷해요. 조개 껍데기는 접시 가장자리에 모아 두세요.',culture:'해산물 파스타에는 치즈를 뿌리지 않는 경우가 많아요.'},
+{id:'ragu',cat:'파스타',it:'Tagliatelle al ragù',ko:'라구 탈리아텔레',gloss:'넓적한 달걀면에 고기를 오래 끓인 소스를 곁들인 파스타예요.',analogy:'고기 듬뿍 짜장면',eur:15,al:['글루텐','달걀','셀러리'],tags:['고기','면'],ingredients:'달걀면, 소고기·돼지고기 소스, 토마토, 양파, 셀러리',taste:'진하고 고소해요',pair:'붉은 와인',nonalc:'탄산수',tip:'소스가 진해서 빵을 곁들이면 좋아요.',eat:'면을 포크로 돌돌 말아 먹어요. 남은 소스를 빵으로 닦아 먹는 건 짜장면 소스에 밥을 비벼 먹는 것과 비슷해요.',culture:'편한 식당에서는 빵으로 소스를 닦아 먹는 일이 흔해요.'},
+{id:'risotto',cat:'파스타',it:'Risotto ai funghi',ko:'버섯 리조또',gloss:'쌀을 육수에 저어 가며 익히고 버섯과 치즈를 넣은 요리예요.',analogy:'쌀알이 살아 있는 버섯죽',eur:15,al:['우유'],tags:['쌀','버섯','치즈'],ingredients:'쌀, 버섯, 육수, 버터, 파르메산 치즈',taste:'고소하고 진해요',pair:'가벼운 화이트 와인',nonalc:'탄산수',tip:'주문 후 조리해서 시간이 걸릴 수 있어요.',eat:'뜨거울 때 가장자리부터 조금씩 떠먹어요. 죽처럼 푹 퍼진 게 아니라 쌀알이 살짝 씹히는 게 정상이에요.',culture:'주문을 받고 만들기 때문에 조금 기다릴 수 있어요.'},
+{id:'tagliata',cat:'메인',it:'Tagliata di manzo',ko:'소고기 타글리아타',gloss:'구운 소고기를 얇게 썰어 루콜라와 치즈를 올린 요리예요.',analogy:'소고기 구이 샐러드',eur:22,al:['우유'],tags:['고기','샐러드'],ingredients:'소고기, 루콜라, 올리브유, 파르메산 치즈',taste:'담백하고 고기 맛이 진해요',pair:'붉은 와인',nonalc:'탄산수',tip:'굽기 정도는 주문할 때 말해 두면 좋아요.',eat:'고기와 루콜라를 함께 한입에 먹어요. 쌈 싸 먹는 것과 비슷해요.',culture:'굽기 정도를 주문할 때 정해 두면 좋아요.'},
+{id:'frittura',cat:'메인',it:'Frittura di calamari',ko:'오징어 튀김',gloss:'오징어를 가볍게 튀겨 레몬을 곁들인 요리예요.',analogy:'오징어튀김과 비슷',eur:14,al:['글루텐','연체류'],tags:['해산물','튀김'],ingredients:'오징어, 밀가루, 튀김유, 레몬',taste:'바삭하고 담백해요',pair:'차가운 화이트 와인',nonalc:'레몬 탄산수',tip:'식으면 눅눅해지니 나오자마자 드세요.',eat:'레몬을 짜서 뿌려 바로 먹어요. 소금 간이 되어 있으니 소스는 선택이에요.',culture:'튀김은 나오자마자 먹는 것이 가장 맛있어요.'},
+{id:'fritto',cat:'메인',it:'Fritto misto',ko:'믹스 튀김',gloss:'여러 해산물을 튀긴 요리로 보여요.',analogy:'',eur:18,al:['글루텐','갑각류','연체류','생선'],maybe:true,uncertain:true,tags:['해산물','튀김'],ingredients:'해산물 모둠, 밀가루, 튀김유',taste:'바삭하고 담백해요',pair:'차가운 화이트 와인',nonalc:'레몬 탄산수',tip:'글자가 흐려서 정확하지 않을 수 있어요. 직원에게 구성을 물어보세요.',eat:'레몬을 뿌려 바로 먹어요.',culture:'구성은 가게마다 달라서 직원에게 물어보는 게 좋아요.'},
+{id:'vino',cat:'음료',it:'Vino rosso della casa',ko:'하우스 레드 와인',gloss:'식당이 기본으로 내는 레드 와인이에요.',analogy:'',eur:5,al:['아황산염'],tags:['와인'],ingredients:'포도',taste:'과일 향과 약간의 떫은맛',pair:'고기·토마토 소스 요리',nonalc:'포도 주스 대신 탄산수',tip:'가격이 잔 기준인지 병 기준인지 확인해 보세요.',eat:'한 잔씩 주문해 곁들여 마셔요.',culture:'가격이 잔 기준인지 병 기준인지 메뉴판에서 확인하세요.'},
+{id:'acqua',cat:'음료',it:'Acqua frizzante',ko:'탄산수',gloss:'기포가 있는 생수예요.',analogy:'단맛 없는 사이다',eur:3,al:[],tags:['음료'],ingredients:'물',taste:'단맛 없이 톡 쏘는 맛',pair:'어떤 음식과도 좋아요',nonalc:'탄산수 그대로',tip:'일반 물을 원하면 naturale라고 말해요.',eat:'식사 내내 곁들여 마셔요.',culture:'일반 물은 naturale, 탄산수는 frizzante라고 해요.'},
+{id:'espresso',cat:'음료',it:'Caffè espresso',ko:'에스프레소',gloss:'작은 잔에 진하게 내린 커피예요.',analogy:'',eur:1.5,al:[],tags:['커피'],ingredients:'커피',taste:'진하고 쌉쌀해요',pair:'식후 디저트와 함께',nonalc:'커피 그대로',tip:'식후에 마시는 커피예요.',eat:'두세 모금에 마시고 일어나요.',culture:'이탈리아에서는 식후에 카푸치노보다 에스프레소를 주로 마셔요.'}
+];
+const WISH = ['vongole','ragu','risotto','tagliata'];
+const RESTS = [
+{id:'r1',dist:'350m',name:'트라토리아 A',kind:'파스타·해산물',rating:'4.5',menu:'조개 스파게티, 오징어 튀김',tags:['해산물','면','튀김']},
+{id:'r2',dist:'600m',name:'오스테리아 B',kind:'고기 요리·와인',rating:'4.3',menu:'라구 탈리아텔레, 소고기 타글리아타',tags:['고기','면','와인']},
+{id:'r3',dist:'900m',name:'피제리아 C',kind:'피자·샐러드',rating:'4.2',menu:'치즈 피자, 샐러드',tags:['치즈','빵','샐러드']}
+];
+const ARTICLES = [
+{id:'a1',title:'웨이터 응대',lead:'자리 안내를 기다리고, 눈짓으로 부르세요.',steps:['입구에서 기다리면 직원이 자리를 안내해 줘요.','자리에 앉으면 메뉴판을 주고 마실 것부터 물어봐요.','직원을 부를 때는 손을 가볍게 들고 눈을 맞춰요.'],diff:'한국처럼 벨을 누르거나 큰 소리로 부르지 않아요.'},
+{id:'a2',title:'주문 시점과 방법',lead:'메뉴를 충분히 보고, 순서대로 주문해요.',steps:['메뉴를 다 정하면 직원과 눈을 맞춰 주문해요.','전채 → 파스타 같은 첫 접시 → 메인 순서가 일반적이에요.','한꺼번에 다 시키지 않고 나눠 주문해도 괜찮아요.'],diff:'한국처럼 모든 음식이 한꺼번에 나오지 않고 순서대로 나와요.'},
+{id:'a3',title:'결제 시점과 방법',lead:'식사 후 계산서를 달라고 하고, 자리에서 결제해요.',steps:['식사가 끝나면 “Il conto, per favore”라고 계산서를 요청해요.','계산서는 테이블로 가져다줘요.','결제도 자리에서 해요. 계산서에 자리값(coperto)이 붙는 곳도 많아요.'],diff:'한국처럼 카운터에서 계산하지 않는 곳이 많아요.'},
+{id:'a4',title:'팁 문화',lead:'팁은 필수가 아니에요.',steps:['팁을 꼭 줘야 하는 건 아니에요.','서비스 요금이 계산서에 이미 들어 있는 곳도 있어요.','감사를 표하고 싶다면 잔돈을 남겨도 돼요.'],diff:'미국처럼 금액의 일정 비율을 꼭 더하지 않아도 돼요.'}
+];
+const REQS = [
+{ko:'덜 짜게 해 주세요',it:'Meno salato, per favore.'},
+{ko:'치즈를 빼 주세요',it:'Senza formaggio, per favore.'},
+{ko:'소스는 따로 주세요',it:'La salsa a parte, per favore.'},
+{ko:'물 한 병 주세요',it:'Una bottiglia d\'acqua, per favore.'}
+];
+const TITLES = {login:'시작하기',companion:'동반인 추가',taste:'입맛 설정',country:'여행 국가',home:'홈',articles:'식문화 아티클',article:'식문화 아티클',wish:'꼭 먹어볼 음식',confirm:'메뉴판 확인',retake:'재촬영 안내',loading:'',menu:'메뉴',cart:'예상 금액',show:'주문 보여주기',staff:'직원에게 보여주기',guide:'미식 가이드',review:'식사 후 평가',update:'입맛 업데이트',settings:'설정',capture:''};
+const SCREENS = Object.keys(TITLES);
+const TASTE_Q = [['매운맛을 어느 정도\n먹을 수 있나요?','평소 편안하게 먹을 수 있는 정도를 골라주세요.'],['싫어하는 음식이\n있나요?','해당하는 음식을 모두 골라주세요.'],['알레르기가\n있나요?','해당하는 성분을 모두 골라주세요. (EU 14대 분류)']];
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { screen:'login', hist:[], nick:'', partnerOn:false, partnerName:'', who:'me', onboarding:true, tasteStep:1,
+      al:{me:[], partner:['연체류']}, dislikes:{me:['고수'], partner:[]}, spicy:{me:'신라면 정도', partner:'매운 음식은 못 먹어요'},
+      country:'이탈리아', wished:['vongole'], shots:0, cart:{}, sheet:null, article:null,
+      ratings:{}, reqSel:[], tagScores:{}, learned:false, big:false, openRest:null, lastUp:[], lastDown:[], dlText:'', reqText:'', customReqs:[] };
+    const P = (props && props.screen) || '';
+    if (P) {
+      const demoCart = { vongole:1, ragu:1, acqua:1 };
+      const s = this.state;
+      s.nick = '연주'; s.partnerOn = true; s.partnerName = '';
+      s.screen = P === 'detail' ? 'menu' : P;
+      if (P === 'detail') s.sheet = 'vongole';
+      if (P === 'article') s.article = 'a3';
+      if (P === 'confirm') s.shots = 1;
+      if (['menu','detail','cart','show','staff','guide','review','update'].indexOf(P) >= 0) { s.shots = 3; s.onboarding = false; }
+      if (['cart','show','staff','guide','review','update'].indexOf(P) >= 0) s.cart = demoCart;
+      if (P === 'menu' || P === 'detail') s.cart = { vongole:1 };
+      if (P === 'show' || P === 'staff') s.reqSel = ['덜 짜게 해 주세요'];
+      if (P === 'review' || P === 'update') s.ratings = { vongole:1, ragu:0, acqua:0 };
+      if (P === 'update') { s.tagScores = { '해산물':1, '면':1 }; s.lastUp = [{ label:'해산물 ↑' }, { label:'면 ↑' }]; }
+      if (P === 'home') s.onboarding = false;
+    }
+  }
+  renderVals() {
+    const st = this.state;
+    const S = (p) => this.setState(p);
+    const toggleIn = (arr, v) => (arr.indexOf(v) >= 0 ? arr.filter((x) => x !== v) : arr.concat([v]));
+    const goTo = (s) => () => S({ screen:s, hist:st.hist.concat([st.screen]) });
+    const go = {};
+    SCREENS.forEach((s) => { go[s] = goTo(s); });
+    go.taste = () => S({ screen:'taste', tasteStep:1, hist:st.hist.concat([st.screen]) });
+    const flags = {};
+    SCREENS.forEach((s) => { flags[s] = st.screen === s; });
+    const who = st.partnerOn ? st.who : 'me';
+    const partnerLabel = st.partnerName || '동반인';
+    const meLabel = st.nick || '나';
+    const owners = (a) => {
+      const o = [];
+      if (st.al.me.indexOf(a) >= 0) o.push('본인');
+      if (st.partnerOn && st.al.partner.indexOf(a) >= 0) o.push(partnerLabel);
+      return o;
+    };
+    const warnOf = (it) => {
+      const ws = it.al.filter((a) => owners(a).length > 0).map((a) => a + '(' + owners(a).join('·') + ')');
+      if (!ws.length) return '';
+      return (it.maybe ? '포함 가능성 · ' : '알레르기 주의 · ') + ws.join(', ');
+    };
+    const byId = (id) => ITEMS.filter((x) => x.id === id)[0];
+    const priceOf = (it) => '€' + it.eur + ' · 약 ' + fmt(it.eur * RATE) + '원';
+    const addItem = (id) => { const c = Object.assign({}, st.cart); c[id] = (c[id] || 0) + 1; S({ cart:c }); };
+    const cartIds = Object.keys(st.cart).filter((k) => st.cart[k] > 0);
+    const cartCount = cartIds.reduce((n, k) => n + st.cart[k], 0);
+    const totalEur = cartIds.reduce((n, k) => n + st.cart[k] * byId(k).eur, 0);
+    const cartRowsRaw = cartIds.map((k) => byId(k));
+    const trimCap = (h) => { const x = h.slice(); while (x.length && (x[x.length - 1] === 'confirm' || x[x.length - 1] === 'capture')) x.pop(); return x; };
+
+    const back = () => {
+      const h = st.hist;
+      if (st.screen === 'taste' && st.tasteStep > 1) { S({ tasteStep:st.tasteStep - 1 }); return; }
+      if (!h.length) return;
+      S({ screen:h[h.length - 1], hist:h.slice(0, -1), sheet:null, tasteStep:1 });
+    };
+
+    const chip = (label, on, fn, extra) => ({ label, cls:'chip ' + (extra || '') + (on ? ' on' : ''), fn });
+    const opt = (label, on, fn, sm) => ({ label, cls:'opt' + (sm ? ' sm' : '') + (on ? ' on' : ''), rad:'rad' + (on ? ' on' : ''), fn });
+    const spicyOpts = SPICY.map((s) => opt(s, st.spicy[who] === s, () => S({ spicy:Object.assign({}, st.spicy, { [who]:s }) })));
+    const customDl = st.dislikes[who].filter((d) => DISLIKES.indexOf(d) < 0);
+    const addDl = (txt) => { const t = (txt || '').trim(); if (!t) { S({ dlText:'' }); return; } const cur = st.dislikes[who]; S({ dislikes:Object.assign({}, st.dislikes, { [who]:cur.indexOf(t) >= 0 ? cur : cur.concat([t]) }), dlText:'' }); };
+    const dislikeOpts = DISLIKES.concat(customDl).map((d) => opt(d, st.dislikes[who].indexOf(d) >= 0, () => S({ dislikes:Object.assign({}, st.dislikes, { [who]:toggleIn(st.dislikes[who], d) }) }), true));
+    const allergyOpts = AL.map((a) => opt(a[0], st.al[who].indexOf(a[0]) >= 0, () => S({ al:Object.assign({}, st.al, { [who]:toggleIn(st.al[who], a[0]) }) }), true));
+    const tq = TASTE_Q[st.tasteStep - 1];
+    const noAl = opt('알레르기 없어요', st.al[who].length === 0, () => S({ al:Object.assign({}, st.al, { [who]:[] }) }));
+    const seg = (key, label, initCh) => ({ cls:'segbtn' + (who === key ? ' on' : ''), fn:() => S({ who:key }), label, init:initCh, check:who === key ? '✓' : '' });
+    const countries = ['이탈리아','프랑스','스페인'].map((c) => ({ label:(st.country === c ? '✓ ' : '') + c, sub:c === '이탈리아' ? '데모 메뉴판 제공' : '지원 국가 (데모에서는 이탈리아 메뉴판으로 보여요)', cls:'card tap' + (st.country === c ? ' on' : ''), fn:() => S({ country:c }) }));
+
+    const imgOf = (id) => IMG[id] || '';
+    const wishCards = WISH.map((id) => {
+      const it = byId(id);
+      const on = st.wished.indexOf(id) >= 0;
+      const w = warnOf(it);
+      return { ko:it.ko, it:it.it, analogy:it.analogy, hasAnalogy:!!it.analogy, hasWarn:!!w, warn:w, img:imgOf(id), hasImg:!!imgOf(id), noImg:!imgOf(id), cls:'chip' + (on ? ' on' : ''), heartText:on ? '♥ 찜함' : '♡ 찜', aria:(on ? '찜 해제 ' : '찜하기 ') + it.ko, fn:() => S({ wished:toggleIn(st.wished, id) }) };
+    });
+
+    const scoreOf = (r) => r.tags.reduce((n, t) => n + (st.tagScores[t] || 0), 0);
+    const restaurants = RESTS.slice().sort((a, b) => scoreOf(b) - scoreOf(a)).map((r) => ({ name:r.name, kind:r.kind, rating:r.rating, dist:r.dist, menu:r.menu, open:st.openRest === r.id, learned:st.learned && scoreOf(r) > 0, fn:() => S({ openRest:st.openRest === r.id ? null : r.id }) }));
+
+    const articles = ARTICLES.map((a) => ({ title:a.title, lead:a.lead, fn:() => S({ screen:'article', article:a.id, hist:st.hist.concat([st.screen]) }) }));
+    const art = ARTICLES.filter((a) => a.id === st.article)[0] || ARTICLES[0];
+    const article = { title:art.title, lead:art.lead, diff:art.diff, steps:art.steps.map((t, i) => ({ n:String(i + 1), text:t })) };
+
+    const shoot = () => S({ shots:Math.min(6, st.shots + 1), screen:'confirm', hist:st.hist.concat([st.screen]) });
+    const recognize = () => {
+      S({ screen:'loading', hist:st.hist.concat(['confirm']) });
+      setTimeout(() => { if (this.state.screen === 'loading') this.setState({ screen:'menu' }); }, 1400);
+    };
+
+    const mkItem = (it) => {
+      const w = warnOf(it);
+      const qty = st.cart[it.id] || 0;
+      return { title:it.ko, it:it.it, gloss:it.gloss, analogy:it.analogy, hasAnalogy:!!it.analogy, noAnalogy:!it.analogy,
+        wished:st.wished.indexOf(it.id) >= 0, hasWarn:!!w, warn:w, uncertain:!!it.uncertain, uncCls:it.uncertain ? 'uncertain' : '',
+        eurText:'EUR ' + it.eur.toFixed(2), krwText:'약 ' + fmt(it.eur * RATE) + '원 · 참고 금액', img:imgOf(it.id), hasImg:!!imgOf(it.id), noImg:!imgOf(it.id),
+        open:() => S({ sheet:it.id }), add:() => addItem(it.id), addMark:qty ? String(qty) : '+',
+        ingredients:it.ingredients, taste:it.taste, pair:it.pair, nonalc:it.nonalc, tip:it.tip };
+    };
+    const sections = SECTIONS.map((c) => ({ label:c[1], items:ITEMS.filter((x) => x.cat === c[0]).map(mkItem) }));
+    const dItem = st.sheet ? byId(st.sheet) : ITEMS[0];
+    const d = mkItem(dItem);
+    d.addClose = () => { addItem(dItem.id); S({ sheet:null }); };
+
+    const cartRows = cartRowsRaw.map((it) => ({ title:it.ko, price:priceOf(it), qty:st.cart[it.id],
+      inc:() => addItem(it.id), dec:() => { const c = Object.assign({}, st.cart); c[it.id] = Math.max(0, (c[it.id] || 0) - 1); S({ cart:c }); } }));
+
+    const orderLines = cartRowsRaw.map((it) => ({ it:it.it, ko:it.ko, qty:String(st.cart[it.id]) }));
+    const TR = [['맵지','Non piccante, per favore.'],['얼음','Senza ghiaccio, per favore.'],['포장','Da portare via, per favore.'],['레몬','Senza limone, per favore.'],['계산','Il conto, per favore.'],['빨리','Può fare presto, per favore?'],['따뜻','Può scaldarlo, per favore?']];
+    const transOf = (ko) => { const m = TR.filter((t) => ko.indexOf(t[0]) >= 0)[0]; return m ? m[1] : 'Una richiesta: ' + ko; };
+    const allReqs = REQS.concat(st.customReqs);
+    const addReq = (txt) => { const t = (txt || '').trim(); if (!t) { S({ reqText:'' }); return; } const exists = allReqs.some((r) => r.ko === t); S({ customReqs:exists ? st.customReqs : st.customReqs.concat([{ ko:t, it:transOf(t) }]), reqSel:st.reqSel.indexOf(t) >= 0 ? st.reqSel : st.reqSel.concat([t]), reqText:'' }); };
+    const reqChips = allReqs.map((r) => chip(r.ko, st.reqSel.indexOf(r.ko) >= 0, () => S({ reqSel:toggleIn(st.reqSel, r.ko) })));
+    const reqLines = allReqs.filter((r) => st.reqSel.indexOf(r.ko) >= 0).map((r) => ({ it:r.it, ko:r.ko }));
+    const allAl = AL.filter((a) => owners(a[0]).length > 0);
+    const allergyIt = 'Nel nostro gruppo c\'è un\'allergia a: ' + allAl.map((a) => a[1]).join(', ') + '. Questo piatto li contiene?';
+    const allergyKo = '일행 중 ' + allAl.map((a) => a[0]).join(', ') + ' 알레르기가 있어요. 이 음식에 들어가나요?';
+
+    const guideCards = cartRowsRaw.map((it) => ({ title:it.ko, eat:it.eat, culture:it.culture }));
+    const rateOpts = [['또 먹고 싶어요', 1], ['한 번이면 충분해요', 0], ['별로였어요', -1]];
+    const reviewCards = cartRowsRaw.map((it) => ({ title:it.ko, opts:rateOpts.map((o) => chip(o[0], st.ratings[it.id] === o[1], () => S({ ratings:Object.assign({}, st.ratings, { [it.id]:o[1] }) }), o[1] < 0 ? 'warn' : 'good')) }));
+    const finishReview = () => {
+      const sc = Object.assign({}, st.tagScores);
+      const delta = {};
+      cartRowsRaw.forEach((it) => { const r = st.ratings[it.id]; if (r === undefined || r === 0) return; it.tags.forEach((t) => { delta[t] = (delta[t] || 0) + r; sc[t] = (sc[t] || 0) + r; }); });
+      const up = Object.keys(delta).filter((t) => delta[t] > 0).map((t) => ({ label:t + ' ↑' }));
+      const down = Object.keys(delta).filter((t) => delta[t] < 0).map((t) => ({ label:t + ' ↓' }));
+      S({ tagScores:sc, lastUp:up, lastDown:down, screen:'update', hist:[] });
+    };
+    const nextRestaurant = () => S({ screen:'home', hist:[], cart:{}, shots:0, ratings:{}, reqSel:[], learned:true });
+
+    const tasteNext = () => {
+      if (st.tasteStep < 3) { S({ tasteStep:st.tasteStep + 1 }); return; }
+      
+      if (st.onboarding) S({ screen:'country', tasteStep:1, hist:st.hist.concat(['taste']) });
+      else { S({ tasteStep:1 }); const h = st.hist; if (h.length) S({ screen:h[h.length - 1], hist:h.slice(0, -1), tasteStep:1 }); }
+    };
+    const savePartner = () => S({ partnerOn:true, screen:'taste', tasteStep:1, hist:st.hist.concat(['companion']) });
+    const skipPartner = () => S({ partnerOn:false, screen:'taste', tasteStep:1, hist:st.hist.concat(['companion']) });
+
+    const bigOn = st.big;
+    const scr = st.screen;
+    const out = {
+      s:flags, go, back, title:TITLES[scr] || '',
+      showHdr:['capture','loading'].indexOf(scr) < 0,
+      showBack:['login','home','update'].indexOf(scr) < 0, noBack:['login','home','update'].indexOf(scr) >= 0,
+      showGear:scr === 'home', showGallery:scr === 'menu', noRight:['home','menu'].indexOf(scr) < 0,
+      openSettings:() => S({ screen:'settings', hist:st.hist.concat([st.screen]) }),
+      bigCls:bigOn ? 'big' : '', big:bigOn, bigSwitchCls:'switch' + (bigOn ? ' on' : ''), bigSwitchText:bigOn ? '켜짐' : '꺼짐', toggleBig:() => S({ big:!bigOn }),
+      nick:st.nick, nickEmpty:!st.nick.trim(), onNick:(e) => S({ nick:e.target.value }),
+      partnerName:st.partnerName, partnerEmpty:!st.partnerName.trim(), onPartner:(e) => S({ partnerName:e.target.value }), savePartner, skipPartner,
+      partnerOn:st.partnerOn, segMe:seg('me', meLabel, meLabel.charAt(0)), segPartner:seg('partner', partnerLabel, partnerLabel.charAt(0)),
+      stepNum:st.tasteStep, barPct:Math.round(st.tasteStep / 3 * 100) + '%', question:tq[0].replace('\n', ' '), questionSub:tq[1],
+      step1:st.tasteStep === 1, step2:st.tasteStep === 2, step3:st.tasteStep === 3,
+      spicyOpts, dislikeOpts, allergyOpts, tasteNext, noAl, dlText:st.dlText, onDl:(e) => addDl(e.target.value), addDlBtn:() => addDl(st.dlText), tasteWho:(who === 'me' ? (st.nick || '본인') : (st.partnerName || '동반인')), tasteCta:st.tasteStep < 3 ? '다음' : (st.onboarding ? '완료' : '저장'),
+      countries, countryName:st.country,
+      greeting:(st.nick ? st.nick + '님, ' : '') + st.country + '에서 맛있게 드세요', wishCountText:st.wished.length + '개 찜함', restaurants,
+      articles, article, wishCards,
+      shoot, shotsText:st.shots + '장', recognize,
+      reshoot:() => S({ screen:'capture', shots:Math.max(0, st.shots - 1), hist:st.hist.slice(0, -1) }),
+      moreShot:() => S({ screen:'capture', hist:st.hist.slice(0, -1) }),
+      failDemo:() => S({ screen:'retake', hist:st.hist.concat(['confirm']) }),
+      retake:() => S({ screen:'capture', shots:0, hist:trimCap(st.hist) }),
+      loadingText:st.shots + '장을 하나의 메뉴판으로 합치는 중이에요.',
+      sections, sheetOn:!!st.sheet, closeSheet:() => S({ sheet:null }), d,
+      cartCountText:cartCount + '개',
+      cartEmpty:cartCount === 0, cartRows, totalText:'€' + totalEur + ' · 약 ' + fmt(totalEur * RATE) + '원',
+      orderLines, reqText:st.reqText, onReq:(e) => addReq(e.target.value), addReqBtn:() => addReq(st.reqText), reqChips, reqLines, hasReqs:reqLines.length > 0, hasAllergyLine:allAl.length > 0, allergyIt, allergyKo,
+      guideCards, reviewCards, finishReview, hasUp:st.lastUp.length > 0, hasDown:st.lastDown.length > 0, noChange:!st.lastUp.length && !st.lastDown.length, upTags:st.lastUp, downTags:st.lastDown, nextRestaurant
+    };
+    out.go.home = () => S({ screen:'home', onboarding:false, hist:[] });
+    return out;
+  }
+}
+</script>
+</body>
+</html>

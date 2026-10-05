@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>워치 — 도착 시 체력 카드 요약</title>
+<script src="./support.js"></script>
+<style>html{background:#E9E4DA}body{display:flex;justify-content:center;align-items:flex-start;min-height:100vh}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#FFFFFF}a:hover{color:#FFFFFF}
+</style>
+</helmet>
+<div style="width: 224px; height: 264px; box-sizing: border-box; padding: 16px 14px; background: #111111; color: #FFFFFF; font-family: 'Noto Sans KR', system-ui, sans-serif; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 11px; color: #8FB0FF">도착했어요</div>
+<div style="font-size: 16px; font-weight: 700">포로 로마노</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 8px 0; border-top: 1px solid #333333; border-bottom: 1px solid #333333">
+<div style="display: flex; justify-content: space-between; gap: 8px; font-size: 12px; line-height: 1.4"><span style="color: #A8A8A8">걷는 양</span><span style="font-weight: 500; text-align: right">많음 · 평균 [n]걸음</span></div>
+<div style="display: flex; justify-content: space-between; gap: 8px; font-size: 12px; line-height: 1.4"><span style="color: #A8A8A8">그늘</span><span style="font-weight: 500; text-align: right">적음</span></div>
+<div style="display: flex; justify-content: space-between; gap: 8px; font-size: 12px; line-height: 1.4"><span style="color: #A8A8A8">앉을 곳</span><span style="font-weight: 500; text-align: right">[위치]</span></div>
+</div>
+<a href="WatchRestList.dc.html" style="margin-top: auto; height: 44px; border-radius: 22px; background: #2B5FD9; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; text-decoration: none">쉴 곳 찾기</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":224,"height":264}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
