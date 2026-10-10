@@ -1,0 +1,9 @@
+import {writeFile} from 'node:fs/promises';
+const root=new URL('../',import.meta.url).pathname;
+const settings=await (await fetch('https://fidelity.ordinaincloud.it/tenants/11729/settings.json')).json();const headers={'api-key':settings.apiKey,'api-version':'4.23.0','Accept-Language':'it'};const base='https://fidelity-services.cassanova.com/configs/13361';
+async function json(url){for(let n=0;n<3;n++){try{const r=await fetch(url,{headers,signal:AbortSignal.timeout(25000)});if(!r.ok)throw Error('HTTP '+r.status);return await r.json();}catch(e){if(n===2)throw e;}}}
+const first=await json(base+'/items/search?query=&start=0&limit=100&deliveryMode=WEB_MENU');const list=[...first.records];for(let start=100;start<first.totalCount;start+=100){const d=await json(base+'/items/search?query=&start='+start+'&limit=100&deliveryMode=WEB_MENU');list.push(...d.records);}
+const categories=await json(base+'/categories-new?start=0&limit=200&deliveryMode=WEB_MENU');console.log('List count',list.length,'category count',categories.totalCount);
+const details=[];let next=0;const failures=[];
+async function worker(){while(next<list.length){const p=list[next++];try{const d=await json(base+'/items/'+encodeURIComponent(p.id)+'?deliveryMode=WEB_MENU');const detail=d.records?.find(x=>x.id===p.id);if(!detail)throw Error('No detail');details.push({...p,...detail});if(details.length%100===0)console.log('Loaded',details.length);}catch(e){failures.push({id:p.id,error:e.message});}}}
+await Promise.all(Array.from({length:6},worker));await writeFile(root+'data/restaurants/solita-zuppa-raw.json',JSON.stringify({source:'https://11729.ordinaincloud.it/menu/13361/products',fetchedAt:new Date().toISOString(),totalCount:first.totalCount,records:details,failures,categories:categories.records},null,2));console.log('Complete',details.length,'failures',failures.length);
