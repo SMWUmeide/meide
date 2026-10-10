@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@800&display=swap');
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Noto Sans KR:Regular';
+  src: url('https://static.figma.com/font/NotoSansKR-VF_2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Noto Sans KR:Bold';
+  src: url('https://static.figma.com/font/NotoSansKR-VF_2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* "Noto Sans KR:ExtraBold" could not be resolved; fall back to Google "Noto Sans KR" 800. */
+.font-xb {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 800;
+}
+.font-r {
+  font-family: 'Noto Sans KR:Regular', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+}
+.font-b {
+  font-family: 'Noto Sans KR:Bold', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+}
+
+body {
+  margin: 0;
+  background: #e9e6df;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@font-face {
+  font-family: 'Noto Sans KR:Black';
+  src: url('https://static.figma.com/font/NotoSansKR-VF_2') format('woff2');
+  font-style: normal;
+  font-weight: 900;
+}
+.font-k {
+  font-family: 'Noto Sans KR:Black', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+}
+
+@keyframes sheet {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes floatup {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

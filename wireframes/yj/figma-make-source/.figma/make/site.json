@@ -1,0 +1,10 @@
+{
+  "description": "This app provides Korean couples in their 50s and 60s traveling in Europe with a menu translation and gourmet guide, enhancing their dining experience.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
