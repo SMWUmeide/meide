@@ -1,21 +1,10 @@
 {
-  "CACIO E PERE": {
-    "korean": "치즈와 배"
-  },
-  "CANTUCCI E VIN SANTO": {
-    "korean": "칸투치 비스킷과 빈 산토 와인"
-  },
-  "FORMAGGIO PICCOLO": {
-    "korean": "작은 치즈 모둠"
-  },
-  "LUMACHE AL POMODORO": {
-    "korean": "토마토 소스로 조리한 달팽이"
-  },
-  "MACEDONIA": {
-    "korean": "모둠 과일 샐러드"
-  },
+  "CACIO E PERE": {},
+  "CANTUCCI E VIN SANTO": {},
+  "FORMAGGIO PICCOLO": {},
+  "LUMACHE AL POMODORO": {},
+  "MACEDONIA": {},
   "MANZO AI PORCINI": {
-    "korean": "포르치니 버섯 소고기 요리",
     "officialSourceNote": "공식 음식명은 포르치니 버섯 소고기지만 설명에는 아티초크 조리법이 언급되어 있습니다. 실제 구성은 식당에 확인해주세요."
   },
   "CINGHIALE IN SALMI'": {
@@ -28,7 +17,6 @@
     "officialSourceNote": "공식 음식명은 멧돼지지만 공식 설명에는 노루(capriolo)가 적혀 있습니다. 실제 고기 종류는 식당에 확인해주세요."
   },
   "ZUPPA DI PORRI E PATATE": {
-    "korean": "리크(서양 대파)와 감자 수프",
     "descriptionReplacements": [
       [
         "부추",
@@ -36,13 +24,7 @@
       ]
     ]
   },
-  "TAGLIATELLE AL RAGU' BIANCO": {
-    "korean": "화이트 고기 라구 소스를 곁들인 탈리아텔레"
-  },
-  "SFORMATINO DI VERDURA DI STAGIONE": {
-    "korean": "제철 채소 미니 플랑"
-  },
-  "SFORMATO DI VERDURE DI STAGIONE": {
-    "korean": "제철 채소 오븐 플랑"
-  }
+  "TAGLIATELLE AL RAGU' BIANCO": {},
+  "SFORMATINO DI VERDURA DI STAGIONE": {},
+  "SFORMATO DI VERDURE DI STAGIONE": {}
 }

@@ -11,3 +11,5 @@
 ## 자료 갱신
 
 앱 디렉터리에서 `node scripts/fetch-solita-menu.mjs`로 전체 공식 자료를 다시 조회합니다. 기존 번역을 새로 만들 때는 solita-zuppa.json을 별도로 보관하고 제거한 뒤 `node --env-file=.env scripts/build-solita-catalog.mjs`를 실행하세요. Gemini 호출이 발생하며 중간 저장한 항목부터 이어서 실행할 수 있습니다. 갱신 후 테스트하고 서버를 재배포하세요. 런타임에는 이 식당의 공식 설명을 매번 다시 번역하지 않습니다.
+
+2026-10-11 읽기 개선: 음식 62개를 개별 웹 검색하고, 기존 상품 설명과 식당 PDF·구글맵 메뉴 연결을 대조해 한국어 이름과 짧은 설명을 편집했습니다. 검색 주소는 solita-zuppa-research.json에 보관합니다. 원래 이탈리아 설명은 officialDescription에 그대로 남아 있습니다. 식당 사진 60개는 public/assets/solita에 저장했습니다. 과일은 Wikimedia Commons 대표 사진(CC BY-SA 4.0), 아이스크림 한 스쿱은 식당 젤라또의 대표 사진을 사용합니다. 촬영 메뉴에 나온 Maiale alle Mele Gold Rush는 현재 상품 목록에 없으므로 별도 대표 사진으로 설명하며 식당 상품 ID와 연결했다고 표시하지 않습니다. 대표 사진 출처와 저작자·라이선스는 solita-zuppa-photos.json 및 상세의 사진 정보에서 확인할 수 있습니다.

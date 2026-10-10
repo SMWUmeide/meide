@@ -1,0 +1,22 @@
+{
+  "MACEDONIA": {
+    "url": "/assets/solita/fruit.jpg",
+    "label": "모둠 과일 대표 사진",
+    "representative": true,
+    "source": "https://commons.wikimedia.org/wiki/File:Macedonia_for_one.jpg",
+    "authors": [
+      {
+        "displayName": "E4024",
+        "uri": "https://commons.wikimedia.org/wiki/File:Macedonia_for_one.jpg"
+      }
+    ],
+    "license": "CC BY-SA 4.0"
+  },
+  "MAIALE ALLE MELE GOLD RUSH": {
+    "url": "/assets/solita/pork-apples.jpg",
+    "label": "사과 돼지고기 대표 사진",
+    "representative": true,
+    "source": "https://ricette.donnamoderna.com/scaloppine-di-maiale-alle-mele",
+    "authors": []
+  }
+}

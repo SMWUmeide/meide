@@ -940,15 +940,16 @@
         "https://cassanova-prod.s3.amazonaws.com/images/896de399-acaf-4cf2-8e19-8eee1621a355.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/39bffaa8-f012-43b4-b005-75c0525babcd",
-      "korean": "바칼라 알라 피오렌티나 (피렌체식 대구 요리)",
-      "description": "우리는 1000업(1kg 이상)의 대형 대구를 사용합니다. 이 대구의 주요 특징은 무엇일까요? 어선에서 잡히자마자 바로 선상에서 염장되기 때문에 냉동되지 않아, 해동 후 염장하는 과정을 거치지 않습니다! 최고급 대구가 주인공이며, 매우 간단한 레시피로 강조됩니다: 대구 튀김, 토마토 소스, 발디키아나의 아글리오네(마늘). 알레르기 유발 물질: 3, 4, 5. 추천 와인: 부드럽고 바디감이 좋은 로제 와인(로사토 델 살렌토, 에트나 로사토), 젊고 부드러운 레드 와인(로쏘 디 몬테풀치아노, 바르코 레알레 디 카르미냐노).",
+      "korean": "피렌체식 토마토 대구 요리",
+      "description": "염장한 대구의 소금기를 뺀 뒤 토마토와 큰 마늘로 맛을 낸 요리예요. 담백한 생선과 토마토 소스를 함께 즐길 수 있어요.",
       "ingredients": [
         "대구",
         "토마토 소스",
         "아글리오네(마늘)"
       ],
       "cooking": "튀김",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/39bffaa8-f012-43b4-b005-75c0525babcd.jpg"
     },
     {
       "id": "ff392146-8e0f-473c-b317-635d33862e99",
@@ -1057,13 +1058,14 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/3eb38528-d67f-41f0-b5f1-4f70b4a000aa.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/20626d23-0439-4187-b1d6-a45b18112327",
-      "korean": "바칼라 프리토 (대구 튀김)",
-      "description": "우리는 1000 up 사이즈의 대형 대구를 사용합니다. 이 대구의 주요 특징은 무엇일까요? 어선에서 잡히자마자 바로 선상에서 염장 처리되기 때문에, 냉동 상태가 아니어서 해동 과정을 거친 후 염장하는 방식이 아닙니다. 알레르기 유발 물질: 3, 4, 5. 추천 와인: 부드럽고 바디감이 좋은 로제 와인(로사토 델 살렌토, 에트나 로사토), 젊고 부드러운 레드 와인(로쏘 디 몬테풀치아노, 바르코 레알레 디 카르미냐노).",
+      "korean": "염장 대구 튀김",
+      "description": "소금기를 뺀 대구를 튀긴 요리예요. 생선 살을 튀김 형태로 즐기는 메뉴예요.",
       "ingredients": [
         "대구"
       ],
       "cooking": "튀김",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/20626d23-0439-4187-b1d6-a45b18112327.jpg"
     },
     {
       "id": "fe7a4274-fd6d-491a-9f7a-ed0b518ee569",
@@ -1590,8 +1592,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/3d97beaa-c2c9-4f08-bc5a-7f957a6bab44.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/aa661a6c-9326-491e-877d-11a37a37679a",
-      "korean": "키아니나 타르타르",
-      "description": "미누타(Minuta) 엑스트라 버진 올리브 오일, 말돈 소금, 말라바르 그린 페퍼로 양념한 키아니나 소고기 타르타르.",
+      "korean": "키아니나 소고기 육회",
+      "description": "토스카나의 키아니나 소고기를 잘게 다져 올리브유·소금·후추로 맛을 낸 생고기 요리예요. 한국의 육회처럼 익히지 않고 먹지만 양념은 달라요.",
       "ingredients": [
         "키아니나 소고기",
         "미누타 엑스트라 버진 올리브 오일",
@@ -1599,7 +1601,8 @@
         "말라바르 그린 페퍼"
       ],
       "cooking": "타르타르(날것)",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/aa661a6c-9326-491e-877d-11a37a37679a.jpg"
     },
     {
       "id": "92dfd61c-ce30-47a7-a356-86bc70bae964",
@@ -2887,8 +2890,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/57404200-931d-4693-95ac-f290cebd6f8c.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/7414d3c2-9898-4390-9af2-20cb83ec65e5",
-      "korean": "카초 에 페레 (CACIO E PERE)",
-      "description": "페코리노 프리모 살레 치즈, 배, 아카시아 꿀, 사천 후추, 호두. 신선하고 활기차며 맛있는 전채 요리입니다. 배와 치즈라는 결코 변치 않는 고전적인 조합은 마치 사랑의 결혼처럼 식탁에 대한 접근을 조화롭게 만듭니다. 농부에게는 아무 말도 하지 마세요!! 알레르기 유발 물질: 7, (8)",
+      "korean": "배와 꿀을 곁들인 양젖 치즈",
+      "description": "페코리노 치즈에 배, 아카시아 꿀, 호두와 후추를 곁들여요. 치즈와 과일을 함께 먹는 전채 요리예요.",
       "ingredients": [
         "페코리노 프리모 살레 치즈",
         "배",
@@ -2897,7 +2900,8 @@
         "호두"
       ],
       "cooking": "",
-      "taste": "신선하고 활기차며 맛있는 맛"
+      "taste": "신선하고 활기차며 맛있는 맛",
+      "localImage": "/assets/solita/7414d3c2-9898-4390-9af2-20cb83ec65e5.jpg"
     },
     {
       "id": "66256205-54b8-47e7-a1ae-4fa35944b693",
@@ -3263,8 +3267,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/693db460-219a-465f-b7a5-f3be62258050.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/e1665784-68ec-40e8-a88f-01df33d3b461",
-      "korean": "칸투치와 빈 산토",
-      "description": "저희가 직접 만드는 칸투치는 매우 오래된 레시피를 따라 만들어집니다. 최고 품질의 재료: 키아바차 제분소의 \"00\" 밀가루, 유기농 달걀, 설탕, 피에몬테산 둥근 헤이즐넛 IGP, 노토산 아몬드, 도나텔라 치넬리 콜롬비니 2008 빈 산토, 버번 바닐라. 부드럽고 향긋하여 식사를 마무리하기에 좋습니다. 알레르기 유발 물질: 1, 3, 8, 12",
+      "korean": "견과 비스킷과 디저트 와인",
+      "description": "아몬드와 헤이즐넛을 넣어 구운 칸투치 비스킷을 빈 산토 와인과 함께 내는 디저트예요. 와인이 포함된 메뉴예요.",
       "ingredients": [
         "밀가루 \"00\"",
         "유기농 달걀",
@@ -3275,7 +3279,8 @@
         "버번 바닐라"
       ],
       "cooking": "오래된 레시피에 따라 직접 제조",
-      "taste": "부드럽고 향긋함"
+      "taste": "부드럽고 향긋함",
+      "localImage": "/assets/solita/e1665784-68ec-40e8-a88f-01df33d3b461.jpg"
     },
     {
       "id": "3ce848df-23aa-4538-be7d-3faa87396b7c",
@@ -3335,8 +3340,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/f1bd722d-887a-4257-bc4e-91e618eab56d.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/4726fe01-b4b8-445b-a4f4-87c20987acf0",
-      "korean": "키아니나 카르파초 마리네이드",
-      "description": "키아니나 소고기 브레사올라 카르파초에 파르메산 치즈 조각, 레몬 껍질, 샐러드, 미누타 엑스트라 버진 올리브 오일과 그린 페퍼로 마무리. 알레르기 유발 물질: (7)",
+      "korean": "얇게 썬 염장 소고기와 치즈",
+      "description": "키아니나 소고기로 만든 브레사올라를 얇게 썰어 치즈, 레몬 껍질, 샐러드를 곁들여요. 올리브유와 후추로 마무리하는 전채 요리예요.",
       "ingredients": [
         "키아니나 소고기 브레사올라",
         "파르메산 치즈",
@@ -3346,7 +3351,8 @@
         "그린 페퍼"
       ],
       "cooking": "마리네이드",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/4726fe01-b4b8-445b-a4f4-87c20987acf0.jpg"
     },
     {
       "id": "2928bddd-77b5-4aab-b2de-f6c1450add5a",
@@ -3364,7 +3370,7 @@
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/bf354a43-75d8-4ce9-9fc2-b10d3a86ebeb/2928bddd-77b5-4aab-b2de-f6c1450add5a",
       "korean": "병아리콩과 포르치니 버섯 수프",
-      "description": "병아리콩과 포르치니 버섯 수프는 쌀쌀한 가을과 겨울 저녁에 먹기에 완벽합니다. 엑스트라 버진 올리브 오일과 후추를 곁들여 제공합니다. 2025년 구르메 에란테 파스콸레 파체 올해의 수프. 알레르기 유발 물질: 9. 추천 와인: 젊은 레드 와인.",
+      "description": "병아리콩과 포르치니 버섯을 넣은 수프예요. 올리브유와 후추를 곁들여 내요.",
       "ingredients": [
         "병아리콩",
         "포르치니 버섯",
@@ -3372,7 +3378,8 @@
         "후추"
       ],
       "cooking": "수프 조리",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/2928bddd-77b5-4aab-b2de-f6c1450add5a.jpg"
     },
     {
       "id": "bcf37501-8352-42a7-8312-0a546e563efa",
@@ -3389,8 +3396,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/b335ac9c-9d4f-4e03-a6f4-23d8cf99fca2.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/bcf37501-8352-42a7-8312-0a546e563efa",
-      "korean": "로즈마리와 밤꿀을 곁들인 카포콜로",
-      "description": "친타 세네세 돼지 또는 방목 사육한 돼지의 목살을 중세 레시피로 요리했습니다. 사과 식초, 밤꿀, 로즈마리의 만남이 카포콜로 한 입에 정말 흥미로운 맛을 선사합니다. 고대의 매력을 지닌 레시피로, 가장 까다로운 입맛도 만족시키는 맛입니다. 알레르기 유발 물질: 9, 12",
+      "korean": "로즈마리와 밤꿀 돼지 목살",
+      "description": "돼지 목살에 사과 식초, 밤꿀과 로즈마리를 더한 요리예요. 고기에 꿀의 단맛과 허브 향을 곁들이는 구성입니다.",
       "ingredients": [
         "친타 세네세 돼지 목살 또는 방목 사육 돼지 목살",
         "사과 식초",
@@ -3398,7 +3405,8 @@
         "로즈마리"
       ],
       "cooking": "중세 레시피로 요리",
-      "taste": "정말 흥미로운 맛"
+      "taste": "정말 흥미로운 맛",
+      "localImage": "/assets/solita/bcf37501-8352-42a7-8312-0a546e563efa.jpg"
     },
     {
       "id": "328f10a8-38b8-40ed-a7a4-8ab2602df3af",
@@ -4431,8 +4439,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/b62cb21a-1755-4493-8670-82c6d0f374b4.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/4108c9d2-d269-4c41-b578-b2adb22b8c68",
-      "korean": "멧돼지 살미(CINGHIALE IN SALMI')",
-      "description": "고라니를 요리하는 고전적인 토스카나 레시피로, 살미(salmì)는 고기를 레드 와인과 월계수, 주니퍼, 로즈마리, 세이지, 아글리오네(큰 마늘), 양파, 후추, 당근 등의 향신료와 함께 마리네이드하는 것을 의미합니다. 이 준비 과정은 특히 사냥 고기의 전형적인 강한 자연적 냄새를 상쇄할 수 있는 향과 풍미를 고기에 입히는 것을 목적으로 합니다. 알레르기 유발 물질: 9, 12. 추천 와인: 엄격하고 바디감과 구조감이 있는 레드 와인(사그란티노 디 몬테팔코, 브루넬로 디 몬탈치노, 바롤로, 타우라시 등).",
+      "korean": "레드 와인과 허브로 조리한 멧돼지",
+      "description": "레드 와인과 월계수·로즈마리 같은 허브로 맛을 낸 고기 요리예요. 메뉴 제목과 설명의 고기 종류가 달라, 주문 전에 멧돼지인지 직원에게 확인해주세요.",
       "ingredients": [
         "멧돼지 고기",
         "레드 와인",
@@ -4446,7 +4454,8 @@
         "당근"
       ],
       "cooking": "레드 와인과 향신료에 마리네이드하여 조리",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/4108c9d2-d269-4c41-b578-b2adb22b8c68.jpg"
     },
     {
       "id": "7bfd0270-324a-49f6-b7e1-ce3c8d63cc1c",
@@ -4557,15 +4566,16 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/344323e5-6d2f-4cc9-9273-7665997ab800.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/df0bb726-4c8c-45d7-94d0-4356a79135fc",
-      "korean": "생강과 레몬을 곁들인 토끼 요리",
-      "description": "메디치 가문은 우리에게 수많은 요리법을 유산으로 남겼습니다. 귀족들만이 누릴 수 있었던 향신료는 요리에 이국적인 의미와 맛을 더해주었습니다. 물론 중세 시대에는 아직 아메리카 대륙에 대해 아무것도 몰랐기 때문에 토마토, 감자 등은 없었다는 점을 기억하세요! 이 요리는 현재의 입맛에 맞게 이 별미를 되살리기 위해 꼼꼼하고 세심하게 연구한 결과물인 흥미로운 중세 레시피입니다. 이 고기를 좋아하신다면 절대 놓치지 마세요! 알레르기 유발 물질: 8, 9, 12 추천 와인: 향긋한 노트가 있는 부드러운 화이트 와인(소아베, 가르가네가, 오르비에토, 그레코) 또는 과일 향이 나는 젊은 로제/레드 와인으로, 적당한 타닌감과 강렬함, 좋은 부드러움을 가진 와인(키아레토 델 가르다, 몬테풀치아노 다브루초, 젊은 키안티, 스키아바 알토 아디제).",
+      "korean": "생강과 레몬 토끼고기",
+      "description": "토끼고기에 생강과 레몬을 곁들인 요리예요. 토끼고기를 사용하는 메뉴이므로 닭고기로 혼동하지 않도록 확인해주세요.",
       "ingredients": [
         "토끼 고기",
         "생강",
         "레몬"
       ],
       "cooking": "중세 레시피를 현대적으로 재해석",
-      "taste": "이국적인 맛"
+      "taste": "이국적인 맛",
+      "localImage": "/assets/solita/df0bb726-4c8c-45d7-94d0-4356a79135fc.jpg"
     },
     {
       "id": "d736a3de-3da4-4d24-891e-ba866c00ee95",
@@ -5003,14 +5013,15 @@
         "https://cassanova-prod.s3.amazonaws.com/images/46667451-c07e-403d-b602-6ba17dbe471a.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/f312c4e9-c83a-43cc-8478-23682a1a3a4c",
-      "korean": "버번 바닐라 크렘 브륄레",
-      "description": "진정한 버번 바닐라와 섬세한 캐러멜 설탕 껍질을 곁들인 우리의 크렘 브륄레 해석 버전입니다. 알레르기 유발 물질: 3, 7",
+      "korean": "바닐라 크림 위에 구운 설탕 디저트",
+      "description": "바닐라 크림 위에 설탕을 캐러멜화한 크렘 브륄레예요. 위의 설탕층과 아래의 부드러운 크림을 함께 먹어요.",
       "ingredients": [
         "버번 바닐라",
         "설탕"
       ],
       "cooking": "캐러멜화",
-      "taste": "섬세한 캐러멜 설탕 껍질, 바닐라 풍미"
+      "taste": "섬세한 캐러멜 설탕 껍질, 바닐라 풍미",
+      "localImage": "/assets/solita/f312c4e9-c83a-43cc-8478-23682a1a3a4c.jpg"
     },
     {
       "id": "2ded6fd0-f97d-4a0c-8b82-a1c738678eee",
@@ -5073,13 +5084,14 @@
         "https://cassanova-prod.s3.amazonaws.com/images/3ded3d43-addf-49a6-9941-3f2646fa3392.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/24c5c5a3-45c7-40a3-b77d-f1377d6c63d9",
-      "korean": "다크 초콜릿 크림",
-      "description": "초콜릿은 카카오 나무의 씨앗에서 추출한 식품으로, 전 세계적으로 널리 퍼져 소비됩니다. 고품질 수제 생산에서 초콜릿은 원산지에서 만들어지고 포장된 카카오 페이스트에 재료와 향료를 첨가하여 준비됩니다. 다크 초콜릿 애호가들을 위한 아포테오시스(절정)! 알레르기 유발 물질: 1, 7",
+      "korean": "다크 초콜릿 크림 디저트",
+      "description": "다크 초콜릿을 사용한 크림 디저트예요. 구체적인 곁들임과 당도는 직원에게 확인해주세요.",
       "ingredients": [
         "카카오 페이스트"
       ],
       "cooking": "",
-      "taste": "다크 초콜릿의 진한 맛"
+      "taste": "다크 초콜릿의 진한 맛",
+      "localImage": "/assets/solita/24c5c5a3-45c7-40a3-b77d-f1377d6c63d9.jpg"
     },
     {
       "id": "baea2c4c-c162-4f4b-8459-3038057fe44c",
@@ -5096,8 +5108,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/663e4f0b-1335-4939-aa37-1a732cd3e146.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/baea2c4c-c162-4f4b-8459-3038057fe44c",
-      "korean": "토스카나식 검은 크로스티니",
-      "description": "토스카나식 크로스티니는 매우 오래된 레시피로, 이 별미를 정말 맛있는 스프레드 크림으로 만드는 균형의 조화가 풍부합니다. 재료: 닭과 토끼의 내장, 다진 소고기, 양파, 소 지라, 앤초비, 케이퍼, 배, 닭 육수, 빈 산토, 소금, 엑스트라 버진 올리브 오일. 알레르기 유발 물질: 1, 4, 9, 12",
+      "korean": "내장 파테를 바른 토스카나 토스트",
+      "description": "닭·토끼 내장과 소고기, 앤초비, 케이퍼 등을 넣은 파테를 곁들이는 빵 요리예요. 내장을 사용하는 전통 전채 메뉴예요.",
       "ingredients": [
         "닭 내장",
         "토끼 내장",
@@ -5113,7 +5125,8 @@
         "엑스트라 버진 올리브 오일"
       ],
       "cooking": "",
-      "taste": "균형 잡힌 맛의 스프레드 크림"
+      "taste": "균형 잡힌 맛의 스프레드 크림",
+      "localImage": "/assets/solita/baea2c4c-c162-4f4b-8459-3038057fe44c.jpg"
     },
     {
       "id": "7353e6d5-7d9a-4467-9ebb-b0d6b3e2dd61",
@@ -5130,8 +5143,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/d87a2dbd-4455-4e35-a235-f03cb35ba7a6.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/7353e6d5-7d9a-4467-9ebb-b0d6b3e2dd61",
-      "korean": "잼 타르트",
-      "description": "비쇼레(야생 체리) 잼, 또는 우리 나무에서 딴 9월의 복숭아 잼, 또는 '스코샤모나카' 자두 잼을 곁들인 타르트입니다. 붉은 과일 잼과 환상적으로 어울리는 샤프란 젤라또 한 스쿱과 함께 제공됩니다. 알레르기 유발 물질: 1, 3, 7",
+      "korean": "과일잼 타르트",
+      "description": "체리·복숭아·자두 등의 잼을 사용한 타르트예요. 잼 종류와 함께 내는 아이스크림은 주문할 때 확인해주세요.",
       "ingredients": [
         "비쇼레 잼",
         "복숭아 잼",
@@ -5139,7 +5152,8 @@
         "샤프란 젤라또"
       ],
       "cooking": "",
-      "taste": "붉은 과일 잼과 샤프란 젤라또의 조화"
+      "taste": "붉은 과일 잼과 샤프란 젤라또의 조화",
+      "localImage": "/assets/solita/7353e6d5-7d9a-4467-9ebb-b0d6b3e2dd61.jpg"
     },
     {
       "id": "da16217e-479b-4363-bce4-08b38eb697ab",
@@ -5224,8 +5238,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/01583777-ee81-400c-bc9a-3bee7d2c35e5.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/696a4481-3c0d-44ba-b038-c4e28d066b98",
-      "korean": "친타 세네세 토스카나 시식 (DEGUSTAZIONE TOSCANA DI CINTA SENESE)",
-      "description": "방목 사육한 친타 세네세 돼지고기 햄류. 우리의 친타 세네세 메뉴는 엄격한 공급업체 선정의 결과물입니다. 각 도축업자마다 비법이 있으며, 우리는 그들의 세심하고 정성스러운 작업을 돋보이게 합니다. 오일 절임 채소와 함께 제공됩니다. 고급 햄을 사랑하는 분이라면 꼭 맛보셔야 합니다! 프로슈토, 카포콜로, 롬보, 살라미, 피노키오나, 라르도: 친타 세네세 햄과 소시지의 최고봉. 알레르기 유발 물질: (12)",
+      "korean": "토스카나 돼지고기 햄·살라미 모둠",
+      "description": "친타 세네세 돼지고기로 만든 프로슈토와 살라미 등 여러 가공육을 맛보는 모둠이에요. 오일에 절인 채소도 곁들여요.",
       "ingredients": [
         "친타 세네세 돼지고기",
         "프로슈토",
@@ -5237,7 +5251,8 @@
         "오일 절임 채소"
       ],
       "cooking": "방목 사육, 오일 절임(채소)",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/696a4481-3c0d-44ba-b038-c4e28d066b98.jpg"
     },
     {
       "id": "eec00cab-b645-4dbe-b64f-4adba764913e",
@@ -5776,15 +5791,16 @@
         "https://cassanova-prod.s3.amazonaws.com/images/f8e90fc6-ddd9-4c99-ad9c-82756e7e42a9.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/a52213f9-6b46-4c6a-8138-d01b2679f335",
-      "korean": "친타 세네제 돼지 간 요리",
-      "description": "친타 세네제 돼지 간을 그물망 지방으로 감싸고 으깬 감자 위에 얹어 제공합니다. 알레르기 유발 물질: (7)",
+      "korean": "돼지 간 요리와 으깬 감자",
+      "description": "친타 세네세 돼지의 간을 얇은 그물 지방으로 감싸 조리한 요리예요. 으깬 감자를 곁들여요.",
       "ingredients": [
         "친타 세네제 돼지 간",
         "그물망 지방",
         "으깬 감자"
       ],
       "cooking": "그물망 지방으로 감싸서 조리",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/a52213f9-6b46-4c6a-8138-d01b2679f335.jpg"
     },
     {
       "id": "d980c3f9-9c86-4ad0-b35f-8967617396f9",
@@ -5888,15 +5904,16 @@
         "https://cassanova-prod.s3.amazonaws.com/images/f162cc22-ba9e-4219-9909-3aebf8d12112.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/a956a1c9-a939-44df-a3dc-f99d9d79f784/3da01f34-85a8-4c0b-96cf-63fbbb206d7a",
-      "korean": "포르마조 피콜로 (FORMAGGIO PICCOLO)",
-      "description": "치즈 애호가를 위한 소량의 치즈 셀렉션입니다. 잼과 꿀을 곁들인 5가지 종류의 치즈가 제공됩니다. 알레르기 유발 물질: 7",
+      "korean": "작은 치즈 모둠",
+      "description": "치즈에 잼과 꿀을 곁들인 작은 모둠이에요. 치즈 종류는 직원에게 확인해주세요.",
       "ingredients": [
         "치즈",
         "잼",
         "꿀"
       ],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/3da01f34-85a8-4c0b-96cf-63fbbb206d7a.jpg"
     },
     {
       "id": "7c7a9a10-7067-4025-b70b-169c6bd457e8",
@@ -7110,8 +7127,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/20d8f424-c23b-44b6-9904-972cb3219e87.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/a86899e7-db20-4687-ae9c-fa578a53a88a",
-      "korean": "젤라또",
-      "description": "젤라또를 좋아하지 않는 사람이 있을까요? 저희가 제안하는 것은 감동을 선사하는 절충적인 방식으로 맛을 낸 특별한 젤라또입니다!!! 생강과 세이지, 캐러멜 방울, 레몬 껍질, 사천 후추, 미누타 엑스트라 버진 올리브 오일을 곁들였습니다. 샤프란은 시럽에 절인 비쇼라(야생 체리), 마스카포네, 요거트와 함께 제공되며 밤꿀, 호두, 사천 후추를 곁들입니다. 슈퍼 헤이즐넛은 가장 좋고 유명한 헤이즐넛인 피에몬테산 톤다 젠틸레 IGP로 만들었습니다. 알레르기 유발 물질: 3, 7, 8",
+      "korean": "수제 이탈리아 아이스크림",
+      "description": "생강·샤프란·헤이즐넛 등 여러 맛을 선보이는 젤라또예요. 오늘 가능한 맛을 확인하고 골라보세요.",
       "ingredients": [
         "생강",
         "세이지",
@@ -7128,7 +7145,8 @@
         "피에몬테산 톤다 젠틸레 IGP 헤이즐넛"
       ],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/a86899e7-db20-4687-ae9c-fa578a53a88a.jpg"
     },
     {
       "id": "d54e0957-0026-4680-8686-94e9869af33c",
@@ -7217,14 +7235,15 @@
         "https://cassanova-prod.s3.amazonaws.com/images/ef3a5c36-b376-41e8-a808-25abb7b15e32.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/1330e935-7732-4447-aaf5-c68cc9b37851",
-      "korean": "누디 알 포모도로",
-      "description": "중세 연회에도 등장했던 누디(gnudi) 또는 누디니(gnudini)는 그 엄청난 단순함으로 입안에 군침이 돌게 합니다!!! 소스는 클래식한 버터와 세이지 외에도 토마토 소스로 다양하게 즐길 수 있습니다. 알레르기 유발 물질: 1, 3, 7, 8. 추천 와인: 젊고 과일 향이 풍부하며 향긋한 화이트 와인. 프리울라노, 타이, 베르디키오 데이 카스텔리 디 예시, 소비뇽.",
+      "korean": "토마토 소스 리코타·시금치 경단",
+      "description": "리코타 치즈와 시금치로 만든 누디에 토마토 소스를 곁들여요. 파스타 껍질 없이 속 재료를 경단처럼 빚은 요리예요.",
       "ingredients": [
         "누디(리코타와 시금치 경단)",
         "토마토 소스"
       ],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/1330e935-7732-4447-aaf5-c68cc9b37851.jpg"
     },
     {
       "id": "679a5cff-3ea1-40ff-80e5-dc9e4a41ee27",
@@ -7241,15 +7260,16 @@
         "https://cassanova-prod.s3.amazonaws.com/images/734e6e66-692c-4d6e-8ccd-11702c5acd70.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/679a5cff-3ea1-40ff-80e5-dc9e4a41ee27",
-      "korean": "누디 부로 에 살비아",
-      "description": "중세 연회에도 등장했던 누디(gnudi) 또는 누디니(gnudini)는 그 엄청난 단순함으로 입안에 군침이 돌게 합니다!!! 가장 클래식한 소스는 무엇일까요? 버터와 세이지, 최고의 조합입니다!!! 알레르기 유발 물질: 1, 3, 7, 8. 추천 와인: 젊고 과일 향이 풍부하며 향긋한 화이트 와인. 프리울라노, 타이, 베르디키오 데이 카스텔리 디 예시, 소비뇽.",
+      "korean": "버터·세이지 리코타 경단",
+      "description": "리코타 치즈와 시금치 경단에 버터와 세이지 허브를 곁들여요. 치즈 경단을 즐기는 이탈리아 요리예요.",
       "ingredients": [
         "누디(리코타와 시금치 경단)",
         "버터",
         "세이지"
       ],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/679a5cff-3ea1-40ff-80e5-dc9e4a41ee27.jpg"
     },
     {
       "id": "2f94f4fe-c61a-4502-8c11-fe49e890dee7",
@@ -7342,8 +7362,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/0ab286a2-10f3-4365-bc15-36939f846418.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/babc39ea-8695-4307-9fa0-6df7296c91ad",
-      "korean": "토스카나식 모둠 안주 (2인용)",
-      "description": "친타 세네제(Cinta Senese) 살루미, 생유 치즈, 크로스티니, 절임 채소로 구성된 모둠 전채 요리입니다. 많은 이들에게 고전적인 토스카나식 전채 요리로 알려져 있습니다. 2인용으로 이상적이며, 맛의 조화와 다양한 풍미를 즐기는 분들에게는 필수적인 선택입니다. 모든 살루미와 소시지류는 시에나 지역의 방목 사육 돼지인 친타 세네제 품종만을 엄격히 사용하며, 이는 시에나 지역의 최고급 품질을 자랑합니다. 알레르기 유발 물질: (1), 7, (12).",
+      "korean": "2인용 토스카나 햄·치즈 모둠",
+      "description": "친타 세네세 가공육, 치즈, 크로스티니와 절임 채소를 함께 내는 2인용 모둠 전채예요.",
       "ingredients": [
         "친타 세네제 살루미",
         "생유 치즈",
@@ -7351,7 +7371,8 @@
         "절임 채소"
       ],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/babc39ea-8695-4307-9fa0-6df7296c91ad.jpg"
     },
     {
       "id": "fe25ec47-a8c3-47cc-be17-eb866485ad8b",
@@ -7671,14 +7692,15 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/a8b3ce5f-7621-4ba6-9169-c07cb2725562.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/58692910-6127-4abd-8678-55a0d699ecb8",
-      "korean": "향신료를 곁들인 소 볼살 요리 (GUANCIA DI MANZO ALLE SPEZIE)",
-      "description": "이 레시피는 아마도 중세 시대를 가장 잘 나타내는 요리일 것입니다. 여기서는 향신료를 아껴 사용하는 것이 핵심적인 역할을 합니다. 소 볼살을 사용한 것은 우연이 아니며, 입안에서 정말로 녹아내리는 고기입니다! 필수 선택 메뉴입니다! 알레르기 유발 성분: 8, 9, 12. 추천 와인: 잘 익고 숙성되었으며, 엄격하고 매우 강렬하며 긴 여운을 가진, 타닌이 있고 알코올 도수가 높으며 둥근 느낌의 레드 와인 (바롤로, 바르바레스코, 아마로네, 알리아니코, 에트나 로쏘, 브루넬로 디 몬탈치노, 노빌레 디 몬테풀치아노 리제르바).",
+      "korean": "향신료 소 볼살 요리",
+      "description": "소의 볼살을 향신료로 맛낸 요리예요. 일반적인 소고기 스테이크와는 사용하는 부위가 달라요.",
       "ingredients": [
         "소 볼살",
         "향신료"
       ],
       "cooking": "중세 시대 방식의 향신료 사용",
-      "taste": "입안에서 녹아내리는 식감"
+      "taste": "입안에서 녹아내리는 식감",
+      "localImage": "/assets/solita/58692910-6127-4abd-8678-55a0d699ecb8.jpg"
     },
     {
       "id": "e585ece7-215d-4916-b431-67e711e17d0d",
@@ -8238,11 +8260,12 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/3ccca9a3-9a4c-46c8-8385-db8d7e1520e6.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/1219e662-ae1e-4310-867e-b1357d074343/2fe7d0aa-9219-4dba-87bc-035e0a7b6e5f",
-      "korean": "그린 샐러드",
-      "description": "공식 메뉴에 상세 설명이 없습니다.",
+      "korean": "녹색 채소 샐러드",
+      "description": "잎채소를 중심으로 한 샐러드예요. 채소와 드레싱 구성은 직원에게 확인해주세요.",
       "ingredients": [],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/2fe7d0aa-9219-4dba-87bc-035e0a7b6e5f.jpg"
     },
     {
       "id": "891bf892-3d14-46e4-9d9e-924b8ed701b8",
@@ -8352,15 +8375,16 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/45a0ab48-2e4d-4c6f-911c-2db70850a9f1.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/a70d388b-3b6a-44b0-b07e-d92f990b48b0",
-      "korean": "람프레도토",
-      "description": "람프레도토는 도시 중심부의 반듯하고 매끄러운 돌길 사이에서 탄생한 길거리 음식입니다. 피렌체에서 '트리파이(trippai, 내장 요리사)의 가판대'라고 불리는 곳들이 이 소박하고 대중적인 음식의 마지막 보루입니다. 한때는 화려한 색으로 칠해진 나무 수레였으며, 손으로 끌거나 페달을 밟는 삼륜차에 실려 있었습니다. 오늘날에는 네 바퀴가 달린 작은 키오스크 형태이며, 모두 강철로 되어 깔끔하고 위생적이지만 여전히 집시 같은 매력을 간직하고 있습니다. 역사를 살펴보면 피렌체 사람들이 왜 이토록 람프레도토를 사랑하는지 알 수 있습니다. 헨리 1세는 1135년까지 영국을 통치했는데, 그가 12월 1일 혹은 그 다음 날 사망했는지는 확실하지 않지만, 그가 식탐 때문에 사망했다는 사실은 알려져 있습니다. 당시의 많은 중요한 인물들과 마찬가지로 헨리 1세는 영국을 비롯한 여러 곳에서 흔히 볼 수 있는 물고기인 칠성장어(lampreda)를 매우 좋아했습니다. 칠성장어는 기괴하고 불길한 외모에도 불구하고 귀족과 상류층을 열광하게 만든 맛있는 요리의 기본 재료로 잘 쓰였습니다. 헨리 1세가 사망한 날, 그는 노르망디에서 사냥을 하던 중 중독으로 사망했습니다. 그를 수행하던 의사는 이미 오래전부터 칠성장어를 먹지 말라고 경고했지만, 왕이었던 헨리 1세는 남의 명령에 복종할 필요가 없다고 생각하여 의사의 말을 듣지 않았습니다. 그가 칠성장어를 너무 많이 먹었는지, 아니면 먹은 것이 상했는지는 확실하지 않지만, 그것이 그를 죽음에 이르게 한 병의 원인이 되어 생드니르페르몽에서 사망했습니다. 그 이후로 칠성장어는 영국인들에게 '왕을 죽인 물고기'로 기억됩니다. 칠성장어는 영국 귀족뿐만 아니라 피렌체 귀족들에게도 사랑받는 요리였습니다. 모든 사람이 그렇게 고급스러운 요리를 접할 수 없었기 때문에, 피렌체 사람들은 그만큼 맛있으면서도 저렴한 대안을 찾기로 했습니다. 그들은 특유의 재치로 '람프레도토'를 발명했습니다. 가난한 농민들은 내장 외에는 가진 것이 없었고, 소의 네 개의 위 중 하나인 '주름위(abomasum)'를 사용하여 오늘날 피렌체 길거리 음식의 왕이라 불리는 요리를 무의식적으로 탄생시켰습니다. 도시 곳곳에 수레가 나타나기 시작했고, 오늘날에는 푸드 트럭으로 변모하여 삶은 람프레도토를 제공합니다. 이때 빠질 수 없는 녹색 소스를 곁들이며, 가급적 '세멜레(semelle)' 안에 넣어 먹습니다. 이는 전형적인 피렌체 빵으로, 윗부분을 람프레도토를 삶은 육수에 적셔 더욱 맛있게 만듭니다. 이 길거리 음식이 칠성장어(lampreda)에서 이름을 따왔다고 말하는 사람들도 있는데, 그 모양이 기괴한 물고기의 입 모양을 닮았기 때문이라고 합니다. 람프레도토는 더 맛있고 살코기가 많은 '갈라(gala)' 부위와 약간 더 기름진 '스판노키아(spannocchia)' 부위로 구성됩니다. 사실 피렌체 사람들에게 이것은 하나의 제도이자 미식의 전설이며, 16세기 궁전의 고귀한 그림자 아래 거리에서 만날 수 있는 대중적인 순회 의식입니다. 알레르기 유발 물질: 1, 6, 9",
+      "korean": "소 주름위 요리와 허브 소스",
+      "description": "소의 네 번째 위인 주름위를 삶아 녹색 소스를 곁들이는 피렌체 전통 요리예요. 소 내장을 먹는 메뉴예요.",
       "ingredients": [
         "소의 주름위(abomasum)",
         "녹색 소스",
         "세멜레(빵)"
       ],
       "cooking": "삶기",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/a70d388b-3b6a-44b0-b07e-d92f990b48b0.jpg"
     },
     {
       "id": "bcb013e4-1bd2-431e-b3e4-edd1ba794761",
@@ -8653,8 +8677,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/b5ea13a2-315c-456f-a7e3-db69a42cc901.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/1219e662-ae1e-4310-867e-b1357d074343/cf4ab540-7c21-497a-91d2-196f3f37c745",
-      "korean": "콩 요리 (LEGUMI)",
-      "description": "병아리콩, 졸피니 콩, 렌틸콩. 이 콩들은 장작 오븐에서 부드럽게 조리되며 로즈마리, 세이지, 아글리오네(큰 마늘)로 향을 냅니다. 훈제 향이 특별함을 더하며, 입안을 감싸는 맛이 특징입니다. 알레르기 유발 물질: 9",
+      "korean": "허브 향을 더한 콩 모둠",
+      "description": "병아리콩, 졸피니 콩과 렌틸콩을 장작 오븐에서 조리해요. 로즈마리·세이지·큰 마늘로 향을 더해요.",
       "ingredients": [
         "병아리콩",
         "졸피니 콩",
@@ -8664,7 +8688,8 @@
         "아글리오네"
       ],
       "cooking": "장작 오븐에서 부드럽게 조리, 로즈마리, 세이지, 아글리오네로 향을 냄.",
-      "taste": "훈제 향, 입안을 감싸는 맛."
+      "taste": "훈제 향, 입안을 감싸는 맛.",
+      "localImage": "/assets/solita/cf4ab540-7c21-497a-91d2-196f3f37c745.jpg"
     },
     {
       "id": "2dd953a9-e602-41ba-9adb-fc2da1609307",
@@ -8748,8 +8773,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/1954bd2f-dbda-4a53-bdbb-2b03b1fbb019.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/31d2c09f-6b59-4292-a0e3-68eeb048eb6b",
-      "korean": "소 혀 염지 요리 (LINGUA SALMISTRATA)",
-      "description": "소 혀를 소금, 설탕, 향신료(세이지, 로즈마리, 레몬 껍질, 타임, 아글리오네)를 사용한 건식 염지액에 18일간 마리네이드했습니다. 마리네이드 기간이 지나면 약 3시간 동안 삶은 후, 슬라이스하여 최고의 짝꿍인 살사 베르데(녹색 소스)와 함께 제공합니다. 알레르기 유발 물질: (4), 9",
+      "korean": "허브에 염장한 소 혀 슬라이스",
+      "description": "소 혀를 소금과 허브로 염장한 뒤 삶아 얇게 썬 요리예요. 일반 소고기 부위와 달리 혀를 사용하는 메뉴예요.",
       "ingredients": [
         "소 혀",
         "소금",
@@ -8761,7 +8786,8 @@
         "아글리오네"
       ],
       "cooking": "18일간 건식 염지 마리네이드, 약 3시간 삶음, 슬라이스.",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/31d2c09f-6b59-4292-a0e3-68eeb048eb6b.jpg"
     },
     {
       "id": "6f65288b-afc9-4c3f-a1dd-b8142d4308b3",
@@ -9016,11 +9042,12 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/90eecc74-a34d-4596-806c-f1412d1a394e.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/91111a62-f217-4596-ac6c-34aee4977866",
-      "korean": "루마케 알 포모도로 (LUMACHE AL POMODORO)",
-      "description": "루마케(Lumaca)는 이탈리아어로 육상 폐호흡 복족류(더 넓게는 해양 복족류도 포함)를 지칭하는 단어로, 껍데기가 복잡하지 않고 육안으로 식별하기 어려운(일상 언어에서 '껍데기'라고 부르는 것) 흔적만 남아있고 외투막 속에 숨겨져 있는 것을 말합니다. 종종 껍데기가 눈에 보이고 잘 구조화된 달팽이(chioccioli)도 같은 방식으로 불리기도 합니다. 분류학적 관점에서는 부정확하지만, 일상 언어에서 루마케와 키오촐라는 일반적으로 동의어로 사용됩니다. 특히 동물을 지칭하는 명사가 아니라, 문장의 주어가 가진 '느림'이라는 특성을 강조하기 위해 비유적으로 사용될 때 그렇습니다. 일상 언어에서 껍데기가 있는 달팽이와 껍데기가 없는 민달팽이를 구분해야 할 때는, 껍데기가 없는 복족류를 명확하게 지칭하기 위해 루마코네(lumacone) 또는 리마차(limaccia)라는 용어를 사용하기도 합니다. 알레르기 유발 물질: 4, 9",
+      "korean": "토마토 소스 달팽이 요리",
+      "description": "달팽이를 토마토 소스로 조리한 메뉴예요. 껍질을 제거해 내는지와 매운 정도는 직원에게 확인해주세요.",
       "ingredients": [],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/91111a62-f217-4596-ac6c-34aee4977866.jpg"
     },
     {
       "id": "847e0c7d-641b-4479-ba02-ee00af522eaf",
@@ -9035,8 +9062,8 @@
       "officialPrice": 6.5,
       "images": [],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/847e0c7d-641b-4479-ba02-ee00af522eaf",
-      "korean": "마체도니아 (MACEDONIA)",
-      "description": "공식 메뉴에 상세 설명이 없습니다.",
+      "korean": "한입 크기 모둠 과일",
+      "description": "여러 과일을 작게 잘라 함께 내는 과일 디저트예요. 오늘 사용하는 과일은 직원에게 확인해주세요.",
       "ingredients": [],
       "cooking": "",
       "taste": ""
@@ -9240,11 +9267,12 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/8903bf1a-ce41-4667-82cb-d4d6292326fe.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/a073b14d-b6c3-40c1-9670-e013c3f893e7",
-      "korean": "만조 아이 포르치니 (MANZO AI PORCINI)",
-      "description": "스튜는 고기를 기본으로 한 요리입니다. 이 용어는 음식을 조리하던 고대 방식에서 유래했는데, 당시 고기는 조리 도구이자 난방 기구 역할을 했던 난로 위에 닫힌 조리 용기에 담겨 조리되었습니다. 100도 이하의 온도에서 장시간 조리하는 방식은 결합 조직의 비율이 높아 질긴 고기나 생선 부위를 부드럽게 만드는 데 특히 적합합니다. 또한, 조리 과정에서 나오는 소스는 반찬이나 파스타 소스로 사용할 수 있어 요리를 더욱 풍성하게 만들었습니다. 아티초크와 함께 조리하면 훌륭합니다. 알레르기 유발 물질: 9, 12",
+      "korean": "포르치니 버섯 소고기 스튜",
+      "description": "메뉴 이름은 포르치니 버섯 소고기 요리예요. 저온에서 오래 조리하는 스튜이며, 설명에 다른 채소가 언급되어 실제 곁들임은 확인해주세요.",
       "ingredients": [],
       "cooking": "100도 이하의 온도에서 장시간 조리(스튜 방식)",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/a073b14d-b6c3-40c1-9670-e013c3f893e7.jpg"
     },
     {
       "id": "e27cb668-41a8-435a-a997-500a66149da3",
@@ -9414,7 +9442,7 @@
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/bf354a43-75d8-4ce9-9fc2-b10d3a86ebeb/41c61fa2-9c8f-4915-a4ef-0c9fa13c080f",
       "korean": "훈제 가지 수프",
-      "description": "가지는 가장 사랑받는 여름 채소 중 하나입니다. 그릴에 굽거나, 오븐에 굽거나, 튀기거나, 파르미자나를 만들거나, 혹은 깍둑썰기하여 삶아 환상적인 수프를 만들 수도 있습니다. 가지는 장작 오븐에서 수분을 날려 훈제 향을 입힙니다. 또한 빠질 수 없는 재료인 케이퍼가 들어갑니다. 파르메산 치즈, 토스트한 빵 조각, 엑스트라 버진 올리브 오일, 후추와 함께 제공합니다. 알레르기 유발 물질: (1), 7, 9. 추천 와인: 가벼운 스틸 화이트 와인.",
+      "description": "장작 오븐에서 훈제한 가지를 사용한 수프예요. 케이퍼, 치즈, 빵과 올리브유를 곁들여요.",
       "ingredients": [
         "가지",
         "케이퍼",
@@ -9424,7 +9452,8 @@
         "후추"
       ],
       "cooking": "장작 오븐에서 훈제",
-      "taste": "훈제 향"
+      "taste": "훈제 향",
+      "localImage": "/assets/solita/41c61fa2-9c8f-4915-a4ef-0c9fa13c080f.jpg"
     },
     {
       "id": "0d29d720-3eb5-4dac-b558-090fb23070e1",
@@ -9994,14 +10023,15 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/f504bfc0-d7ff-4754-976d-efd8081384fa.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/fd31a8e1-2319-4786-a124-e5c300d9a453",
-      "korean": "토마토 소스를 곁들인 무제토",
-      "description": "알레르기 유발 물질: 9",
+      "korean": "토마토 소스 소 머릿고기 요리",
+      "description": "소 머릿고기를 토마토로 조리하는 토스카나식 메뉴예요. 내장·특수 부위를 즐기는 분께 어울리는 구성입니다.",
       "ingredients": [
         "무제토",
         "토마토"
       ],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/fd31a8e1-2319-4786-a124-e5c300d9a453.jpg"
     },
     {
       "id": "23b75d7d-12e7-432a-8147-ffdbc2c053fa",
@@ -11502,14 +11532,15 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/547acc95-6e8f-4f9e-9828-49a9bd10a8bf.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/47efedfb-4a7f-49c5-bc8c-a1af891420d9",
-      "korean": "판나 코타",
-      "description": "판나 코타는 우리 미식 전통의 스푼 디저트입니다. 구성하는 재료만큼이나 단순합니다. 어떤 이들은 이것이 프랑스의 바바루아보다 가벼운 버전이라고 주장합니다. 또 다른 이들은 랑게 지역에서 유래했으며 헝가리 출신의 한 부인이 발명했다고 주장합니다. 또 어떤 이들은 판나 코타가 아랍 지배 시절 유래한 시칠리아 디저트 '비앙코만자레(BiancoMangiare)'의 조상이며, 북부 이탈리아로 넘어오면서 아몬드 우유가 우유로 대체되었다고 주장합니다. 추천 와인: 모스카토 다스티, 피오르 다란차 콜리 에우가네이, 달콤한 스푸만테. 부드럽고 크리미한 판나 코타, 스푼 디저트의 정수입니다!!! 알레르기 유발 물질: 7, (12)",
+      "korean": "우유·생크림 푸딩",
+      "description": "우유와 생크림으로 만든 판나 코타예요. 부드러운 크림 디저트로, 곁들이는 소스는 주문할 때 확인해주세요.",
       "ingredients": [
         "우유",
         "생크림"
       ],
       "cooking": "",
-      "taste": "부드럽고 크리미함"
+      "taste": "부드럽고 크리미함",
+      "localImage": "/assets/solita/47efedfb-4a7f-49c5-bc8c-a1af891420d9.jpg"
     },
     {
       "id": "11d4a5f5-dab9-4886-a562-17dc8eeacfbf",
@@ -11526,8 +11557,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/be3379e7-379f-48d5-bc3d-59e24fe2b945.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/11d4a5f5-dab9-4886-a562-17dc8eeacfbf",
-      "korean": "키아니나 소고기 오소부코와 감자 퓨레",
-      "description": "토스카나 외부 레시피의 아주 드문 변형 중 하나인 밀라노식 오소부코입니다. 밀라노가 고향인 식당 주인의 어린 시절을 떠올리게 하는 요리로 선택되었습니다. 조리법은 주인이 겨울철에 아버지께서 자주 만들어 주시던 방식 그대로이며, 파슬리, 큰 마늘(aglione), 레몬 껍질을 다져 만든 필수적인 '그레몰라다(gremülada)'를 곁들여 부드러운 오소부코와 환상적인 조화를 이룹니다. 알레르기 유발 물질: 7, 9, 12",
+      "korean": "뼈가 붙은 소고기 요리와 으깬 감자",
+      "description": "키아니나 소고기로 만든 오소부코에 으깬 감자를 곁들여요. 파슬리·큰 마늘·레몬 껍질을 다진 양념으로 마무리해요.",
       "ingredients": [
         "키아니나 소고기",
         "감자",
@@ -11536,7 +11567,8 @@
         "레몬 껍질"
       ],
       "cooking": "그레몰라다(파슬리, 큰 마늘, 레몬 껍질 다짐)를 곁들여 조리",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/11d4a5f5-dab9-4886-a562-17dc8eeacfbf.jpg"
     },
     {
       "id": "235bb215-b44a-416b-b43e-26bb91c29aed",
@@ -11577,15 +11609,16 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/9126d521-48e0-46c0-8bed-99c3c6a928bc.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/1219e662-ae1e-4310-867e-b1357d074343/9f3dc0c9-ebe9-4836-9f96-03cdd3b757da",
-      "korean": "로즈마리 감자",
-      "description": "겉은 바삭하고 속은 부드럽습니다. 신선한 로즈마리의 감싸는 듯한 향과 직접 만든 향신료 소금으로 풍미를 더했습니다. 알레르기 유발 물질: 5",
+      "korean": "로즈마리 감자구이",
+      "description": "로즈마리와 향신료 소금으로 맛낸 감자예요. 겉은 바삭하고 속은 부드럽게 조리해요.",
       "ingredients": [
         "감자",
         "로즈마리",
         "향신료 소금"
       ],
       "cooking": "구이",
-      "taste": "겉은 바삭하고 속은 부드러움, 로즈마리 향"
+      "taste": "겉은 바삭하고 속은 부드러움, 로즈마리 향",
+      "localImage": "/assets/solita/9f3dc0c9-ebe9-4836-9f96-03cdd3b757da.jpg"
     },
     {
       "id": "15b93671-e104-4973-88d2-58ba0054bc7f",
@@ -11625,8 +11658,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/8142691e-4633-411b-8a1c-c503572a89e9.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/2943ee4b-bff1-4f2b-8d9c-9014af876af3",
-      "korean": "제철 파르미자나",
-      "description": "채소의 고대 이름, 셔터(persiane), 그리고 파르마 시 사이에는 어떤 공통점이 있을까요? 이를 알아보기 위해 매혹적인 시간 여행을 떠나봅시다. 우리나라의 미식 논쟁 중 가장 뜨겁고 해결하기 어려운 것 중 하나는 가지 파르미자나(parmigiana di melanzane) 또는 파르미자나식 가지 요리(melanzane alla parmigiana)의 레시피에 관한 것입니다. 이 놀라운 요리의 기원은 매우 불분명하며, 시칠리아, 나폴리, 파르마가 서로 원조라고 주장합니다. 진실은 어디에 있을까요? 평소처럼 시간 여행을 떠나봅시다. '파르미자나'라는 용어의 기원은 무엇일까요? 가지는 15세기에 아랍인들이 인도에서 가져오면서 이탈리아에 도착했습니다. 이 경로만으로도 시칠리아 '설'에 무게가 실립니다. 이 이론에 따르면 파르마 시와는 아무런 관련이 없으며, 파르미지아노 치즈와도 관련이 없습니다. 대신 이 용어는 셔터를 형성하는 나무 판자 조각을 뜻하는 시칠리아어 'parmiciana'에서 유래했을 가능성이 있습니다. 부분적으로 겹쳐진 판자 모양이 이 요리를 준비할 때 튀긴 가지를 배치하는 방식과 비슷하기 때문입니다. 시칠리아에서 '파르미자나식 가지 요리'보다 '가지 파르미자나'라고 더 자주 부르는 것은 우연이 아닙니다. 뿐만 아니라, 어떤 이들은 '파르미자나'가 남부 유럽에 도착했을 때 가지를 지칭하던 페르시아어 유래 용어인 'petronciana'에서 직접 유래했다고 주장하기도 합니다. 이 주장을 뒷받침하기 위해 19세기 말 아르투시(Artusi)조차 이 이름으로 불렀다는 사실을 인용합니다. 어쨌든 초기 시칠리아식 파르미자나는 기름에 튀긴 가지에 페코리노 치즈와 다른 양념을 뿌린 터키의 무사카와 매우 유사한 요리였을 것입니다. 매혹적이고 현실적이지만 문서화되지는 않은 가설입니다. 그 시대에는 시모네 데 프로덴자니(Simone de’Prodenzani)가 '파르미자나'를 언급한 기록만 있을 뿐 레시피는 전해지지 않습니다. 궁정의 파르미자나. 파르미자나에 대한 최초의 역사적 증거는 18세기 나폴리의 가장 중요한 귀족 가문을 섬기던 풀리아 출신 요리사 빈첸초 코라도(Vincenzo Corrado)의 'Cuoco galante(1733)'에 담겨 있습니다. 그러나 코라도는 레시피에서 가지 대신 호박을 사용했고, 라드에 튀긴 후 파르미지아노와 버터를 곁들여 오븐에 다시 구웠습니다. 1839년 이폴리토 카발칸티(Ippolito Cavalcanti)가 'Cusina casarinola co la lengua napolitana'에서 설명한 레시피가 오늘날의 레시피와 훨씬 더 유사합니다: \"가지를 튀겨서 치즈, 바질, 스튜 육수 또는 토마토 소스와 함께 층층이 팬에 담고 덮어서 찌듯이 익힌다.\" 공작의 길. 파르미지아노의 사용(사실 페코리노의 대안으로 나중에 도입되었을 가능성이 높으며, 나폴리 사람들은 모짜렐라도 추가했습니다)과 에밀리아 지역 도시를 명확하게 지칭하는 듯한 이름 때문에 가지 파르미자나가 파르마에서 탄생했다는 주장에 무게가 실립니다. 뿐만 아니라 15~16세기에는 '파르미자니 방식(alla maniera dei Parmigiani)으로 요리하기'라는 표현이 채소를 층층이 쌓아 요리하는 관습을 가리키는 데 사용되었습니다. 가지 파르미자나처럼 말이죠. 반면 17세기부터 요리책에서 '파르미자나식으로 요리하기'는 단순히 유명한 치즈를 사용하는 것과 동의어가 되었습니다. 미식의 테아노(Teano)? 요약하자면, 꽤 복잡한 수수께끼입니다. 하지만 이 요리의 현재 확산, 아랍인들이 수입한 가지, 그리고 가능한 모든 언어적 유사성은 시칠리아 기원설에 무게를 실어줍니다. 이후 나폴리가 섬을 지배하면서 자연스럽게 나폴리로 전파되었을 것입니다(쌀과 아몬드 페이스트의 경우와 유사). 그리고 왜 안 되겠습니까, 스페인 혈통의 왕조로 나폴리에 입성(1734)하기 전 복잡한 왕조 동맹 게임을 통해 파르마와 피아첸차 공국을 통치했던 부르봉 왕가와의 추가적인 연결 고리도 있을 수 있습니다. 요컨대, 시칠리아인과 파르마인들이 나폴리에서 만나 파르미자나를 탄생시켰을지도 모릅니다! 진정한 '미식의 테아노'입니다! 알레르기 유발 물질: 5, 7",
+      "korean": "토마토·치즈를 겹쳐 구운 제철 채소",
+      "description": "채소와 토마토 소스, 치즈를 층층이 쌓아 오븐에서 조리하는 파르미자나예요. 사용하는 제철 채소는 확인해주세요.",
       "ingredients": [
         "가지",
         "치즈(파르미지아노 또는 페코리노 또는 모짜렐라)",
@@ -11634,7 +11667,8 @@
         "토마토 소스"
       ],
       "cooking": "튀김, 층층이 쌓아 오븐 조리",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/2943ee4b-bff1-4f2b-8d9c-9014af876af3.jpg"
     },
     {
       "id": "7ea287c5-f837-4436-856b-3e85d8e4c374",
@@ -11651,14 +11685,15 @@
         "https://cassanova-prod.s3.amazonaws.com/images/17e502ed-7878-429f-940a-e71e8a6bad56.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/7ea287c5-f837-4436-856b-3e85d8e4c374",
-      "korean": "발디키아나의 아글리오네 소스를 곁들인 피치",
-      "description": "엄격하게 수작업으로 만든 피치 파스타는 기분 좋은 훈연 향이 특징인 소스뿐만 아니라 아글리오네(큰 마늘)와 라구 같은 전통적인 소스와도 잘 어울립니다. 정말 맛있고 풍미가 풍부합니다. 알레르기 유발 물질: 1, 3, (5). 추천 와인: 향긋한 노트가 있는 부드러운 화이트 와인(소아베, 가르가네가, 오르비에토, 그레코).",
+      "korean": "큰 마늘 소스의 굵은 수제 파스타",
+      "description": "피치는 토스카나의 굵은 수제 면이에요. 발디키아나 지역의 큰 마늘인 아글리오네로 만든 소스를 곁들여요.",
       "ingredients": [
         "피치 파스타(밀가루, 물)",
         "아글리오네(큰 마늘)"
       ],
       "cooking": "수작업 파스타 제조",
-      "taste": "풍미가 풍부함"
+      "taste": "풍미가 풍부함",
+      "localImage": "/assets/solita/7ea287c5-f837-4436-856b-3e85d8e4c374.jpg"
     },
     {
       "id": "62a0d085-7b02-4394-93c8-2cd1d682898d",
@@ -11675,14 +11710,15 @@
         "https://cassanova-prod.s3.amazonaws.com/images/bfdf0c8d-f469-4840-bc93-ce8d82f51d5e.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/62a0d085-7b02-4394-93c8-2cd1d682898d",
-      "korean": "토마토 소스 피치",
-      "description": "엄격하게 수작업으로 만든 피치 파스타는 시에나 지방 남부에서 유명한 고전적이고 전통적인 지역 파스타로, 단순한 토마토 소스로 맛을 냈습니다. 알레르기 유발 물질: 1, 3, 5, (7). 추천 와인: 향긋한 노트가 있는 부드러운 화이트 와인(소아베, 가르가네가, 오르비에토, 그레코), 로제 와인.",
+      "korean": "토마토 소스 굵은 수제 파스타",
+      "description": "손으로 만든 굵은 피치 면에 토마토 소스를 곁들인 메뉴예요. 소박한 토스카나식 파스타입니다.",
       "ingredients": [
         "피치 파스타(밀가루, 물)",
         "토마토 소스"
       ],
       "cooking": "수작업 파스타 제조",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/62a0d085-7b02-4394-93c8-2cd1d682898d.jpg"
     },
     {
       "id": "6f0a9e73-7dbd-46af-9a3e-d2a6e491e22f",
@@ -11699,15 +11735,16 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/3ebf07ca-4daa-40d8-aaa4-364f25c72bb2.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/6f0a9e73-7dbd-46af-9a3e-d2a6e491e22f",
-      "korean": "나나(오리) 소스 피치",
-      "description": "엄격하게 수작업으로 만든 피치 파스타는 기분 좋은 훈연 향이 특징인 소스뿐만 아니라 아글리오네와 라구 같은 전통적인 소스와도 잘 어울립니다. 파르미지아노 레지아노를 뿌려 마무리합니다. 정말 맛있고 풍미가 풍부합니다. 알레르기 유발 물질: 1, 3, (5), (7), 9, 12. 추천 와인: 약간의 타닌이 있는 젊은 레드 와인(키안티 클라시코, 로쏘 디 몬테풀치아노, 몬테팔코 로쏘, 체사네제, 치로, 에트나 로쏘, 카리냐노 델 술치스, 바르베라).",
+      "korean": "오리고기 소스 굵은 수제 파스타",
+      "description": "굵은 수제 피치 면에 오리고기 소스를 곁들여요. 파르미지아노 치즈로 마무리해요.",
       "ingredients": [
         "피치 파스타(밀가루, 물)",
         "오리 고기",
         "파르미지아노 레지아노"
       ],
       "cooking": "수작업 파스타 제조",
-      "taste": "풍미가 풍부함"
+      "taste": "풍미가 풍부함",
+      "localImage": "/assets/solita/6f0a9e73-7dbd-46af-9a3e-d2a6e491e22f.jpg"
     },
     {
       "id": "54db16b3-a9c8-4dd6-bd21-ea31f6120ec0",
@@ -11724,14 +11761,15 @@
         "https://cassanova-prod.s3.amazonaws.com/images/2d769e5b-b3e0-4699-95d7-d836a599751c.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/54db16b3-a9c8-4dd6-bd21-ea31f6120ec0",
-      "korean": "청어 알 소스 피치",
-      "description": "엄격하게 수작업으로 만든 피치 파스타는 기분 좋은 훈연 향이 특징인 소스뿐만 아니라 아글리오네와 라구 같은 전통적인 소스와도 잘 어울립니다. 이 경우에는 청어 소스로 맛을 냈습니다. 정말 맛있고 풍미가 풍부합니다. 알레르기 유발 물질: 1, 3, 4, 5, 7. 추천 와인: 알코올 도수가 있고 반향이 있는 바디감 있는 화이트 와인(티모라쏘, 뮐러 투르가우, 소비뇽).",
+      "korean": "청어 알 소스 굵은 수제 파스타",
+      "description": "손으로 만든 굵은 피치 면에 청어 알 소스를 곁들이는 메뉴예요. 생선 알을 사용하는 파스타예요.",
       "ingredients": [
         "피치 파스타(밀가루, 물)",
         "청어 알 소스"
       ],
       "cooking": "수작업 파스타 제조",
-      "taste": "풍미가 풍부함"
+      "taste": "풍미가 풍부함",
+      "localImage": "/assets/solita/54db16b3-a9c8-4dd6-bd21-ea31f6120ec0.jpg"
     },
     {
       "id": "27969eaa-d518-49ad-8c0b-7650858d7fcd",
@@ -11748,8 +11786,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/0d72b379-1bea-4dd0-823d-c04d082a6105.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/27969eaa-d518-49ad-8c0b-7650858d7fcd",
-      "korean": "친토카 피치",
-      "description": "엄격하게 수작업으로 만든 피치 파스타는 기분 좋은 훈연 향이 특징인 소스뿐만 아니라 아글리오네와 토스카나 라구, 또는 이 경우처럼 친타(Cinta) 돼지와 오리 고기를 섞은 라구와도 잘 어울립니다. 파르미지아노 레지아노를 뿌려 마무리합니다. 알레르기 유발 물질: 1, 3, (7), 9, 12",
+      "korean": "돼지고기·오리고기 소스 수제 파스타",
+      "description": "굵은 피치 면에 친타 돼지고기와 오리고기를 함께 사용한 소스를 곁들여요. 치즈를 뿌려 마무리해요.",
       "ingredients": [
         "피치 파스타(밀가루, 물)",
         "친타 돼지 고기",
@@ -11757,7 +11795,8 @@
         "파르미지아노 레지아노"
       ],
       "cooking": "수작업 파스타 제조",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/27969eaa-d518-49ad-8c0b-7650858d7fcd.jpg"
     },
     {
       "id": "81ea9b1b-b5f6-4f7e-a075-4281424e2e86",
@@ -11910,8 +11949,8 @@
       "officialPrice": 4,
       "images": [],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/9276fbba-c297-4217-a19f-2cfed5612d5e",
-      "korean": "젤라또 한 스쿱",
-      "description": "공식 메뉴에 상세 설명이 없습니다.",
+      "korean": "아이스크림 한 스쿱",
+      "description": "젤라또 한 스쿱을 주문하는 메뉴예요. 가능한 맛은 직원에게 확인해주세요.",
       "ingredients": [],
       "cooking": "",
       "taste": ""
@@ -12701,11 +12740,12 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/d3675537-3f17-4054-a8fc-840eea138fdb.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/f701e43a-cb92-44e9-a011-25fbda649595",
-      "korean": "향신료 치킨 (POLLO ALLE SPEZIE)",
-      "description": "이 레시피는 아마도 중세 시대를 가장 잘 나타내는 요리일 것입니다. 향신료를 절제하여 사용하는 것이 핵심적인 역할을 합니다. 알레르기 유발 물질: 7, 9, 12. 추천 와인: 성숙하고 숙성된, 엄격하며 매우 강렬하고 긴 지속적인 향을 가진, 타닌이 있고 알코올 도수가 높으며 둥근 레드 와인 (바롤로, 바르바레스코, 아마로네, 알리아니코, 에트나 로쏘, 브루넬로 디 몬탈치노, 노빌레 디 몬테풀치아노 리제르바).",
+      "korean": "향신료 닭고기 요리",
+      "description": "향신료로 맛을 낸 닭고기 요리예요. 정확한 부위와 향신료, 매운 정도는 직원에게 확인해주세요.",
       "ingredients": [],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/f701e43a-cb92-44e9-a011-25fbda649595.jpg"
     },
     {
       "id": "a0aba167-c582-4ecf-8961-8010f5d0a41a",
@@ -12745,15 +12785,16 @@
         "https://cassanova-prod.s3.amazonaws.com/images/109cd6d7-d003-4340-a0c8-21dbc1bddf43.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/836ee9c8-82c8-4e96-907c-231c288dbffe",
-      "korean": "키아니나와 친타 세네세 미트볼 토마토 소스",
-      "description": "퓨레와 함께 제공되는 키아니나 고기 미트볼. 알레르기 유발 물질: 1, 3, 7, 12",
+      "korean": "토마토 소스 소고기·돼지고기 완자",
+      "description": "키아니나 소고기와 친타 세네세 돼지고기로 만든 미트볼이에요. 토마토 소스와 으깬 감자를 곁들여요.",
       "ingredients": [
         "키아니나 고기",
         "친타 세네세 고기",
         "토마토"
       ],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/836ee9c8-82c8-4e96-907c-231c288dbffe.jpg"
     },
     {
       "id": "3067201a-2224-4dd7-9d08-b2fc5e29f445",
@@ -12838,8 +12879,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/0674dbd6-c8b1-4715-80b2-7e4170739815.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/bf354a43-75d8-4ce9-9fc2-b10d3a86ebeb/6b15ef9d-0e07-4dc4-8dd9-089e5d0ffddb",
-      "korean": "부추와 감자 수프 (ZUPPA DI PORRI E PATATE)",
-      "description": "부추와 감자 수프는 구운 아몬드 슬라이스, 파르메산 치즈, 엑스트라 버진 올리브 오일, 후추로 마무리한 매우 맛있는 벨루타(크림 수프)입니다. 알레르기 유발 물질: 7, 9. 추천 와인: 스틸 화이트 와인.",
+      "korean": "서양 대파와 감자 크림 수프",
+      "description": "리크라는 서양 대파와 감자로 만든 크림 수프예요. 구운 아몬드, 치즈와 올리브유로 마무리해요.",
       "ingredients": [
         "부추",
         "감자",
@@ -12849,7 +12890,8 @@
         "후추"
       ],
       "cooking": "벨루타(크림 수프) 형태로 조리, 아몬드는 구워서 사용",
-      "taste": "매우 맛있는 풍미"
+      "taste": "매우 맛있는 풍미",
+      "localImage": "/assets/solita/6b15ef9d-0e07-4dc4-8dd9-089e5d0ffddb.jpg"
     },
     {
       "id": "4f127b58-0149-490b-ac15-f648d9c2a45b",
@@ -13026,8 +13068,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/d1e08e6b-e17e-4cb5-a3a6-37ca81ebde6d.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/1219e662-ae1e-4310-867e-b1357d074343/f53e3a53-f100-493b-88dc-b7bfad21795e",
-      "korean": "으깬 감자 (PURE' DI PATATE)",
-      "description": "우유, 감자, 버터, 육두구, 이 네 가지 재료로 만든 전설적인 레시피입니다. 너무 자주 평범하고 생기 없고 슬픈 요리로 치부되는 비범한 사이드 디시입니다. 으깬 감자는 맛이 좋을 뿐만 아니라 감자에 얽힌 풍부한 일화라는 역사를 숨기고 있습니다. 감자를 으깨서 퓨레로 만드는 것은 누구나 할 수 있지만, 메인 요리로 준비된 고기 요리를 뒷전으로 밀어낼 만큼 풍부하고 맛있는 퓨레를 요리하는 것은 예술입니다. 알레르기 유발 물질: 7, 8",
+      "korean": "버터와 우유를 넣은 으깬 감자",
+      "description": "감자를 으깨 우유와 버터를 넣은 곁들임 요리예요. 육두구로 향을 더해요.",
       "ingredients": [
         "우유",
         "감자",
@@ -13035,7 +13077,8 @@
         "육두구"
       ],
       "cooking": "으깨서 조리",
-      "taste": "풍부하고 맛있는 맛"
+      "taste": "풍부하고 맛있는 맛",
+      "localImage": "/assets/solita/f53e3a53-f100-493b-88dc-b7bfad21795e.jpg"
     },
     {
       "id": "f3b38a06-a731-4729-bfbf-1f9112ff9c16",
@@ -13141,8 +13184,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/dc7e93d7-05d0-40f4-a7e5-4cc7091fbcc9.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/dce94ea6-6d37-47ae-84c0-df77cac085a1",
-      "korean": "여름 리볼리타 (RIBOLLITA ESTIVA)",
-      "description": "여름 리볼리타는 유명한 토스카나 리볼리타를 재해석한 요리로, 구운 토스카나 빵 조각, 바질, 건포도, 신선한 쪽파, 엑스트라 버진 올리브 오일 한 줄기, 후추로 맛을 낸 차가운 야채 미네스트로네(수프)입니다. 신선하고 맛있는 전채 요리로 정말 환상적입니다. 알레르기 유발 물질: (1), 9",
+      "korean": "여름 채소와 빵을 곁들인 수프",
+      "description": "토스카나의 채소 수프를 여름식으로 만든 메뉴예요. 구운 빵, 바질, 건포도와 쪽파를 곁들여 차갑게 내요.",
       "ingredients": [
         "토스카나 빵",
         "바질",
@@ -13153,7 +13196,8 @@
         "야채"
       ],
       "cooking": "차가운 미네스트로네 형태로 조리",
-      "taste": "신선하고 맛있는 맛"
+      "taste": "신선하고 맛있는 맛",
+      "localImage": "/assets/solita/dce94ea6-6d37-47ae-84c0-df77cac085a1.jpg"
     },
     {
       "id": "5dd7661e-04ec-439b-b7b7-5625b31b38a3",
@@ -13288,8 +13332,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/bbe05520-64bb-4d98-a4b2-4cd8868e7c90.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/5834c7dc-e880-445c-9913-7968242c21f3",
-      "korean": "키아니나 로스트비프",
-      "description": "중요한 부위인 채끝살을 사용하여, 속은 붉은 상태를 유지하고 입안에서 녹을 정도로 부드럽게 만들기 위해 세심한 주의를 기울여 조리했습니다. 오스테리아에서 가장 많이 팔리는 요리 중 하나이며, 우리의 작업에 자부심을 느끼게 해주는 대표 메뉴입니다. 로스트비프는 상온에서 고급 토스카나 엑스트라 버진 올리브 오일, 말돈 소금, 말라바르 그린 페퍼와 함께 제공됩니다. 추천 와인: 구조감이 있는 화이트 와인, 로제 와인 또는 향긋하고 부드러우며 신선한 영 레드 와인. 랑게 비앙코, 시칠리아 샤르도네, 몬테풀치아노 로제, 라그레인 로제, 피노 누아.",
+      "korean": "얇게 썬 키아니나 소고기 구이",
+      "description": "키아니나 소고기 채끝살을 속이 붉게 남도록 구운 로스트비프예요. 상온에서 올리브유·소금·후추를 곁들여 내요.",
       "ingredients": [
         "키아니나 채끝살",
         "토스카나 엑스트라 버진 올리브 오일",
@@ -13297,7 +13341,8 @@
         "말라바르 그린 페퍼"
       ],
       "cooking": "속은 붉은 상태를 유지하고 입안에서 녹을 정도로 부드럽게 조리, 상온 제공",
-      "taste": "입안에서 녹을 정도로 부드러움"
+      "taste": "입안에서 녹을 정도로 부드러움",
+      "localImage": "/assets/solita/5834c7dc-e880-445c-9913-7968242c21f3.jpg"
     },
     {
       "id": "2045c42d-c294-4fc6-874e-c91db3b326d4",
@@ -16255,15 +16300,16 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/a3cd8f0f-a59a-4970-9c7d-bf20a946ca85.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/1219e662-ae1e-4310-867e-b1357d074343/0f1e97c3-3939-443c-853a-10f0144087de",
-      "korean": "제철 채소 스포르티노",
-      "description": "부드럽고 섬세하며, 신선한 제철 채소를 돋보이게 하며 페코리노 치즈 크림과 호두와 함께 제공됩니다. 부드러움과 풍미 사이의 완벽한 균형을 위해. 알레르기 유발 물질: 3, 7, (8)",
+      "korean": "치즈 크림을 곁들인 작은 채소 오븐찜",
+      "description": "제철 채소를 부드럽게 조리한 작은 플랑이에요. 페코리노 치즈 크림과 호두를 곁들여요.",
       "ingredients": [
         "제철 채소",
         "페코리노 치즈",
         "호두"
       ],
       "cooking": "",
-      "taste": "부드럽고 섬세하며, 부드러움과 풍미의 균형이 좋음"
+      "taste": "부드럽고 섬세하며, 부드러움과 풍미의 균형이 좋음",
+      "localImage": "/assets/solita/0f1e97c3-3939-443c-853a-10f0144087de.jpg"
     },
     {
       "id": "6f28e31b-ad55-4807-83be-1d9bc35a27ce",
@@ -16280,13 +16326,14 @@
         "https://cassanova-prod.s3.amazonaws.com/images/0bc1d900-398c-4260-b2dc-82a5eb5b3a23.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/6f28e31b-ad55-4807-83be-1d9bc35a27ce",
-      "korean": "제철 채소 스포르마토",
-      "description": "추억의 요리로, 부드럽고 섬세하며 제철 채소의 자연스러운 맛을 최대한 존중하여 돋보이게 합니다. 알레르기 유발 물질: 3, 7, (8)",
+      "korean": "제철 채소 오븐찜",
+      "description": "제철 채소로 만든 부드러운 오븐 요리예요. 채소 종류와 치즈 포함 여부는 직원에게 확인해주세요.",
       "ingredients": [
         "제철 채소"
       ],
       "cooking": "",
-      "taste": "부드럽고 섬세하며 채소 본연의 맛을 살림"
+      "taste": "부드럽고 섬세하며 채소 본연의 맛을 살림",
+      "localImage": "/assets/solita/6f28e31b-ad55-4807-83be-1d9bc35a27ce.jpg"
     },
     {
       "id": "b4d9e3f4-c935-4f73-bee0-f3f9d53bee4e",
@@ -16503,14 +16550,15 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/0f71d351-2c57-4627-b299-5533869e43fa.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/af4b4f99-b0d5-4e18-9246-2db52e88f600",
-      "korean": "소르베",
-      "description": "식사를 마무리하는 가장 고전적인 선택으로, 레몬, 딸기 및 계절에 따라 항상 바뀌는 기타 제안들이 있습니다.",
+      "korean": "상큼한 과일 셔벗",
+      "description": "레몬·딸기 등 계절별 과일 맛을 선보이는 차가운 디저트예요. 오늘 가능한 맛을 확인해주세요.",
       "ingredients": [
         "레몬",
         "딸기"
       ],
       "cooking": "",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/af4b4f99-b0d5-4e18-9246-2db52e88f600.jpg"
     },
     {
       "id": "4e57e385-14ce-43cd-ad59-e75710ac7d80",
@@ -16663,8 +16711,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/afbdba6a-b2b2-406c-be36-b0e57cef7369.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/6de15ac7-3456-4511-82b6-50ba1176b8bc",
-      "korean": "탈리아텔레 알 라구 비앙코",
-      "description": "엄격하게 수작업으로 만든 탈리아텔레 면이 기분 좋은 훈연 향이 특징인 화이트 라구 소스와 만납니다. 소고기와 돼지고기 다짐육, 파르미지아노 레지아노 치즈를 뿌리고 장작 오븐 조리의 흥미로운 훈연 향을 더했습니다. 알레르기 유발 물질: 1,3,(7),9,12. 추천 와인: 적당한 구조감을 가진 화이트 와인.",
+      "korean": "토마토 없이 만든 고기 소스 넓적 파스타",
+      "description": "수제 탈리아텔레 면에 소고기·돼지고기 다짐육으로 만든 화이트 라구를 곁들여요. 치즈를 뿌려 마무리해요.",
       "ingredients": [
         "탈리아텔레",
         "소고기 다짐육",
@@ -16672,7 +16720,8 @@
         "파르미지아노 레지아노"
       ],
       "cooking": "수작업 면 제조, 장작 오븐 조리",
-      "taste": "기분 좋은 훈연 향, 흥미로운 훈연 향"
+      "taste": "기분 좋은 훈연 향, 흥미로운 훈연 향",
+      "localImage": "/assets/solita/6de15ac7-3456-4511-82b6-50ba1176b8bc.jpg"
     },
     {
       "id": "3585f201-f3ac-4646-a0dc-3181383cd71b",
@@ -16689,15 +16738,16 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/cb1c09ed-38ab-4bd4-b655-9d2e19af0f40.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/3585f201-f3ac-4646-a0dc-3181383cd71b",
-      "korean": "타글리아텔레 알 타르투포 네로 (블랙 트러플 타글리아텔레)",
-      "description": "엄격하게 수작업으로 만든 타글리아텔레 파스타에 화이트 트러플 버터와 10~13g의 슬라이스한 화이트 트러플을 곁들인 매우 고급스러운 요리입니다. 알레르기 유발 물질: 1,3,(5),(7) 추천 와인: 화이트 와인",
+      "korean": "트러플을 곁들인 넓적 수제 파스타",
+      "description": "수제 탈리아텔레에 트러플을 곁들이는 메뉴예요. 제목에는 검은 트러플, 설명에는 흰 트러플이 적혀 있어 오늘 사용하는 종류를 확인해주세요.",
       "ingredients": [
         "타글리아텔레",
         "화이트 트러플 버터",
         "화이트 트러플"
       ],
       "cooking": "엄격하게 수작업으로 만든 타글리아텔레",
-      "taste": "매우 고급스러운 맛"
+      "taste": "매우 고급스러운 맛",
+      "localImage": "/assets/solita/3585f201-f3ac-4646-a0dc-3181383cd71b.jpg"
     },
     {
       "id": "67fc8857-b1f1-42ec-801e-fb129753df1e",
@@ -16762,8 +16812,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/ce09c051-75ff-40b3-b26d-e6ccc8a8247e.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/e6a0e311-5e76-47bf-95b7-23f00c1b0cf6",
-      "korean": "타글리아텔레 알 라구 비앙코 에 멜란자네 푸메 (화이트 라구와 훈제 가지 타글리아텔레)",
-      "description": "엄격하게 수작업으로 만든 타글리아텔레 파스타에 기분 좋은 훈제 향이 특징인 화이트 라구 소스를 곁들였습니다. 가지는 키아니나 소고기, 친타 세네세 돼지고기 다짐육, 파르미지아노 레지아노 치즈 가루, 그리고 장작불 오븐 조리로 완성된 흥미로운 훈제 향과 우아하게 어우러집니다. 알레르기 유발 물질: 1,3,(7),9,12 추천 와인: 적당한 구조감을 가진 화이트 와인",
+      "korean": "훈제 가지와 고기 소스 넓적 파스타",
+      "description": "수제 탈리아텔레에 훈제 가지와 소고기·돼지고기 화이트 라구를 곁들여요. 토마토 중심 소스와는 다른 메뉴예요.",
       "ingredients": [
         "타글리아텔레",
         "화이트 라구 소스",
@@ -16773,7 +16823,8 @@
         "파르미지아노 레지아노"
       ],
       "cooking": "엄격하게 수작업으로 만든 타글리아텔레, 장작불 오븐 조리",
-      "taste": "기분 좋은 훈제 향, 우아한 조화, 흥미로운 훈제 향"
+      "taste": "기분 좋은 훈제 향, 우아한 조화, 흥미로운 훈제 향",
+      "localImage": "/assets/solita/e6a0e311-5e76-47bf-95b7-23f00c1b0cf6.jpg"
     },
     {
       "id": "cb65de2d-8e0e-4d50-b14d-5ab558bc384c",
@@ -16901,15 +16952,16 @@
         "https://cassanova-prod.s3.amazonaws.com/images/da384b67-da94-471a-b32f-11891407e0c2.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/92f45448-4c89-4049-ae9e-6b74ba1165ce",
-      "korean": "티라미수",
-      "description": "비스킷부터 마스카포네 크림까지 모두 주방에서 직접 준비합니다. 품질과 안전을 보장하기 위해 계란은 저온 살균 처리합니다. 알레르기 유발 물질: (1),3,7",
+      "korean": "커피와 치즈 크림의 티라미수",
+      "description": "비스킷과 마스카포네 크림을 직접 만드는 티라미수예요. 식당 설명에 따르면 달걀은 저온 살균해 사용해요.",
       "ingredients": [
         "비스킷",
         "마스카포네 크림",
         "계란"
       ],
       "cooking": "주방에서 직접 제조, 계란 저온 살균",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/92f45448-4c89-4049-ae9e-6b74ba1165ce.jpg"
     },
     {
       "id": "84b798f0-b55c-4ea2-9bff-7d23d9a2c386",
@@ -16974,8 +17026,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/2133a166-d13f-4def-b954-9f91bdce4510.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/4c32b83a-01c6-459f-9abd-ae5ec9d36bc5",
-      "korean": "톤노 디 프로슈토 (참치 스타일의 프로슈토)",
-      "description": "독특하고 맛있는 전채 요리로 활용하기에 아주 훌륭하며, 정말 맛있습니다. 오스테리아에서는 신선한 쪽파, 바질, 엑스트라 버진 올리브 오일, 후추와 함께 제공합니다. 재료: 신선한 돼지고기 살코기(뒷다리), 토마토, 콩류, 화이트 와인, 세이지, 로즈마리, 알리오네(대형 마늘), 엑스트라 버진 올리브 오일, 소금. 알레르기 유발 물질: 12",
+      "korean": "허브로 조리한 돼지고기 전채",
+      "description": "돼지 뒷다리 살코기를 와인과 허브로 조리한 메뉴예요. 이름에 참치를 뜻하는 tonno가 있지만 참치가 아닌 돼지고기 요리예요.",
       "ingredients": [
         "돼지고기 살코기(뒷다리)",
         "토마토",
@@ -16991,7 +17043,8 @@
         "후추"
       ],
       "cooking": "",
-      "taste": "독특하고 맛있는 맛"
+      "taste": "독특하고 맛있는 맛",
+      "localImage": "/assets/solita/4c32b83a-01c6-459f-9abd-ae5ec9d36bc5.jpg"
     },
     {
       "id": "a2aaf482-e8f7-43f7-aaf9-b8b32407fd28",
@@ -17031,8 +17084,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/7c052ff7-f598-4412-9b14-2fc485d5d25b.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/0a8bece1-acf8-4bdd-9f0b-93f085145fc9/142a4103-d3a2-4fe3-a378-c1e92be91360",
-      "korean": "라비올리 알로 젠제로 (생강 라비올리)",
-      "description": "라비올리는 양젖 리코타 치즈와 레몬 껍질로 속을 채웠으며, 소스는 생강을 오래 조리하여 만든 생강 페이스트로 구성되어 있습니다. 부드럽고 벨벳 같은 식감으로 미각을 즐겁게 합니다. 알레르기 유발 물질: 1,3,7, (8) 추천 와인: 향긋한 화이트 와인: 그레코, 팔랑기나, 인졸리아, 베르디키오 디 마텔리카, 비안케타 제노베제.",
+      "korean": "생강 소스 리코타 만두 파스타",
+      "description": "양젖 리코타와 레몬 껍질로 속을 채운 라비올리예요. 오래 조리한 생강 소스를 곁들여요.",
       "ingredients": [
         "라비올리",
         "양젖 리코타 치즈",
@@ -17040,7 +17093,8 @@
         "생강"
       ],
       "cooking": "생강을 오래 조리하여 페이스트 제조",
-      "taste": "부드럽고 벨벳 같은 식감, 미각을 즐겁게 함"
+      "taste": "부드럽고 벨벳 같은 식감, 미각을 즐겁게 함",
+      "localImage": "/assets/solita/142a4103-d3a2-4fe3-a378-c1e92be91360.jpg"
     },
     {
       "id": "b1fac98d-d899-4d81-9d26-cb523b2b9445",
@@ -21219,8 +21273,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/3293ad48-44ce-40f4-b5bd-4ec05a13d9b5.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/a2afdbe4-adc6-4ae5-b513-e65b1d59d60d",
-      "korean": "피렌체식 곱창 요리 (Trippa alla Fiorentina)",
-      "description": "곱창은 방대하고 잘 알려지지 않은 내장 요리의 세계에 속합니다. 잘 준비하면 내장은 매우 고귀하고 거의 스노브(snob)한 요리가 될 수 있습니다! 아르투시는 아마도 좋은 내장 요리, 특히 제대로 준비된 곱창 요리를 먹어본 적이 없을 것입니다. 왜냐하면 그는 소의 환상적인 부위인 곱창을 폄하하는 것부터 시작하기 때문입니다. 어떻게 곱창을 사랑하지 않을 수 있을까요? 곱창을 좋아하지 않는 사람은 전생에 아주 나쁜 짓을 했을 것이라고 확신합니다! 푹 삶아 부드럽고 섬세해진 곱창 스튜입니다. 파르미지아노 레지아노 치즈, 빵 한 조각, 파슬리를 곁들입니다. 알레르기: (1), (7), 9 추천 와인: 로제 또는 젊은 레드 와인, 과일 향이 나고 강렬하며 부드러운 중간 구조의 와인, 로사토 델 살렌토, 알토 아디제의 스키아바, 오르비에타노 로쏘, 카차 에 미티 디 루체라, 산지오베제 디 로마냐, 산 콜롬바노 알 람브로 등.",
+      "korean": "피렌체식 소 위 스튜",
+      "description": "소의 위를 오래 조리해 부드럽게 만든 요리예요. 치즈, 빵과 파슬리를 곁들여요. 한국의 곱창과 사용하는 부위가 달라요.",
       "ingredients": [
         "곱창",
         "파르미지아노 레지아노",
@@ -21228,7 +21282,8 @@
         "파슬리"
       ],
       "cooking": "푹 삶아 부드럽고 섬세하게 조리함.",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/a2afdbe4-adc6-4ae5-b513-e65b1d59d60d.jpg"
     },
     {
       "id": "01cf968a-7ffb-4055-b707-c87e55d23829",
@@ -21245,8 +21300,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/b44956e3-8e8b-49a4-b808-0058dbd07ddd.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/30e10fd4-b771-4959-a16e-66202ff84bde/01cf968a-7ffb-4055-b707-c87e55d23829",
-      "korean": "생선 트리티코 (Trittico di Pesce)",
-      "description": "세 가지 생선 요리 시식, 바칼라(대구), 청어, 앤초비를 곁들인 크로스티노. 바칼라는 만테카토(크림처럼 으깬) 방식입니다. 청어는 우유에 3일간 담가 염분을 제거한 후, 필렛을 떠서 식초에 절인 적양파, 주니퍼 베리, 월계수 잎과 함께 층층이 쌓습니다. 전체를 엑스트라 버진 올리브 오일로 덮습니다. 클래식 크로스티노: 토스트한 빵, 베피노 오첼리 버터, 칸타브리아산 앤초비. 앤초비는 염분을 제거하고 알리오네(대마늘), 파슬리, 케이퍼와 함께 오일에 담급니다. 알레르기: (1), 4, (7)",
+      "korean": "대구·청어·앤초비 전채 3종",
+      "description": "크림처럼 으깬 대구, 소금기를 뺀 청어, 앤초비를 곁들인 빵을 함께 맛보는 생선 전채 모둠이에요.",
       "ingredients": [
         "대구(바칼라)",
         "청어",
@@ -21263,7 +21318,8 @@
         "케이퍼"
       ],
       "cooking": "바칼라는 만테카토(크림처럼 으깬) 방식, 청어는 우유에 3일간 염분 제거 후 필렛, 앤초비는 염분 제거 후 오일에 담금.",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/01cf968a-7ffb-4055-b707-c87e55d23829.jpg"
     },
     {
       "id": "bbf1cba0-2a08-410e-9acf-a0141c4bd8ec",
@@ -21327,8 +21383,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/2d30bb73-5049-4ddb-ab81-0cfc01a117ed.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/6873bbdf-6be2-4fa2-8650-561d0cfb5cb9/8c1ea199-3375-4b1f-a1bf-aff0bee8bfe1",
-      "korean": "투스칸 치즈케이크 (Tuscan-Cheesecake)",
-      "description": "저희 투스칸 치즈케이크는 직접 만든 칸투치니로 만든 비스킷 베이스와 양젖 리코타 및 쿼크(스프레드 치즈)로 구성되어 있으며, 오스테리아 직원이 직접 만든 신선한 제철 과일 쿨리를 곁들였습니다. 결과는요? 직접 드셔보시면 후회하지 않으실 겁니다! 알레르기: 1,3,7,8,12",
+      "korean": "리코타와 과일 소스 치즈케이크",
+      "description": "견과 비스킷 칸투치니를 바닥에 깔고 양젖 리코타와 쿼크 치즈를 사용해요. 제철 과일 소스를 곁들여요.",
       "ingredients": [
         "칸투치니",
         "양젖 리코타",
@@ -21336,7 +21392,8 @@
         "제철 과일"
       ],
       "cooking": "직접 만든 칸투치니로 비스킷 베이스 제작, 제철 과일 쿨리 직접 제조.",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/8c1ea199-3375-4b1f-a1bf-aff0bee8bfe1.jpg"
     },
     {
       "id": "d3cf9372-3277-4a83-898d-00fa759cc92c",
@@ -21948,11 +22005,12 @@
         "https://cassanova-prod.s3.amazonaws.com/images/bece6249-a75d-4629-9697-a369adca3203.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/1219e662-ae1e-4310-867e-b1357d074343/69f0bcf4-cfdb-428f-955b-d8ba7296b7cc",
-      "korean": "베제타리아노 (채식)",
-      "description": "채소를 사랑하는 분들을 위한 절대 놓칠 수 없는 메뉴!! 이 메뉴는 한 접시에 담겨 제공되는 세 가지 사이드 메뉴를 직접 선택하여 구성됩니다.",
+      "korean": "골라 먹는 채소 곁들임 3종",
+      "description": "곁들임 메뉴 세 가지를 직접 골라 한 접시에 받는 채소 모둠이에요. 선택 가능한 메뉴는 직원에게 확인해주세요.",
       "ingredients": [],
       "cooking": "한 접시에 세 가지 사이드 메뉴를 담아 제공",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/69f0bcf4-cfdb-428f-955b-d8ba7296b7cc.jpg"
     },
     {
       "id": "5a01663b-b79f-4ea0-8481-6dd9c5b48142",
@@ -22132,8 +22190,8 @@
         "https://cassanova-prod.s3.amazonaws.com/images/6f2d679e-b25b-4096-b14f-24aee22a4a54.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/1219e662-ae1e-4310-867e-b1357d074343/6b882434-2361-40fe-9b7c-e9f478a8082a",
-      "korean": "베르두레 살타테 (볶은 채소)",
-      "description": "신선한 제철 채소, 순무 잎, 근대, 시금치.",
+      "korean": "제철 잎채소 볶음",
+      "description": "순무 잎, 근대, 시금치 같은 제철 채소를 볶아 내는 곁들임 요리예요.",
       "ingredients": [
         "신선한 제철 채소",
         "순무 잎",
@@ -22141,7 +22199,8 @@
         "시금치"
       ],
       "cooking": "볶음",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/6b882434-2361-40fe-9b7c-e9f478a8082a.jpg"
     },
     {
       "id": "99d62d2e-46f6-49a1-ae6e-8dc2d40d16cf",
@@ -22452,8 +22511,8 @@
         "https://cassanova-prod-public.s3.amazonaws.com/images/bc3e1e73-9795-497e-b23d-160c789acd2b.jpg"
       ],
       "source": "https://11729.ordinaincloud.it/menu/13361/products/bf354a43-75d8-4ce9-9fc2-b10d3a86ebeb/01851bcb-017e-4512-b2d7-4d95cc00716d",
-      "korean": "호박과 파로 수프",
-      "description": "호박 재배의 기원은 불확실합니다. 가장 오래된 증거는 멕시코에서 발견되었으며, 기원전 7000/6000년경의 호박 씨앗이 발견되었습니다. '쿠쿠르비타(cucurbita)' 속의 호박은 이미 재배되고 있던 아메리카 대륙에서 16세기 스페인 정착민들에 의해 유럽으로 수입되었습니다. 이탈리아의 수확기는 9월부터 11월 말까지입니다. 구운 토스카나 빵 조각, 파르메산 치즈, 오렌지 껍질, 약간의 후추, 그리고 엄격하게 현지에서 생산된 엑스트라 버진 올리브 오일을 살짝 뿌려 마무리합니다. 알레르기 유발 물질: 1, 9. 추천 와인: 화이트 와인(샤르도네)",
+      "korean": "호박과 고대 밀 수프",
+      "description": "호박과 파로라는 고대 밀을 넣은 수프예요. 구운 빵, 치즈, 오렌지 껍질과 올리브유를 곁들여요.",
       "ingredients": [
         "호박",
         "파로",
@@ -22464,7 +22523,8 @@
         "엑스트라 버진 올리브 오일"
       ],
       "cooking": "구운 토스카나 빵 조각, 파르메산 치즈, 오렌지 껍질, 약간의 후추, 현지산 엑스트라 버진 올리브 오일을 곁들임",
-      "taste": ""
+      "taste": "",
+      "localImage": "/assets/solita/01851bcb-017e-4512-b2d7-4d95cc00716d.jpg"
     }
   ]
 }
