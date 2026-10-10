@@ -1,0 +1,44 @@
+[
+  {
+    "id": "payment",
+    "page": "https://unsplash.com/photos/a-couple-paying-for-their-meal-at-a-restaurant-Tjptuv7IV8w",
+    "imageUrl": "https://images.unsplash.com/photo-1777680114872-ce9fb36d1a04?fm=jpg&w=1200&q=80",
+    "license": "Unsplash License",
+    "checkedAt": "2026-10-11"
+  },
+  {
+    "id": "table",
+    "page": "https://unsplash.com/photos/clear-wine-glasses-on-top-of-dining-table-PCE0T5i4pDI",
+    "imageUrl": "https://images.unsplash.com/photo-1574966739987-65e38db0f7ce?fm=jpg&w=1200&q=80",
+    "license": "Unsplash License",
+    "checkedAt": "2026-10-11"
+  },
+  {
+    "id": "ingredients",
+    "page": "https://unsplash.com/photos/assorted-fruits-and-vegetables-on-green-surface-kcRFW-Hje8Y",
+    "imageUrl": "https://images.unsplash.com/photo-1535914254981-b5012eebbd15?fm=jpg&w=1200&q=80",
+    "license": "Unsplash License",
+    "checkedAt": "2026-10-11"
+  },
+  {
+    "id": "menu",
+    "page": "https://unsplash.com/photos/restaurant-menus-on-clipboards-close-up-0LaBRkmH4fM",
+    "imageUrl": "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?fm=jpg&w=1200&q=80",
+    "license": "Unsplash License",
+    "checkedAt": "2026-10-11"
+  },
+  {
+    "id": "coffee",
+    "page": "https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EC%A0%91%EC%8B%9C%EC%97%90-%EC%BB%A4%ED%94%BC-%ED%95%9C%EC%9E%94-heKg-V9yHwc",
+    "imageUrl": "https://images.unsplash.com/photo-1660144102328-68974117f580?fm=jpg&w=1200&q=80",
+    "license": "Unsplash License",
+    "checkedAt": "2026-10-11"
+  },
+  {
+    "id": "water",
+    "page": "https://www.photos-public-domain.com/2011/03/30/water-glasses-on-restaurant-table/",
+    "imageUrl": "https://www.photos-public-domain.com/wp-content/uploads/2011/03/water-glasses-on-restaurant-table-600x400.jpg",
+    "license": "Public domain",
+    "checkedAt": "2026-10-11"
+  }
+]
