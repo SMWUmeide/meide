@@ -1,0 +1,14 @@
+{
+  "name": "europe-gourmet-guide",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "prestart": "node scripts/restore-city-database.mjs",
+    "pretest": "node scripts/restore-city-database.mjs"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

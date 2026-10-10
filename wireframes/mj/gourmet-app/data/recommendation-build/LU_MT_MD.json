@@ -1,0 +1,494 @@
+{
+  "LU": [
+    {
+      "original": "Judd mat Gaardebounen",
+      "korean": "훈제 돼지고기와 잠두콩 요리",
+      "description": "훈제한 돼지 목살을 삶아 푹 익힌 잠두콩과 크림 소스를 곁들여 먹는 룩셈부르크 대표 요리입니다.",
+      "analogy": "부드러운 보쌈 고기에 콩 조림을 곁들여 먹는 느낌과 비슷합니다.",
+      "emoji": "🍖",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "F'rell am Rèisleck",
+      "korean": "리슬링 와인 소스 송어 요리",
+      "description": "룩셈부르크산 리슬링 와인과 채소, 크림으로 만든 소스에 송어를 졸여낸 요리입니다.",
+      "analogy": "생선 조림의 부드러운 살결에 와인의 풍미가 더해진 고급스러운 맛입니다.",
+      "emoji": "🐟",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Quetschentaart",
+      "korean": "자두 타르트",
+      "description": "바삭한 타르트 반죽 위에 제철 자두를 촘촘히 올려 구워낸 전통 디저트입니다.",
+      "analogy": "과일 타르트의 식감과 새콤달콤한 맛이 한국의 과일 파이와 유사합니다.",
+      "emoji": "🥧",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Bouneschlupp",
+      "korean": "그린빈 감자 수프",
+      "description": "그린빈, 감자, 베이컨을 넣고 푹 끓여낸 걸쭉하고 따뜻한 전통 수프입니다.",
+      "analogy": "감자국이나 된장국처럼 속을 편안하게 해주는 따뜻한 국물 요리입니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Gromperekichelcher",
+      "korean": "감자전",
+      "description": "잘게 채 썬 감자에 양파, 파슬리, 달걀을 섞어 기름에 바삭하게 튀겨낸 간식입니다.",
+      "analogy": "한국의 감자전과 조리 방식과 식감이 매우 흡사합니다.",
+      "emoji": "🥔",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Huesenziwwi",
+      "korean": "토끼 고기 스튜",
+      "description": "토끼 고기를 와인과 향신료에 재운 뒤 진한 소스와 함께 오래 끓여낸 요리입니다.",
+      "analogy": "닭볶음탕처럼 고기를 소스에 푹 졸여 깊은 맛을 냅니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Kuddelfleck",
+      "korean": "양 튀김",
+      "description": "소의 양을 삶은 뒤 빵가루를 입혀 바삭하게 튀겨내어 소스와 함께 먹는 요리입니다.",
+      "analogy": "곱창이나 양을 튀겨내어 쫄깃한 식감을 살린 요리입니다.",
+      "emoji": "🍽️",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Feierstengszalot",
+      "korean": "소고기 샐러드",
+      "description": "삶은 소고기를 잘게 찢어 삶은 달걀, 피클, 양파와 함께 머스터드 드레싱에 버무린 요리입니다.",
+      "analogy": "소고기 장조림을 차갑게 식혀 샐러드처럼 무쳐낸 맛과 비슷합니다.",
+      "emoji": "🥗",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Paschtéit",
+      "korean": "고기 파이",
+      "description": "바삭한 페이스트리 반죽 안에 다진 고기와 버섯을 넣은 크림 소스를 채운 요리입니다.",
+      "analogy": "고기 만두소를 넣은 바삭한 파이와 비슷한 느낌입니다.",
+      "emoji": "🥟",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Träipen",
+      "korean": "블랙 푸딩 소시지",
+      "description": "돼지 피와 내장, 채소를 섞어 만든 소시지를 팬에 구워 먹는 요리입니다.",
+      "analogy": "선지를 넣은 순대와 비슷한 재료 구성과 풍미를 가졌습니다.",
+      "emoji": "🌭",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Rieslingspaschtéit",
+      "korean": "리슬링 와인 고기 파이",
+      "description": "고기 파이 반죽 안에 리슬링 와인 젤리를 넣어 풍미를 더한 전통 파이입니다.",
+      "analogy": "고기 파이 속에 젤리 형태의 소스가 들어있어 촉촉합니다.",
+      "emoji": "🥧",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Boxemännchen",
+      "korean": "사람 모양 브리오슈",
+      "description": "사람 모양으로 빚어 구운 부드러운 브리오슈 빵으로 주로 겨울에 즐겨 먹습니다.",
+      "analogy": "달콤하고 부드러운 단팥빵의 빵 부분과 식감이 비슷합니다.",
+      "emoji": "🍞",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Äppelklatzen",
+      "korean": "사과 파이",
+      "description": "사과를 통째로 혹은 조각내어 반죽에 감싸 구워낸 달콤한 디저트입니다.",
+      "analogy": "사과를 넣은 찐빵이나 파이와 비슷한 맛입니다.",
+      "emoji": "🍎",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Verwurelt Gedanken",
+      "korean": "튀긴 매듭 과자",
+      "description": "반죽을 매듭 모양으로 꼬아 기름에 튀긴 뒤 설탕을 뿌린 전통 과자입니다.",
+      "analogy": "한국의 꽈배기나 약과와 비슷한 튀긴 빵의 식감입니다.",
+      "emoji": "🥨",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Schuedi",
+      "korean": "크림 타르트",
+      "description": "크림과 달걀을 섞은 필링을 채워 구운 부드러운 타르트입니다.",
+      "analogy": "에그 타르트와 비슷한 부드러운 커스터드 맛입니다.",
+      "emoji": "🍮",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Gromperenzopp",
+      "korean": "감자 수프",
+      "description": "감자를 곱게 갈아 채소 육수와 함께 끓여낸 부드러운 수프입니다.",
+      "analogy": "감자 스프의 담백하고 고소한 맛이 한국의 감자죽과 비슷합니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Miel",
+      "korean": "꿀 케이크",
+      "description": "꿀을 듬뿍 넣어 구운 층층이 쌓인 달콤한 케이크입니다.",
+      "analogy": "꿀의 진한 단맛이 느껴지는 카스텔라와 비슷합니다.",
+      "emoji": "🍰",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Salade de Museau",
+      "korean": "돼지 코 샐러드",
+      "description": "삶은 돼지 코를 얇게 썰어 식초와 오일 드레싱에 버무린 차가운 전채 요리입니다.",
+      "analogy": "편육을 새콤한 초무침으로 만든 것과 비슷한 식감입니다.",
+      "emoji": "🥗",
+      "dessert": false,
+      "scope": "country"
+    }
+  ],
+  "MT": [
+    {
+      "original": "Stuffat tal-Fenek",
+      "korean": "토끼 고기 스튜",
+      "description": "토끼 고기를 토마토, 와인, 마늘과 함께 푹 끓여낸 몰타의 국민 요리입니다.",
+      "analogy": "닭볶음탕처럼 고기를 소스에 푹 졸여낸 깊은 맛입니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Pastizzi",
+      "korean": "파스티치",
+      "description": "페이스트리 반죽 안에 리코타 치즈나 으깬 완두콩을 채워 구운 간식입니다.",
+      "analogy": "바삭한 만두피 속에 치즈나 콩소가 들어간 파이와 비슷합니다.",
+      "emoji": "🥟",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Imqaret",
+      "korean": "대추야자 튀김",
+      "description": "대추야자 페이스트를 반죽에 넣어 기름에 튀겨낸 달콤한 디저트입니다.",
+      "analogy": "팥을 넣은 튀김 소보로와 비슷한 달콤한 맛입니다.",
+      "emoji": "🍩",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Ftira",
+      "korean": "몰타식 빵",
+      "description": "구멍이 뚫린 둥근 빵에 토마토, 올리브, 참치, 케이퍼 등을 얹어 먹는 샌드위치입니다.",
+      "analogy": "피자빵과 비슷한 재료를 얹은 쫄깃한 빵 요리입니다.",
+      "emoji": "🥖",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Bragioli",
+      "korean": "소고기 말이",
+      "description": "얇은 소고기에 다진 고기, 달걀, 빵가루를 넣어 말아 토마토 소스에 졸인 요리입니다.",
+      "analogy": "소고기 산적을 토마토 소스에 졸인 것과 비슷한 맛입니다.",
+      "emoji": "🥩",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Aljotta",
+      "korean": "생선 수프",
+      "description": "신선한 생선, 마늘, 토마토, 허브를 넣고 끓여낸 진한 생선 수프입니다.",
+      "analogy": "매운탕처럼 생선의 깊은 맛이 우러난 맑은 국물 요리입니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Qassatat",
+      "korean": "치즈 파이",
+      "description": "반죽을 오므려 만든 파이 안에 리코타 치즈나 시금치를 채워 구운 요리입니다.",
+      "analogy": "치즈를 넣은 호떡이나 만두와 비슷한 식감입니다.",
+      "emoji": "🥧",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Kapunata",
+      "korean": "채소 스튜",
+      "description": "가지, 토마토, 피망, 올리브를 볶아 만든 몰타식 채소 요리입니다.",
+      "analogy": "라따뚜이와 비슷하며 채소 조림과 같은 맛입니다.",
+      "emoji": "🍆",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Bigilla",
+      "korean": "잠두콩 딥",
+      "description": "잠두콩을 으깨어 마늘, 허브, 올리브유와 섞어 만든 스프레드입니다.",
+      "analogy": "콩을 갈아 만든 쌈장이나 후무스와 비슷한 질감입니다.",
+      "emoji": "🫘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Ross il-Forn",
+      "korean": "오븐 쌀 요리",
+      "description": "쌀에 다진 고기, 토마토 소스, 치즈를 섞어 오븐에 구워낸 요리입니다.",
+      "analogy": "토마토 소스 리조또를 오븐에 구워 누룽지처럼 만든 맛입니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Timpana",
+      "korean": "파스타 파이",
+      "description": "펜네 파스타에 볼로네제 소스와 치즈를 섞어 페이스트리 반죽으로 감싸 구운 요리입니다.",
+      "analogy": "파스타를 넣은 고기 파이로 든든한 한 끼 식사입니다.",
+      "emoji": "🍝",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Kannoli",
+      "korean": "리코타 크림 튜브",
+      "description": "튀긴 튜브 모양 반죽 안에 달콤한 리코타 치즈 크림을 채운 디저트입니다.",
+      "analogy": "바삭한 과자 속에 부드러운 크림이 가득 찬 디저트입니다.",
+      "emoji": "🍦",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Qubbajt",
+      "korean": "누가",
+      "description": "아몬드와 설탕, 꿀을 섞어 굳힌 전통 누가 사탕입니다.",
+      "analogy": "엿이나 견과류 강정과 비슷한 쫀득하고 단단한 식감입니다.",
+      "emoji": "🍬",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Helwa tat-Tork",
+      "korean": "참깨 디저트",
+      "description": "참깨 페이스트와 설탕을 섞어 만든 달콤하고 부드러운 디저트입니다.",
+      "analogy": "깨강정과 비슷한 고소하고 달콤한 맛입니다.",
+      "emoji": "🍯",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Figolli",
+      "korean": "아몬드 쿠키",
+      "description": "아몬드 페이스트를 채운 반죽을 다양한 모양으로 구워낸 부활절 전통 과자입니다.",
+      "analogy": "아몬드 가루가 들어간 고소한 쿠키와 비슷합니다.",
+      "emoji": "🍪",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Soppa tal-Armla",
+      "korean": "채소 수프",
+      "description": "다양한 제철 채소와 치즈를 넣어 끓여낸 영양가 높은 수프입니다.",
+      "analogy": "채소를 듬뿍 넣은 맑은 야채죽과 비슷한 느낌입니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Fenek Moqli",
+      "korean": "튀긴 토끼 고기",
+      "description": "토끼 고기를 마늘과 허브에 재운 뒤 기름에 바삭하게 튀겨낸 요리입니다.",
+      "analogy": "마늘 향이 밴 닭튀김과 비슷한 맛입니다.",
+      "emoji": "🍗",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Bebbux",
+      "korean": "달팽이 요리",
+      "description": "달팽이를 마늘, 허브, 토마토 소스에 넣어 끓여낸 요리입니다.",
+      "analogy": "골뱅이 무침처럼 쫄깃한 식감을 즐기는 요리입니다.",
+      "emoji": "🐌",
+      "dessert": false,
+      "scope": "country"
+    }
+  ],
+  "MD": [
+    {
+      "original": "Mămăligă",
+      "korean": "옥수수 죽",
+      "description": "옥수수 가루를 물과 함께 끓여 굳힌 몰도바의 주식입니다.",
+      "analogy": "부드러운 옥수수 떡이나 죽과 비슷한 식감입니다.",
+      "emoji": "🌽",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Plăcinte",
+      "korean": "플라친테",
+      "description": "얇은 반죽 안에 치즈, 감자, 양배추 등을 채워 굽거나 튀긴 파이입니다.",
+      "analogy": "속을 채운 호떡이나 만두와 비슷한 형태입니다.",
+      "emoji": "🥟",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Cușma lui Guguță",
+      "korean": "체리 케이크",
+      "description": "크레페에 체리를 넣어 층층이 쌓고 크림을 얹은 원뿔 모양의 케이크입니다.",
+      "analogy": "크레페 케이크와 비슷한 부드럽고 달콤한 맛입니다.",
+      "emoji": "🍰",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Sarmale",
+      "korean": "양배추 쌈",
+      "description": "양배추 잎에 다진 고기와 쌀을 넣어 돌돌 말아 푹 끓여낸 요리입니다.",
+      "analogy": "양배추 쌈밥을 찌개에 넣고 푹 익힌 것과 비슷합니다.",
+      "emoji": "🥬",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Zeamă",
+      "korean": "닭고기 국수",
+      "description": "닭고기, 채소, 국수를 넣고 끓여낸 새콤한 맛의 닭고기 수프입니다.",
+      "analogy": "닭칼국수와 비슷하지만 레몬으로 맛을 내어 새콤합니다.",
+      "emoji": "🍜",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Mititei",
+      "korean": "미티테이",
+      "description": "다진 고기에 향신료를 섞어 원통형으로 빚어 그릴에 구운 고기 요리입니다.",
+      "analogy": "떡갈비나 동그랑땡을 길쭉하게 구운 것과 비슷합니다.",
+      "emoji": "🍢",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Răcituri",
+      "korean": "고기 젤리",
+      "description": "고기와 채소를 육수와 함께 끓여 차갑게 식혀 굳힌 젤리 형태의 요리입니다.",
+      "analogy": "편육을 묵처럼 굳힌 것과 비슷한 식감입니다.",
+      "emoji": "🧊",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Tocăniță",
+      "korean": "고기 스튜",
+      "description": "고기와 채소를 토마토 소스에 넣고 오래 끓여낸 진한 스튜입니다.",
+      "analogy": "갈비찜이나 고기 조림과 비슷한 깊은 맛입니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Salată de Boeuf",
+      "korean": "소고기 감자 샐러드",
+      "description": "삶은 소고기, 감자, 당근, 피클을 마요네즈에 버무린 샐러드입니다.",
+      "analogy": "감자 샐러드에 고기를 섞은 것과 비슷한 맛입니다.",
+      "emoji": "🥗",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Pârjoale",
+      "korean": "고기 완자",
+      "description": "다진 고기에 빵가루와 허브를 섞어 튀겨낸 고기 완자 요리입니다.",
+      "analogy": "동그랑땡이나 미트볼과 비슷한 맛입니다.",
+      "emoji": "🧆",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Fasole bătută",
+      "korean": "콩 퓨레",
+      "description": "삶은 콩을 으깨어 마늘과 기름을 섞어 만든 고소한 콩 요리입니다.",
+      "analogy": "콩을 갈아 만든 콩비지나 후무스와 비슷합니다.",
+      "emoji": "🫘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Papanași",
+      "korean": "치즈 도넛",
+      "description": "치즈를 넣은 반죽을 튀겨 사워크림과 잼을 곁들인 디저트입니다.",
+      "analogy": "치즈를 넣은 찹쌀 도넛과 비슷한 식감입니다.",
+      "emoji": "🍩",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Cornulețe",
+      "korean": "초승달 쿠키",
+      "description": "초승달 모양으로 빚어 잼이나 견과류를 채워 구운 쿠키입니다.",
+      "analogy": "잼을 넣은 부드러운 쿠키와 비슷합니다.",
+      "emoji": "🍪",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Colțunași",
+      "korean": "만두",
+      "description": "반죽 안에 치즈나 과일을 채워 삶아낸 몰도바식 만두입니다.",
+      "analogy": "물만두나 소를 넣은 떡과 비슷한 식감입니다.",
+      "emoji": "🥟",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Plăcinte cu mere",
+      "korean": "사과 파이",
+      "description": "얇은 반죽 안에 사과 조림을 채워 구워낸 달콤한 파이입니다.",
+      "analogy": "사과를 넣은 얇은 파이로 애플파이와 비슷합니다.",
+      "emoji": "🍎",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Ciorbă de burtă",
+      "korean": "내장 수프",
+      "description": "소 내장을 넣고 끓여낸 진하고 고소한 수프입니다.",
+      "analogy": "내장탕이나 곱창전골의 국물과 비슷한 깊은 맛입니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Pește prăjit",
+      "korean": "생선 튀김",
+      "description": "민물 생선을 튀겨 마늘 소스를 곁들여 먹는 요리입니다.",
+      "analogy": "생선 튀김에 마늘 간장 소스를 곁들인 맛입니다.",
+      "emoji": "🐟",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Ardei umpluți",
+      "korean": "고추 속 채움 요리",
+      "description": "피망 안에 다진 고기와 쌀을 채워 토마토 소스에 끓여낸 요리입니다.",
+      "analogy": "고추전의 속을 채워 찌개에 넣은 것과 비슷합니다.",
+      "emoji": "🫑",
+      "dessert": false,
+      "scope": "country"
+    }
+  ]
+}

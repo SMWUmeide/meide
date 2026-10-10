@@ -1,0 +1,7 @@
+.DS_Store
+.env
+node_modules/
+*.log
+gourmet-app/data/europe-cities.sqlite
+gourmet-app/data/google-usage.sqlite*
+gourmet-app/data/shared-carts.sqlite*

@@ -1,0 +1,5 @@
+.env
+node_modules/
+*.log
+data/google-usage.sqlite*
+data/shared-carts.sqlite*

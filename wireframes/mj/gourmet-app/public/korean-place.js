@@ -1,0 +1,6 @@
+import {cityAliases,normalize} from './destinations.js';
+const known=new Map(cityAliases.map(([ko,en])=>[normalize(en),ko]));
+// Known Korean place names take priority. Fallback is approximate Latin-name transcription.
+const onset={b:7,p:17,d:3,t:16,g:0,k:15,m:6,n:2,l:5,r:5,s:9,z:12,j:12,h:18,f:17,v:7,c:15,q:15,w:11,y:11};
+const vowel={a:0,e:5,i:20,o:8,u:13};
+export function koreanPlaceName(name){if(/[가-힣]/.test(name||''))return name;if(known.has(normalize(name)))return known.get(normalize(name));const latin=String(name||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/æ/g,'ae').replace(/ø/g,'o').replace(/ß/g,'ss').replace(/ł/g,'l');return latin.split(/([ -])/).map(word=>{if(/^[ -]$/.test(word))return word;const s=word.replace(/ph/g,'f').replace(/th/g,'t').replace(/ch/g,'j').replace(/sh/g,'s').replace(/ck/g,'k').replace(/qu/g,'kw').replace(/x/g,'ks').replace(/[^a-z]/g,'');let result='';for(let i=0;i<s.length;i++){const c=s[i];if(c in vowel){result+=String.fromCharCode(0xac00+11*588+vowel[c]*28);continue;}const initial=onset[c];if(initial===undefined)continue;if(s[i+1] in vowel){result+=String.fromCharCode(0xac00+initial*588+vowel[s[++i]]*28);}else result+=String.fromCharCode(0xac00+initial*588+18*28);}return result;}).join('')||'이름 확인 필요';}

@@ -1,0 +1,494 @@
+{
+  "ES:마드리드": [
+    {
+      "original": "Cocido Madrileño",
+      "korean": "코시도 마드릴레뇨",
+      "description": "병아리콩, 고기, 채소를 넣고 오랜 시간 푹 끓여낸 마드리드식 전통 스튜입니다.",
+      "analogy": "갈비탕처럼 고기와 채소의 깊은 육수 맛이 우러나오는 따뜻한 국물 요리입니다.",
+      "emoji": "🍲",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Bocadillo de Calamares",
+      "korean": "보카디요 데 칼라마레스",
+      "description": "바삭하게 튀긴 오징어 링을 올리브유를 바른 바게트 빵 사이에 끼워 먹는 샌드위치입니다.",
+      "analogy": "오징어 튀김을 빵에 넣어 먹는 느낌으로, 겉은 바삭하고 속은 쫄깃한 식감이 특징입니다.",
+      "emoji": "🥖",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Churros con Chocolate",
+      "korean": "추로스 콘 초콜라테",
+      "description": "밀가루 반죽을 길게 튀겨낸 추로스를 걸쭉하고 진한 핫초코에 찍어 먹는 간식입니다.",
+      "analogy": "꽈배기 튀김을 진한 초콜릿 소스에 찍어 먹는 달콤한 디저트입니다.",
+      "emoji": "🍫",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Tortilla de Patatas",
+      "korean": "토르티야 데 파타타스",
+      "description": "감자와 양파를 얇게 썰어 올리브유에 볶은 뒤 달걀물과 섞어 두툼하게 부쳐낸 스페인식 오믈렛입니다.",
+      "analogy": "감자전과 계란말이를 합친 듯한 담백하고 부드러운 맛입니다.",
+      "emoji": "🍳",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Jamón Ibérico",
+      "korean": "하몬 이베리코",
+      "description": "이베리아 흑돼지 뒷다리를 소금에 절여 장기간 숙성시킨 스페인의 대표적인 생햄입니다.",
+      "analogy": "육포보다 훨씬 부드럽고 짭짤하며, 씹을수록 고소한 풍미가 올라옵니다.",
+      "emoji": "🍖",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Croquetas",
+      "korean": "크로케타스",
+      "description": "베샤멜 소스에 하몬이나 대구 등을 섞어 반죽한 뒤 빵가루를 입혀 튀겨낸 요리입니다.",
+      "analogy": "고로케와 비슷하지만 속이 크림처럼 부드럽고 녹아내리는 식감입니다.",
+      "emoji": "🍘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Patatas Bravas",
+      "korean": "파타타스 브라바스",
+      "description": "한입 크기로 썬 감자를 튀긴 후 매콤한 파프리카 소스와 아이올리 소스를 곁들인 요리입니다.",
+      "analogy": "감자튀김에 매콤한 양념장을 얹어 먹는 술안주와 비슷합니다.",
+      "emoji": "🍟",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Gambas al Ajillo",
+      "korean": "감바스 알 아히요",
+      "description": "올리브유에 마늘과 페페론치노를 넣고 새우를 볶아낸 요리입니다.",
+      "analogy": "마늘 향이 밴 기름에 새우를 볶아낸 요리로, 한국인의 입맛에 잘 맞는 감칠맛이 납니다.",
+      "emoji": "🍤",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Paella",
+      "korean": "파에야",
+      "description": "쌀에 해산물, 고기, 채소, 샤프란을 넣고 넓은 팬에 볶아낸 스페인식 볶음밥입니다.",
+      "analogy": "해산물 볶음밥과 비슷하며, 팬 바닥에 눌어붙은 밥알의 식감이 매력적입니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Pulpo a la Gallega",
+      "korean": "풀포 아 라 가예가",
+      "description": "삶은 문어를 얇게 썰어 올리브유, 파프리카 가루, 굵은 소금을 뿌려낸 요리입니다.",
+      "analogy": "문어 숙회와 비슷하지만 올리브유와 파프리카 가루로 풍미를 더했습니다.",
+      "emoji": "🐙",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Salmorejo",
+      "korean": "살모레호",
+      "description": "토마토, 빵, 올리브유, 마늘을 갈아 차갑게 만든 걸쭉한 수프입니다.",
+      "analogy": "토마토 주스보다 훨씬 걸쭉하고 고소한 맛이 나는 차가운 죽과 같습니다.",
+      "emoji": "🍅",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Pimientos de Padrón",
+      "korean": "피미엔토스 데 파드론",
+      "description": "작은 풋고추를 올리브유에 튀기듯 볶아 굵은 소금을 뿌려낸 요리입니다.",
+      "analogy": "꽈리고추 볶음과 비슷하며, 가끔 매운 것이 섞여 있는 것이 특징입니다.",
+      "emoji": "🌶️",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Tarta de Santiago",
+      "korean": "타르타 데 산티아고",
+      "description": "아몬드 가루, 설탕, 달걀을 섞어 구운 뒤 위에 십자가 모양 슈가파우더를 뿌린 아몬드 케이크입니다.",
+      "analogy": "밀가루 없이 아몬드 가루로만 만들어 고소하고 묵직한 파운드 케이크 느낌입니다.",
+      "emoji": "🍰",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Crema Catalana",
+      "korean": "크레마 카탈라나",
+      "description": "커스터드 크림 위에 설탕을 뿌리고 토치로 그을려 얇은 설탕 막을 만든 디저트입니다.",
+      "analogy": "푸딩 위에 설탕을 녹여 굳힌 달콤하고 부드러운 간식입니다.",
+      "emoji": "🍮",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Turrón",
+      "korean": "투론",
+      "description": "꿀, 설탕, 달걀흰자, 구운 견과류를 섞어 굳힌 스페인식 전통 누가입니다.",
+      "analogy": "견과류가 듬뿍 들어간 딱딱한 엿이나 강정과 비슷한 식감입니다.",
+      "emoji": "🍬",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Polvorón",
+      "korean": "폴보론",
+      "description": "밀가루, 설탕, 우유, 견과류를 섞어 구운 뒤 가루처럼 부서지는 식감을 가진 쿠키입니다.",
+      "analogy": "입안에 넣으면 눈처럼 사르르 녹아내리는 미숫가루 쿠키와 비슷합니다.",
+      "emoji": "🍪",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Callos a la Madrileña",
+      "korean": "카요스 아 라 마드릴레냐",
+      "description": "소의 위장과 초리소, 모르시야 등을 넣고 매콤하게 끓여낸 마드리드식 내장 요리입니다.",
+      "analogy": "내장탕과 비슷하게 쫄깃한 식감과 진한 국물 맛이 특징입니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Oreja a la Plancha",
+      "korean": "오레하 아 라 플란차",
+      "description": "돼지 귀를 삶은 뒤 철판에 바삭하게 구워낸 요리입니다.",
+      "analogy": "돼지 껍데기처럼 쫄깃하고 오독오독한 식감을 즐기는 술안주입니다.",
+      "emoji": "🥓",
+      "dessert": false,
+      "scope": "city"
+    }
+  ],
+  "PT:리스본": [
+    {
+      "original": "Pastel de Nata",
+      "korean": "파스텔 드 나타",
+      "description": "바삭한 페이스트리 반죽 안에 부드러운 커스터드 크림을 채워 구운 포르투갈식 에그타르트입니다.",
+      "analogy": "겉은 페이스트리처럼 바삭하고 속은 계란찜처럼 부드러운 달콤한 간식입니다.",
+      "emoji": "🥧",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Bacalhau à Brás",
+      "korean": "바칼랴우 아 브라스",
+      "description": "염장 대구살을 잘게 찢어 감자채 튀김, 양파, 달걀과 함께 볶아낸 요리입니다.",
+      "analogy": "생선 살과 감자채를 계란에 볶아낸 것으로, 담백하고 고소한 맛이 납니다.",
+      "emoji": "🐟",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Arroz de Marisco",
+      "korean": "아로스 드 마리스쿠",
+      "description": "새우, 조개, 게 등 다양한 해산물을 넣고 끓여낸 포르투갈식 해물 죽입니다.",
+      "analogy": "해물탕에 밥을 넣고 끓인 것과 비슷하며 국물이 자작한 해물 리조또입니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Sardinhas Assadas",
+      "korean": "사르디냐스 아사다스",
+      "description": "신선한 정어리를 통째로 숯불에 구워 굵은 소금을 뿌려낸 요리입니다.",
+      "analogy": "꽁치 구이와 비슷하게 고소하고 담백한 생선 구이입니다.",
+      "emoji": "🐟",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Polvo à Lagareiro",
+      "korean": "폴부 아 라가레이루",
+      "description": "삶은 문어를 올리브유와 마늘을 듬뿍 넣어 오븐에 구운 뒤 으깬 감자와 곁들인 요리입니다.",
+      "analogy": "문어 숙회를 마늘 기름에 구워 풍미를 더한 요리입니다.",
+      "emoji": "🐙",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Caldo Verde",
+      "korean": "칼두 베르드",
+      "description": "감자, 양파, 마늘을 갈아 만든 베이스에 얇게 썬 케일과 초리소를 넣은 수프입니다.",
+      "analogy": "감자 수프에 시래기를 넣은 듯한 구수하고 따뜻한 국물 요리입니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Bifana",
+      "korean": "비파나",
+      "description": "얇게 저민 돼지고기를 마늘과 화이트 와인 소스에 졸여 빵 사이에 끼워 먹는 샌드위치입니다.",
+      "analogy": "돼지 불고기를 빵에 넣어 먹는 듯한 간편한 식사입니다.",
+      "emoji": "🥪",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Peixinhos da Horta",
+      "korean": "페이시뉴스 다 오르타",
+      "description": "강낭콩이나 꽈리고추 등에 튀김옷을 입혀 바삭하게 튀겨낸 채소 튀김입니다.",
+      "analogy": "고추 튀김이나 야채 튀김과 비슷한 식감의 간식입니다.",
+      "emoji": "🥦",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Amêijoas à Bulhão Pato",
+      "korean": "아메이조아스 아 불량 파투",
+      "description": "조개를 올리브유, 마늘, 고수, 화이트 와인으로 볶아낸 요리입니다.",
+      "analogy": "바지락 술찜과 비슷하며 고수의 향이 더해져 깔끔한 맛이 납니다.",
+      "emoji": "🐚",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Queijo da Serra",
+      "korean": "케이자 다 세라",
+      "description": "산악 지역에서 양젖으로 만든 부드럽고 크리미한 질감의 치즈입니다.",
+      "analogy": "치즈 퐁듀처럼 빵에 찍어 먹기 좋은 아주 부드러운 치즈입니다.",
+      "emoji": "🧀",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Pica-Pau",
+      "korean": "피카 파우",
+      "description": "돼지고기나 소고기를 작은 조각으로 썰어 마늘, 피클, 맥주 소스에 볶아낸 요리입니다.",
+      "analogy": "고기 볶음 요리로, 짭짤하고 감칠맛이 있어 술안주로 좋습니다.",
+      "emoji": "🥩",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Feijoada",
+      "korean": "페이조아다",
+      "description": "검은 콩과 돼지고기 부속물, 소시지를 넣고 푹 끓여낸 진한 스튜입니다.",
+      "analogy": "콩과 고기를 푹 삶아낸 것으로, 든든한 찌개와 비슷한 느낌입니다.",
+      "emoji": "🍲",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Ovos Moles",
+      "korean": "오부스 몰리스",
+      "description": "얇은 웨이퍼 반죽 안에 달걀노른자와 설탕 시럽을 섞은 크림을 채운 디저트입니다.",
+      "analogy": "달콤한 슈크림이 들어간 얇은 과자 같은 느낌입니다.",
+      "emoji": "🍬",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Arroz Doce",
+      "korean": "아로스 도스",
+      "description": "쌀, 우유, 설탕, 계피를 넣고 뭉근하게 끓여낸 달콤한 쌀 푸딩입니다.",
+      "analogy": "우유에 밥을 넣고 끓인 달콤한 죽으로, 계피 향이 어우러진 디저트입니다.",
+      "emoji": "🍚",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Pão de Ló",
+      "korean": "팡 드 로",
+      "description": "달걀, 설탕, 밀가루만 사용하여 구워낸 포르투갈식 스펀지 케이크입니다.",
+      "analogy": "카스텔라와 비슷하며, 속이 촉촉하고 부드러운 것이 특징입니다.",
+      "emoji": "🍰",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Travesseiros",
+      "korean": "트라베세이루스",
+      "description": "퍼프 페이스트리 안에 아몬드와 달걀 크림을 채워 구운 베개 모양의 디저트입니다.",
+      "analogy": "바삭한 파이 속에 달콤한 아몬드 크림이 들어간 빵입니다.",
+      "emoji": "🥐",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Choco Frito",
+      "korean": "초쿠 프리투",
+      "description": "갑오징어를 큼직하게 썰어 튀김옷을 입혀 바삭하게 튀겨낸 요리입니다.",
+      "analogy": "오징어 튀김과 비슷하지만 훨씬 두툼하고 쫄깃한 식감입니다.",
+      "emoji": "🦑",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Salada de Polvo",
+      "korean": "살라다 드 폴부",
+      "description": "삶은 문어를 잘게 썰어 양파, 피망, 파슬리, 올리브유와 함께 버무린 샐러드입니다.",
+      "analogy": "문어 숙회를 채소와 함께 새콤하게 무쳐낸 냉채와 비슷합니다.",
+      "emoji": "🥗",
+      "dessert": false,
+      "scope": "country"
+    }
+  ],
+  "PT:포르투": [
+    {
+      "original": "Francesinha",
+      "korean": "프란세지냐",
+      "description": "식빵 사이에 고기, 소시지, 햄을 넣고 치즈를 덮은 뒤 맥주 베이스 소스를 부어 먹는 샌드위치입니다.",
+      "analogy": "치즈와 고기가 듬뿍 들어간 샌드위치에 진한 소스를 곁들인 든든한 한 끼입니다.",
+      "emoji": "🥪",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Tripas à Moda do Porto",
+      "korean": "트리파스 아 모다 두 포르투",
+      "description": "소의 내장과 콩, 채소를 함께 넣고 푹 끓여낸 포르투의 전통 스튜입니다.",
+      "analogy": "내장탕과 비슷하게 쫄깃한 식감과 진한 국물 맛이 일품입니다.",
+      "emoji": "🍲",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Toucinho do Céu",
+      "korean": "토우시뉴 두 세우",
+      "description": "아몬드 가루와 달걀노른자, 설탕을 듬뿍 넣어 만든 아주 진하고 달콤한 케이크입니다.",
+      "analogy": "아몬드 향이 강한 아주 꾸덕하고 달콤한 파운드 케이크 느낌입니다.",
+      "emoji": "🍰",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Bacalhau à Gomes de Sá",
+      "korean": "바칼랴우 아 고메스 드 사",
+      "description": "염장 대구, 감자, 삶은 달걀, 올리브를 섞어 오븐에 구워낸 요리입니다.",
+      "analogy": "생선 살과 감자를 섞어 구운 담백한 오븐 요리입니다.",
+      "emoji": "🐟",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Bolinhos de Bacalhau",
+      "korean": "볼리뉴스 드 바칼랴우",
+      "description": "대구살과 으깬 감자를 섞어 타원형으로 빚어 튀겨낸 대구 크로켓입니다.",
+      "analogy": "생선 살이 들어간 감자 고로케와 비슷한 맛입니다.",
+      "emoji": "🍘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Cachorrinho",
+      "korean": "카쇼리뉴",
+      "description": "바게트 빵 사이에 매콤한 소시지를 넣고 납작하게 눌러 구운 뒤 소스를 바른 핫도그입니다.",
+      "analogy": "납작하게 구운 핫도그로, 바삭한 빵과 소시지의 조화가 좋습니다.",
+      "emoji": "🌭",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Caldo de Peixe",
+      "korean": "칼두 드 페이시",
+      "description": "신선한 생선과 채소를 넣고 맑게 끓여낸 포르투갈식 생선 국물 요리입니다.",
+      "analogy": "맑은 생선 지리탕과 비슷하게 시원하고 깔끔한 맛입니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Posta à Mirandesa",
+      "korean": "포스타 아 미란데사",
+      "description": "두툼하게 썬 소고기를 숯불에 구워 올리브유와 소금으로만 간을 한 스테이크입니다.",
+      "analogy": "두툼한 소고기 구이로, 고기 본연의 육즙과 풍미를 즐길 수 있습니다.",
+      "emoji": "🥩",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Arroz de Pato",
+      "korean": "아로스 드 파투",
+      "description": "오리고기를 삶아 살을 발라낸 뒤 쌀과 함께 볶고, 위에 초리소를 올려 오븐에 구운 요리입니다.",
+      "analogy": "오리고기 볶음밥과 비슷하며, 겉은 바삭하고 속은 촉촉합니다.",
+      "emoji": "🦆",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Cabrito Assado",
+      "korean": "카브리투 아사두",
+      "description": "어린 염소 고기를 감자와 함께 오븐에 넣고 오랜 시간 구워낸 요리입니다.",
+      "analogy": "양고기 구이와 비슷하며, 부드럽고 담백한 맛이 특징입니다.",
+      "emoji": "🍖",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Alheira",
+      "korean": "알례이라",
+      "description": "빵가루, 닭고기, 돼지고기, 향신료를 섞어 만든 포르투갈식 소시지입니다.",
+      "analogy": "순대와 비슷하게 부드러운 속을 가진 소시지 요리입니다.",
+      "emoji": "🌭",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Queijo de Cabra",
+      "korean": "케이자 드 카브라",
+      "description": "염소 젖으로 만든 치즈로, 숙성 정도에 따라 다양한 맛과 질감을 가집니다.",
+      "analogy": "일반 치즈보다 약간 더 짭짤하고 독특한 풍미가 있는 치즈입니다.",
+      "emoji": "🧀",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Pudim Abade de Priscos",
+      "korean": "푸딩 아바드 드 프리슈스",
+      "description": "달걀, 설탕, 베이컨 지방을 넣어 만든 아주 진하고 쫀득한 푸딩입니다.",
+      "analogy": "일반 푸딩보다 훨씬 쫀득하고 밀도 높은 달콤한 디저트입니다.",
+      "emoji": "🍮",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Rabanadas",
+      "korean": "라바나다스",
+      "description": "빵을 우유와 달걀물에 적셔 튀긴 뒤 설탕과 계피 가루를 뿌린 디저트입니다.",
+      "analogy": "프렌치 토스트를 튀겨낸 듯한 달콤하고 부드러운 간식입니다.",
+      "emoji": "🍞",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Leite Creme",
+      "korean": "레이트 크레메",
+      "description": "우유와 달걀노른자로 만든 커스터드 위에 설탕을 뿌리고 그을린 디저트입니다.",
+      "analogy": "크림 브륄레와 비슷하며, 부드러운 크림과 바삭한 설탕 막이 조화롭습니다.",
+      "emoji": "🍮",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Pão de Ló de Ovar",
+      "korean": "팡 드 로 드 오바르",
+      "description": "속이 덜 익은 듯 촉촉하고 크림처럼 흐르는 질감의 스펀지 케이크입니다.",
+      "analogy": "반숙 카스텔라처럼 속이 아주 촉촉하고 부드러운 케이크입니다.",
+      "emoji": "🍰",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Presunto",
+      "korean": "프레준투",
+      "description": "돼지 뒷다리를 소금에 절여 건조 숙성시킨 포르투갈식 생햄입니다.",
+      "analogy": "하몬과 비슷하며, 얇게 썰어 안주로 즐기는 짭짤한 고기입니다.",
+      "emoji": "🍖",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Migas",
+      "korean": "미가스",
+      "description": "남은 빵을 마늘, 올리브유, 채소와 함께 볶아낸 요리입니다.",
+      "analogy": "빵을 볶음밥처럼 채소와 함께 볶아낸 고소한 사이드 메뉴입니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "regional"
+    }
+  ]
+}

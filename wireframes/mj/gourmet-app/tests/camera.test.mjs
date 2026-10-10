@@ -1,0 +1,6 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {createCameraSession} from '../public/camera.js';
+function media(){const track={readyState:'live',stop(){this.readyState='ended';}};return {track,getTracks:()=>[track],getVideoTracks:()=>[track]};}
+test('rerenders and repeated photos reuse one camera acquisition',async()=>{let calls=0;const stream=media(),camera=createCameraSession(async()=>{calls++;return stream;});const [a,b]=await Promise.all([camera.open(),camera.open()]);assert.equal(a,stream);assert.equal(b,stream);assert.equal(await camera.open(),stream);assert.equal(calls,1);camera.stop();assert.equal(stream.track.readyState,'ended');});
+test('leaving capture while permission is pending stops the late stream',async()=>{let resolve;const stream=media(),camera=createCameraSession(()=>new Promise(r=>resolve=r));const pending=camera.open();await Promise.resolve();camera.stop();resolve(stream);assert.equal(await pending,null);assert.equal(stream.track.readyState,'ended');});
+test('permission denial can be retried on a later entry',async()=>{let calls=0;const stream=media(),camera=createCameraSession(async()=>{if(!calls++)throw Object.assign(Error('denied'),{name:'NotAllowedError'});return stream;});await assert.rejects(camera.open());assert.equal(await camera.open(),stream);assert.equal(calls,2);});

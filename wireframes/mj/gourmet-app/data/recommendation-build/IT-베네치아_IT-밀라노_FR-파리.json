@@ -1,0 +1,494 @@
+{
+  "IT:베네치아": [
+    {
+      "original": "Sarde in Saor",
+      "korean": "사르데 인 사오르",
+      "description": "튀긴 정어리를 양파, 식초, 잣, 건포도와 함께 절여 만든 베네치아 전통 전채 요리입니다.",
+      "analogy": "새콤달콤한 맛과 생선의 식감이 생선 조림과 비슷하면서도 훨씬 가볍습니다.",
+      "emoji": "🐟",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Bigoli in Salsa",
+      "korean": "비골리 인 살사",
+      "description": "통밀로 만든 굵은 면에 양파와 앤초비를 푹 익혀 만든 소스를 곁들인 파스타입니다.",
+      "analogy": "멸치 액젓을 넣은 볶음 요리처럼 감칠맛이 강하고 면발은 우동보다 탄탄합니다.",
+      "emoji": "🍝",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Baicoli",
+      "korean": "바이콜리",
+      "description": "베네치아에서 유래한 얇고 바삭하게 두 번 구운 비스킷으로 커피나 와인에 찍어 먹습니다.",
+      "analogy": "딱딱하고 고소한 맛이 한국의 건빵이나 러스크와 비슷한 느낌을 줍니다.",
+      "emoji": "🍪",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Risotto al Nero di Seppia",
+      "korean": "오징어 먹물 리조또",
+      "description": "오징어 먹물로 검게 색을 낸 쌀 요리로, 해산물의 깊은 풍미가 특징입니다.",
+      "analogy": "해물죽과 비슷하지만 쌀알이 톡톡 씹히는 식감이 더 살아있습니다.",
+      "emoji": "🍚",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Fegato alla Veneziana",
+      "korean": "베네치아식 송아지 간 요리",
+      "description": "얇게 썬 송아지 간을 양파와 함께 볶아낸 베네치아의 대표적인 육류 요리입니다.",
+      "analogy": "간 특유의 부드러운 식감이 순대 간과 비슷하지만 양파의 단맛이 더 강합니다.",
+      "emoji": "🥩",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Baccalà Mantecato",
+      "korean": "바칼라 만테카토",
+      "description": "염장 대구를 삶아 올리브유와 함께 크림처럼 부드럽게 으깨어 빵 위에 올려 먹습니다.",
+      "analogy": "생선 살을 으깨어 만든 샐러드 같으며, 감자 샐러드처럼 부드러운 질감입니다.",
+      "emoji": "🍞",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Polenta e Schie",
+      "korean": "폴렌타와 스키에",
+      "description": "옥수수 가루를 끓인 폴렌타 위에 베네치아 석호에서 잡은 작은 새우를 튀겨 올린 요리입니다.",
+      "analogy": "부드러운 죽 같은 폴렌타와 바삭한 새우깡 같은 새우의 조화가 독특합니다.",
+      "emoji": "🍤",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Moleche",
+      "korean": "몰레케",
+      "description": "껍질이 부드러운 시기의 작은 게를 통째로 튀겨낸 베네치아의 계절 별미입니다.",
+      "analogy": "껍질째 씹어 먹는 게 튀김으로, 꽃게랑 과자보다 훨씬 부드럽고 고소합니다.",
+      "emoji": "🦀",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Seppie in Umido",
+      "korean": "오징어 토마토 조림",
+      "description": "오징어를 토마토 소스와 함께 부드러워질 때까지 푹 끓여낸 요리입니다.",
+      "analogy": "오징어 볶음과 비슷하지만 매운맛 대신 토마토의 산미가 느껴집니다.",
+      "emoji": "🦑",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Pasta e Fagioli",
+      "korean": "파스타 에 파졸리",
+      "description": "콩과 파스타 면을 함께 넣고 끓여낸 걸쭉한 스타일의 이탈리아 전통 수프입니다.",
+      "analogy": "콩을 넣은 된장국처럼 구수하고 든든한 느낌을 주는 요리입니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Frittelle Veneziane",
+      "korean": "프리텔레 베네치아네",
+      "description": "카니발 기간에 주로 먹는 튀긴 도넛으로, 건포도와 잣이 들어간 반죽을 튀겨 설탕을 뿌립니다.",
+      "analogy": "찹쌀 도넛처럼 쫄깃하면서도 달콤한 맛이 특징입니다.",
+      "emoji": "🍩",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Galani",
+      "korean": "갈라니",
+      "description": "얇게 민 반죽을 튀겨 슈가 파우더를 듬뿍 뿌린 베네치아의 전통 과자입니다.",
+      "analogy": "얇고 바삭한 튀김 과자로, 한국의 꽈배기 겉면처럼 고소하고 달콤합니다.",
+      "emoji": "🥨",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Bussolà",
+      "korean": "부솔라",
+      "description": "부라노 섬에서 유래한 버터와 달걀 노른자가 듬뿍 들어간 단단한 쿠키입니다.",
+      "analogy": "버터링 쿠키보다 훨씬 단단하고 고소한 맛이 강합니다.",
+      "emoji": "🍪",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Tiramisù",
+      "korean": "티라미수",
+      "description": "베네치아 인근 트레비소에서 유래한 디저트로, 마스카포네 치즈와 커피를 적신 빵을 층층이 쌓았습니다.",
+      "analogy": "부드러운 크림과 커피 향이 어우러져 입안에서 녹는 케이크입니다.",
+      "emoji": "🍰",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Gnocchi di Zucca",
+      "korean": "단호박 뇨끼",
+      "description": "단호박을 섞어 만든 반죽을 작게 빚어 삶아낸 뒤 버터 소스에 버무린 요리입니다.",
+      "analogy": "수제비와 비슷하지만 단호박의 단맛과 부드러운 식감이 훨씬 강합니다.",
+      "emoji": "🥟",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Risotto ai Frutti di Mare",
+      "korean": "해산물 리조또",
+      "description": "신선한 조개, 새우, 홍합 등 다양한 해산물을 넣어 끓여낸 이탈리아식 쌀 요리입니다.",
+      "analogy": "해물 볶음밥보다 훨씬 촉촉하고 해산물의 육수가 밥알에 깊게 배어 있습니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Carpaccio",
+      "korean": "카르파초",
+      "description": "생소고기를 아주 얇게 썰어 올리브유, 레몬즙, 치즈 등을 뿌려 먹는 전채 요리입니다.",
+      "analogy": "육회와 비슷하지만 양념이 가볍고 치즈의 풍미가 더해져 있습니다.",
+      "emoji": "🥩",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Minestrone",
+      "korean": "미네스트로네",
+      "description": "제철 채소와 콩, 파스타 등을 넣고 끓여낸 이탈리아의 대표적인 채소 수프입니다.",
+      "analogy": "건더기가 푸짐한 야채 스튜로, 맑은 채소 국물 요리와 비슷합니다.",
+      "emoji": "🍲",
+      "dessert": false,
+      "scope": "country"
+    }
+  ],
+  "IT:밀라노": [
+    {
+      "original": "Risotto alla Milanese",
+      "korean": "밀라노식 샤프란 리조또",
+      "description": "샤프란을 넣어 노란색을 띠는 리조또로, 버터와 치즈의 풍미가 진합니다.",
+      "analogy": "카레 향이 은은하게 나는 부드러운 죽 같은 밥 요리입니다.",
+      "emoji": "🍚",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Cotoletta alla Milanese",
+      "korean": "밀라노식 커틀릿",
+      "description": "송아지 고기를 얇게 펴서 빵가루를 입혀 버터에 튀기듯 구워낸 요리입니다.",
+      "analogy": "돈가스와 비슷하지만 고기가 더 얇고 버터 향이 풍부합니다.",
+      "emoji": "🥩",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Panettone",
+      "korean": "파네토네",
+      "description": "밀라노를 대표하는 발효 빵으로, 건과일과 견과류를 넣어 달콤하고 부드럽습니다.",
+      "analogy": "식빵보다 훨씬 부드럽고 달콤한 파운드 케이크 같은 빵입니다.",
+      "emoji": "🍞",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Ossobuco",
+      "korean": "오소부코",
+      "description": "송아지 정강이 뼈를 채소와 함께 와인에 넣고 장시간 푹 끓여낸 요리입니다.",
+      "analogy": "갈비찜처럼 고기가 매우 부드럽고 뼈 속의 골수가 별미입니다.",
+      "emoji": "🍖",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Cassoeula",
+      "korean": "카쇠올라",
+      "description": "돼지고기의 다양한 부위와 양배추를 넣고 푹 끓여낸 밀라노의 겨울철 보양식입니다.",
+      "analogy": "돼지 등뼈찜과 비슷하게 진하고 기름진 맛이 특징입니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Mondeghili",
+      "korean": "몬데길리",
+      "description": "남은 고기를 다져서 빵가루와 섞어 튀겨낸 밀라노식 미트볼입니다.",
+      "analogy": "동그랑땡과 비슷하지만 겉은 더 바삭하고 속은 촉촉합니다.",
+      "emoji": "🧆",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Minestrone alla Milanese",
+      "korean": "밀라노식 미네스트로네",
+      "description": "쌀이나 파스타를 넣고 콩, 채소와 함께 끓여낸 밀라노 스타일의 수프입니다.",
+      "analogy": "채소 죽과 국의 중간 형태로, 속이 편안해지는 맛입니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Polenta",
+      "korean": "폴렌타",
+      "description": "옥수수 가루를 물이나 육수에 넣고 걸쭉하게 끓여낸 북부 이탈리아의 주식입니다.",
+      "analogy": "부드러운 옥수수 죽이나 으깬 감자 같은 식감입니다.",
+      "emoji": "🌽",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Busecca",
+      "korean": "부세카",
+      "description": "소의 위장(양)을 채소와 함께 끓여낸 밀라노 전통 내장 요리입니다.",
+      "analogy": "내장탕과 비슷하게 쫄깃한 식감과 깊은 국물 맛이 납니다.",
+      "emoji": "🍲",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Michetta",
+      "korean": "미케타",
+      "description": "밀라노의 전통적인 빵으로, 속이 비어 있고 겉은 매우 바삭한 것이 특징입니다.",
+      "analogy": "바게트보다 훨씬 가볍고 바삭한 식감의 빵입니다.",
+      "emoji": "🥖",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Colomba di Pasqua",
+      "korean": "콜롬바 디 파스쿠아",
+      "description": "부활절에 먹는 비둘기 모양의 빵으로, 파네토네와 비슷한 식감에 아몬드가 올라갑니다.",
+      "analogy": "달콤하고 폭신한 카스텔라 같은 느낌의 빵입니다.",
+      "emoji": "🕊️",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Amaretti",
+      "korean": "아마레티",
+      "description": "아몬드 가루와 달걀 흰자, 설탕으로 만든 작고 바삭한 이탈리아 쿠키입니다.",
+      "analogy": "마카롱 꼬끄처럼 고소하고 달콤하며 바삭한 식감입니다.",
+      "emoji": "🍪",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Gelato",
+      "korean": "젤라또",
+      "description": "공기 함량이 적어 밀도가 높고 쫀득한 식감을 가진 이탈리아식 아이스크림입니다.",
+      "analogy": "일반 아이스크림보다 훨씬 쫀득하고 재료 본연의 맛이 진합니다.",
+      "emoji": "🍦",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Cannoli",
+      "korean": "카놀리",
+      "description": "튀긴 튜브 모양의 과자 속에 달콤한 리코타 치즈 크림을 채워 넣은 디저트입니다.",
+      "analogy": "바삭한 과자 속에 부드러운 크림이 들어간 고급스러운 디저트입니다.",
+      "emoji": "🥐",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Tagliatelle al Ragù",
+      "korean": "탈리아텔레 알 라구",
+      "description": "납작한 면에 고기를 잘게 다져 끓인 진한 토마토 소스를 곁들인 파스타입니다.",
+      "analogy": "미트 소스 스파게티와 비슷하지만 소스의 풍미가 훨씬 깊습니다.",
+      "emoji": "🍝",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Bruschetta",
+      "korean": "브루스케타",
+      "description": "구운 빵 위에 마늘을 문지르고 토마토, 올리브유, 바질 등을 올려 먹는 전채 요리입니다.",
+      "analogy": "바삭한 바게트 위에 신선한 샐러드를 얹어 먹는 느낌입니다.",
+      "emoji": "🍞",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Insalata Caprese",
+      "korean": "카프레제 샐러드",
+      "description": "토마토, 모짜렐라 치즈, 바질을 층층이 쌓고 올리브유를 뿌린 샐러드입니다.",
+      "analogy": "두부와 토마토를 함께 먹는 것처럼 담백하고 신선한 맛입니다.",
+      "emoji": "🥗",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Pizza Margherita",
+      "korean": "마르게리타 피자",
+      "description": "토마토 소스, 모짜렐라 치즈, 바질을 올려 구워낸 가장 기본적인 이탈리아 피자입니다.",
+      "analogy": "담백한 도우와 치즈의 고소함이 어우러진 깔끔한 맛입니다.",
+      "emoji": "🍕",
+      "dessert": false,
+      "scope": "country"
+    }
+  ],
+  "FR:파리": [
+    {
+      "original": "Soupe à l'oignon",
+      "korean": "양파 수프",
+      "description": "양파를 갈색이 될 때까지 오래 볶아 육수와 함께 끓인 뒤 치즈를 얹어 구운 요리입니다.",
+      "analogy": "달큰한 양파의 풍미가 진하게 우러나와 한국의 맑은 국물 요리처럼 속이 풀립니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Escargots de Bourgogne",
+      "korean": "달팽이 요리",
+      "description": "식용 달팽이를 마늘, 파슬리, 버터를 섞은 소스에 넣어 오븐에 구운 요리입니다.",
+      "analogy": "골뱅이 무침의 골뱅이보다 훨씬 부드럽고 버터 향이 가득합니다.",
+      "emoji": "🐌",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Macaron",
+      "korean": "마카롱",
+      "description": "아몬드 가루, 달걀 흰자, 설탕으로 만든 꼬끄 사이에 크림을 채운 프랑스 대표 디저트입니다.",
+      "analogy": "겉은 바삭하고 속은 쫀득한 식감이 한국의 꼬끄 과자와 비슷합니다.",
+      "emoji": "🍪",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Confit de Canard",
+      "korean": "오리 콩피",
+      "description": "오리 고기를 기름에 담가 낮은 온도에서 천천히 익혀 껍질을 바삭하게 구운 요리입니다.",
+      "analogy": "오리 백숙보다 훨씬 고소하고 껍질은 튀김처럼 바삭합니다.",
+      "emoji": "🍗",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Coq au Vin",
+      "korean": "코코뱅",
+      "description": "닭고기를 레드 와인, 채소, 베이컨과 함께 푹 끓여낸 프랑스 전통 스튜입니다.",
+      "analogy": "닭볶음탕과 비슷하지만 매운맛 대신 와인의 깊은 풍미가 느껴집니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Boeuf Bourguignon",
+      "korean": "뵈프 부르기뇽",
+      "description": "소고기를 레드 와인과 채소에 넣고 오랜 시간 뭉근하게 끓여낸 소고기 스튜입니다.",
+      "analogy": "갈비찜처럼 고기가 매우 부드럽고 소스가 진한 것이 특징입니다.",
+      "emoji": "🥩",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Quiche Lorraine",
+      "korean": "키슈 로렌",
+      "description": "파이 반죽에 달걀, 생크림, 베이컨 등을 섞어 채워 구운 프랑스식 달걀 타르트입니다.",
+      "analogy": "계란찜과 파이를 합친 듯한 부드럽고 고소한 맛입니다.",
+      "emoji": "🥧",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Ratatouille",
+      "korean": "라따뚜이",
+      "description": "가지, 호박, 토마토, 피망 등 다양한 채소를 허브와 함께 볶거나 끓인 채소 요리입니다.",
+      "analogy": "채소 볶음과 비슷하지만 토마토 소스가 어우러져 부드럽습니다.",
+      "emoji": "🍆",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Croque Monsieur",
+      "korean": "크로크 무슈",
+      "description": "식빵 사이에 햄과 치즈를 넣고 베샤멜 소스를 발라 오븐에 구운 샌드위치입니다.",
+      "analogy": "치즈를 듬뿍 올린 토스트와 비슷하며 매우 든든합니다.",
+      "emoji": "🥪",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Steak Frites",
+      "korean": "스테이크와 감자튀김",
+      "description": "잘 구운 스테이크에 바삭한 감자튀김을 곁들여 내는 프랑스 식당의 기본 메뉴입니다.",
+      "analogy": "고기 구이와 감자튀김의 조합으로 누구나 익숙한 맛입니다.",
+      "emoji": "🥩",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Éclair",
+      "korean": "에클레어",
+      "description": "길쭉한 슈 반죽 안에 크림을 채우고 겉에 초콜릿 등을 입힌 디저트입니다.",
+      "analogy": "슈크림 빵보다 훨씬 부드럽고 달콤한 크림이 가득합니다.",
+      "emoji": "🍩",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Crème Brûlée",
+      "korean": "크렘 브륄레",
+      "description": "부드러운 커스터드 크림 위에 설탕을 뿌리고 토치로 구워 얇은 설탕 막을 만든 디저트입니다.",
+      "analogy": "달고나처럼 바삭한 설탕 막과 푸딩처럼 부드러운 크림의 조화입니다.",
+      "emoji": "🍮",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Tarte Tatin",
+      "korean": "타르트 타탱",
+      "description": "사과를 버터와 설탕에 졸인 뒤 파이 반죽을 덮어 구워 뒤집어낸 사과 타르트입니다.",
+      "analogy": "사과 조림을 얹은 파이로, 따뜻하고 달콤한 맛이 일품입니다.",
+      "emoji": "🍎",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Profiteroles",
+      "korean": "프로피테롤",
+      "description": "작은 슈 안에 아이스크림이나 크림을 채우고 초콜릿 소스를 뿌려 먹는 디저트입니다.",
+      "analogy": "슈크림 빵에 초콜릿을 듬뿍 얹어 먹는 느낌입니다.",
+      "emoji": "🍨",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Sole Meunière",
+      "korean": "가자미 뫼니에르",
+      "description": "가자미에 밀가루를 묻혀 버터에 구운 뒤 레몬즙과 파슬리를 뿌린 생선 요리입니다.",
+      "analogy": "생선 전과 비슷하지만 버터의 풍미가 더해져 훨씬 고소합니다.",
+      "emoji": "🐟",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Blanquette de Veau",
+      "korean": "송아지 블랑켓",
+      "description": "송아지 고기를 크림 소스와 함께 부드럽게 끓여낸 프랑스식 화이트 스튜입니다.",
+      "analogy": "크림 스파게티 소스처럼 부드럽고 고소한 고기 요리입니다.",
+      "emoji": "🍲",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Cassoulet",
+      "korean": "카슐레",
+      "description": "흰 강낭콩과 소시지, 오리 고기 등을 넣고 오븐에서 오래 끓여낸 진한 스튜입니다.",
+      "analogy": "콩을 넣은 찜 요리로, 매우 든든하고 구수한 맛이 납니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Pot-au-Feu",
+      "korean": "포토푀",
+      "description": "소고기와 다양한 채소를 물에 넣고 오랜 시간 끓여낸 프랑스의 가정식 수프입니다.",
+      "analogy": "갈비탕처럼 맑고 담백한 국물 맛이 특징입니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "country"
+    }
+  ]
+}

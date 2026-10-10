@@ -1,0 +1,494 @@
+{
+  "FR:니스": [
+    {
+      "original": "Salade Niçoise",
+      "korean": "살라드 니수아즈",
+      "description": "니스 지역의 신선한 채소, 삶은 달걀, 참치, 올리브, 앤초비를 곁들인 전통 샐러드입니다.",
+      "analogy": "다양한 재료가 어우러진 맛이 비빔밥의 신선한 채소 조합과 비슷합니다.",
+      "emoji": "🥗",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Socca",
+      "korean": "소카",
+      "description": "병아리콩 가루와 올리브유를 섞어 얇고 바삭하게 구워낸 니스식 길거리 음식입니다.",
+      "analogy": "고소한 맛과 바삭한 식감이 빈대떡과 유사한 느낌을 줍니다.",
+      "emoji": "🥞",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Tarte Tropézienne",
+      "korean": "타르트 트로페지엔",
+      "description": "부드러운 브리오슈 빵 사이에 풍부한 크림을 채워 넣은 프랑스 남부의 디저트입니다.",
+      "analogy": "폭신한 빵과 달콤한 크림의 조화가 크림빵을 연상시킵니다.",
+      "emoji": "🍰",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Ratatouille",
+      "korean": "라따뚜이",
+      "description": "가지, 호박, 토마토, 피망 등 다양한 채소를 허브와 함께 볶아낸 프로방스식 채소 스튜입니다.",
+      "analogy": "채소의 깊은 맛이 어우러진 것이 한국의 채소 볶음이나 조림과 비슷합니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Pan Bagnat",
+      "korean": "팡 바냐",
+      "description": "올리브유를 바른 둥근 빵에 살라드 니수아즈 재료를 가득 채워 만든 샌드위치입니다.",
+      "analogy": "속재료가 꽉 찬 샌드위치가 든든한 한 끼 식사로 적합합니다.",
+      "emoji": "🥪",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Pissaladière",
+      "korean": "피살라디에르",
+      "description": "양파를 듬뿍 볶아 올리고 앤초비와 올리브로 장식한 니스식 양파 타르트입니다.",
+      "analogy": "짭짤한 앤초비와 달큰한 양파의 조화가 피자와 비슷합니다.",
+      "emoji": "🍕",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Petits Farcis",
+      "korean": "프티 파르시",
+      "description": "토마토, 호박, 가지 등의 채소 속을 다진 고기와 허브로 채워 오븐에 구운 요리입니다.",
+      "analogy": "속을 채워 쪄내거나 구운 요리가 한국의 고추전이나 가지전과 비슷합니다.",
+      "emoji": "🍅",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Bouillabaisse",
+      "korean": "부야베스",
+      "description": "지중해에서 잡은 다양한 생선과 해산물을 토마토, 허브와 함께 끓여낸 해물탕입니다.",
+      "analogy": "진한 해산물 국물 맛이 한국의 매운탕이나 해물탕을 떠올리게 합니다.",
+      "emoji": "🍲",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Daube Niçoise",
+      "korean": "도브 니수아즈",
+      "description": "소고기를 와인과 채소, 허브와 함께 오랜 시간 푹 끓여낸 니스식 소고기 찜 요리입니다.",
+      "analogy": "오래 끓여 부드러운 고기 식감이 갈비찜과 유사합니다.",
+      "emoji": "🥩",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Gnocchi à la Niçoise",
+      "korean": "뇨키 아 라 니수아즈",
+      "description": "감자 반죽으로 만든 뇨키에 토마토소스나 바질 페스토를 곁들인 요리입니다.",
+      "analogy": "쫄깃한 감자 반죽의 식감이 수제비와 비슷합니다.",
+      "emoji": "🍝",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Beignets de Fleurs de Courgettes",
+      "korean": "베녜 드 플뢰르 드 쿠르제트",
+      "description": "호박꽃 속에 치즈나 고기 반죽을 채워 튀겨낸 프로방스 지역의 별미입니다.",
+      "analogy": "바삭한 튀김옷과 부드러운 속재료가 채소 튀김과 비슷합니다.",
+      "emoji": "🌼",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Tourte de Blettes",
+      "korean": "투르트 드 블레트",
+      "description": "근대, 잣, 건포도, 사과 등을 넣어 만든 달콤하고 짭짤한 니스식 근대 파이입니다.",
+      "analogy": "채소가 들어간 파이의 독특한 맛이 이색적인 디저트 느낌을 줍니다.",
+      "emoji": "🥧",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Calisson",
+      "korean": "칼리송",
+      "description": "아몬드 가루와 설탕에 절인 과일을 섞어 만든 프로방스 지역의 전통 과자입니다.",
+      "analogy": "쫀득하고 달콤한 식감이 한국의 떡이나 약과를 연상시킵니다.",
+      "emoji": "🍬",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Navettes",
+      "korean": "나베트",
+      "description": "오렌지 꽃 향을 입혀 배 모양으로 구워낸 프로방스식 딱딱한 비스킷입니다.",
+      "analogy": "단단하고 고소한 맛이 건빵과 비슷합니다.",
+      "emoji": "🍪",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Fougasse",
+      "korean": "푸가스",
+      "description": "올리브, 허브, 치즈 등을 넣어 나뭇잎 모양으로 구워낸 프로방스식 빵입니다.",
+      "analogy": "담백하고 쫄깃한 빵의 식감이 포카치아와 비슷합니다.",
+      "emoji": "🍞",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Tapenade",
+      "korean": "타프나드",
+      "description": "올리브, 케이퍼, 앤초비, 올리브유를 갈아 만든 니스식 딥 소스입니다.",
+      "analogy": "짭짤하고 감칠맛이 강해 쌈장처럼 빵에 발라 먹습니다.",
+      "emoji": "🫒",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Crème Brûlée",
+      "korean": "크렘 브륄레",
+      "description": "부드러운 커스터드 크림 위에 설탕을 뿌리고 토치로 구워 얇은 설탕 막을 만든 디저트입니다.",
+      "analogy": "달콤하고 부드러운 푸딩 같은 식감이 입안에서 녹습니다.",
+      "emoji": "🍮",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Macaron",
+      "korean": "마카롱",
+      "description": "아몬드 가루, 달걀흰자, 설탕으로 만든 꼬끄 사이에 크림을 채운 프랑스 대표 과자입니다.",
+      "analogy": "바삭하고 쫀득한 식감이 한국의 꼬끄 과자와 같습니다.",
+      "emoji": "🧁",
+      "dessert": true,
+      "scope": "country"
+    }
+  ],
+  "FR:리옹": [
+    {
+      "original": "Quenelle",
+      "korean": "크넬",
+      "description": "생선 살을 곱게 갈아 반죽한 뒤 소스에 졸여낸 리옹의 대표적인 요리입니다.",
+      "analogy": "부드럽고 탱글탱글한 식감이 어묵과 비슷합니다.",
+      "emoji": "🐟",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Salade Lyonnaise",
+      "korean": "살라드 리요네즈",
+      "description": "신선한 채소 위에 베이컨, 수란, 크루통을 얹어 드레싱을 곁들인 샐러드입니다.",
+      "analogy": "고소한 베이컨과 부드러운 달걀이 어우러져 든든한 샐러드입니다.",
+      "emoji": "🥗",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Tarte aux Pralines",
+      "korean": "타르트 오 프랄린",
+      "description": "분홍색 설탕 코팅 아몬드인 프랄린을 넣어 만든 리옹의 전통 타르트입니다.",
+      "analogy": "달콤하고 바삭한 견과류의 맛이 강정처럼 느껴집니다.",
+      "emoji": "🥧",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Saucisson Brioché",
+      "korean": "소시송 브리오슈",
+      "description": "리옹식 소시지를 부드러운 브리오슈 빵 반죽으로 감싸 구워낸 요리입니다.",
+      "analogy": "빵 속에 소시지가 들어간 것이 소시지 빵과 비슷합니다.",
+      "emoji": "🌭",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Coq au Vin",
+      "korean": "코코뱅",
+      "description": "닭고기를 레드와인, 채소, 허브와 함께 오랜 시간 끓여낸 프랑스 전통 요리입니다.",
+      "analogy": "와인에 졸여진 닭고기가 찜닭처럼 깊은 맛을 냅니다.",
+      "emoji": "🍗",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Andouillette",
+      "korean": "앙두예트",
+      "description": "돼지 내장을 주재료로 하여 만든 리옹의 전통 소시지 요리입니다.",
+      "analogy": "내장 특유의 풍미가 곱창이나 막창을 좋아하는 분들에게 익숙합니다.",
+      "emoji": "🥓",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Gratin Dauphinois",
+      "korean": "그라탱 도피누아",
+      "description": "얇게 썬 감자를 크림과 우유, 치즈와 함께 섞어 오븐에 구운 요리입니다.",
+      "analogy": "부드럽고 고소한 감자 맛이 치즈 감자전과 비슷합니다.",
+      "emoji": "🥔",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Tablier de Sapeur",
+      "korean": "타블리에 드 사푀르",
+      "description": "소의 양 부위를 빵가루를 입혀 튀겨낸 리옹의 향토 음식입니다.",
+      "analogy": "바삭한 튀김옷과 쫄깃한 내장의 식감이 내장 튀김과 비슷합니다.",
+      "emoji": "🥩",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Cervelle de Canut",
+      "korean": "세르벨 드 카뉘",
+      "description": "치즈에 허브, 마늘, 샬롯, 올리브유를 섞어 만든 리옹식 치즈 스프레드입니다.",
+      "analogy": "빵에 발라 먹는 맛이 크림치즈 딥과 비슷합니다.",
+      "emoji": "🧀",
+      "dessert": false,
+      "scope": "city"
+    },
+    {
+      "original": "Pot-au-Feu",
+      "korean": "포토푀",
+      "description": "소고기와 다양한 채소를 물에 넣고 오랜 시간 푹 끓여낸 프랑스식 고기 국물 요리입니다.",
+      "analogy": "맑고 깊은 국물 맛이 소고기 뭇국과 비슷합니다.",
+      "emoji": "🍲",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Bugnes",
+      "korean": "뷔뉴",
+      "description": "반죽을 얇게 펴서 튀긴 뒤 설탕을 뿌려 먹는 리옹의 전통 튀김 과자입니다.",
+      "analogy": "바삭하고 달콤한 맛이 꽈배기나 튀김 도넛과 비슷합니다.",
+      "emoji": "🍩",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Coussin de Lyon",
+      "korean": "쿠생 드 리옹",
+      "description": "초콜릿 가나슈를 마지팬으로 감싸 만든 쿠션 모양의 리옹 특산 초콜릿입니다.",
+      "analogy": "달콤하고 부드러운 맛이 고급스러운 초콜릿 사탕과 같습니다.",
+      "emoji": "🍫",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Papillotes",
+      "korean": "파피요트",
+      "description": "종이 포장지에 싸인 초콜릿으로, 리옹에서 크리스마스 시즌에 즐겨 먹는 간식입니다.",
+      "analogy": "포장을 벗겨 먹는 재미가 있는 달콤한 초콜릿입니다.",
+      "emoji": "🍬",
+      "dessert": true,
+      "scope": "city"
+    },
+    {
+      "original": "Clafoutis",
+      "korean": "클라푸티",
+      "description": "체리 등의 과일을 넣고 달걀과 우유 반죽을 부어 오븐에 구운 디저트입니다.",
+      "analogy": "부드러운 푸딩과 빵의 중간 식감이 계란빵과 비슷합니다.",
+      "emoji": "🍒",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Boudin Noir",
+      "korean": "부댕 누아",
+      "description": "돼지 피와 지방, 향신료를 섞어 만든 프랑스식 순대입니다.",
+      "analogy": "부드러운 식감과 고소한 맛이 한국의 순대와 비슷합니다.",
+      "emoji": "🌭",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Escargot",
+      "korean": "에스카르고",
+      "description": "달팽이를 허브 버터와 마늘 소스에 넣어 오븐에 구운 프랑스 대표 요리입니다.",
+      "analogy": "쫄깃한 식감이 골뱅이 요리와 비슷합니다.",
+      "emoji": "🐌",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Quiche Lorraine",
+      "korean": "키슈 로렌",
+      "description": "파이 반죽에 달걀, 크림, 베이컨을 넣어 구운 프랑스식 달걀 파이입니다.",
+      "analogy": "부드러운 계란찜을 파이 안에 넣은 듯한 맛입니다.",
+      "emoji": "🥧",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Soupe à l'oignon",
+      "korean": "수프 아 로뇽",
+      "description": "양파를 갈색이 될 때까지 볶아 육수를 붓고 치즈를 얹어 구운 양파 수프입니다.",
+      "analogy": "달큰한 양파 맛이 깊게 우러나와 속을 따뜻하게 해줍니다.",
+      "emoji": "🥣",
+      "dessert": false,
+      "scope": "country"
+    }
+  ],
+  "ES:바르셀로나": [
+    {
+      "original": "Paella",
+      "korean": "파에야",
+      "description": "쌀에 해산물, 고기, 채소, 샤프란을 넣고 넓은 팬에 볶아낸 스페인 대표 쌀 요리입니다.",
+      "analogy": "해산물 육수가 밴 밥알의 식감이 해물 볶음밥과 비슷합니다.",
+      "emoji": "🥘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Pan con Tomate",
+      "korean": "판 콘 토마테",
+      "description": "구운 빵에 생마늘과 잘 익은 토마토를 문지르고 올리브유와 소금을 뿌려 먹는 카탈루냐식 빵입니다.",
+      "analogy": "담백한 맛이 한국의 토스트나 마늘빵과 비슷합니다.",
+      "emoji": "🍞",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Crema Catalana",
+      "korean": "크레마 카탈라나",
+      "description": "커스터드 크림 위에 설탕을 뿌리고 토치로 구워 얇은 설탕 막을 만든 카탈루냐식 디저트입니다.",
+      "analogy": "달콤하고 부드러운 맛이 푸딩과 비슷합니다.",
+      "emoji": "🍮",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Gambas al Ajillo",
+      "korean": "감바스 알 아히요",
+      "description": "새우를 마늘, 페페론치노, 올리브유에 튀기듯 볶아낸 스페인식 요리입니다.",
+      "analogy": "마늘 향이 밴 새우가 한국의 새우 요리와 비슷합니다.",
+      "emoji": "🍤",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Tortilla de Patatas",
+      "korean": "토르티야 데 파타타스",
+      "description": "감자와 양파를 볶은 뒤 달걀물을 부어 두툼하게 부쳐낸 스페인식 감자 오믈렛입니다.",
+      "analogy": "부드러운 식감이 두툼한 계란말이와 비슷합니다.",
+      "emoji": "🍳",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Escalivada",
+      "korean": "에스칼리바다",
+      "description": "가지, 피망, 양파를 불에 구워 껍질을 벗긴 뒤 올리브유를 뿌려 먹는 카탈루냐식 채소 요리입니다.",
+      "analogy": "구운 채소의 단맛이 나물 무침과 비슷합니다.",
+      "emoji": "🍆",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Butifarra",
+      "korean": "부티파라",
+      "description": "카탈루냐 지역에서 즐겨 먹는 돼지고기 소시지로, 주로 구워서 콩 요리와 곁들입니다.",
+      "analogy": "담백한 고기 맛이 한국의 소시지 구이와 비슷합니다.",
+      "emoji": "🌭",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Croquetas",
+      "korean": "크로케타스",
+      "description": "베샤멜 소스에 햄이나 해산물을 섞어 반죽한 뒤 튀겨낸 스페인식 고로케입니다.",
+      "analogy": "겉은 바삭하고 속은 부드러운 것이 감자 고로케와 비슷합니다.",
+      "emoji": "🍘",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Fideuà",
+      "korean": "피데우아",
+      "description": "쌀 대신 짧은 면을 사용하여 해산물과 함께 볶아낸 카탈루냐식 면 요리입니다.",
+      "analogy": "해산물 맛이 밴 면 요리가 볶음면과 비슷합니다.",
+      "emoji": "🍝",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Jamón Ibérico",
+      "korean": "하몬 이베리코",
+      "description": "이베리코 돼지 뒷다리를 소금에 절여 건조 숙성시킨 스페인식 생햄입니다.",
+      "analogy": "짭짤하고 깊은 풍미가 육포와 비슷합니다.",
+      "emoji": "🍖",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Pulpo a la Gallega",
+      "korean": "풀포 아 라 가예가",
+      "description": "삶은 문어를 얇게 썰어 올리브유, 파프리카 가루, 소금을 뿌려 먹는 요리입니다.",
+      "analogy": "부드러운 문어 식감이 문어 숙회와 비슷합니다.",
+      "emoji": "🐙",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Churros",
+      "korean": "추로스",
+      "description": "밀가루 반죽을 길게 짜서 튀긴 뒤 설탕이나 초콜릿 소스를 곁들여 먹는 간식입니다.",
+      "analogy": "바삭하고 달콤한 맛이 꽈배기와 비슷합니다.",
+      "emoji": "🍩",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Turrón",
+      "korean": "투론",
+      "description": "아몬드, 꿀, 달걀흰자를 섞어 만든 스페인 전통 견과류 누가입니다.",
+      "analogy": "고소하고 쫀득한 맛이 엿이나 강정과 비슷합니다.",
+      "emoji": "🍬",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Mel i Mató",
+      "korean": "멜 이 마토",
+      "description": "신선한 마토 치즈 위에 꿀을 뿌려 먹는 카탈루냐 지역의 전통 디저트입니다.",
+      "analogy": "담백한 치즈와 달콤한 꿀의 조화가 요거트와 비슷합니다.",
+      "emoji": "🍯",
+      "dessert": true,
+      "scope": "regional"
+    },
+    {
+      "original": "Ensaimada",
+      "korean": "엔사이마다",
+      "description": "라드(돼지기름)를 넣어 돌돌 말아 구운 스페인식 페이스트리 빵입니다.",
+      "analogy": "겹겹이 쌓인 빵의 식감이 페이스트리와 비슷합니다.",
+      "emoji": "🥐",
+      "dessert": true,
+      "scope": "country"
+    },
+    {
+      "original": "Patatas Bravas",
+      "korean": "파타타스 브라바스",
+      "description": "튀긴 감자에 매콤한 소스와 아이올리 소스를 얹어 먹는 스페인식 타파스입니다.",
+      "analogy": "매콤한 소스가 곁들여진 감자튀김이 양념 감자와 비슷합니다.",
+      "emoji": "🍟",
+      "dessert": false,
+      "scope": "country"
+    },
+    {
+      "original": "Calçots",
+      "korean": "칼솟",
+      "description": "겨울철에 나는 대파의 일종을 불에 구워 껍질을 벗기고 로메스코 소스에 찍어 먹는 요리입니다.",
+      "analogy": "구운 대파의 단맛이 파 구이와 비슷합니다.",
+      "emoji": "🧅",
+      "dessert": false,
+      "scope": "regional"
+    },
+    {
+      "original": "Bacalao",
+      "korean": "바칼라오",
+      "description": "염장한 대구를 물에 불려 소금기를 뺀 뒤 토마토소스나 올리브유에 요리한 생선 요리입니다.",
+      "analogy": "쫄깃한 생선 살이 생선 조림과 비슷합니다.",
+      "emoji": "🐟",
+      "dessert": false,
+      "scope": "country"
+    }
+  ]
+}
