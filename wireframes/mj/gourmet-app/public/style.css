@@ -45,3 +45,10 @@
 .order-bottom-buttons{gap:10px}.order-bottom-buttons button{font-size:14px;flex:1;padding:12px 8px}.screen-order main{padding-bottom:120px}.screen-order [data-action="staff"]{margin-top:8px}
 
 .screen-capture .camera-controls>[data-action="recognize"]{position:sticky;bottom:0;min-height:50px;z-index:3}.screen-capture main>.error{flex:none;margin:8px 14px;max-height:70px;overflow:auto}
+
+/* Keep the live preview fixed while photos and actions grow below it. */
+.screen-capture .camera{flex:none;height:calc(100dvh - 200px - env(safe-area-inset-bottom));min-height:160px}
+.screen-capture .camera-gallery{display:flex;align-items:center;justify-content:center;flex:none;width:45px;height:45px;min-height:45px;padding:0;line-height:1}
+.screen-capture .camera-gallery svg{display:block;margin:0}
+.screen-capture .photo-count{flex:none;width:45px;text-align:center}
+@media(max-height:650px){.screen-capture .camera{min-height:110px}}
