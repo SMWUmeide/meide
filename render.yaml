@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: hanip-europe-mj
+    runtime: docker
+    plan: free
+    branch: wireframes
+    rootDir: wireframes/mj/gourmet-app
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/config
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+      - key: FREE_MODE
+        value: "true"
+      - key: ENABLE_GOOGLE_PLACES
+        value: "false"
+      - key: GEMINI_MODEL
+        value: gemini-3.1-flash-lite
