@@ -52,3 +52,9 @@
 .screen-capture .camera-gallery svg{display:block;margin:0}
 .screen-capture .photo-count{flex:none;width:45px;text-align:center}
 @media(max-height:650px){.screen-capture .camera{min-height:110px}}
+
+.menu-item[data-food-card]{cursor:pointer}
+.menu-item[data-food-card]:focus-visible{outline:3px solid #ffb18e;outline-offset:3px}
+.menu-saved-heart{color:#e6263c;pointer-events:none}
+button.menu-saved-heart{pointer-events:auto}
+.menu-saved-heart svg{fill:#e6263c;stroke:#e6263c}
