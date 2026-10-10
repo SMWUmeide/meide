@@ -1,3 +1,4 @@
+import {categoryHeading} from './menu-categories.js';
 const dishes=[
 ['baccalà alla fiorentina','피렌체식 토마토 대구 조림','염장 대구를 토마토와 함께 익히는 이탈리아 요리입니다.'],
 ['maiale alle mele','사과를 곁들인 돼지고기 요리','돼지고기와 사과를 함께 쓰는 요리로, 고기의 고소함에 과일의 단맛을 더합니다.'],
@@ -29,15 +30,16 @@ const normalizeName=s=>s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerC
 export function interpretDish(original){const n=normalizeName(original);const d=dishes.find(x=>n.includes(normalizeName(x[0])));return d?{korean:d[1],description:d[2]+' 일반적인 음식 설명이며 이 식당의 조리법을 확인한 정보는 아닙니다.'}:null;}
 const known=[['baccal','염장 대구 요리'],['maiale','돼지고기 요리'],['cinghiale','멧돼지고기 요리'],['carbonara','카르보나라'],['margherita','마르게리타 피자'],['risotto','리소토'],['lasagn','라자냐'],['tiramisu','티라미수'],['paella','파에야'],['gazpacho','가스파초'],['schnitzel','슈니첼'],['croissant','크루아상'],['salad','샐러드'],['soup','수프'],['pizza','피자'],['pasta','파스타']];
 export function parseFreeMenu(text,language='en'){
- const items=[];
+ const items=[];let category='';
  for(const line of text.split('\n')){
+  const heading=categoryHeading(line);if(heading){category=heading;continue;}
   const m=line.trim().match(/^(.+?)\s+(?:€|EUR|£|GBP|CHF)?\s*(\d{1,4}(?:[.,]\d{1,2})?)\s*(?:€|EUR|£|GBP|CHF)?\s*$/i);
   if(!m||!/[a-zÀ-ž]/i.test(m[1]))continue;
   const original=m[1].replace(/[.·—–-]+$/,'').trim();
   const normalized=original.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
   const meaning=interpretDish(original);
   const match=known.find(([name])=>normalized.includes(name));
-  items.push({id:String(items.length),original,korean:meaning?.korean||(match?match[1]:original),price:Number(m[2].replace(',','.')),description:meaning?.description||(match?'음식 이름 사전의 일반적인 해석입니다. 식당의 실제 조리법은 확인해주세요.':'한국어 사전에 없는 음식입니다. 원문을 표시합니다.'),ingredients:[],allergens:[],cooking:'식당에 확인해주세요.',taste:'확인된 정보가 없습니다.',estimated:true,sourceLabel:'촬영 사진 · 무료 OCR · 사용자가 확인한 텍스트',sources:[],image:null,emoji:'🍽'});
+  items.push({id:String(items.length),category,categoryKorean:category,original,korean:meaning?.korean||(match?match[1]:original),price:Number(m[2].replace(',','.')),description:meaning?.description||(match?'음식 이름 사전의 일반적인 해석입니다. 식당의 실제 조리법은 확인해주세요.':'한국어 사전에 없는 음식입니다. 원문을 표시합니다.'),ingredients:[],allergens:[],cooking:'식당에 확인해주세요.',taste:'확인된 정보가 없습니다.',estimated:true,sourceLabel:'촬영 사진 · 무료 OCR · 사용자가 확인한 텍스트',sources:[],image:null,emoji:'🍽'});
  }
  return {restaurantName:'',language,currency:/£|GBP/.test(text)?'GBP':/CHF/.test(text)?'CHF':'EUR',items};
 }
