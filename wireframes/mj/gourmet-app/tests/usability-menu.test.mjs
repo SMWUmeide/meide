@@ -1,0 +1,7 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {getUsabilityMenu} from '../restaurant-catalog.mjs';
+import {menuSections} from '../public/menu-categories.js';
+import {route} from '../server.mjs';
+test('fixed usability menu contains only the selected restaurant and three complete categories',async()=>{const m=getUsabilityMenu();assert.equal(m.restaurantName,'Osteria La Solita Zuppa');assert.equal(m.items.length,30);assert.deepEqual(menuSections(m.items).map(s=>[s.label,s.items.length]),[['수프',4],['메인 요리',12],['로제 와인',14]]);assert.deepEqual(await route('/api/usability-menu',{images:['arbitrary-photo']}),m);assert.equal((await route('/api/config',{})).usabilityTest,true);for(const i of m.items){assert.ok(i.description.length<250,i.original);assert.ok(i.price>0);assert.ok(i.korean);assert.equal(i.image?.representative,undefined);}});
+test('food descriptions include sourced ingredients, condiments and cooking with clearly separated recipe examples',()=>{const foods=getUsabilityMenu().items.filter(i=>i.category!=='16 VINO ROSATO');for(const i of foods){assert.ok(i.ingredients.length,i.original);assert.ok(i.cooking?.trim(),i.original);assert.ok(i.sauce?.trim(),i.original);}const leek=foods.find(i=>i.original==='ZUPPA DI PORRI E PATATE');assert.ok(leek.ingredients.includes('리크(서양 대파)'));assert.ok(!leek.ingredients.includes('부추'));for(const i of foods.filter(i=>i.generalCooking)){assert.ok(i.generalCooking.source.startsWith('https://'));assert.ok(i.generalCooking.description.startsWith('일반적인'));}});

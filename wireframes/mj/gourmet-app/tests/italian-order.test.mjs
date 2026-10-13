@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {italianOrder} from '../public/italian-order.js';
+import {getUsabilityMenu} from '../restaurant-catalog.mjs';
+test('every fixed menu provides complete offline Korean pronunciation including quantities and wine bottles',()=>{for(const i of getUsabilityMenu().items){for(const quantity of [1,2,21,198]){const r=italianOrder([{...i,quantity}]);assert.ok(r,i.original);assert.match(r.pronunciation,/^보렘모 오르디나레 /);assert.match(r.pronunciation,/페르 파보레\.$/);assert.ok(r.text.includes(i.original));assert.ok(r.korean.includes(String(quantity)));if(i.category==='16 VINO ROSATO')assert.ok(r.korean.includes('병'));}}});
+test('multiple menu orders keep every dish and quantity; unknown names never receive invented readings',()=>{const items=getUsabilityMenu().items;const r=italianOrder([{...items[0],quantity:2},{...items[4],quantity:3}]);assert.ok(r.pronunciation.includes('두에 포르치오니'));assert.ok(r.pronunciation.includes('트레 포르치오니'));assert.equal(italianOrder([{original:'unknown',quantity:1}]),null);});

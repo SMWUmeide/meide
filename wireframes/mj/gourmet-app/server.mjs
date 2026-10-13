@@ -1,4 +1,4 @@
-import {isCatalogURL,enrichFromCatalog,getRestaurantCatalog} from './restaurant-catalog.mjs';
+import {isCatalogURL,enrichFromCatalog,getRestaurantCatalog,getUsabilityMenu} from './restaurant-catalog.mjs';
 import {createExchangeRates} from './exchange-rates.mjs';
 const exchangeRates=createExchangeRates();
 import http from 'node:http';
@@ -82,6 +82,7 @@ async function searchImage(q,website,official){
 }
 export function orderPrompt(items,language){return `주문 목록만 충실히 현지어(${language})로 번역. JSON {text:string,pronunciation:string,korean:string}. pronunciation은 한글 참고 발음. 개별 수량 반드시 유지. 주문을 전송하지 않음. ${JSON.stringify(items)}`;}
 export async function route(path,body){
+  if(path==='/api/usability-menu')return getUsabilityMenu();
   if(path==='/api/restaurant-catalog')return getRestaurantCatalog();
   if(path==='/api/exchange-rate')return exchangeRates(body.currency);
   const freeMode=env.FREE_MODE!=='false';
@@ -92,7 +93,7 @@ export async function route(path,body){
 
   if(path==='/api/gemini-recognize'){if(!env.GEMINI_API_KEY)throw Error('Gemini 키가 필요합니다.');const images=validateImages(body.images);reserveGoogle('gemini');const menu=normalizeMenu(await geminiMenu(images,env.GEMINI_API_KEY,env.GEMINI_MODEL||'gemini-3.1-flash-lite'));for(const i of menu.items)i.sourceLabel='촬영 메뉴판 · Gemini 한국어 해석 · 일반 설명은 추정';if(!menu.items.length)throw Error('읽을 수 있는 메뉴가 없습니다. 무료 OCR 또는 선명한 사진으로 재시도해주세요.');return {menu};}
   if(path==='/api/destinations')return searchDestinations(body);
-  if(path==='/api/config')return {freeMode,gemini:!!env.GEMINI_API_KEY,vision:!freeMode&&!!env.OPENAI_API_KEY,places:freeMode?googleEnabled():!!env.GOOGLE_PLACES_API_KEY,imageSearch:!freeMode&&!!(env.GOOGLE_SEARCH_API_KEY&&env.GOOGLE_SEARCH_ENGINE_ID)};
+  if(path==='/api/config')return {usabilityTest:env.USABILITY_TEST!=='false',freeMode,gemini:!!env.GEMINI_API_KEY,vision:!freeMode&&!!env.OPENAI_API_KEY,places:freeMode?googleEnabled():!!env.GOOGLE_PLACES_API_KEY,imageSearch:!freeMode&&!!(env.GOOGLE_SEARCH_API_KEY&&env.GOOGLE_SEARCH_ENGINE_ID)};
   if(freeMode&&['/api/recognize','/api/analyze','/api/order','/api/photo'].includes(path))throw Error('무료 모드에서는 유료 API 요청을 실행하지 않습니다.');
   if(freeMode&&!googleEnabled()&&path==='/api/places')return {places:[],unavailable:true,message:'식당 이름을 직접 입력하거나 건너뛰세요. Google 지도에서 직접 확인할 수 있습니다.'};
   if(path==='/api/recognize'){
@@ -130,7 +131,7 @@ export function createServer(){return http.createServer(async(req,res)=>{
       let raw='';for await(const chunk of req){raw+=chunk;if(raw.length>25_000_000){res.writeHead(413);res.end();return;}}
       const result=await route(url.pathname,raw?JSON.parse(raw):{});if(result.room?.menu&&isCatalogURL(resolveRestaurantMenu(result.room.restaurant||{}))){result.room.menu={...result.room.menu,items:enrichFromCatalog(result.room.menu.items).items};}res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify(result));return;
     }
-    const allowed={'/':'index.html','/app.js':'app.js','/menu-categories.js':'menu-categories.js','/meal-ratings.js':'meal-ratings.js','/culture-articles.js':'culture-articles.js','/tip-policy.js':'tip-policy.js','/food-recommendations.js':'food-recommendations.js','/food-catalog.js':'food-catalog.js','/korean-place.js':'korean-place.js','/free-menu.js':'free-menu.js','/camera.js':'camera.js','/destinations.js':'destinations.js','/style.css':'style.css','/demo.svg':'demo.svg','/assets/dish-1.png':'assets/dish-1.png','/assets/dish-1-detail.png':'assets/dish-1-detail.png','/assets/dish-2.png':'assets/dish-2.png','/assets/dish-3.png':'assets/dish-3.png'};const file=allowed[url.pathname]||(/^\/assets\/(?:solita|culture)\/[a-z0-9-]+\.jpg$/.test(url.pathname)?url.pathname.slice(1):null);if(!file){res.writeHead(404);res.end('Not found');return;}
+    const allowed={'/':'index.html','/app.js':'app.js','/italian-order.js':'italian-order.js','/menu-categories.js':'menu-categories.js','/meal-ratings.js':'meal-ratings.js','/culture-articles.js':'culture-articles.js','/tip-policy.js':'tip-policy.js','/food-recommendations.js':'food-recommendations.js','/food-catalog.js':'food-catalog.js','/korean-place.js':'korean-place.js','/free-menu.js':'free-menu.js','/camera.js':'camera.js','/destinations.js':'destinations.js','/style.css':'style.css','/demo.svg':'demo.svg','/assets/dish-1.png':'assets/dish-1.png','/assets/dish-1-detail.png':'assets/dish-1-detail.png','/assets/dish-2.png':'assets/dish-2.png','/assets/dish-3.png':'assets/dish-3.png'};const file=allowed[url.pathname]||(/^\/assets\/(?:solita|culture)\/[a-z0-9-]+\.jpg$/.test(url.pathname)?url.pathname.slice(1):null);if(!file){res.writeHead(404);res.end('Not found');return;}
     res.setHeader('Content-Type',file.endsWith('.js')?'text/javascript':file.endsWith('.css')?'text/css':file.endsWith('.svg')?'image/svg+xml':file.endsWith('.png')?'image/png':file.endsWith('.jpg')?'image/jpeg':'text/html');res.end(await readFile(root+file));
   }catch(e){res.writeHead(400,{'Content-Type':'application/json'});res.end(JSON.stringify({error:e.message.includes('fetch')?'외부 서비스 연결 실패. 네트워크 상태를 확인해주세요.':e.message}));}
 });}

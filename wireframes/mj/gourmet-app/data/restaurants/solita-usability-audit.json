@@ -1,0 +1,303 @@
+{
+  "checkedAt": "2026-10-11T03:17:54.733Z",
+  "items": [
+    {
+      "name": "ROSATO IGT 2024 - GUIDOTTI",
+      "category": "16 VINO ROSATO",
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "imageMatches": null,
+      "note": "공식 사진 없음"
+    },
+    {
+      "name": "ETNA ROSATO DOC 2024 - GRACI",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/8b23e2d7-8281-4cc9-a03b-a8913d204c75",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/4646b5ae-23b9-44c6-9a16-c3481cc65a1b.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 7087
+    },
+    {
+      "name": "ROSATO IGT SMORFIOSA IN ROSA - RAVAZZI",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/9bb7ab0f-a6bd-464e-94e0-fe499f64109e",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/959060cb-7bc5-435e-b85c-6b8431a45ce8.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": false,
+      "bytes": 8391
+    },
+    {
+      "name": "FUORI MISURA IGT 2024 - SAN GIUSTO A RENTENNANO",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/69faf1c2-4d3a-4740-af75-275b98736bed",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/abd4e07a-8d1d-4e34-ae78-ad74a064968c.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 21782
+    },
+    {
+      "name": "ROSATO TOSCANA IGT 2024 USTA - PODERE DELLA BRUCIATA",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/500c54e5-6f2b-4b1d-b944-bc5af3668ed7",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/683de7f9-9d29-4df3-8339-41be29398c73.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 5464
+    },
+    {
+      "name": "IGT 2024 14 PRIMAVERE FATTORIA SARDI",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/64ff11cc-63ef-4d79-b9a7-83c48fdb6db2",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/122134d5-86af-4e18-85d8-b01aafa5cd40.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 5727
+    },
+    {
+      "name": "TOSCANA IGT ALIKI - PODERNUOVO",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/65446236-0b94-4e1b-b535-6de53b85ccc3",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/a7f907cb-e565-43d4-9c0f-606823059e26.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 24568
+    },
+    {
+      "name": "BINDELLA GEMELLA IGT 2025",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/6a2d6640-da58-4bf6-83bf-c720ba750a8b",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/9f370b64-b930-4c23-bc8c-26234894fc61.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 21436
+    },
+    {
+      "name": "CAPOCOLLO AL ROSMARINO E MIELE DI CASTAGNO",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/bcf37501-8352-42a7-8312-0a546e563efa",
+      "image": "https://cassanova-prod.s3.amazonaws.com/images/b335ac9c-9d4f-4e03-a6f4-23d8cf99fca2.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 16184
+    },
+    {
+      "name": "KERNOS IGT 2024 - COLLE SANTA MUSTIOLA",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/189e521d-872a-49b4-a19f-b28bf66e3bc7",
+      "image": "https://cassanova-prod.s3.amazonaws.com/images/a4167dff-3298-4482-ac08-2ed3810fedfb.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 6283
+    },
+    {
+      "name": "ROSATO UMBRIA IGT BIO VEGANO AMORE - BARBERANI",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/09fe01d2-fa0c-4924-992c-261efccbdcfc",
+      "image": "https://cassanova-prod.s3.amazonaws.com/images/aac2a680-306d-4f86-ace1-d4c9ab32a81d.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 7367
+    },
+    {
+      "name": "COSTA D'AMALFI 2024 - MARISA CUOMO",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/d4c2f4e8-c363-453a-99ed-1d2600f9053e",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/9731ec11-8f14-4500-810d-e90364c2745b.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 28863
+    },
+    {
+      "name": "ROSATO IGT 2024 A - MARCHESI ANTINORI",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/e4a14f57-778e-46c6-a9bd-45c170439215",
+      "image": "https://cassanova-prod.s3.amazonaws.com/images/72411686-c1f2-46ba-9249-3224321dc31d.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 5916
+    },
+    {
+      "name": "ROSATO TOSCANA IGT 2024 ZELIA - OLIVI",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/5422d288-28e3-4d70-bd44-f40f706291f4",
+      "image": "https://cassanova-prod.s3.amazonaws.com/images/ef20e6be-e912-4b91-bace-3b55e158a6e3.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 52741
+    },
+    {
+      "name": "GUANCIA DI MANZO ALLE SPEZIE",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/58692910-6127-4abd-8678-55a0d699ecb8",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/a8b3ce5f-7621-4ba6-9169-c07cb2725562.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 130817
+    },
+    {
+      "name": "POLPETTE DI CHIANINA E CINTA SENESE AL POMODORO",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/836ee9c8-82c8-4e96-907c-231c288dbffe",
+      "image": "https://cassanova-prod.s3.amazonaws.com/images/109cd6d7-d003-4340-a0c8-21dbc1bddf43.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 19625
+    },
+    {
+      "name": "BACCALA' ALLA FIORENTINA",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/39bffaa8-f012-43b4-b005-75c0525babcd",
+      "image": "https://cassanova-prod.s3.amazonaws.com/images/896de399-acaf-4cf2-8e19-8eee1621a355.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 17913
+    },
+    {
+      "name": "ZUPPA DI MELANZANE FUME'",
+      "category": "zuppe",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/bf354a43-75d8-4ce9-9fc2-b10d3a86ebeb/41c61fa2-9c8f-4915-a4ef-0c9fa13c080f",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/3096d25a-39f0-4e0d-a6a6-2baf4b0036c1.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 532346
+    },
+    {
+      "name": "BACCALA' FRITTO",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/20626d23-0439-4187-b1d6-a45b18112327",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/3eb38528-d67f-41f0-b5f1-4f70b4a000aa.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 190813
+    },
+    {
+      "name": "CINGHIALE IN SALMI'",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/4108c9d2-d269-4c41-b578-b2adb22b8c68",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/b62cb21a-1755-4493-8670-82c6d0f374b4.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 416319
+    },
+    {
+      "name": "TRIPPA ALLA FIORENTINA",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/a2afdbe4-adc6-4ae5-b513-e65b1d59d60d",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/3293ad48-44ce-40f4-b5bd-4ec05a13d9b5.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 351806
+    },
+    {
+      "name": "ZUPPA DI CECI E PORCINI",
+      "category": "zuppe",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/bf354a43-75d8-4ce9-9fc2-b10d3a86ebeb/2928bddd-77b5-4aab-b2de-f6c1450add5a",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/8a4c8498-f99d-4067-8fb7-d285e658f8f2.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 543869
+    },
+    {
+      "name": "ZUPPA DI ZUCCA E FARRO",
+      "category": "zuppe",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/bf354a43-75d8-4ce9-9fc2-b10d3a86ebeb/01851bcb-017e-4512-b2d7-4d95cc00716d",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/bc3e1e73-9795-497e-b23d-160c789acd2b.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 340831
+    },
+    {
+      "name": "ROAST-BEEF DI CHIANINA",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/5834c7dc-e880-445c-9913-7968242c21f3",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/bbe05520-64bb-4d98-a4b2-4cd8868e7c90.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 575417
+    },
+    {
+      "name": "POLLO ALLE SPEZIE",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/f701e43a-cb92-44e9-a011-25fbda649595",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/d3675537-3f17-4054-a8fc-840eea138fdb.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 486058
+    },
+    {
+      "name": "ZUPPA DI PORRI E PATATE",
+      "category": "zuppe",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/bf354a43-75d8-4ce9-9fc2-b10d3a86ebeb/6b15ef9d-0e07-4dc4-8dd9-089e5d0ffddb",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/0674dbd6-c8b1-4715-80b2-7e4170739815.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 471597
+    },
+    {
+      "name": "SALENTO ROSATO IGT 2024 CALAFURIA - MARCHESI ANTINORI",
+      "category": "16 VINO ROSATO",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/b4e75307-9b60-4971-add6-aeb33192fe55/caa012b0-e1c3-4555-947d-21db1e136ca5",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/145bae41-20e3-45b0-a47a-86e9afd4b73f.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 81261
+    },
+    {
+      "name": "OSSOBUCO DI CHIANINA E PURE' DI PATATE",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/11d4a5f5-dab9-4886-a562-17dc8eeacfbf",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/be3379e7-379f-48d5-bc3d-59e24fe2b945.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 575268
+    },
+    {
+      "name": "MANZO AI PORCINI",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/a073b14d-b6c3-40c1-9670-e013c3f893e7",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/8903bf1a-ce41-4667-82cb-d4d6292326fe.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 427484
+    },
+    {
+      "name": "CONIGLIO ALLO ZENZERO E LIMONE",
+      "category": "SECONDI",
+      "source": "https://11729.ordinaincloud.it/menu/13361/products/2da3968e-f1bb-491f-9a04-b8b2fb137bbc/df0bb726-4c8c-45d7-94d0-4356a79135fc",
+      "image": "https://cassanova-prod-public.s3.amazonaws.com/images/344323e5-6d2f-4cc9-9273-7665997ab800.jpg",
+      "imageMatches": true,
+      "categoryMatches": true,
+      "liveAvailable": true,
+      "bytes": 456446
+    }
+  ]
+}
