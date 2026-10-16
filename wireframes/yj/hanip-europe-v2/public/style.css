@@ -84,3 +84,88 @@
 .category-heading-copy>.category-original{color:#77736e}
 
 .screen-order .staff-show-button{background:#fff;color:var(--orange);border:1px solid var(--orange)}
+
+/* Capture: the camera fills the whole screen; header and controls float over it. */
+#app.screen-capture{position:relative;height:100dvh;overflow:hidden;background:#000}
+.screen-capture header{position:absolute;top:0;left:0;right:0;z-index:4;border:0;background:linear-gradient(#000000a6,#0000)}
+.screen-capture header .icon{color:#fff}
+.screen-capture main{position:absolute;inset:0;padding:0;overflow:hidden;display:block}
+.screen-capture .camera,.screen-capture .camera{position:absolute;inset:0;height:auto;min-height:0}
+.screen-capture .camera-frame{inset:84px 22px 210px}
+.screen-capture .camera-guide{bottom:178px;z-index:2}
+.screen-capture .camera-controls{position:absolute;left:0;right:0;bottom:0;z-index:3;background:linear-gradient(#0000,#000000b3 38%);padding:40px 16px calc(16px + env(safe-area-inset-bottom))}
+.screen-capture .camera-buttons{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;justify-items:center;gap:0;margin:10px 0 12px}
+.screen-capture main>.error{position:absolute;top:70px;left:14px;right:14px;z-index:5;margin:0}
+.photo-stack{position:relative;display:block;width:54px;height:54px;min-height:54px;padding:0;background:transparent;border-radius:0}
+.stack-photo{position:absolute;inset:0;border:2px solid #fff;border-radius:6px;overflow:hidden;background:#222;transform:translateY(calc(var(--k) * -1.5px)) rotate(var(--r));box-shadow:0 1px 3px #00000040}
+.stack-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.stack-photo.is-new{animation:stack-drop .35s ease-out}
+@keyframes stack-drop{from{transform:translate(-72px,-24px) scale(1.5);opacity:0}}
+.stack-count{position:absolute;right:-8px;top:-10px;z-index:2;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--orange);color:#fff;font-size:11px;line-height:20px;font-weight:700}
+.photo-spread{position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;background:#000000d9;color:#fff;backdrop-filter:blur(6px)}
+.spread-top{display:flex;align-items:center;justify-content:space-between;min-height:64px;padding:10px 8px 0 20px}
+.spread-top strong{font-size:16px}
+.spread-close{background:transparent;color:#fff;padding:10px}
+.spread-cards{flex:1;display:flex;align-items:center;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 19%;scrollbar-width:none}
+.spread-cards::-webkit-scrollbar{display:none}
+.spread-card{position:relative;flex:0 0 62%;scroll-snap-align:center;transform:rotate(calc(var(--r) * .35))}
+.spread-card-open{display:block;width:100%;min-height:0;padding:8px 8px 28px;background:#fff;border-radius:6px;box-shadow:0 8px 24px #00000066}
+.spread-card-open img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px;background:#eee}
+.spread-card-number{position:absolute;left:0;right:0;bottom:7px;text-align:center;font-size:12px;color:#666;pointer-events:none}
+.spread-cards.is-opening .spread-card{animation:spread-in .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--k) * 70ms)}
+@keyframes spread-in{from{transform:translate(150px,320px) scale(.18) rotate(var(--r));opacity:.5}}
+.spread-hint{text-align:center;font-size:12px;color:#cfcfcf;margin:0 0 calc(32px + env(safe-area-inset-bottom))}
+.spread-focus{flex:1;display:flex;flex-direction:column;min-height:0;padding:0 16px calc(20px + env(safe-area-inset-bottom))}
+.spread-focus-image{flex:1;min-height:0;padding:0;background:transparent;border-radius:12px;animation:focus-in .25s ease-out}
+.spread-focus-image img{display:block;width:100%;height:100%;object-fit:contain}
+@keyframes focus-in{from{transform:scale(.6);opacity:.4}}
+.spread-focus-actions{display:flex;align-items:center;justify-content:space-between;padding-top:12px;font-size:13px;color:#cfcfcf}
+.spread-remove{min-height:40px;padding:8px 14px;background:#ffffff1f;color:#fff;font-size:13px}
+@media(prefers-reduced-motion:reduce){.stack-photo.is-new,.spread-cards.is-opening .spread-card,.spread-focus-image,.picked-avatar{animation:none}}
+
+/* Restaurant check: one card plus two actions, no scrolling. */
+.screen-restaurant main{padding-bottom:150px}
+.restaurant-confirm-card{margin-top:4px}
+.restaurant-map{height:clamp(140px,calc(100dvh - 470px),260px)}
+.match-chips{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 0 14px}
+.match-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:20px;background:#fff1e8;color:#c2410c;font-size:12px;font-weight:700}
+.match-chip svg{width:15px;height:15px}
+
+/* Menu: two-column cards. */
+.menu-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:12px 0 8px}
+.menu-card{display:flex;flex-direction:column;background:#fff;border:1px solid #ece7e0;border-radius:16px;overflow:hidden;cursor:pointer}
+.menu-card:focus-visible{outline:3px solid #ffb18e;outline-offset:2px}
+.menu-card-photo{position:relative;aspect-ratio:1/1}
+.menu-card-photo .art{width:100%;height:100%;border-radius:0}
+.menu-card-photo .image-add{right:8px;bottom:8px}
+.menu-card-photo .quantity{position:absolute;right:6px;bottom:6px;margin:0;gap:0;box-shadow:0 2px 4px #0000001a}
+.menu-card-photo .quantity button{width:30px}
+.picked-by{display:flex;gap:4px;min-height:32px;padding:7px 10px 0}
+.picked-avatar{position:relative;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#8c583c;color:#fff;font-size:11px;font-weight:700;box-shadow:0 0 0 2px #fff;animation:picked-pop .3s ease-out}
+.picked-avatar small{position:absolute;right:-7px;top:-6px;min-width:15px;padding:0 3px;border-radius:8px;background:var(--orange);color:#fff;font-size:9px;line-height:15px;text-align:center}
+@keyframes picked-pop{from{transform:scale(.3);opacity:0}}
+.menu-card-copy{padding:2px 10px 12px}
+.menu-card-copy small{display:block;font-size:10px;line-height:1.4;overflow-wrap:anywhere}
+.menu-card-copy h3{font-size:14px;font-weight:500;line-height:1.4;margin:3px 0 6px}
+.menu-card .price{display:block;font-size:13px}
+.menu-card .krw-price{display:block;margin:2px 0 0}
+
+/* Cart: one card per person, each with its own subtotal. */
+.screen-cart main{padding-top:12px}
+.member-total{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;border-top:1px solid #f1f1f2;padding-top:12px;font-size:13px}
+.member-total strong{text-align:right;font-size:15px;color:var(--ink)}
+.member-total .krw-price{display:block;margin:2px 0 0}
+
+/* Order: meaning, original sentence with speaker, pronunciation; request field visible without scrolling. */
+.screen-order main{padding-top:16px}
+.order-card{padding:16px}
+.order-card p.order-meaning{font-size:17px;font-weight:700;color:var(--ink);line-height:1.5;margin:0 0 12px}
+.screen-order .order-text{font-size:19px;margin:0}
+.order-card p.order-pronunciation{margin:8px 0 0}
+.sound-button{display:flex;align-items:center;justify-content:center;color:var(--orange)}
+.sound-button svg{width:21px;height:21px}
+.order-request{margin:14px 0 10px}
+.order-request label{font-size:15px;margin:0 0 6px}
+.order-request textarea{min-height:72px;margin-top:0}
+.order-request p{margin:4px 0 0}
+#app.screen-capture+#notice{bottom:calc(200px + env(safe-area-inset-bottom))}
