@@ -52,6 +52,20 @@ const exchange = createExchangeRates(realFetch);
 const fallbackRates = {EUR: 1600, CHF: 1700, GBP: 1850, CZK: 64, HUF: 4, PLN: 375, DKK: 215, SEK: 140, NOK: 135};
 const cities = citySearch({ASSETS: {fetch: req => realFetch(new URL('cities/' + new URL(req.url).pathname.split('/cities/')[1], new URL('../public/', here)).href)}}, location.origin);
 
+// 프로토타입 시연용: 메뉴판이 공유되면 동반인(김미영)이 메뉴 2개를 이미 담은 상태로 보여줍니다.
+// (실제로는 초대 링크로 들어온 사람이 담지만, 정적 사이트에서는 두 번째 기기가 없기 때문입니다.)
+const companionPicks = ['ZUPPA DI ZUCCA E FARRO', "OSSOBUCO DI CHIANINA E PURE' DI PATATE"];
+async function seedCompanionCart(roomId) {
+  const row = readRooms()[String(roomId)];
+  if (!row) return;
+  const room = JSON.parse(row.data), companion = room.members.find(m => m.id === 'companion');
+  if (!companion || !room.menu) return;
+  for (const original of companionPicks) {
+    const item = room.menu.items.find(i => i.original === original);
+    if (item) await carts.handle('delta', {roomId, token: companion.token, itemId: item.id, delta: 1, operationId: 'demo-' + item.id});
+  }
+}
+
 async function handle(path, b) {
   if (path === '/api/config') return {usabilityTest: true, freeMode: true, gemini: false, vision: false, places: false, imageSearch: false, staticPrototype: true};
   if (path === '/api/usability-menu') return loadJSON('usability-menu.json');
@@ -63,7 +77,11 @@ async function handle(path, b) {
   if (path === '/api/destinations') return searchDestinations(b, realFetch, cities);
   if (path.startsWith('/api/shared/')) {
     for (let attempt = 0; attempt < 8; attempt++) {
-      try { return await carts.handle(path.slice('/api/shared/'.length), b); }
+      try {
+        const action = path.slice('/api/shared/'.length), result = await carts.handle(action, b);
+        if (action === 'menu') await seedCompanionCart(b.roomId);
+        return result;
+      }
       catch (e) { if (e.message !== 'CART_CONFLICT') throw e; }
     }
     throw Error('다른 화면에서 변경 중이에요. 잠시 후 다시 시도해주세요.');
