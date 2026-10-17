@@ -1,27 +1,48 @@
-# MJ 프로토타입 모음
+# 한입 유럽 · MJ 프로토타입
 
-2026-10-13 기준 유럽 미식 가이드의 로컬 프로토타입, 최신 공개 사이트 코드와 기획 페이지입니다.
+2026-10-17 최신 디자인과 기능을 반영한 **공개 사이트 버전 25**입니다. 박성호·김미영 화면은 별도 앱 두 개가 아니라, 같은 코드에서 역할을 바꾸어 접속하는 두 시점입니다.
 
-- [한입 유럽 앱](gourmet-app/): 촬영, 메뉴 해석, 식당 확인, 음식 추천, 동반인, 장바구니와 주문 화면. 코드, 이미지, 화면 미리보기, 테스트, Figma 제작 스크립트를 포함합니다.
-- [최신 공개 사이트 코드](hanip-europe-site/): 2026-10-11 공개한 사용성 테스트용 프로토타입의 전체 소스, 메뉴 사진, 여행지 데이터와 클라우드 서버 코드입니다. 임의 사진 → Osteria La Solita Zuppa 확인 → 수프·메인 요리·로제 와인 30개 표시 흐름과 촬영 후 이동 수정본을 포함합니다.
-- [기획 페이지](gourmet-prd/index.html) / [기능명세서](gourmet-prd/spec.html): 브라우저로 열 수 있는 HTML입니다.
+## 바로 사용하기
 
-공개 사이트: [한입 유럽](https://hanip-europe-menu.alswn2963.chatgpt.site/). 공개 사이트 소스의 실행 안내는 [PROTOTYPE.md](hanip-europe-site/PROTOTYPE.md)를 참고하세요.
+- [공개 홈](https://hanip-europe-menu.alswn2963.chatgpt.site/)
+- [박성호 시점](https://hanip-europe-menu.alswn2963.chatgpt.site/?prototype=1ec56f09-d5ed-475c-872b-1849267969c8&person=seongho)
+- [김미영 시점](https://hanip-europe-menu.alswn2963.chatgpt.site/?prototype=1ec56f09-d5ed-475c-872b-1849267969c8&person=miyeong)
 
-## 앱 실행
+두 링크를 각각 다른 브라우저 또는 기기에서 열면 같은 메뉴판과 장바구니에 연결됩니다. 각자 고른 수량은 따로 표시됩니다. 동일한 `prototype` UUID가 같은 방을 의미하므로, 다른 테스트에는 새 UUID를 양쪽 링크에 똑같이 사용하세요. 로컬 서버와 공개 서버의 장바구니는 서로 연결되지 않습니다.
 
-Node.js 22.13 이상을 설치하고 아래를 실행하세요. 별도의 패키지 설치는 필요 없습니다.
+## 코드 구성
+
+| 폴더 | 용도 |
+| --- | --- |
+| [gourmet-app](gourmet-app/) | **가장 쉽게 실행하는 로컬 버전.** Node.js만 필요하고 패키지 설치 없이 실행합니다. 두 시점·공유 장바구니·최신 UI를 포함합니다. |
+| [hanip-europe-site](hanip-europe-site/) | **현재 공개 사이트 전체 소스이자 UI 수정의 기준.** Vinext/React + Cloudflare D1 구성입니다. |
+| [gourmet-prd](gourmet-prd/) | 기존 기획 페이지와 기능명세 기록. 현재 화면·동작은 위 코드와 최신 README를 기준으로 합니다. |
+
+## 빠른 로컬 실행
+
+Node.js 22.13 이상(권장 24 이상)에서 저장소 루트를 기준으로 실행합니다.
 
 ```sh
-cd wireframes/mj/gourmet-app
-cp .env.example .env
+git clone --branch wireframes --single-branch https://github.com/SMWUmeide/meide.git
+cd meide/wireframes/mj/gourmet-app
 npm start
 ```
 
-http://localhost:3000 에서 확인하세요. API 키가 없으면 데모/무료 모드로 사용하며 실제 AI 연동은 각자 `.env`에 키를 설정해야 합니다. 키와 개인 사용 기록은 공유하지 않습니다.
+- 홈: <http://localhost:3000/>
+- 박성호: <http://localhost:3000/?prototype=1ec56f09-d5ed-475c-872b-1849267969c8&person=seongho>
+- 김미영: <http://localhost:3000/?prototype=1ec56f09-d5ed-475c-872b-1849267969c8&person=miyeong>
 
-전체 도시 데이터는 GitHub 파일 용량 제한 때문에 압축해 포함했습니다. `npm start`와 `npm test`가 첫 실행 시 자동 복원하며 SHA-256을 확인합니다. 이 컴퓨터에는 원본 데이터도 복사해 두었습니다.
+API 키 없이 기본 프로토타입을 실행할 수 있습니다. 첫 실행 시 포함된 도시 데이터 압축을 풀고 체크섬을 검사합니다. `index.html`을 직접 열거나 GitHub 파일 화면으로 실행하지 말고 로컬 서버를 사용하세요.
 
-디자인 예시: `/?design=menu`, `/?design=cart`, `/?design=order`, `/?design=staff`. 모든 실행 안내와 기존 검증 기록은 앱의 README 및 TEST-RESULTS.md를 참고하세요.
+## 화면 수정
 
-GitHub에서 코드를 공유하는 구성입니다. 실제 서버가 필요한 AI 연동 앱은 GitHub 파일 화면에서 바로 실행되지는 않습니다.
+1. `hanip-europe-site/public/app.js`에서 화면 구성과 동작을 수정합니다.
+2. `hanip-europe-site/public/style.css`에서 색·폰트·여백·아이콘 배치를 수정합니다.
+3. MJ 폴더에서 `node scripts/sync-prototypes.mjs`를 실행해 같은 UI와 메뉴 데이터를 로컬 버전에 반영합니다.
+4. `node scripts/sync-prototypes.mjs --check`로 두 코드의 공유 파일이 일치하는지 확인합니다.
+
+백엔드는 서로 다릅니다. 로컬 API는 `gourmet-app/server.mjs`, 클라우드 API는 `hanip-europe-site/lib/cloud-api.ts`입니다. 공유 UI 동기화 명령은 백엔드를 덮어쓰지 않습니다.
+
+현재 디자인은 화이트·벽돌빛 레드·아이보리 포인트, Pretendard, 하단 글래스 메뉴, 어두운 마주보기 대화 화면입니다. 메뉴는 한 줄 요약, 자세한 설명은 상세 화면에 표시합니다. 주문 확대 아이콘 위치·확대 화면 상단 정렬 및 안내 문구 제거까지 반영했습니다.
+
+번역 연결, 음성 입력, 촬영 테스트 방식, 수정할 파일과 검증 방법은 각 폴더 README를 참고하세요. `.env`, 개인 주문 기록, 설치 의존성, 로컬 DB와 빌드 산출물은 공유하지 않습니다. 이 GitHub 코드를 수정해도 기존 공개 사이트에는 자동 배포되지 않습니다.

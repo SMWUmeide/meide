@@ -1,0 +1,8 @@
+{
+  "updated_at": "2026-10-17",
+  "published_version": 25,
+  "source_commit": "7095d13d06038639e1d32753e5628f69bd55a1a9",
+  "live_url": "https://hanip-europe-menu.alswn2963.chatgpt.site/",
+  "personas": ["seongho", "miyeong"],
+  "shared_ui_check": "node ../scripts/sync-prototypes.mjs --check"
+}

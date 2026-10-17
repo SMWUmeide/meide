@@ -1,0 +1,22 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createSharedCarts} from '../shared-cart.mjs';
+import {getUsabilityMenu} from '../restaurant-catalog.mjs';
+const pair='9ac38831-a76d-4c08-bdf9-c5f837f096bf';
+test('local personas share a room, preserve separate selections and reconnect without losing orders',()=>{
+ const carts=createSharedCarts(':memory:'),menu=getUsabilityMenu();
+ const a=carts.handle('prototype',{pair,person:'seongho',menu});
+ const b=carts.handle('prototype',{pair,person:'miyeong',menu});
+ assert.equal(a.room.id,b.room.id);assert.notEqual(a.token,b.token);
+ assert.equal(a.memberId,'me');assert.equal(b.memberId,'companion');
+ assert.deepEqual(b.room.members.map(m=>m.name),['박성호','김미영']);
+ const id=menu.items[0].id,auth={roomId:b.room.id,token:b.token};
+ carts.handle('delta',{...auth,itemId:id,delta:1,operationId:'guest-add'});
+ const room=carts.handle('get',{roomId:a.room.id,token:a.token}).room;
+ assert.equal(room.members[0].cart[id],undefined);assert.equal(room.members[1].cart[id],1);
+ assert.equal(room.events[0].id,'guest-add');assert.equal(room.events[0].name,'김미영');
+ assert.ok(room.members.every(m=>!('token' in m)));
+ const reconnect=carts.handle('prototype',{pair,person:'miyeong',menu});
+ assert.equal(reconnect.token,b.token);assert.equal(reconnect.room.members[1].cart[id],1);
+ assert.throws(()=>carts.handle('prototype',{pair:'bad',person:'seongho',menu}));
+});
