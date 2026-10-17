@@ -4,6 +4,18 @@
 
 공개 주소: https://hanip-europe-menu.alswn2963.chatgpt.site/
 
+## GitHub Pages 정적 프로토타입
+
+주소: https://smwumeide.github.io/meide/wireframes/yj/hanip-europe-v2/prototype/
+
+`prototype/` 폴더는 `public/`을 서버 없이 열리도록 변환한 결과물입니다. 서버 API는 `scripts/static-prototype/api-shim.mjs`가 브라우저 안에서 대신 처리합니다.
+
+- 메뉴: 고정 메뉴(Osteria La Solita Zuppa) 그대로 사용
+- 함께 담기: 같은 기기·같은 브라우저 안에서만 공유됨 (서로 다른 폰끼리는 연결되지 않음)
+- 환율: 실시간 조회 실패 시 고정 환율 사용
+
+`public/`을 고친 뒤에는 이 폴더에서 `node scripts/static-prototype/build.mjs`를 실행해 `prototype/`을 다시 만들고 함께 커밋하세요.
+
 ## 주요 파일
 
 - `public/app.js`, `public/style.css`, `public/index.html`: 화면과 사용자 흐름
