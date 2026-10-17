@@ -170,3 +170,41 @@
 .order-request textarea{min-height:72px;margin-top:0}
 .order-request p{margin:4px 0 0}
 #app.screen-capture+#notice{bottom:calc(200px + env(safe-area-inset-bottom))}
+/* 주문 확인서 (영수증) */
+#app.screen-receipt{background:#f3f4f5}
+.screen-receipt main{padding:18px 20px 170px}
+.receipt-intro{font-size:13px;color:var(--muted);margin:0 4px 14px;line-height:1.6}
+.receipt-paper{position:relative;background:#fff;border-radius:6px 6px 0 0;padding:22px 20px 26px;box-shadow:0 1px 2px #0000000a,0 8px 24px #0000000d;font-variant-numeric:tabular-nums;transform-origin:top center;animation:receipt-print .7s cubic-bezier(.2,.8,.2,1) both}
+.receipt-paper::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:linear-gradient(-45deg,transparent 7px,#fff 0) 0 0/14px 10px repeat-x,linear-gradient(45deg,transparent 7px,#fff 0) 0 0/14px 10px repeat-x;filter:drop-shadow(0 4px 3px #0000000a)}
+@keyframes receipt-print{from{clip-path:inset(0 0 100% 0);transform:translateY(-12px)}to{clip-path:inset(0 0 -20px 0);transform:none}}
+@media (prefers-reduced-motion:reduce){.receipt-paper{animation:none}}
+.rc-head{text-align:center;padding-bottom:16px;border-bottom:1px dashed #d6d7da}
+.rc-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--orange);margin-bottom:6px}
+.rc-head h1{font-size:18px;line-height:1.4;letter-spacing:-.3px;margin:0 0 4px}
+.rc-head p{font-size:12px;color:var(--muted);margin:0}
+.rc-section{padding:14px 0;border-bottom:1px dashed #d6d7da;display:grid;gap:14px}
+.rc-row{display:flex;align-items:flex-end;gap:6px;font-size:15px}
+.rc-name{display:flex;flex-direction:column;min-width:0;font-weight:500;line-height:1.45}
+.rc-name b{color:var(--orange);font-weight:700}
+.rc-name small{font-size:11px;line-height:1.5;color:var(--muted);font-weight:400;letter-spacing:.01em}
+.rc-dots{flex:1;min-width:16px;border-bottom:2px dotted #cfd0d3;margin-bottom:7px}
+.rc-price{font-weight:700;white-space:nowrap;margin-bottom:1px}
+.rc-price.muted{color:var(--muted);font-weight:500;font-size:14px}
+.rc-options{list-style:none;margin:4px 0 0;padding:0 0 0 2px;display:grid;gap:2px}
+.rc-options li{font-size:13px;color:#5e6064;line-height:1.5}
+.rc-options li::before{content:"└ ";color:#b9babd}
+.rc-request{background:#f7f7f8;border-radius:10px;padding:10px 12px}
+.rc-request span{font-size:11px;font-weight:700;color:var(--muted)}
+.rc-request p{font-size:13px;margin:2px 0 0;line-height:1.55}
+.rc-note{display:flex;gap:7px;align-items:flex-start;margin:7px 0 0;font-size:12px;line-height:1.6;color:#6b6d71}
+.rc-note-icon{flex:none;width:17px;height:17px;border-radius:50%;border:1.5px solid var(--orange);color:var(--orange);font-size:10px;font-weight:700;display:grid;place-items:center;margin-top:1px}
+.rc-total{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-top:16px}
+.rc-total>div:first-child{display:flex;flex-direction:column}
+.rc-total>div:first-child span{font-weight:700;font-size:15px}
+.rc-total>div:first-child small{font-size:11px}
+.rc-total-price{text-align:right}
+.rc-total-price strong{display:block;font-size:24px;letter-spacing:-.5px;line-height:1.2}
+.rc-total-price .krw-price{font-size:12px;color:var(--muted)}
+.rc-disclaimer{margin:18px 0 0;font-size:11px;color:#a5a7aa;text-align:center;line-height:1.6}
+.receipt-actions{display:grid;gap:8px}
+.receipt-actions .outline{margin-top:0;background:#fff;color:var(--orange);border-color:var(--orange)}
