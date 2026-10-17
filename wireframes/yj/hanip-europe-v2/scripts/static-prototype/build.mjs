@@ -4,6 +4,7 @@
 import {readFileSync, writeFileSync, mkdirSync, rmSync, readdirSync, statSync, copyFileSync} from 'node:fs';
 import {join, dirname} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const pub = join(root, 'public'), lib = join(root, 'lib'), out = join(root, 'prototype');
@@ -61,3 +62,14 @@ try {
 } finally { rmSync(tmp, {force: true}); }
 
 console.log('prototype/ 생성 완료');
+
+// 브라우저·Pages 캐시가 옛 화면을 붙잡지 않도록, 파일 내용이 바뀔 때마다 index.html의 버전 값도 바뀌게 합니다.
+{
+  const files = ['app.js', 'style.css', 'api-shim.js', join('lib', 'shared-cart.js')];
+  const v = createHash('sha1').update(files.map(f => readFileSync(join(out, f))).join('\n')).digest('hex').slice(0, 8);
+  const page = readFileSync(join(out, 'index.html'), 'utf8')
+    .replace(/(href="\.\/style\.css)(\?v=[^"]*)?"/, `$1?v=${v}"`)
+    .replace(/(src="\.\/api-shim\.js)(\?v=[^"]*)?"/, `$1?v=${v}"`)
+    .replace(/(src="\.\/app\.js)(\?v=[^"]*)?"/, `$1?v=${v}"`);
+  writeFileSync(join(out, 'index.html'), page);
+}
