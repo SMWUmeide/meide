@@ -217,6 +217,8 @@
 .screen-order main{padding:28px 20px 24px;min-height:calc(100dvh - 64px);display:flex;flex-direction:column}
 .order-audio,.conversation-sound{display:grid;place-items:center;background:transparent;color:#57483e;border:1px solid #e9e3db;border-radius:50%;padding:10px;width:48px;height:48px}
 .order-audio svg,.conversation-sound svg{width:25px;height:25px}
+.counterpart{transform:rotate(180deg);background:#faf6ef}
+.my-side{background:white}
 .screen-conversation{height:100dvh;overflow:hidden}
 .screen-conversation header{height:52px;min-height:52px}
 .screen-conversation main{height:calc(100dvh - 52px);padding:0;overflow:hidden}
@@ -283,3 +285,5 @@
 .order-live-entry{margin-top:auto;padding-top:28px}
 .order-live-entry button{min-height:58px;font-size:18px;border-radius:15px}
 .order-complete{font-size:13px;color:#86888b;margin-top:12px}
+.order-tools{display:flex;flex-direction:column;gap:8px;flex-shrink:0}
+.order-tools .sound-button:disabled{opacity:.4}
