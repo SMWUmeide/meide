@@ -118,7 +118,10 @@ export function refreshViews() {
     price: Number(data.formatAmount(m.price)),
     category:
       state.board.sections.find((s) => s.id === m.sectionId)?.korean ?? "",
-    photo: imageUrl(m.image, m.id),
+    photo: imageUrl(
+      m.image?.verification === "dish-v1" ? m.image : undefined,
+      m.id,
+    ),
     analogy: m.ai.analogy,
     taste: m.ai.taste,
     ingredients: m.confirmed.ingredients.map((i) => [i.korean, i.original]),
@@ -301,7 +304,10 @@ export function menuById(id: string): Menu {
       korean: archived.korean,
       price: Number(data.formatAmount(archived.price)),
       category: "",
-      photo: imageUrl(archived.image, archived.id),
+      photo: imageUrl(
+        archived.image?.verification === "dish-v1" ? archived.image : undefined,
+        archived.id,
+      ),
       analogy: archived.ai.analogy,
       taste: archived.ai.taste,
       ingredients: archived.confirmed.ingredients.map((i) => [

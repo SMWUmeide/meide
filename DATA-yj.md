@@ -82,6 +82,8 @@ MenuBoard(메뉴판 한 번 해석한 결과) ─┬─ MenuPhoto(찍은 사진)
 
 **MenuImage**: `url` · `source: "wikimedia" | "unsplash" | "pexels"` · `credit`(저작자) · `license` · `pageUrl` · `isReference: true`(항상 "참고 사진 · 실제와 다를 수 있어요" 표시).
 
+검색 사진에는 `verification?: "dish-v1"`을 추가한다. 메뉴 사진은 서버에서 이미지 자체가 음식이며 해당 메뉴의 주재료·조리 형태와 일치한다는 높은 확신의 검증을 통과한 경우만 이 값을 기록하고 표시한다. 기존 미검증 사진은 숨기고 재검색한다. 검증 API 오류·불확실·키 없음이면 사진 없는 칸을 유지한다. AI 검증은 실제 식당 사진임을 보증하지 않는다.
+
 **AllergenCode**: EU 표기 번호 `1`–`14`. 화면 이름은 아래 표로 바꿔서 쓴다.
 
 | 번호 | 화면 이름 | 번호 | 화면 이름 |

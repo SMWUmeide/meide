@@ -73,7 +73,12 @@ const reply = (value) =>
     ],
   });
 test("photo queue visits all missing menus, survives errors and stops on exit", async () => {
-  const items = [{ id: "a" }, { id: "b" }, { id: "c" }, { id: "d", image: {} }];
+  const items = [
+    { id: "a" },
+    { id: "b" },
+    { id: "c" },
+    { id: "d", image: { verification: "dish-v1" } },
+  ];
   const calls = [],
     applied = [];
   await m.loadMenuImages(
@@ -136,6 +141,12 @@ test("photo search survives Wikidata failure, shortens names and caches licensed
   const original = "Zuppa di zucca e farro test-photo";
   const queries = [];
   const fetcher = async (url) => {
+    if (String(url).includes("upload.wikimedia.org"))
+      return new Response(new Uint8Array([1, 2, 3]), {
+        headers: { "Content-Type": "image/jpeg" },
+      });
+    if (String(url).includes("generativelanguage"))
+      return reply({ isFood: true, sameDish: true, confidence: "high" });
     if (String(url).includes("wikidata.org"))
       return new Response("offline", { status: 503 });
     const query = new URL(url).searchParams.get("gsrsearch");
@@ -144,12 +155,13 @@ test("photo search survives Wikidata failure, shortens names and caches licensed
       ? commonsPhoto()
       : Response.json({});
   };
-  const image = await m.external.menuImage(original, "호박 수프", {}, fetcher);
+  const env = { GEMINI_API_KEY: "test" };
+  const image = await m.external.menuImage(original, "호박 수프", env, fetcher);
   assert.equal(image.source, "wikimedia");
   assert.equal(image.isReference, true);
   assert.equal(queries.length, 2);
   assert.deepEqual(
-    await m.external.menuImage(original, "호박 수프", {}, async () =>
+    await m.external.menuImage(original, "호박 수프", env, async () =>
       assert.fail("positive cache missed"),
     ),
     image,
@@ -159,9 +171,17 @@ test("photo misses are not cached and English translation supplies a fallback qu
   const original = "Minestra speciale photo-retry";
   const queries = [];
   let available = false;
-  const fetcher = async (url) => {
+  const fetcher = async (url, init) => {
+    if (String(url).includes("upload.wikimedia.org"))
+      return new Response(new Uint8Array([1, 2, 3]), {
+        headers: { "Content-Type": "image/jpeg" },
+      });
     if (String(url).includes("generativelanguage"))
-      return reply({ text: "vegetable soup", ok: true });
+      return reply(
+        JSON.parse(init.body).contents[0].parts.some((p) => p.inlineData)
+          ? { isFood: true, sameDish: true, confidence: "high" }
+          : { text: "vegetable soup", ok: true },
+      );
     if (String(url).includes("wikidata.org")) return Response.json({});
     const query = new URL(url).searchParams.get("gsrsearch");
     queries.push(query);
@@ -177,6 +197,84 @@ test("photo misses are not cached and English translation supplies a fallback qu
   assert.ok(queries.some((q) => q.startsWith("vegetable soup")));
   available = true;
   assert.ok(await m.external.menuImage(original, "수프", env, fetcher));
+});
+test("dish verification rejects brushes, wrong dishes, uncertain and invalid verdicts", async () => {
+  for (const verdict of [
+    { isFood: false, sameDish: false, confidence: "high" },
+    { isFood: true, sameDish: false, confidence: "high" },
+    { isFood: true, sameDish: true, confidence: "low" },
+    { isFood: "true", sameDish: true, confidence: "high" },
+    {},
+  ]) {
+    assert.equal(
+      await m.verifyDishPhoto(
+        "LINGUA SALMISTRATA",
+        "양념 소 우설",
+        "https://upload.wikimedia.org/tongue-brush.jpg",
+        "tongue scraper",
+        { GEMINI_API_KEY: "test" },
+        async (url) =>
+          String(url).includes("generativelanguage")
+            ? reply(verdict)
+            : new Response(new Uint8Array([1, 2]), {
+                headers: { "Content-Type": "image/jpeg" },
+              }),
+      ),
+      false,
+    );
+  }
+  assert.equal(
+    await m.verifyDishPhoto(
+      "lingua",
+      "우설",
+      "https://upload.wikimedia.org/test.jpg",
+      "",
+      {},
+      async () => assert.fail("unverified photo without a key"),
+    ),
+    false,
+  );
+  assert.equal(
+    await m.verifyDishPhoto(
+      "lingua",
+      "우설",
+      "https://example.com/x.jpg",
+      "",
+      { GEMINI_API_KEY: "test" },
+      async () => assert.fail("untrusted image host fetched"),
+    ),
+    false,
+  );
+});
+test("old wrong photo cache is ignored and rejected candidates never become a menu image", async () => {
+  const original = "LINGUA SALMISTRATA regression";
+  await new ServiceStore().put("image:v2:" + original.toLowerCase(), {
+    url: "https://upload.wikimedia.org/brush.jpg",
+  });
+  let checks = 0;
+  const image = await m.external.menuImage(
+    original,
+    "양념 소 우설",
+    { GEMINI_API_KEY: "test" },
+    async (url, init) => {
+      if (String(url).includes("upload.wikimedia.org"))
+        return new Response(new Uint8Array([1, 2]), {
+          headers: { "Content-Type": "image/jpeg" },
+        });
+      if (String(url).includes("generativelanguage")) {
+        if (JSON.parse(init.body).contents[0].parts.some((p) => p.inlineData)) {
+          checks++;
+          return reply({ isFood: false, sameDish: false, confidence: "high" });
+        }
+        return reply({ text: "cured beef tongue", ok: true });
+      }
+      return String(url).includes("wikidata.org")
+        ? Response.json({})
+        : commonsPhoto();
+    },
+  );
+  assert.ok(checks > 0);
+  assert.equal(image, undefined);
 });
 test("canonical money, owner IDs and coperto give exact integer totals", () => {
   assert.deepEqual(totals(lines, 10, board.items, board.coperto, 2), {

@@ -12,7 +12,7 @@ export function imageQueries(name: string): string[] {
 }
 
 export async function loadMenuImages<
-  T extends { id: string; image?: unknown },
+  T extends { id: string; image?: { verification?: string } },
   R,
 >(
   items: T[],
@@ -22,7 +22,7 @@ export async function loadMenuImages<
 ) {
   for (const item of items) {
     if (!active()) break;
-    if (item.image) continue;
+    if (item.image?.verification === "dish-v1") continue;
     try {
       const image = await load(item);
       if (active() && image) apply(item, image);

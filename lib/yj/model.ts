@@ -30,6 +30,7 @@ export type MenuImage = {
   license: string;
   pageUrl: string;
   isReference: true;
+  verification?: "dish-v1";
 };
 export type MenuPhoto = {
   id: string;

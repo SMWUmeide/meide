@@ -17,7 +17,7 @@ import {
 import { citySearch } from "../../cloud-cities";
 import { distanceMeters } from "../presentation";
 import { imageQueries } from "../image-search";
-import { translateTalk } from "./gemini";
+import { translateTalk, verifyDishPhoto } from "./gemini";
 const agent = (env: ServiceEnv) =>
   env.OSM_USER_AGENT ||
   "MEIDE-YJ/1.0 (classroom menu assistant; github.com/SMWUmeide/meide)";
@@ -236,6 +236,8 @@ async function commons(
   query: string,
   env: ServiceEnv,
   fetcher: typeof fetch,
+  original: string,
+  korean: string,
 ) {
   const url = new URL("https://commons.wikimedia.org/w/api.php");
   url.search = new URLSearchParams({
@@ -262,6 +264,7 @@ async function commons(
       pages?: Record<
         string,
         {
+          title?: string;
           imageinfo?: {
             url?: string;
             thumburl?: string;
@@ -284,7 +287,17 @@ async function commons(
       pageUrl &&
       license &&
       credit &&
-      /CC|public domain|PD|GFDL/i.test(license)
+      /CC|public domain|PD|GFDL/i.test(license) &&
+      (await verifyDishPhoto(
+        original,
+        korean,
+        image,
+        [page.title, plain(meta?.ImageDescription?.value)]
+          .filter(Boolean)
+          .join(" "),
+        env,
+        fetcher,
+      ))
     )
       return {
         url: image,
@@ -293,6 +306,7 @@ async function commons(
         license,
         pageUrl,
         isReference: true as const,
+        verification: "dish-v1" as const,
       };
   }
 }
@@ -304,7 +318,9 @@ export async function menuImage(
 ): Promise<MenuImage | undefined> {
   const store = new ServiceStore(env),
     // Ignore old seven-day negative entries; only successful images are cached.
-    key = "image:v2:" + original.toLowerCase().trim();
+    key =
+      "image:verified-v3:" +
+      JSON.stringify([original.toLowerCase().trim(), korean]);
   const saved = await store.get<MenuImage>(key);
   if (saved) return saved;
   let image: MenuImage | undefined;
@@ -340,7 +356,8 @@ export async function menuImage(
       };
       const title =
         entities.entities?.[id]?.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
-      if (title) image = await commons(title, original, env, fetcher);
+      if (title)
+        image = await commons(title, original, env, fetcher, original, korean);
     }
   } catch {
     // Wikidata failure must not prevent a direct Commons search.
@@ -348,7 +365,7 @@ export async function menuImage(
   for (const query of imageQueries(original)) {
     if (image) break;
     try {
-      image = await commons(undefined, query, env, fetcher);
+      image = await commons(undefined, query, env, fetcher, original, korean);
     } catch {
       // Try the next name without retaining a temporary failure.
     }
@@ -360,7 +377,7 @@ export async function menuImage(
       if (image) break;
       if (imageQueries(original).includes(query)) continue;
       try {
-        image = await commons(undefined, query, env, fetcher);
+        image = await commons(undefined, query, env, fetcher, original, korean);
       } catch {
         // No unrelated or unlicensed fallback image.
       }
@@ -380,7 +397,19 @@ export async function menuImage(
         }[];
       };
       const photo = result.photos?.[0];
-      if (https(photo?.src?.large) && https(photo?.url) && photo?.photographer)
+      if (
+        https(photo?.src?.large) &&
+        https(photo?.url) &&
+        photo?.photographer &&
+        (await verifyDishPhoto(
+          original,
+          korean,
+          photo.src!.large!,
+          "",
+          env,
+          fetcher,
+        ))
+      )
         image = {
           url: photo.src!.large!,
           source: "pexels",
@@ -388,6 +417,7 @@ export async function menuImage(
           license: "Pexels License",
           pageUrl: photo.url!,
           isReference: true,
+          verification: "dish-v1",
         };
     } catch {
       /* Keep placeholder. */
