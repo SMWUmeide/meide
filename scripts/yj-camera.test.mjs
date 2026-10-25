@@ -24,6 +24,19 @@ const page = await context.newPage(),
 page.on("pageerror", (e) => errors.push(e.message));
 const screen = (id) =>
   page.waitForSelector(`main[data-screen="${id}"][aria-busy=false]`);
+async function assertVisiblePreview() {
+  const frame = await page.locator(".camera-shell").boundingBox();
+  const video = await page.locator(".camera-video").boundingBox();
+  assert.ok(
+    video && video.width > 0 && video.height > 0,
+    "camera frames must occupy visible pixels",
+  );
+  assert.deepEqual(
+    video,
+    frame,
+    "live preview must fill the camera screen before and after capture",
+  );
+}
 const click = async (name, id) => {
   await page.getByRole("button", { name, exact: true }).first().click();
   if (id) await screen(id);
@@ -40,6 +53,7 @@ try {
   assert.equal(await page.evaluate(() => window.isSecureContext), true);
   assert.equal(await page.locator(".menu-paper").count(), 0);
   assert.equal(await page.locator("video").getAttribute("playsinline"), "");
+  await assertVisiblePreview();
   await page.evaluate(() => {
     window.testTrack = document
       .querySelector("video")
@@ -69,6 +83,7 @@ try {
       document.querySelector("video")?.readyState >= 2,
   );
   await click("셔터", "09");
+  await assertVisiblePreview();
   await click("셔터", "09");
   const src = await page.locator(".photo-stack img").getAttribute("src");
   assert.ok(src.startsWith("data:image/jpeg;base64,"));
@@ -89,6 +104,7 @@ try {
     () => document.querySelector("video")?.videoWidth > 0,
   );
   await click("교체 사진 촬영", "09");
+  await assertVisiblePreview();
   await click("사진 2장 펼쳐보기", "10");
   await click("2번째 사진 삭제");
   await click("닫기", "09");

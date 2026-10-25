@@ -837,6 +837,7 @@ export default function OrderFlow() {
       screen = (
         <CameraShell
           title={hasPhotos ? "다음 장도 찍어주세요" : "메뉴판을 찍어주세요"}
+          className={fixtureRef.current ? "" : "camera-live"}
           onClose={() => go("home")}
           right={
             camera.torchAvailable ? (
@@ -850,7 +851,9 @@ export default function OrderFlow() {
             ) : undefined
           }
         >
-          <div className={`capture-preview ${hasPhotos ? "captured" : ""}`}>
+          <div
+            className={`capture-preview ${fixtureRef.current ? "" : "live"} ${hasPhotos ? "captured" : ""}`}
+          >
             {fixtureRef.current ? (
               <MenuPaper />
             ) : (

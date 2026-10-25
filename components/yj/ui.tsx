@@ -463,6 +463,7 @@ export function CameraShell({
   onClose,
   right,
   children,
+  className = "",
   dim = false,
   closeRight = false,
 }: {
@@ -470,11 +471,12 @@ export function CameraShell({
   onClose: () => void;
   right?: ReactNode;
   children: ReactNode;
+  className?: string;
   dim?: boolean;
   closeRight?: boolean;
 }) {
   return (
-    <div className={`camera-shell ${dim ? "dim" : ""}`}>
+    <div className={`camera-shell ${dim ? "dim" : ""} ${className}`}>
       <header className="camera-header">
         {closeRight ? (
           <span className="bar-spacer" />
