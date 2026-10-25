@@ -1,1 +1,4 @@
-export default function Home(){return <main>한입 유럽</main>}
+import OrderFlow from "@/components/yj/order-flow";
+export default function Home() {
+  return <OrderFlow />;
+}

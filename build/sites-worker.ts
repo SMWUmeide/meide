@@ -1,5 +1,4 @@
 import {cloudApi} from "../lib/cloud-api";
-import homeHtml from "../public/index.html?raw";
 import handler from "vinext/server/fetch-handler";
 import { runWithConnectorBinding } from "../lib/connector-context";
 import type { ConnectorBinding } from "../lib/connector-contract.mjs";
@@ -8,7 +7,6 @@ export default {
   fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
     const path=new URL(request.url).pathname;
     if(path.startsWith('/api/'))return cloudApi(request,env);
-    if(path==='/')return new Response(homeHtml,{headers:{'Content-Type':'text/html; charset=utf-8'}});
     let binding = ctx.props?.CONNECTORS;
     // Local preview emulates the same request-scoped capability. This branch and
     // the auxiliary service binding are absent from production builds.

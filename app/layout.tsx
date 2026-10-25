@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./yj.css";
 
 export const metadata: Metadata = {
   title: "한입 유럽",
