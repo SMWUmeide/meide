@@ -101,6 +101,8 @@ Figma 자체에 남아 있는 예전 크기와 문서가 충돌하면 문서 규
 
 ## 검증
 
+> 아래는 2026-10-25 전체 디자인 검증 기록이다. **평소 작업에서는 다시 하지 않는다.** 검증 범위는 `AGENTS.md`의 '검증은 가볍게' 규칙을 따른다.
+
 - `npm run build`, `npm run lint`, `npx tsc --noEmit --incremental false`를 실행한다. lint의 기존 비-yj unused 경고는 남아 있다.
 - `node scripts/yj-flow.test.mjs`: 정수 계산·소유자 보호·표시값 왕복·경로·카메라 정지/늦은 권한 응답·결과 검증·한 번 재요청·해시 캐시·일일 제한·OSM 캐시/속도·환율 캐시 등 17건.
 - `scripts/yj-camera.test.mjs`: 가상 장치를 실제 getUserMedia에 연결해 JPEG 촬영/교체/삭제, 백그라운드 정지·재시작, 화면 이탈 종료, IndexedDB 복원, 키 없는 서버 분석→메뉴→장바구니, 음성 직접 입력, 권한 거부를 검사한다. localhost와 위 HTTPS 주소 모두 확인했다.
