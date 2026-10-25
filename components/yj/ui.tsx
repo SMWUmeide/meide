@@ -1,6 +1,9 @@
 /* Figma Page 2 primitives — DESIGN-yj.md §12-10. */
 /* eslint-disable @next/next/no-img-element */
+import sourceAssets from "@/lib/yj/figma-assets.json";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { Squircle, Glass } from "./squircle";
+export { Squircle, Glass } from "./squircle";
 
 export function Asset({
   name,
@@ -23,7 +26,9 @@ export function Asset({
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 export function PrimaryButton({ className = "", ...props }: ButtonProps) {
   return (
-    <button
+    <Squircle
+      as="button"
+      radius={22}
       type="button"
       className={`button primary ${className}`}
       {...props}
@@ -32,7 +37,9 @@ export function PrimaryButton({ className = "", ...props }: ButtonProps) {
 }
 export function SecondaryButton({ className = "", ...props }: ButtonProps) {
   return (
-    <button
+    <Squircle
+      as="button"
+      radius={22}
       type="button"
       className={`button secondary ${className}`}
       {...props}
@@ -41,24 +48,34 @@ export function SecondaryButton({ className = "", ...props }: ButtonProps) {
 }
 export function DangerButton({ className = "", ...props }: ButtonProps) {
   return (
-    <button type="button" className={`button danger ${className}`} {...props} />
+    <Squircle
+      as="button"
+      radius={22}
+      type="button"
+      className={`button danger ${className}`}
+      {...props}
+    />
   );
 }
 export function IconButton({
   asset,
   label,
   className = "",
+  glass = false,
   ...props
-}: ButtonProps & { asset: string; label: string }) {
+}: ButtonProps & { asset: string; label: string; glass?: boolean }) {
+  const Tag = glass ? Glass : Squircle;
   return (
-    <button
+    <Tag
+      as="button"
+      round
       type="button"
       className={`icon-button ${className}`}
       aria-label={label}
       {...props}
     >
       <Asset name={asset} />
-    </button>
+    </Tag>
   );
 }
 export function TopBar({
@@ -96,26 +113,43 @@ export function TabBar({
   onSelect?: (tab: string) => void;
 }) {
   return (
-    <nav className="tabbar" aria-label="하단 탭">
-      {tabs.map(([name, asset]) => (
-        <button
+    <Glass as="nav" radius={30} className="tabbar" aria-label="하단 탭">
+      {tabs.map(([name, asset], index) => (
+        <Squircle
+          as="button"
+          radius={19}
           type="button"
           key={name}
           className={active === name ? "active" : ""}
           aria-current={active === name ? "page" : undefined}
-          disabled={name !== "홈"}
-          title={
-            name !== "홈"
-              ? "이번 구현 범위에 포함되지 않은 화면이에요"
-              : undefined
-          }
           onClick={() => onSelect?.(name)}
         >
-          <Asset name={asset} />
+          <Asset
+            name={
+              active === "홈"
+                ? asset
+                : (
+                    sourceAssets[
+                      active === "주문 내역"
+                        ? "19"
+                        : active === "둘러보기"
+                          ? "31"
+                          : "28"
+                    ] as Record<string, string>
+                  )[
+                    [
+                      "imgIconHome",
+                      "imgIconReceipt",
+                      "imgIconCompass",
+                      "imgIconUser",
+                    ][index]
+                  ]
+            }
+          />
           <span>{name}</span>
-        </button>
+        </Squircle>
       ))}
-    </nav>
+    </Glass>
   );
 }
 export function Chip({
@@ -128,7 +162,9 @@ export function Chip({
   variant?: "default" | "allergy" | "custom";
 }) {
   return (
-    <button
+    <Squircle
+      as="button"
+      radius="chip"
       type="button"
       className={`chip ${variant} ${selected ? "selected" : ""} ${className}`}
       aria-pressed={selected}
@@ -165,7 +201,11 @@ export function Card({
   children: ReactNode;
   className?: string;
 }) {
-  return <section className={`card ${className}`}>{children}</section>;
+  return (
+    <Squircle as="section" radius={30} className={`card ${className}`}>
+      {children}
+    </Squircle>
+  );
 }
 export function ListRow({
   children,
@@ -230,17 +270,17 @@ export function AIBox({
 }
 export function InfoNote({ children }: { children: ReactNode }) {
   return (
-    <aside className="info-note">
+    <Squircle as="aside" radius={22} className="info-note">
       <Asset name="29cd8.svg" />
       <div>{children}</div>
-    </aside>
+    </Squircle>
   );
 }
 export function WarningBanner({ children }: { children: ReactNode }) {
   return (
-    <aside className="warning-banner" role="status">
+    <Squircle as="aside" radius={22} className="warning-banner" role="status">
       {children}
-    </aside>
+    </Squircle>
   );
 }
 export function Avatar({
@@ -253,7 +293,10 @@ export function Avatar({
   size?: number;
 }) {
   return (
-    <span className={`avatar ${kind}`} style={{ width: size, height: size }}>
+    <span
+      className={`avatar ${kind}`}
+      style={{ width: size, height: size, fontSize: size * 0.42 }}
+    >
       {name.slice(0, 1)}
     </span>
   );
@@ -316,7 +359,11 @@ export function BottomSheet({
   children: ReactNode;
   className?: string;
 }) {
-  return <section className={`bottom-sheet ${className}`}>{children}</section>;
+  return (
+    <Squircle as="section" radius={30} className={`bottom-sheet ${className}`}>
+      {children}
+    </Squircle>
+  );
 }
 export function EmptyState({
   title,
@@ -372,11 +419,11 @@ export function CameraShell({
         {closeRight ? (
           <span className="bar-spacer" />
         ) : (
-          <IconButton asset="d69c2.svg" label="닫기" onClick={onClose} />
+          <IconButton glass asset="d69c2.svg" label="닫기" onClick={onClose} />
         )}
         <h1>{title}</h1>
         {closeRight ? (
-          <IconButton asset="d69c2.svg" label="닫기" onClick={onClose} />
+          <IconButton glass asset="d69c2.svg" label="닫기" onClick={onClose} />
         ) : (
           (right ?? <span className="bar-spacer" />)
         )}

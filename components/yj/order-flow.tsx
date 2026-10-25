@@ -24,7 +24,6 @@ import {
   Price,
   PrimaryButton,
   SecondaryButton,
-  TabBar,
   TopBar,
   WarningBanner,
 } from "./ui";
@@ -34,7 +33,11 @@ import {
   menuById,
   menus,
   orderSentences,
-  screenForPath,
+  fixtureScreen,
+  makeAccount,
+  screenCatalog,
+  type AppView,
+  type Account,
   screenPaths,
   sharedLines,
   totals,
@@ -44,31 +47,16 @@ import {
   type Photo,
   type Screen,
 } from "@/lib/yj/model";
+import Home from "./home";
+import ExtraScreens from "./extra-screens";
 import { readDraft, saveDraft } from "@/lib/yj/storage";
 
-type View = {
-  screen: Screen;
-  menuId: string;
-  photoIndex: number;
-  largeFrom: "03" | "18";
-};
+type View = AppView;
 const defaultView: View = {
   screen: "home",
   menuId: "zucca",
   photoIndex: 0,
   largeFrom: "03",
-};
-const homeCopy = {
-  morning: "일찍 일어나는 새가\n갓 구운 크루아상을\n먹어요",
-  "late-morning": "출출한 오전,\n주먹밥 같은\n아란치니 어떠세요?",
-  lunch: "오늘 점심,\n한국인 입맛으로\n풀어드릴게요",
-  evening: "저녁 메뉴판\n찍기만 하세요!",
-};
-const homeAssets = {
-  morning: "a2d65.svg",
-  "late-morning": "0f168.svg",
-  lunch: "71f7c.svg",
-  evening: "98ea3.svg",
 };
 const question = {
   korean: "이 음식에 우유나 치즈가 들어가나요?",
@@ -174,10 +162,13 @@ function Stepper({
 }
 
 export default function OrderFlow() {
+  const [account, setAccount] = useState<Account>(makeAccount);
   const [draft, setDraft] = useState<Draft>(initialDraft);
   const [view, setView] = useState<View>(defaultView);
   const [ready, setReady] = useState(false);
-  const [period, setPeriod] = useState<keyof typeof homeCopy>("lunch");
+  const [period, setPeriod] = useState<
+    "morning" | "late-morning" | "lunch" | "evening"
+  >("lunch");
   const [category, setCategory] = useState("수프");
   const [query, setQuery] = useState("");
   const [selectedRestaurant, setSelectedRestaurant] = useState(
@@ -192,9 +183,22 @@ export default function OrderFlow() {
   const content = useRef<HTMLDivElement>(null);
   const analysisMode = useRef("auto");
   const cameraDenied = useRef(false);
+  const [talkFailureMode, setTalkFailureMode] = useState(false);
   const selectedMenu = menuById(view.menuId);
-  const amount = totals(draft.lines, draft.tip);
-  const sentence = orderSentences(draft.lines, draft.request);
+  const historical = account.records.find((r) => r.id === view.recordId);
+  const receiptDraft =
+    view.recordId && historical
+      ? {
+          ...draft,
+          lines: historical.lines,
+          tip: historical.tip,
+          restaurant: historical.restaurant,
+          orderedAt: historical.at,
+          request: historical.request,
+        }
+      : draft;
+  const amount = totals(receiptDraft.lines, receiptDraft.tip);
+  const sentence = orderSentences(receiptDraft.lines, receiptDraft.request);
   const largeSentence = view.largeFrom === "18" ? question : sentence;
   const visibleMenus = menus.filter(
     (menu) =>
@@ -209,6 +213,14 @@ export default function OrderFlow() {
       const restored = await readDraft().catch(() => undefined);
       if (!mounted) return;
       const next = { ...initialDraft, ...restored };
+      const fixture = params.get("fixture");
+      if (["09", "10", "11", "39", "40"].includes(fixture ?? ""))
+        next.photos = [
+          { id: "sample-1", readable: true },
+          { id: "sample-2", readable: false },
+        ];
+      if (fixture === "22") next.lines = [];
+      if (fixture === "21") setAccount((a) => ({ ...a, records: [] }));
       if (params.get("fixture") === "shared")
         next.lines = sharedLines.map((line) => ({ ...line }));
       if (params.get("fixture") === "photos")
@@ -217,9 +229,12 @@ export default function OrderFlow() {
           { id: "sample-2", readable: false },
         ];
       if (params.get("fixture") === "empty") next.lines = [];
+      if (window.location.pathname.startsWith("/talk") && !next.lines.length)
+        next.lines = sharedLines.map((l) => ({ ...l }));
       analysisMode.current = params.get("analysis") ?? "auto";
       cameraDenied.current = params.get("camera") === "denied";
-      const screen = screenForPath(window.location.pathname, next);
+      setTalkFailureMode(params.get("talk") === "failure");
+      const screen = fixtureScreen(window.location.pathname, params, next);
       const saved = window.history.state?.yjView as View | undefined;
       const nextView: View = {
         ...defaultView,
@@ -227,13 +242,29 @@ export default function OrderFlow() {
         screen:
           cameraDenied.current && (screen === "08" || screen === "09")
             ? "41"
-            : (saved?.screen ?? screen),
-        menuId: window.location.pathname.split("/")[2] || "zucca",
+            : params.has("fixture")
+              ? screen
+              : (saved?.screen ?? screen),
+        menuId: window.location.pathname.startsWith("/menu/")
+          ? window.location.pathname.split("/")[2]
+          : "zucca",
         photoIndex: Number(window.location.pathname.split("/")[3]) || 0,
+        subjectId: /^\/(companions|restaurants)\//.test(
+          window.location.pathname,
+        )
+          ? window.location.pathname.split("/")[2]
+          : undefined,
       };
       setDraft(next);
       setView(nextView);
-      setPeriod(homePeriod(new Date()));
+      const requested = params.get("period");
+      setPeriod(
+        ["morning", "late-morning", "lunch", "evening"].includes(
+          requested ?? "",
+        )
+          ? (requested as typeof period)
+          : homePeriod(new Date()),
+      );
       setReady(true);
       window.history.replaceState(
         { ...window.history.state, yjView: nextView },
@@ -246,7 +277,11 @@ export default function OrderFlow() {
       setView(
         event.state?.yjView ?? {
           ...defaultView,
-          screen: screenForPath(window.location.pathname, initialDraft),
+          screen: fixtureScreen(
+            window.location.pathname,
+            new URLSearchParams(window.location.search),
+            initialDraft,
+          ),
         },
       );
       history.current.pop();
@@ -270,7 +305,11 @@ export default function OrderFlow() {
     content.current?.scrollTo(0, 0);
   }, [view.screen, view.menuId]);
   useEffect(() => {
-    if (view.screen !== "39") return;
+    if (
+      view.screen !== "39" ||
+      new URLSearchParams(window.location.search).get("fixture") === "39"
+    )
+      return;
     let step = 0;
     const timer = window.setInterval(() => {
       step += 1;
@@ -304,7 +343,23 @@ export default function OrderFlow() {
     let path = screenPaths[next.screen];
     if (next.screen === "06-2" || next.screen === "18")
       path = `/menu/${next.menuId}${next.screen === "18" ? "/ask" : ""}`;
-    if (next.screen === "11") path = `/capture/photos/${next.photoIndex}`;
+    if (next.screen === "32") path = `/restaurants/${next.subjectId ?? "rosa"}`;
+    if (next.screen === "25" || next.screen === "27")
+      path = `/companions/${next.subjectId ?? "miyoung"}/${next.screen === "25" ? "taste" : "invite"}`;
+    const stateUrl = screenCatalog.find(([n]) => n === next.screen)?.[2];
+    if (
+      stateUrl?.includes("fixture=") &&
+      !["01", "02", "03", "04", "15", "17", "39", "45"].includes(next.screen)
+    ) {
+      const fixture = new URLSearchParams(stateUrl.split("?")[1]).get(
+        "fixture",
+      );
+      if (fixture) path += `?fixture=${fixture}`;
+    }
+    if (next.screen === "11")
+      path = `/capture/photos/${next.photoIndex}?fixture=11`;
+    if (["16", "45", "44"].includes(next.screen) && talkFailureMode)
+      path += (path.includes("?") ? "&" : "?") + "talk=failure";
     window.history[replace ? "replaceState" : "pushState"](
       { ...window.history.state, yjView: next },
       "",
@@ -398,7 +453,7 @@ export default function OrderFlow() {
       photos: current.photos.filter((_, i) => i !== index),
     }));
   }
-  function speak(text: string) {
+  function speak(text: string, language = "it-IT") {
     if (speaking) {
       window.speechSynthesis?.cancel();
       setSpeaking(false);
@@ -412,7 +467,10 @@ export default function OrderFlow() {
     }
     const voice = window.speechSynthesis
       .getVoices()
-      .find((voice) => voice.localService && voice.lang.startsWith("it"));
+      .find(
+        (voice) =>
+          voice.localService && voice.lang.startsWith(language.slice(0, 2)),
+      );
     if (!voice) {
       setNotice(
         "기기에 이탈리아어 음성이 없어요. 크게 보여주기를 이용해 주세요.",
@@ -420,7 +478,7 @@ export default function OrderFlow() {
       return;
     }
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "it-IT";
+    utterance.lang = language;
     utterance.voice = voice;
     utterance.onend = utterance.onerror = () => setSpeaking(false);
     setSpeaking(true);
@@ -470,57 +528,41 @@ export default function OrderFlow() {
     );
   }
 
+  function onTab(tab: string) {
+    go(
+      tab === "홈"
+        ? "home"
+        : tab === "주문 내역"
+          ? account.records.length
+            ? "19"
+            : "21"
+          : tab === "둘러보기"
+            ? "31"
+            : "28",
+      { recordId: undefined, subjectId: undefined, returnTo: undefined },
+    );
+  }
   let screen: ReactNode;
   switch (view.screen) {
     case "home":
       screen = (
-        <div className={`home ${period}`}>
-          <div className="home-gradient" />
-          <div className="home-status" aria-hidden="true">
-            <span>9:41</span>
-            <span>▮▮▮ ◉ ▰</span>
-          </div>
-          <div className="home-top">
-            <button
-              type="button"
-              className="location-chip"
-              disabled
-              title="이번 구현 범위에 포함되지 않은 화면이에요"
-            >
-              <Asset name="e5d3e.svg" />
-              이탈리아
-            </button>
-            <span className="avatar-stack">
-              <Avatar />
-              <Avatar name="김" kind="companion" />
-            </span>
-          </div>
-          <h1>{homeCopy[period]}</h1>
-          <button
-            className="home-orb"
-            type="button"
-            aria-label="메뉴판 찍기"
-            onClick={() => go("08")}
-          >
-            <Asset name={homeAssets[period]} />
-          </button>
-          <button
-            type="button"
-            className="home-notice"
-            disabled={draft.ordered}
-            onClick={() => go("08")}
-          >
-            {draft.ordered ? (
-              <>
-                <Asset name="9ee0f.svg" />
-                아직 평가 안 한 메뉴가 있어요
-              </>
-            ) : (
-              "메뉴판을 촬영해 주세요"
-            )}
-          </button>
-          <TabBar />
-        </div>
+        <Home
+          account={account}
+          period={
+            typeof window !== "undefined" &&
+            !new URLSearchParams(window.location.search).has("period")
+              ? homePeriod(new Date(), account.destination.timezone)
+              : period
+          }
+          onNavigate={(n) =>
+            go(n, {
+              recordId: undefined,
+              subjectId: undefined,
+              returnTo: "home",
+            })
+          }
+          onTab={onTab}
+        />
       );
       break;
     case "08":
@@ -531,7 +573,12 @@ export default function OrderFlow() {
           title={hasPhotos ? "다음 장도 찍어주세요" : "메뉴판을 찍어주세요"}
           onClose={() => go("home")}
           right={
-            <IconButton asset="b1f78.svg" label="플래시 (목업)" disabled />
+            <IconButton
+              glass
+              asset="b1f78.svg"
+              label="플래시 (목업)"
+              disabled
+            />
           }
         >
           <div className={`capture-preview ${hasPhotos ? "captured" : ""}`}>
@@ -557,6 +604,7 @@ export default function OrderFlow() {
             <div className="camera-tools">
               <div>
                 <IconButton
+                  glass
                   asset="56047.svg"
                   label="앨범에서 사진 고르기"
                   onClick={() => fileInput.current?.click()}
@@ -1061,7 +1109,12 @@ export default function OrderFlow() {
           <div ref={content} className="detail-scroll">
             <div className="detail-hero">
               <DishPhoto menu={selectedMenu} />
-              <IconButton asset="5097c.svg" label="뒤로 가기" onClick={back} />
+              <IconButton
+                glass
+                asset="5097c.svg"
+                label="뒤로 가기"
+                onClick={back}
+              />
               <span>대표 이미지 · 실제 음식과 다를 수 있어요</span>
             </div>
             <div className="detail-body stack">
@@ -1179,8 +1232,7 @@ export default function OrderFlow() {
         </div>,
         <>
           <PrimaryButton
-            disabled
-            title="실시간 대화는 이번 구현 범위에 포함되지 않았어요"
+            onClick={() => go("16", { talkFrom: "18", recordId: undefined })}
           >
             실시간 대화로 묻기
           </PrimaryButton>
@@ -1339,14 +1391,30 @@ export default function OrderFlow() {
                 ordered: true,
                 orderedAt: new Date().toISOString(),
               }));
-              go("04");
+              const recordId = crypto.randomUUID();
+              setAccount((a) => ({
+                ...a,
+                recentMenu: true,
+                records: [
+                  {
+                    id: recordId,
+                    restaurant: draft.restaurant ?? "식당 정보 없음",
+                    at: new Date().toISOString(),
+                    lines: draft.lines.map((l) => ({ ...l })),
+                    tip: draft.tip,
+                    request: draft.request,
+                    ratings: {},
+                  },
+                  ...a.records,
+                ],
+              }));
+              go("04", { recordId });
             }}
           >
             주문했어요
           </PrimaryButton>
           <SecondaryButton
-            disabled
-            title="대화 시작 안내는 이번 구현 범위에 포함되지 않았어요"
+            onClick={() => go("15", { talkFrom: "03", recordId: undefined })}
           >
             직원이 되물었어요
           </SecondaryButton>
@@ -1399,9 +1467,11 @@ export default function OrderFlow() {
             </h2>
             <Card className="receipt-card">
               <div className="receipt-restaurant">
-                <h2>{draft.restaurant ?? "식당 정보 없이 주문했어요"}</h2>
+                <h2>
+                  {receiptDraft.restaurant ?? "식당 정보 없이 주문했어요"}
+                </h2>
                 <p>
-                  {draft.orderedAt
+                  {receiptDraft.orderedAt
                     ? new Intl.DateTimeFormat("ko-KR", {
                         timeZone: "Europe/Rome",
                         year: "numeric",
@@ -1410,13 +1480,13 @@ export default function OrderFlow() {
                         hour: "2-digit",
                         minute: "2-digit",
                         hourCycle: "h23",
-                      }).format(new Date(draft.orderedAt))
+                      }).format(new Date(receiptDraft.orderedAt))
                     : "2026.10.25"}{" "}
                   · 2명
                 </p>
               </div>
               <Asset name="41ac6.svg" className="receipt-line" />
-              {draft.lines.map((line, index) => {
+              {receiptDraft.lines.map((line, index) => {
                 const menu = menuById(line.menuId);
                 return (
                   <div className="receipt-row" key={`${line.owner}-${index}`}>
@@ -1465,9 +1535,9 @@ export default function OrderFlow() {
               </InfoNote>
               <div className="receipt-row">
                 <div>
-                  <strong>선택 팁 {draft.tip ? "10%" : "미포함"}</strong>
+                  <strong>선택 팁 {receiptDraft.tip ? "10%" : "미포함"}</strong>
                   <small>
-                    장바구니에서 {draft.tip ? "포함한" : "제외한"} 팁
+                    장바구니에서 {receiptDraft.tip ? "포함한" : "제외한"} 팁
                   </small>
                 </div>
                 <Price amount={amount.tip} won={false} size="small" />
@@ -1488,7 +1558,9 @@ export default function OrderFlow() {
               <PrimaryButton onClick={() => go("home")}>
                 홈으로 가기
               </PrimaryButton>
-              <SecondaryButton onClick={() => go("01")}>
+              <SecondaryButton
+                onClick={() => go("01", { recordId: undefined })}
+              >
                 추가 주문하기
               </SecondaryButton>
             </BottomActions>
@@ -1496,6 +1568,35 @@ export default function OrderFlow() {
         </div>
       );
       break;
+    default: {
+      const group = ["07", "38", "43"].includes(view.screen)
+        ? "trip"
+        : ["16", "45", "44"].includes(view.screen)
+          ? "talk"
+          : ["05-2", "05-3", "42"].includes(view.screen)
+            ? "nearby"
+            : view.screen + ":" + (view.subjectId ?? "");
+      screen = (
+        <ExtraScreens
+          key={group}
+          view={view}
+          account={account}
+          setAccount={setAccount}
+          draft={draft}
+          setDraft={setDraft}
+          go={go}
+          back={back}
+          onTab={onTab}
+          speak={speak}
+          notify={setNotice}
+          freeze={
+            typeof window !== "undefined" &&
+            new URLSearchParams(window.location.search).get("fixture") === "45"
+          }
+          talkFailure={talkFailureMode}
+        />
+      );
+    }
   }
   return (
     <main
@@ -1505,7 +1606,11 @@ export default function OrderFlow() {
           ? draft.lines.length
             ? "02"
             : "22"
-          : view.screen
+          : view.screen === "19" || view.screen === "21"
+            ? account.records.length
+              ? "19"
+              : "21"
+            : view.screen
       }
       aria-busy={!ready}
     >

@@ -83,3 +83,73 @@ test("same-address states are resolved from actual draft content", () => {
   );
   assert.equal(screenForPath("/menu/zucca/ask", initialDraft), "18");
 });
+
+import {
+  fixtureScreen,
+  screenCatalog,
+  isFlowPath,
+  makeAccount,
+  pendingRatings,
+  searchDestinations,
+} from "../lib/yj/model.ts";
+import { getSvgPath } from "figma-squircle";
+
+test("every published screen URL resolves to its screen, including same-path fixtures", () => {
+  for (const [number, , path] of screenCatalog) {
+    const url = new URL(path, "http://localhost");
+    const draft = {
+      ...initialDraft,
+      lines: url.searchParams.get("fixture") === "shared" ? sharedLines : [],
+    };
+    assert.equal(isFlowPath(url.pathname), true, path);
+    assert.equal(
+      fixtureScreen(url.pathname, url.searchParams, draft),
+      number,
+      path,
+    );
+  }
+  assert.equal(isFlowPath("/settings"), false);
+  assert.equal(
+    fixtureScreen("/talk", new URLSearchParams("fixture=46"), initialDraft),
+    "16",
+    "fixtures cannot jump to another route",
+  );
+});
+test("pending ratings count unique menus in each order and advance without changing order data", () => {
+  const account = makeAccount();
+  assert.equal(pendingRatings(account.records).length, 3);
+  const before = structuredClone(account.records[0].lines);
+  const first = pendingRatings(account.records)[0];
+  account.records[0].ratings[first.menuId] = "또 먹고 싶어요";
+  assert.equal(pendingRatings(account.records).length, 2);
+  assert.deepEqual(account.records[0].lines, before);
+  assert.equal(pendingRatings([]).length, 0);
+});
+test("destination search and time period are local, including a destination timezone change", () => {
+  assert.equal(searchDestinations("로마").length, 4);
+  assert.equal(searchDestinations("로마나").length, 0);
+  const date = new Date("2026-10-25T10:00:00Z");
+  assert.equal(homePeriod(date, "Europe/Rome"), "late-morning");
+  assert.equal(homePeriod(date, "Asia/Seoul"), "evening");
+});
+test("squircle geometry preserves Figma smoothing at narrow and wide sizes", () => {
+  for (const [width, height, radius] of [
+    [350, 60, 22],
+    [362, 226, 38],
+    [88, 88, 32],
+    [80, 40, 17.6],
+  ]) {
+    const path = getSvgPath({
+      width,
+      height,
+      cornerRadius: radius,
+      cornerSmoothing: 0.8,
+    });
+    assert.match(path, /c/i);
+    assert.doesNotMatch(path, /NaN|Infinity/);
+    assert.notEqual(
+      path,
+      getSvgPath({ width, height, cornerRadius: radius, cornerSmoothing: 0 }),
+    );
+  }
+});
