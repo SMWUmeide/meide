@@ -9,7 +9,12 @@ import {
 } from "../fixtures";
 import { createLocalId } from "../id";
 import { ServiceError, ServiceStore, type ServiceEnv } from "./store";
-import { analyzeMenu, translateRequest, translateTalk } from "./gemini";
+import {
+  analyzeMenu,
+  translateRequest,
+  translateTalk,
+  DEFAULT_GEMINI_MODEL,
+} from "./gemini";
 import * as external from "./external";
 const boardMemory = new Map<string, MenuBoard>();
 const writes = new Map<string, Promise<unknown>>();
@@ -309,7 +314,7 @@ export async function handleYjRequest(
           cart: await cartSession("personal-" + userId, userId, env),
           capabilities: {
             analysis: env.GEMINI_API_KEY ? "gemini" : "mock",
-            model: env.GEMINI_MODEL || "gemini-3.1-flash-lite",
+            model: env.GEMINI_MODEL || DEFAULT_GEMINI_MODEL,
           },
         };
         break;

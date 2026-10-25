@@ -23,7 +23,8 @@ cp .env.example .dev.vars
 npm run dev -- --host
 ```
 
-- 기본 모델: `gemini-3.1-flash-lite`. `GEMINI_MODEL`이 비어 있으면 기본값을 쓴다.
+- 기본 모델: `gemini-3.5-flash-lite`. `GEMINI_MODEL`이 비어 있으면 기본값을 쓴다.
+- 생성용 응답 스키마는 구조·필수 필드·enum을 지정한다. 복잡한 중첩 개수/범위 제약은 서버 Zod에서 엄격히 검사한다. 일시적인 5xx/408 응답은 1초·2초에 지터를 더해 두 번 재시도하고 키·권한·모델·요청 형식 오류는 구분해 안내한다.
 - 분석 기본 제한: 익명 사용자 쿠키별 UTC 하루 10회. `GEMINI_DAILY_LIMIT`으로 바꾼다. 캐시 적중은 차감하지 않는다.
 - 선택: `PEXELS_API_KEY` (Wikimedia에 사진이 없을 때만 사용), `OSM_USER_AGENT` (앱 이름·연락 가능한 프로젝트 주소).
 - 키 없이도 촬영·저장·화면을 볼 수 있다. 메뉴 분석은 Osteria 예시이며 키 없는 요청 번역은 네 가지 예시만 지원한다. 임의 대화 번역은 실패 안내를 보인다.
@@ -49,8 +50,8 @@ npm run dev -- --host
 | 기능 | 현재 동작 | 확인 범위 |
 | --- | --- | --- |
 | 카메라·앨범 | 브라우저 실제 장치, canvas JPEG ≤1600px/0.8, IndexedDB | Chrome 가상 장치로 localhost·HTTPS 전체 흐름 통과. 물리 기기/torch는 기기별 확인 필요 |
-| 메뉴 분석 | 서버 Gemini REST 구조화 출력 + Zod + 한 번 재요청 | 실제 키 없음. 요청·응답/오류·캐시·제한은 모의 공급자로 검증 |
-| 요청/대화 번역 | 같은 Gemini 서버 어댑터, 문장 캐시 | 실제 키 없음. 임의 번역 실패 시 원문 유지 |
+| 메뉴 분석 | 서버 Gemini REST 구조화 출력 + Zod + 한 번 재요청 | 실제 키로 합성 메뉴판 이미지 분석 완료. 오류·캐시·제한은 모의 공급자로 검증 |
+| 요청/대화 번역 | 같은 Gemini 서버 어댑터, 문장 캐시 | 이번 실제 공급자 검증은 메뉴 분석에 한정. 번역 실패 시 원문 유지 |
 | 식당 | OSM Overpass + Nominatim, 전역 1.1초 간격/D1 예약, 캐시 | 실제 식당 응답 확인. Overpass 과부하 시 사용자별 한정 범위 Nominatim 검색으로 대체 |
 | 메뉴 참고 사진 | Wikidata P18 → Commons 검색 → 선택 Pexels | Commons 실제 응답/저작자/라이선스 확인. Pexels 키 없음 |
 | 환율 | Frankfurter ECB, UTC 날짜별 캐시, 기준일 | 실제 EUR/KRW와 기준일 확인 |
@@ -102,7 +103,7 @@ node scripts/yj-interactions.test.mjs
 node scripts/yj-camera.test.mjs
 ```
 
-17개 서비스/단위 테스트: 정수 금액·복수 동행 ID·평가 enum·모든 fixture 경로·스쿼클·카메라 수명·지연 권한 정리·크기 축소·분석 참조/신뢰도 검증·한 번 재요청·개인정보 제외·해시 캐시·UTC 제한·429/네트워크·OSM 속도/캐시/대체 검색·환율 캐시. 실제 기기를 조작한 검사와 Gemini 실제 키 검사는 포함하지 않는다.
+22개 서비스/단위 테스트: 정수 금액·복수 동행 ID·평가 enum·모든 fixture 경로·스쿼클·카메라 수명·지연 권한 정리·크기 축소·분석 참조/신뢰도 검증·한 번 재요청·개인정보 제외·해시 캐시·UTC 제한·429/네트워크·OSM 속도/캐시/대체 검색·환율 캐시·Gemini 혼잡 재시도/상한·설정 오류 분류·취소·간소화한 생성 스키마와 엄격한 후속 검사. 단위 테스트에는 실제 기기 조작과 공급자 호출을 포함하지 않는다. 별도로 실제 키와 합성 메뉴판 이미지로 앱 API를 호출하여 메뉴명·가격·재료·알레르기 번호와 done 결과를 확인했다.
 
 - [Gemini 모델](https://ai.google.dev/gemini-api/docs/models), [구조화 출력](https://ai.google.dev/gemini-api/docs/structured-output), [가격·무료 등급](https://ai.google.dev/gemini-api/docs/pricing)
 - [Nominatim 사용 정책](https://operations.osmfoundation.org/policies/nominatim/), [Overpass와 공개 서버](https://wiki.openstreetmap.org/wiki/Overpass_API)

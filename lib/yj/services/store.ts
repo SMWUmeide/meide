@@ -132,6 +132,42 @@ export async function externalJSON(
                 : 15000,
           ),
     });
+    if (
+      !r.ok &&
+      new URL(url).hostname === "generativelanguage.googleapis.com"
+    ) {
+      const payload = (await r.json().catch(() => undefined)) as
+        | {
+            error?: { details?: { reason?: string }[] };
+          }
+        | undefined;
+      const invalidKey = payload?.error?.details?.some(
+        (d) => d.reason === "API_KEY_INVALID",
+      );
+      if (invalidKey || r.status === 401 || r.status === 403)
+        throw new ServiceError(
+          "GEMINI_AUTH",
+          "Gemini API 키 또는 사용 권한을 확인해 주세요. 사진은 보관했어요.",
+        );
+      if ([408, 500, 502, 503, 504].includes(r.status))
+        throw new ServiceError(
+          "UNAVAILABLE",
+          r.status === 503
+            ? "Gemini 요청이 몰려 분석을 마치지 못했어요. 잠시 후 같은 사진으로 다시 시도해 주세요."
+            : "Gemini가 일시적으로 응답하지 못했어요. 잠시 후 같은 사진으로 다시 시도해 주세요.",
+          503,
+        );
+      if (r.status === 404)
+        throw new ServiceError(
+          "GEMINI_MODEL",
+          "설정한 Gemini 모델을 사용할 수 없어요. 서버의 GEMINI_MODEL 설정을 확인해 주세요.",
+        );
+      if (r.status === 400)
+        throw new ServiceError(
+          "GEMINI_REQUEST",
+          "Gemini가 분석 요청 형식을 처리하지 못했어요. 사진은 보관했어요.",
+        );
+    }
     if (!r.ok)
       throw new ServiceError(
         r.status === 429 ? "RATE_LIMIT" : "UPSTREAM",

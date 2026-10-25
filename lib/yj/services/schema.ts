@@ -49,10 +49,34 @@ export const analysisOutput = z.object({
     .max(40),
   items: z.array(itemOutput).max(160),
 });
-export const analysisResponseSchema = zodToJsonSchema(analysisOutput, {
-  $refStrategy: "none",
-  target: "jsonSchema7",
-});
+// Repeated array/numeric bounds make Gemini's decoding grammar reject this
+// otherwise valid schema. Keep the wire shape here and enforce all limits above
+// in validateAnalysis after generation.
+function generationSchema(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(generationSchema);
+  if (!value || typeof value !== "object") return value;
+  const validationOnly = new Set([
+    "$schema",
+    "minLength",
+    "maxLength",
+    "pattern",
+    "minItems",
+    "maxItems",
+    "minimum",
+    "maximum",
+  ]);
+  return Object.fromEntries(
+    Object.entries(value)
+      .filter(([key]) => !validationOnly.has(key))
+      .map(([key, child]) => [key, generationSchema(child)]),
+  );
+}
+export const analysisResponseSchema = generationSchema(
+  zodToJsonSchema(analysisOutput, {
+    $refStrategy: "none",
+    target: "jsonSchema7",
+  }),
+);
 export const analysisInput = z
   .object({
     photos: z

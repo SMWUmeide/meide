@@ -497,3 +497,145 @@ test("exchange rate is dated and cached once per UTC day", async () => {
   );
   assert.equal(calls, 1);
 });
+
+test("Gemini temporary overload retries with bounded backoff and succeeds", async () => {
+  let calls = 0;
+  const delays = [];
+  const result = await m.geminiJSON(
+    "https://generativelanguage.googleapis.com/v1beta/models/test:generateContent",
+    { method: "POST", body: '{"test":true}' },
+    async (_url, init) => {
+      calls++;
+      assert.equal(init.body, '{"test":true}');
+      return calls < 3
+        ? Response.json({ error: { status: "UNAVAILABLE" } }, { status: 503 })
+        : Response.json({ ok: true });
+    },
+    async (delay) => {
+      delays.push(delay);
+    },
+  );
+  assert.deepEqual(result, { ok: true });
+  assert.equal(calls, 3);
+  assert.equal(delays.length, 2);
+  assert.ok(delays[0] >= 1000 && delays[0] < 1250);
+  assert.ok(delays[1] >= 2000 && delays[1] < 2250);
+});
+test("persistent Gemini overload stops after two retries with a useful message", async () => {
+  let calls = 0;
+  await assert.rejects(
+    m.geminiJSON(
+      "https://generativelanguage.googleapis.com/v1beta/models/test:generateContent",
+      {},
+      async () => {
+        calls++;
+        return Response.json(
+          { error: { status: "UNAVAILABLE" } },
+          { status: 503 },
+        );
+      },
+      async () => {},
+    ),
+    (error) =>
+      error.code === "UNAVAILABLE" && /요청이 몰려/.test(error.message),
+  );
+  assert.equal(calls, 3);
+});
+test("Gemini key, permission, model and request errors are distinct and never retried", async () => {
+  for (const [status, body, code] of [
+    [
+      400,
+      {
+        error: {
+          message: "secret-key-value",
+          details: [{ reason: "API_KEY_INVALID" }],
+        },
+      },
+      "GEMINI_AUTH",
+    ],
+    [403, { error: { status: "PERMISSION_DENIED" } }, "GEMINI_AUTH"],
+    [404, { error: { status: "NOT_FOUND" } }, "GEMINI_MODEL"],
+    [400, { error: { status: "INVALID_ARGUMENT" } }, "GEMINI_REQUEST"],
+  ]) {
+    let calls = 0;
+    await assert.rejects(
+      m.geminiJSON(
+        "https://generativelanguage.googleapis.com/v1beta/models/test:generateContent",
+        {},
+        async () => {
+          calls++;
+          return Response.json(body, { status });
+        },
+        async () => {
+          assert.fail("must not retry a configuration error");
+        },
+      ),
+      (error) =>
+        error.code === code && !error.message.includes("secret-key-value"),
+    );
+    assert.equal(calls, 1);
+  }
+});
+test("cancelling analysis during overload backoff prevents another request", async () => {
+  const abort = new AbortController();
+  let calls = 0;
+  await assert.rejects(
+    m.geminiJSON(
+      "https://generativelanguage.googleapis.com/v1beta/models/test:generateContent",
+      { signal: abort.signal },
+      async () => {
+        calls++;
+        return new Response("", { status: 503 });
+      },
+      async (_delay, signal) => {
+        assert.equal(signal, abort.signal);
+        abort.abort();
+      },
+    ),
+    (error) => error.name === "AbortError",
+  );
+  assert.equal(calls, 1);
+});
+test("compact generation schema still enforces strict server output limits", async () => {
+  let calls = 0;
+  const result = await analyzeMenu(
+    input("Y29tcGFjdA=="),
+    "compact-schema",
+    { GEMINI_API_KEY: "test" },
+    () => {},
+    async (_url, init) => {
+      calls++;
+      const schema = JSON.parse(init.body).generationConfig.responseJsonSchema;
+      // Reproduce the provider rejecting expanded bounded grammars.
+      if (/"(?:maxItems|minimum|maximum)"/.test(JSON.stringify(schema)))
+        return Response.json(
+          { error: { status: "INVALID_ARGUMENT" } },
+          { status: 400 },
+        );
+      const value = structuredClone(output());
+      if (calls === 1) value.items[0].confirmed.allergens = [15];
+      return reply(value);
+    },
+  );
+  assert.equal(
+    calls,
+    2,
+    "a schema-compliant but invalid allergen must be retried once",
+  );
+  assert.equal(result.status, "done");
+  for (const mutate of [
+    (o) => {
+      o.items[0].price.amount = -1;
+    },
+    (o) => {
+      o.items[0].korean = "x".repeat(4001);
+    },
+    (o) => {
+      o.items = Array.from({ length: 161 }, () => o.items[0]);
+    },
+  ]) {
+    const value = structuredClone(output());
+    mutate(value);
+    assert.equal(validateAnalysis(value, 1).success, false);
+  }
+});
