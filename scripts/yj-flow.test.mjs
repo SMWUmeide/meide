@@ -72,6 +72,112 @@ const reply = (value) =>
       },
     ],
   });
+test("photo queue visits all missing menus, survives errors and stops on exit", async () => {
+  const items = [{ id: "a" }, { id: "b" }, { id: "c" }, { id: "d", image: {} }];
+  const calls = [],
+    applied = [];
+  await m.loadMenuImages(
+    items,
+    async (item) => {
+      calls.push(item.id);
+      if (item.id === "a") throw new Error("offline");
+      return item.id === "b" ? undefined : "photo";
+    },
+    (item) => applied.push(item.id),
+    () => true,
+  );
+  assert.deepEqual(calls, ["a", "b", "c"]);
+  assert.deepEqual(applied, ["c"]);
+  let active = true;
+  await m.loadMenuImages(
+    items,
+    async () => {
+      active = false;
+      return "late";
+    },
+    () => assert.fail("late result applied"),
+    () => active,
+  );
+});
+test("photo queries retain the dish and remove extras and search operators", () => {
+  assert.deepEqual(m.imageQueries("Zuppa di zucca e farro (1, 7)"), [
+    "Zuppa di zucca e farro",
+    "Zuppa di zucca",
+  ]);
+  assert.deepEqual(m.imageQueries("pumpkin soup with bread"), [
+    "pumpkin soup with bread",
+    "pumpkin soup",
+  ]);
+  assert.ok(
+    m.imageQueries('pasta filetype:svg "x"')[0].includes("filetype svg"),
+  );
+});
+const commonsPhoto = () =>
+  Response.json({
+    query: {
+      pages: {
+        1: {
+          imageinfo: [
+            {
+              thumburl: "https://upload.wikimedia.org/test.jpg",
+              descriptionurl:
+                "https://commons.wikimedia.org/wiki/File:Test.jpg",
+              extmetadata: {
+                LicenseShortName: { value: "CC BY-SA 4.0" },
+                Artist: { value: "Test author" },
+              },
+            },
+          ],
+        },
+      },
+    },
+  });
+test("photo search survives Wikidata failure, shortens names and caches licensed successes", async () => {
+  const original = "Zuppa di zucca e farro test-photo";
+  const queries = [];
+  const fetcher = async (url) => {
+    if (String(url).includes("wikidata.org"))
+      return new Response("offline", { status: 503 });
+    const query = new URL(url).searchParams.get("gsrsearch");
+    queries.push(query);
+    return query.startsWith("Zuppa di zucca filetype")
+      ? commonsPhoto()
+      : Response.json({});
+  };
+  const image = await m.external.menuImage(original, "호박 수프", {}, fetcher);
+  assert.equal(image.source, "wikimedia");
+  assert.equal(image.isReference, true);
+  assert.equal(queries.length, 2);
+  assert.deepEqual(
+    await m.external.menuImage(original, "호박 수프", {}, async () =>
+      assert.fail("positive cache missed"),
+    ),
+    image,
+  );
+});
+test("photo misses are not cached and English translation supplies a fallback query", async () => {
+  const original = "Minestra speciale photo-retry";
+  const queries = [];
+  let available = false;
+  const fetcher = async (url) => {
+    if (String(url).includes("generativelanguage"))
+      return reply({ text: "vegetable soup", ok: true });
+    if (String(url).includes("wikidata.org")) return Response.json({});
+    const query = new URL(url).searchParams.get("gsrsearch");
+    queries.push(query);
+    return available && query.startsWith("vegetable soup")
+      ? commonsPhoto()
+      : Response.json({});
+  };
+  const env = { GEMINI_API_KEY: "test" };
+  assert.equal(
+    await m.external.menuImage(original, "수프", env, fetcher),
+    undefined,
+  );
+  assert.ok(queries.some((q) => q.startsWith("vegetable soup")));
+  available = true;
+  assert.ok(await m.external.menuImage(original, "수프", env, fetcher));
+});
 test("canonical money, owner IDs and coperto give exact integer totals", () => {
   assert.deepEqual(totals(lines, 10, board.items, board.coperto, 2), {
     food: { amount: 3800, currency: "EUR" },

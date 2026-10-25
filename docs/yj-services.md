@@ -24,6 +24,7 @@ npm run dev -- --host
 ```
 
 - 기본 모델: `gemini-3.5-flash-lite`. `GEMINI_MODEL`이 비어 있으면 기본값을 쓴다.
+- 메뉴 참고 사진은 메뉴 전체를 순차 조회한다. Wikidata와 별개로 Commons에 원문→부재료를 제외한 짧은 이름→영어 번역 이름 순으로 검색한다. 영어 번역은 서버 Gemini와 문장 캐시를 쓰며 키가 없어도 원문/짧은 이름 검색은 동작한다. 출처·저작자·라이선스가 있는 사진만 사용하고 실제 식당 사진으로 단정하지 않는다. 성공 사진만 7일 캐시하며 기존 검색 실패 캐시는 무시한다. 화면 이탈 후의 결과는 적용하지 않는다.
 - 생성용 응답 스키마는 구조·필수 필드·enum을 지정한다. 복잡한 중첩 개수/범위 제약은 서버 Zod에서 엄격히 검사한다. 일시적인 5xx/408 응답은 1초·2초에 지터를 더해 두 번 재시도하고 키·권한·모델·요청 형식 오류는 구분해 안내한다.
 - 분석 기본 제한: 익명 사용자 쿠키별 UTC 하루 10회. `GEMINI_DAILY_LIMIT`으로 바꾼다. 캐시 적중은 차감하지 않는다.
 - 선택: `PEXELS_API_KEY` (Wikimedia에 사진이 없을 때만 사용), `OSM_USER_AGENT` (앱 이름·연락 가능한 프로젝트 주소).
@@ -103,7 +104,7 @@ node scripts/yj-interactions.test.mjs
 node scripts/yj-camera.test.mjs
 ```
 
-22개 서비스/단위 테스트: 정수 금액·복수 동행 ID·평가 enum·모든 fixture 경로·스쿼클·카메라 수명·지연 권한 정리·크기 축소·분석 참조/신뢰도 검증·한 번 재요청·개인정보 제외·해시 캐시·UTC 제한·429/네트워크·OSM 속도/캐시/대체 검색·환율 캐시·Gemini 혼잡 재시도/상한·설정 오류 분류·취소·간소화한 생성 스키마와 엄격한 후속 검사. 단위 테스트에는 실제 기기 조작과 공급자 호출을 포함하지 않는다. 별도로 실제 키와 합성 메뉴판 이미지로 앱 API를 호출하여 메뉴명·가격·재료·알레르기 번호와 done 결과를 확인했다.
+26개 서비스/단위 테스트: 정수 금액·복수 동행 ID·평가 enum·모든 fixture 경로·스쿼클·카메라 수명·지연 권한 정리·크기 축소·분석 참조/신뢰도 검증·한 번 재요청·개인정보 제외·해시 캐시·UTC 제한·429/네트워크·OSM 속도/캐시/대체 검색·환율 캐시·Gemini 혼잡 재시도/상한·설정 오류 분류·취소·간소화한 생성 스키마와 엄격한 후속 검사. 단위 테스트에는 실제 기기 조작과 공급자 호출을 포함하지 않는다. 별도로 실제 키와 합성 메뉴판 이미지로 앱 API를 호출하여 메뉴명·가격·재료·알레르기 번호와 done 결과를 확인했다.
 
 - [Gemini 모델](https://ai.google.dev/gemini-api/docs/models), [구조화 출력](https://ai.google.dev/gemini-api/docs/structured-output), [가격·무료 등급](https://ai.google.dev/gemini-api/docs/pricing)
 - [Nominatim 사용 정책](https://operations.osmfoundation.org/policies/nominatim/), [Overpass와 공개 서버](https://wiki.openstreetmap.org/wiki/Overpass_API)

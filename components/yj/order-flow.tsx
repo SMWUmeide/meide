@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 import { createLocalId } from "@/lib/yj/id";
+import { loadMenuImages } from "@/lib/yj/image-search";
 import {
   useEffect,
   useRef,
@@ -152,7 +153,7 @@ function DishPhoto({
           target="_blank"
           rel="noreferrer"
         >
-          참고 사진 · {image.credit} · {image.license}
+          참고 사진 · 실제와 다를 수 있어요 · {image.credit} · {image.license}
         </a>
       )}
     </>
@@ -308,14 +309,14 @@ export default function OrderFlow() {
     if (!ready || !["01", "06-2"].includes(view.screen) || api.fixtureMode())
       return;
     let active = true;
-    const item =
-      state.board.items.find((i) => i.id === view.menuId) ??
-      state.board.items.find((i) => !i.image);
-    if (!item || item.image) return;
-    void api
-      .menuImage(item.original, item.korean)
-      .then((image) => {
-        if (!active || !image) return;
+    const boardId = state.board.id;
+    const items = [...state.board.items].sort(
+      (a, b) => Number(b.id === view.menuId) - Number(a.id === view.menuId),
+    );
+    void loadMenuImages(
+      items,
+      (item) => api.menuImage(item.original, item.korean),
+      (item, image) => {
         state.board = {
           ...state.board,
           items: state.board.items.map((i) =>
@@ -325,8 +326,9 @@ export default function OrderFlow() {
         refreshViews();
         void saveBoard(state.board);
         setTranslationVersion((v) => v + 1);
-      })
-      .catch(() => {});
+      },
+      () => active && state.board.id === boardId,
+    );
     return () => {
       active = false;
     };

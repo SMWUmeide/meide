@@ -16,6 +16,8 @@ import {
 } from "./store";
 import { citySearch } from "../../cloud-cities";
 import { distanceMeters } from "../presentation";
+import { imageQueries } from "../image-search";
+import { translateTalk } from "./gemini";
 const agent = (env: ServiceEnv) =>
   env.OSM_USER_AGENT ||
   "MEIDE-YJ/1.0 (classroom menu assistant; github.com/SMWUmeide/meide)";
@@ -301,9 +303,10 @@ export async function menuImage(
   fetcher: typeof fetch = fetch,
 ): Promise<MenuImage | undefined> {
   const store = new ServiceStore(env),
-    key = "image:" + original.toLowerCase().trim();
-  const saved = await store.get<MenuImage | null>(key);
-  if (saved !== undefined) return saved ?? undefined;
+    // Ignore old seven-day negative entries; only successful images are cached.
+    key = "image:v2:" + original.toLowerCase().trim();
+  const saved = await store.get<MenuImage>(key);
+  if (saved) return saved;
   let image: MenuImage | undefined;
   try {
     const search = new URL("https://www.wikidata.org/w/api.php");
@@ -339,9 +342,29 @@ export async function menuImage(
         entities.entities?.[id]?.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
       if (title) image = await commons(title, original, env, fetcher);
     }
-    if (!image) image = await commons(undefined, original, env, fetcher);
   } catch {
-    /* No unlicensed fallback image. */
+    // Wikidata failure must not prevent a direct Commons search.
+  }
+  for (const query of imageQueries(original)) {
+    if (image) break;
+    try {
+      image = await commons(undefined, query, env, fetcher);
+    } catch {
+      // Try the next name without retaining a temporary failure.
+    }
+  }
+  if (!image && env.GEMINI_API_KEY) {
+    // Only the dish name is translated, with the existing server cache.
+    const english = await translateTalk(original, "auto", "en", env, fetcher);
+    for (const query of english.ok ? imageQueries(english.text) : []) {
+      if (image) break;
+      if (imageQueries(original).includes(query)) continue;
+      try {
+        image = await commons(undefined, query, env, fetcher);
+      } catch {
+        // No unrelated or unlicensed fallback image.
+      }
+    }
   }
   if (!image && env.PEXELS_API_KEY) {
     try {
@@ -370,7 +393,7 @@ export async function menuImage(
       /* Keep placeholder. */
     }
   }
-  await store.put(key, image ?? null, 7 * 86400000);
+  if (image) await store.put(key, image, 7 * 86400000);
   return image;
 }
 export async function exchangeRate(

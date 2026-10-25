@@ -17,6 +17,7 @@ export async function modules() {
     "services/gemini",
     "view-model",
     "services/external",
+    "image-search",
   ];
   await build({
     stdin: {
