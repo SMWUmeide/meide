@@ -356,7 +356,7 @@ Page 2 화면 일부는 Figma에서 일반 프레임으로 그려져 있다. 코
 ### 12-11. 모양 — 스쿼클 (2차 개정)
 
 요즘 쓰는 **부드러운 스쿼클**로 만든다. 핵심은 세 가지다.
-1. 모서리 스무딩 **100%** (Figma `cornerSmoothing` 1.0) — 직선에서 곡선으로 아주 완만하게 넘어간다.
+1. 모서리 스무딩 **80%** (Figma `cornerSmoothing` 0.8) — 직선에서 곡선으로 아주 완만하게 넘어간다.
 2. 반경을 **크게** — 높이의 약 44%. 알약과 사각형 사이, 거의 둥근 덩어리처럼 보인다.
 3. 안쪽 여백을 **넉넉하게** — 글자가 가장자리에서 멀리 떨어진다.
 
@@ -372,7 +372,7 @@ Page 2 화면 일부는 Figma에서 일반 프레임으로 그려져 있다. 코
 | 원형 요소 (아바타·뒤로 가기·작은 아이콘 버튼·마이크·셔터) | 지름/2 | **원 유지** |
 | 그 밖의 작은 박스 (썸네일·안내 박스 등) | 기존 반경 × 1.4 | |
 
-**구현:** CSS `border-radius`만 쓰면 일반 둥근 사각형이 되어 이 느낌이 안 난다. `figma-squircle` 패키지 `getSvgPath({ width, height, cornerRadius, cornerSmoothing: 1 })`로 만든 경로를 `clip-path: path(...)`로 쓰거나 SVG 마스크로 구현한다(요소 크기가 바뀌면 `ResizeObserver`로 다시 계산). 공통 `Squircle` 래퍼를 만들어 버튼·칩·카드가 함께 쓴다. 테두리는 같은 경로의 SVG stroke로, 그림자는 바깥 래퍼의 `filter: drop-shadow(...)`로 넣어 잘리지 않게 한다. 그림자가 있는 카드의 부모는 `overflow: hidden`을 쓰지 않는다.
+**구현:** CSS `border-radius`만 쓰면 일반 둥근 사각형이 되어 이 느낌이 안 난다. `figma-squircle` 패키지 `getSvgPath({ width, height, cornerRadius, cornerSmoothing: 0.8 })`로 만든 경로를 `clip-path: path(...)`로 쓰거나 SVG 마스크로 구현한다(요소 크기가 바뀌면 `ResizeObserver`로 다시 계산). 공통 `Squircle` 래퍼를 만들어 버튼·칩·카드가 함께 쓴다. 테두리는 같은 경로의 SVG stroke로, 그림자는 바깥 래퍼의 `filter: drop-shadow(...)`로 넣어 잘리지 않게 한다. 그림자가 있는 카드의 부모는 `overflow: hidden`을 쓰지 않는다.
 
 ### 12-12. 리퀴드 글래스 — 떠 있는 요소에만 (2차 개정)
 
