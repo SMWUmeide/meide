@@ -1,27 +1,27 @@
-# 한입 유럽 — yj 디자인 규칙
+# MEIDE — yj 디자인 규칙
 
 분석일: 2026-10-25 · 기준 브랜치: `src`
 
 ## 1. 분석 범위와 근거
 
-원본: [Figma 「이것저것」 / 사경디 디자인 페이지](https://www.figma.com/design/s4mpJU3CbRV5CMobnJYiwE/?node-id=394-305)
+원본: [Figma 「연주」 / Page 1](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=0-1)
 
-페이지 `394:305`의 프레임 구조, 각 화면의 디자인 컨텍스트와 렌더 이미지를 대조했다. 아래 수치는 Figma 디자인 컨텍스트/메타데이터에서 확인한 px 값이다. 실제 기기의 물리 픽셀 수를 뜻하지 않는다.
+최초 분석한 화면이 복사된 현재 기준 페이지는 `0:1`이다. 아래 규칙은 기존 화면의 프레임 구조, 디자인 컨텍스트와 렌더 이미지를 대조해 정리했다. 표의 노드 ID는 현재 파일 기준이다. 아래 수치는 Figma 디자인 컨텍스트/메타데이터에서 확인한 px 값이다. 실제 기기의 물리 픽셀 수를 뜻하지 않는다.
 
 | 화면 | 노드 ID | 프레임 크기 |
 | --- | --- | --- |
-| 컴포넌트 모음 | `394:320` | 668 × 136 |
-| 홈 / 아침 | `394:595` | 402 × 874 |
-| 홈 / 오전 | `394:616` | 402 × 874 |
-| 홈 / 점심 | `394:634` | 402 × 874 |
-| 홈 / 저녁 | `394:653` | 402 × 874 |
-| 01 메뉴를 골라주세요 | `394:325` | 390 × 844 |
-| 02 함께 담은 장바구니 | `394:409` | 390 × 844 |
-| 03 이렇게 주문하세요 | `394:493` | 390 × 844 |
-| 04 영수증 미리보기 (그라디언트 버전) | `394:672` | 390 × 1155 |
-| 05-2 근처 식당 찾기 · 지도형 (피드백 4·7) | `399:192` | 390 × 844 |
-| 05-3 근처 식당 찾기 · 목록 펼침 (피드백 4·7) | `402:191` | 390 × 844 |
-| 06-2 메뉴 상세 · AI 컬러 박스 (피드백 18) | `400:194` | 390 × 1475 |
+| 컴포넌트 모음 | `1:52` | 668 × 136 |
+| 홈 / 아침 | `1:253` | 402 × 874 |
+| 홈 / 오전 | `1:274` | 402 × 874 |
+| 홈 / 점심 | `1:292` | 402 × 874 |
+| 홈 / 저녁 | `1:311` | 402 × 874 |
+| 01 메뉴를 골라주세요 | `1:57` | 390 × 844 |
+| 02 함께 담은 장바구니 | `1:141` | 390 × 844 |
+| 03 이렇게 주문하세요 | `1:225` | 390 × 844 |
+| 04 영수증 미리보기 (그라디언트 버전) | `1:330` | 390 × 1155 |
+| 05-2 근처 식당 찾기 · 지도형 (피드백 4·7) | `1:407` | 390 × 844 |
+| 05-3 근처 식당 찾기 · 목록 펼침 (피드백 4·7) | `1:577` | 390 × 844 |
+| 06-2 메뉴 상세 · AI 컬러 박스 (피드백 18) | `1:497` | 390 × 1475 |
 
 **근거 구분**
 
@@ -210,7 +210,7 @@
 
 ## 9. 원본에서 발견한 불일치와 미정 사항
 
-이 항목은 반복할 디자인 규칙이 아니라 구현 전 정리할 문제다.
+이 항목은 반복할 디자인 규칙이 아니라 구현 전 정리할 문제다. 이 절의 `394:*` 노드 ID는 최초 분석본에서 기록한 근거 ID다.
 
 | 항목 | 확인된 근거 | 처리 제안 |
 | --- | --- | --- |
@@ -232,3 +232,73 @@
 - 원본의 잘린 버튼이나 샘플 계산 오류를 그대로 옮기지 않았는가.
 
 이 문서는 원본 디자인을 분석한 구현 참고 자료다. 현재 `app/page.tsx`와 `public/` 구현이 이 규칙을 이미 충족한다는 검증 결과를 뜻하지 않는다.
+
+## 11. 추가 설계 화면 — 2026-10-25
+
+현재 앱의 나머지 화면 전체를 기준으로 새 Figma 파일의 기존 화면 아래에 40개 화면을 추가했다. 이 절은 새로 설계한 화면의 목록이며, 1–10절의 최초 관찰값과 구분한다. 기존 화면의 시각 요소는 유지했다.
+
+공통 기준은 390 × 844px, Noto Sans KR, 회색 배경·흰 카드·파란 주요 버튼이다. 긴 본문은 별도 세로 스크롤 프레임에 넣고 하단 버튼/탭과 분리했다. 기존 버튼·뒤로 가기·아바타·탭 인스턴스를 재사용했으며 입력 필드와 목록 행은 텍스트 속성을 가진 공통 컴포넌트로 만들었다.
+
+새 파일의 기존 컴포넌트 일부는 Pretendard Variable로 지정되어 있지만, 추가 화면은 이 문서의 Noto Sans KR 기준을 따른다. 촬영 화면의 메뉴판 텍스트와 식당·날짜·가격·프로필 데이터는 화면 구성을 설명하는 예시다. 실제 초대 링크, 검색 결과, 네트워크 요청을 실행하는 앱 구현은 아니다.
+
+| 흐름 | Figma 위치 | 화면 수 |
+| --- | --- | --- |
+| 여행 준비와 메뉴판 촬영 | [화면 모음 열기](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=5-227) | 8 |
+| 주문·대화·식사 기록 | [화면 모음 열기](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=7-245) | 8 |
+| 동행자와 MY | [화면 모음 열기](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=8-330) | 8 |
+| 식당·음식·식문화 탐색 | [화면 모음 열기](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=9-430) | 8 |
+| 로딩·오류·빈 결과·확인 상태 | [화면 모음 열기](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=10-505) | 8 |
+
+### 화면별 위치
+
+| 화면 | 노드 ID |
+| --- | --- |
+| [07 여행지 선택](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=5-231) | `5:231` |
+| [08 메뉴판 촬영](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=5-261) | `5:261` |
+| [09 촬영 완료 · 사진 추가](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=5-290) | `5:290` |
+| [10 촬영 사진 펼쳐보기](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=5-321) | `5:321` |
+| [11 촬영 사진 확대](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=5-350) | `5:350` |
+| [12 인식한 메뉴 수정](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=5-376) | `5:376` |
+| [13 식당 확인](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=5-397) | `5:397` |
+| [14 다른 식당 선택](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=5-455) | `5:455` |
+| [15 대화 시작 안내](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=7-249) | `7:249` |
+| [16 마주보기 실시간 대화](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=7-270) | `7:270` |
+| [17 주문 문장 크게 보여주기](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=7-298) | `7:298` |
+| [18 직원에게 재료 확인하기](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=7-316) | `7:316` |
+| [19 주문 내역](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=7-339) | `7:339` |
+| [20 식사 평가](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=7-387) | `7:387` |
+| [21 주문 내역 · 비어 있음](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=7-413) | `7:413` |
+| [22 장바구니 · 비어 있음](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=7-455) | `7:455` |
+| [23 동행자와 친구 목록](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=8-334) | `8:334` |
+| [24 여행 동행자 선택](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=8-365) | `8:365` |
+| [25 친구 입맛 수정](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=8-388) | `8:388` |
+| [26 새 친구 등록](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=8-414) | `8:414` |
+| [27 동행자 초대](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=8-440) | `8:440` |
+| [28 MY](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=8-467) | `8:467` |
+| [29 프로필 수정](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=8-525) | `8:525` |
+| [30 개인정보와 저장](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=8-546) | `8:546` |
+| [31 주변 식당 추천](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=9-434) | `9:434` |
+| [32 식당 상세](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=9-494) | `9:494` |
+| [33 여행지 음식 추천](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=9-520) | `9:520` |
+| [34 식문화 목록](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=9-552) | `9:552` |
+| [35 식문화 상세](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=9-598) | `9:598` |
+| [36 식당 전체 메뉴](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=9-616) | `9:616` |
+| [37 메뉴 사진 선택](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=9-657) | `9:657` |
+| [38 여행지 검색 결과](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=9-680) | `9:680` |
+| [39 메뉴 인식 중](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=10-509) | `10:509` |
+| [40 메뉴 인식 실패](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=10-530) | `10:530` |
+| [41 카메라 권한 안내](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=10-555) | `10:555` |
+| [42 주변 식당 · 결과 없음](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=10-578) | `10:578` |
+| [43 여행지 · 검색 결과 없음](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=10-608) | `10:608` |
+| [44 대화 번역 실패](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=10-635) | `10:635` |
+| [45 음성 입력 중](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=10-656) | `10:656` |
+| [46 저장 데이터 삭제 확인](https://www.figma.com/design/8AarnXQcxyr4OM0yQNAtWH/?node-id=10-678) | `10:678` |
+
+### 확인한 내용
+
+- 각 흐름의 화면 모음을 렌더해 텍스트 줄바꿈, 카드 간격, 이미지, 하단 UI를 확인했다.
+- 새 화면 전체의 텍스트 서체는 Noto Sans KR이며, 가로 경계를 넘는 텍스트는 구조 검사에서 발견되지 않았다.
+- 화면은 편집 가능한 텍스트·벡터·프레임·컴포넌트 인스턴스로 구성했다. 전체 UI를 한 장의 이미지로 붙이지 않았다.
+- 음식 이미지는 기존 파일의 이미지 채움을, 식문화 사진은 저장소의 `public/assets/culture/` 자산을 사용했다.
+- 마주보기 대화의 직원 쪽 패널은 180° 회전했다. 긴 식문화 목록 등은 스크롤 영역에서 이어진다.
+- 이 결과는 화면 설계다. 화면 간 클릭 전환, 마이크 입력, 인식·번역 API와 저장/삭제 동작은 연결하지 않았다.
