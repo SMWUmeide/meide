@@ -239,21 +239,31 @@ AI에게 함께 주는 규칙:
 
 화면 코드는 아래 함수만 부른다. 지금은 각 함수가 목업(Stub·Fake)을 돌려주고, API를 붙일 때 **함수 안만** 바꾼다. 모두 서버 쪽에서 실행하고 API 키는 화면 코드에 두지 않는다.
 
-| 함수 | 입력 → 출력 | 붙일 서비스 (미정은 팀 결정) |
+| 함수 | 입력 → 출력 | 붙일 서비스 (2026-10-25 결정) |
 | --- | --- | --- |
-| `analyzeMenu(photos, taste[])` | 사진들 → MenuBoard | 메뉴판 분석 AI (미정) |
+| `analyzeMenu(photos, taste[])` | 사진들 → MenuBoard | **Google Gemini API 무료 등급** (결제 수단 연결 안 함, Flash-Lite 계열) |
 | `findRestaurantOnMenu(name, location)` | → Restaurant[] | OSM Nominatim / Overpass |
 | `nearbyRestaurants(location, radius, category?)` | → Restaurant[] | OSM Overpass |
 | `menuImage(original, korean)` | → MenuImage? | Wikidata / Wikimedia Commons → (없으면) Unsplash·Pexels |
-| `translateRequest(korean, language)` | → `{ local, ok }` | 번역 (미정, 분석 AI와 같은 것 권장) |
-| `translateTalk(text, from, to)` | → `{ text, ok }` | 번역 (미정) |
+| `translateRequest(korean, language)` | → `{ local, ok }` | **Gemini** (분석과 같은 키) |
+| `translateTalk(text, from, to)` | → `{ text, ok }` | **Gemini** |
 | `speak(text, language)` | 소리 재생 | 기기 내장 음성(Web Speech) 우선 |
-| `listen(language)` | → 말한 문장 | 기기 음성 인식 또는 STT 서비스 (미정) |
-| `exchangeRate(base, quote)` | → ExchangeRate | 환율 API (ECB 기준 무료 서비스) |
+| `listen(language)` | → 말한 문장 | 브라우저 음성 인식(Web Speech) 우선. 지원 안 되는 기기는 직접 입력. 유료 STT(Azure 등)는 나중에 검토 |
+| `exchangeRate(base, quote)` | → ExchangeRate | **Frankfurter API** (ECB 기준, 무료) |
 | `searchDestinations(query)` | → Trip 후보[] | GeoNames |
-| `currentUser()` · 저장 함수들 | → User 등 | 로그인 + D1 데이터베이스 (로그인 방식 미정) |
+| `currentUser()` · 저장 함수들 | → User 등 | D1 데이터베이스 + 로그인 (방식 미정. 템플릿에 남은 ChatGPT 로그인은 쓰지 않는다) |
 | `cartSession(id)` · `updateCart(...)` | → CartSession | D1 + 실시간 동기화 (마지막 단계) |
 | `koreanRanking(region)` · `koreanRating(restaurantId)` | → 집계 | D1에 쌓인 Rating 집계 |
+
+**쓰지 않는 것** — Google Places API(유료, 교수님 피드백), 식당 공식 메뉴 연동(데이터 출처 없음, 36 화면 삭제), Brave Image Search(이미지 라이선스 불명확).
+
+**카메라·위치**: 브라우저 카메라(`getUserMedia`, 후면 카메라)와 사진 선택(`<input type="file" accept="image/*">`), 브라우저 위치(`navigator.geolocation`). 둘 다 **HTTPS에서만** 동작한다(localhost 제외).
+
+**Gemini 무료 등급 주의**
+- 결제 수단을 연결하지 않아 요금이 나가지 않게 한다. 하루 호출 한도가 작으므로 같은 사진은 해시로 결과를 저장해 다시 쓰고, 사용자당 하루 분석 횟수를 제한한다. 한도 초과(429)는 40 화면에 "오늘 분석 가능 횟수를 다 썼어요"로 안내한다.
+- 무료 등급 입력은 Google 서비스 개선에 쓰일 수 있다. 사진 외 개인정보(이름·계정)는 보내지 않고, 알레르기는 EU 번호만 보낸다. 30 개인정보 화면에 "메뉴판 사진은 분석을 위해 Google Gemini로 보내요"를 표시한다.
+- 무료 등급은 EEA(유럽) 사용자 대상 서비스에 제한이 있다는 안내가 있다. 수업 시연용으로만 쓰고, 정식 출시 전 유료 등급 전환 여부를 다시 정한다.
+- API 키(`GEMINI_API_KEY`)는 서버 환경 변수에만 둔다.
 
 **같이 지킬 것**
 
