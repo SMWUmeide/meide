@@ -1,5 +1,6 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
+import { createLocalId } from "@/lib/yj/id";
 import {
   useEffect,
   useRef,
@@ -10,6 +11,8 @@ import {
 import {
   AIBox,
   Asset,
+  GlassButton,
+  Squircle,
   Avatar,
   BottomActions,
   BottomSheet,
@@ -141,7 +144,7 @@ function Stepper({
   name: string;
 }) {
   return (
-    <span className="stepper">
+    <Squircle as="span" radius="chip" className="stepper">
       <button
         type="button"
         aria-label={`${name} 수량 줄이기`}
@@ -157,7 +160,7 @@ function Stepper({
       >
         +
       </button>
-    </span>
+    </Squircle>
   );
 }
 
@@ -382,7 +385,7 @@ export default function OrderFlow() {
   function capture(src?: string) {
     const photos = [...draft.photos];
     const photo: Photo = {
-      id: crypto.randomUUID(),
+      id: createLocalId(),
       src,
       readable: replaceIndex !== null || photos.length === 0,
     };
@@ -424,7 +427,7 @@ export default function OrderFlow() {
         photos: [
           ...current.photos,
           ...sources.map((src) => ({
-            id: crypto.randomUUID(),
+            id: createLocalId(),
             src,
             readable: true,
           })),
@@ -674,13 +677,15 @@ export default function OrderFlow() {
                 />
               </div>
             ))}
-            <button
+            <Squircle
+              as="button"
+              radius={30}
               type="button"
               className="add-photo"
               onClick={() => go("09")}
             >
               <Asset name="3d1ce.svg" />더 찍기
-            </button>
+            </Squircle>
           </div>
           <BottomActions className="camera-footer">
             <p>사진을 누르면 크게 볼 수 있어요</p>
@@ -713,11 +718,14 @@ export default function OrderFlow() {
               ))}
             </div>
             <div className="camera-pair">
-              <button type="button" onClick={() => retake(view.photoIndex)}>
+              <GlassButton
+                type="button"
+                onClick={() => retake(view.photoIndex)}
+              >
                 <Asset name="6af20.svg" />
                 다시 찍기
-              </button>
-              <button
+              </GlassButton>
+              <GlassButton
                 type="button"
                 onClick={() => {
                   removePhoto(view.photoIndex);
@@ -726,7 +734,7 @@ export default function OrderFlow() {
               >
                 <Asset name="bb436.svg" />
                 삭제
-              </button>
+              </GlassButton>
             </div>
           </BottomActions>
         </CameraShell>
@@ -813,7 +821,11 @@ export default function OrderFlow() {
             사진은 이 휴대폰에 임시 저장돼 있어서 연결이 끊겨도 다시 시도할 수
             있어요.
           </p>
-          <SecondaryButton className="stop-analysis" onClick={() => go("09")}>
+          <SecondaryButton
+            size="small"
+            className="stop-analysis"
+            onClick={() => go("09")}
+          >
             그만하기
           </SecondaryButton>
         </div>
@@ -1182,7 +1194,7 @@ export default function OrderFlow() {
                     </p>
                   )}
                 </div>
-                <SecondaryButton onClick={() => go("18")}>
+                <SecondaryButton size="small" onClick={() => go("18")}>
                   직원에게 확인하는 문장 보기
                 </SecondaryButton>
               </AIBox>
@@ -1391,7 +1403,7 @@ export default function OrderFlow() {
                 ordered: true,
                 orderedAt: new Date().toISOString(),
               }));
-              const recordId = crypto.randomUUID();
+              const recordId = createLocalId();
               setAccount((a) => ({
                 ...a,
                 recentMenu: true,

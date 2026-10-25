@@ -63,10 +63,113 @@ try {
       [...document.images].filter((i) => !i.naturalWidth).map((i) => i.src),
     );
     assert.deepEqual(broken, [], `${id}: missing assets`);
+    const metrics = await page.evaluate(() => {
+      const styles = (selector) =>
+        Array.from(document.querySelectorAll(selector), (e) => {
+          const s = getComputedStyle(e);
+          return {
+            className: e.className,
+            small: e.classList.contains("button--small"),
+            flush: e.classList.contains("flush"),
+            font: s.fontSize,
+            line: s.lineHeight,
+            weight: s.fontWeight,
+            padding: [
+              s.paddingTop,
+              s.paddingRight,
+              s.paddingBottom,
+              s.paddingLeft,
+            ],
+            height: s.minHeight,
+            width: s.width,
+            smoothing: e.dataset.smoothing,
+          };
+        });
+      return {
+        buttons: styles(".button"),
+        chips: styles(".chip,.inline-tag"),
+        cards: styles(".card,.surface"),
+        sheets: styles(".bottom-sheet"),
+        rows: styles(".list-row"),
+        cardTitles: styles(".card h2"),
+        cardItems: styles(".card h3,.card .row-content strong"),
+        cardCaptions: styles(
+          ".card .row-content small,.card .menu-card-body>small,.card .cart-item .original,.card .rank-body>small",
+        ),
+      };
+    });
+    for (const b of metrics.buttons) {
+      assert.equal(
+        b.font,
+        b.small ? "14px" : "16px",
+        `${id} ${b.className}: button font`,
+      );
+      assert.equal(b.line, "24px", id);
+      assert.equal(b.height, b.small ? "48px" : "60px", id);
+      assert.deepEqual(
+        b.padding,
+        b.small
+          ? ["12px", "22px", "12px", "22px"]
+          : ["16px", "22px", "16px", "22px"],
+        `${id} ${b.className}: button padding`,
+      );
+      assert.equal(b.smoothing, "0.8", id);
+    }
+    for (const chip of metrics.chips) {
+      assert.equal(chip.font, "14px", `${id} ${chip.className}: chip font`);
+      assert.equal(chip.line, "18px", id);
+      assert.deepEqual(
+        chip.padding,
+        ["12px", "22px", "12px", "22px"],
+        `${id} ${chip.className}: chip padding`,
+      );
+      assert.equal(chip.smoothing, "0.8", id);
+    }
+    for (const card of metrics.cards) {
+      assert.equal(card.font, "15px", `${id} ${card.className}: card font`);
+      assert.equal(card.line, "22px", id);
+      assert.deepEqual(
+        card.padding,
+        Array(4).fill(card.flush ? "0px" : "24px"),
+        `${id} ${card.className}: card padding`,
+      );
+      assert.equal(card.smoothing, "0.8", id);
+    }
+    for (const sheet of metrics.sheets) {
+      assert.deepEqual(
+        sheet.padding,
+        ["24px", "24px", "24px", "24px"],
+        `${id}: sheet padding`,
+      );
+      assert.equal(sheet.smoothing, "0.8", id);
+    }
+    for (const row of metrics.rows) {
+      assert.equal(row.font, "15px", `${id}: row font`);
+      assert.deepEqual(
+        row.padding,
+        ["16px", "24px", "16px", "24px"],
+        `${id}: row padding`,
+      );
+    }
+    for (const title of metrics.cardTitles) {
+      assert.equal(title.font, "18px", `${id}: card section title`);
+      assert.equal(title.line, "26px", id);
+    }
+    for (const title of metrics.cardItems) {
+      assert.equal(title.font, "15px", `${id}: card item title`);
+      assert.equal(title.line, "22px", id);
+    }
+    for (const caption of metrics.cardCaptions) {
+      assert.equal(caption.font, "13px", `${id}: card caption`);
+      assert.equal(caption.line, "20px", id);
+    }
     const screen = await page.locator("main").boundingBox();
     assert.equal(screen.width, width);
     assert.equal(screen.height, height);
     if (["16", "44", "45"].includes(id)) {
+      const mic = await page.locator(".my-mic").boundingBox();
+      assert.equal(mic.width, 80);
+      assert.equal(mic.height, 80);
       const staff = await page.locator(".staff-half").boundingBox(),
         customer = await page.locator(".customer-half").boundingBox();
       assert.equal(staff.height, height / 2);
@@ -151,6 +254,15 @@ try {
       {
         base,
         viewports: "390×844; home 402×874",
+        commonMetrics: {
+          smoothing: 0.8,
+          button: { font: 16, minHeight: 60, padding: [16, 22] },
+          smallButton: { font: 14, minHeight: 48, padding: [12, 22] },
+          chip: { font: 14, lineHeight: 18, padding: [12, 22] },
+          card: { font: 15, lineHeight: 22, padding: 24, flushPadding: 0 },
+          sheetPadding: 24,
+          rowPadding: [16, 24],
+        },
         screens: results,
         errors,
         externalRequests: network,

@@ -1,6 +1,44 @@
 {
   "base": "http://127.0.0.1:5173",
   "viewports": "390×844; home 402×874",
+  "commonMetrics": {
+    "smoothing": 0.8,
+    "button": {
+      "font": 16,
+      "minHeight": 60,
+      "padding": [
+        16,
+        22
+      ]
+    },
+    "smallButton": {
+      "font": 14,
+      "minHeight": 48,
+      "padding": [
+        12,
+        22
+      ]
+    },
+    "chip": {
+      "font": 14,
+      "lineHeight": 18,
+      "padding": [
+        12,
+        22
+      ]
+    },
+    "card": {
+      "font": 15,
+      "lineHeight": 22,
+      "padding": 24,
+      "flushPadding": 0
+    },
+    "sheetPadding": 24,
+    "rowPadding": [
+      16,
+      24
+    ]
+  },
   "screens": [
     {
       "id": "07",

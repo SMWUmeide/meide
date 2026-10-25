@@ -9,6 +9,8 @@ import {
   type ReactNode,
 } from "react";
 
+export const SQUIRCLE_SMOOTHING = 0.8;
+
 type ShapeProps = HTMLAttributes<HTMLElement> & {
   as?: ElementType;
   radius?: number | "chip";
@@ -44,7 +46,7 @@ export function Squircle({
         width,
         height,
         cornerRadius,
-        cornerSmoothing: round ? 0 : 0.8,
+        cornerSmoothing: round ? 0 : SQUIRCLE_SMOOTHING,
         preserveSmoothing: true,
       };
       const path = getSvgPath(options);
@@ -63,7 +65,7 @@ export function Squircle({
         "--squircle-stroke-image",
         `url("data:image/svg+xml,${encodeURIComponent(svg)}")`,
       );
-      element.dataset.smoothing = round ? "0" : "0.8";
+      element.dataset.smoothing = round ? "0" : String(SQUIRCLE_SMOOTHING);
     };
     update();
     const observer = new ResizeObserver(update);

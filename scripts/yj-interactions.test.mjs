@@ -32,6 +32,21 @@ const open = async (path, id) => {
 };
 try {
   await open("/", "home");
+  const originFeatures = await page.evaluate(() => ({
+    secure: window.isSecureContext,
+    randomUUID: typeof crypto.randomUUID,
+    getRandomValues: typeof crypto.getRandomValues,
+  }));
+  if (
+    new URL(base).protocol === "http:" &&
+    !["localhost", "127.0.0.1", "[::1]"].includes(new URL(base).hostname)
+  ) {
+    assert.equal(originFeatures.secure, false);
+    assert.equal(originFeatures.randomUUID, "undefined");
+    assert.equal(originFeatures.getRandomValues, "function");
+  }
+  console.log("ORIGIN", base, originFeatures);
+
   await click("메뉴판 찍기 찍으면 한국 음식에 빗대어 풀어드려요", "08");
   await click("셔터", "09");
   await click("셔터", "09");
@@ -170,6 +185,41 @@ try {
   await screen("44");
   await click("주문 문장 보여주기", "17");
   await click("닫기", "16");
+  const albumContext = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+  });
+  try {
+    const album = await albumContext.newPage();
+    album.on("pageerror", (e) => errors.push(e.message));
+    await album.goto(base + "/capture?fixture=08");
+    await album.waitForSelector('main[data-screen="08"][aria-busy=false]');
+    await album
+      .getByLabel("메뉴판 사진 선택")
+      .setInputFiles({
+        name: "menu.png",
+        mimeType: "image/png",
+        buffer: Buffer.from(
+          "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aD1sAAAAASUVORK5CYII=",
+          "base64",
+        ),
+      });
+    await album.waitForSelector('main[data-screen="09"]');
+    assert.equal(
+      await album.getByRole("button", { name: "사진 1장 펼쳐보기" }).count(),
+      1,
+    );
+    assert.match(
+      await album.locator(".photo-stack img").getAttribute("src"),
+      /^data:image\/png/,
+    );
+    console.log(
+      "PASS mobile album upload creates a photo ID on the HTTP origin",
+    );
+  } finally {
+    await albumContext.close();
+  }
   assert.deepEqual(errors, []);
   assert.deepEqual(api, []);
   console.log("PASS error fallback and all interactions without API requests");

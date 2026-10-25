@@ -97,7 +97,7 @@ export default function Home({
           as="button"
           type="button"
           radius="chip"
-          className="location-chip"
+          className="chip location-chip"
           onClick={() => onNavigate("07")}
         >
           <Asset name="7a6b9.svg" />

@@ -1,5 +1,6 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
+import { createLocalId } from "@/lib/yj/id";
 import {
   useEffect,
   useRef,
@@ -10,6 +11,8 @@ import {
 } from "react";
 import {
   Asset,
+  ActionCard,
+  GlassButton,
   Avatar,
   BottomActions,
   BottomSheet,
@@ -241,7 +244,7 @@ function RestaurantInfo({
         </div>
       </div>
       {signature && (
-        <Squircle radius={20} className="signature">
+        <Squircle radius={30} className="surface signature">
           <small>대표 메뉴</small>
           <strong>{restaurant.signature}</strong>
           <p>{restaurant.analogy}</p>
@@ -506,7 +509,11 @@ export default function ExtraScreens(props: Props) {
                   onChange={(e) => setCustom(e.target.value)}
                   maxLength={20}
                 />
-                <SecondaryButton type="submit" disabled={!custom.trim()}>
+                <SecondaryButton
+                  size="small"
+                  type="submit"
+                  disabled={!custom.trim()}
+                >
                   추가
                 </SecondaryButton>
               </form>
@@ -570,10 +577,8 @@ export default function ExtraScreens(props: Props) {
           {state === "07" ? (
             <>
               <h2 className="eyebrow">지금 여행 중</h2>
-              <Squircle
-                as="button"
+              <ActionCard
                 className="current-trip"
-                type="button"
                 onClick={() => setSelectedTrip(account.destination.id)}
               >
                 <span className="pin-badge">
@@ -584,7 +589,7 @@ export default function ExtraScreens(props: Props) {
                   <strong>{account.destination.city}</strong>
                 </span>
                 <Radio on={selectedTrip === account.destination.id} />
-              </Squircle>
+              </ActionCard>
               <h2 className="eyebrow">많이 찾는 여행지</h2>
               <Card className="flush">
                 {destinations.slice(1, 5).map((d) => (
@@ -722,10 +727,9 @@ export default function ExtraScreens(props: Props) {
                     : staffKorean}
               </p>
               {!listening && !failed && (
-                <Squircle
-                  as="button"
+                <SecondaryButton
+                  size="small"
                   type="button"
-                  radius={16}
                   className="staff-mic"
                   onClick={() => {
                     setCustomerText("일반 물과 탄산수 중 어떤 걸 드릴까요?");
@@ -736,7 +740,7 @@ export default function ExtraScreens(props: Props) {
                 >
                   <DesignAsset screen="16" name="imgFrame1" />
                   Tocca per parlare
-                </Squircle>
+                </SecondaryButton>
               )}
             </div>
           }
@@ -782,6 +786,7 @@ export default function ExtraScreens(props: Props) {
               {failed ? (
                 <div className="talk-failure-actions">
                   <PrimaryButton
+                    size="small"
                     onClick={() => {
                       setStaffText(
                         "Ancora una bottiglia di acqua frizzante, per favore.",
@@ -795,6 +800,7 @@ export default function ExtraScreens(props: Props) {
                     다시 번역하기
                   </PrimaryButton>
                   <SecondaryButton
+                    size="small"
                     onClick={() => go("17", { largeFrom: "16" })}
                   >
                     주문 문장 보여주기
@@ -990,10 +996,7 @@ export default function ExtraScreens(props: Props) {
             </Squircle>
             {["또 먹고 싶어요", "한 번이면 충분해요", "입맛에 안 맞았어요"].map(
               (label, i) => (
-                <Squircle
-                  as="button"
-                  type="button"
-                  radius={30}
+                <ActionCard
                   className={`rating-option ${i === 0 ? "recommended" : ""}`}
                   key={label}
                   onClick={() => chooseRating(label)}
@@ -1008,7 +1011,7 @@ export default function ExtraScreens(props: Props) {
                     <strong>{label}</strong>
                     {i === 0 && <small>한국인 평점에 반영돼요</small>}
                   </span>
-                </Squircle>
+                </ActionCard>
               ),
             )}
           </div>
@@ -1035,10 +1038,8 @@ export default function ExtraScreens(props: Props) {
             {ranking.slice(0, 3).map((r, i) => {
               const m = menuById(r.menuId);
               return (
-                <Squircle
-                  as="button"
-                  type="button"
-                  className="rank-mini"
+                <ActionCard
+                  className="rank-mini flush"
                   key={r.menuId}
                   onClick={() => go("33", { menuId: r.menuId })}
                 >
@@ -1051,7 +1052,7 @@ export default function ExtraScreens(props: Props) {
                     <p>{r.short}</p>
                     <small>{r.percent}% 또 먹고 싶어요</small>
                   </div>
-                </Squircle>
+                </ActionCard>
               );
             })}
           </div>
@@ -1107,16 +1108,14 @@ export default function ExtraScreens(props: Props) {
           <Card className="flush">
             <div className="map-preview">
               <MockMap mini />
-              <Glass
-                as="button"
+              <GlassButton
                 type="button"
-                radius={18}
                 className="map-enlarge"
                 onClick={() => go("05-2")}
               >
                 <DesignAsset screen="31" name="imgFrame5" />
                 지도로 크게 보기
-              </Glass>
+              </GlassButton>
             </div>
             {mockRestaurants.slice(0, 2).map((r) => (
               <ListRow
@@ -1284,7 +1283,7 @@ export default function ExtraScreens(props: Props) {
             )}
           </div>
           {!expanded && !empty && (
-            <Glass radius={18} className="radius-chip">
+            <Glass radius="chip" className="chip radius-chip">
               반경 {appliedRadius} · <b>{list.length}곳</b> ▾
             </Glass>
           )}
@@ -1402,12 +1401,14 @@ export default function ExtraScreens(props: Props) {
                 </button>
                 <div className="button-pair">
                   <SecondaryButton
+                    size="small"
                     disabled
                     title="이 이동은 ROUTES-yj.md에서 아직 미정이에요"
                   >
                     길찾기
                   </SecondaryButton>
                   <PrimaryButton
+                    size="small"
                     disabled
                     title="이 이동은 ROUTES-yj.md에서 아직 미정이에요"
                   >
@@ -1421,8 +1422,8 @@ export default function ExtraScreens(props: Props) {
             <Squircle
               as="button"
               type="button"
-              radius={18}
-              className="map-toggle"
+              radius={17.76}
+              className="button button--small map-toggle"
               onClick={() => go("05-2")}
             >
               <DesignAsset screen="05-3" name="imgIconMap" />
@@ -1461,7 +1462,7 @@ export default function ExtraScreens(props: Props) {
                 />
                 <small className="open">● {restaurant.hours}</small>
               </div>
-              <Card className="korean-picks">
+              <Card className="korean-picks flush">
                 <h2>한국인이 많이 고른 메뉴</h2>
                 {[
                   [
@@ -1567,14 +1568,13 @@ export default function ExtraScreens(props: Props) {
               )}
             </Card>
           ))}
-          <Squircle
-            as="button"
+          <SecondaryButton
             type="button"
             className="add-friend"
             onClick={() => go("26")}
           >
             <DesignAsset screen="23" name="imgFrame1" />새 친구 추가
-          </Squircle>
+          </SecondaryButton>
         </div>,
       );
     case "25":
@@ -1624,7 +1624,7 @@ export default function ExtraScreens(props: Props) {
             onClick={() => {
               if (isNew) {
                 const f: Friend = {
-                  id: crypto.randomUUID(),
+                  id: createLocalId(),
                   name: name.trim(),
                   initial: name.trim().slice(0, 1),
                   kind: "teal",
@@ -1668,7 +1668,7 @@ export default function ExtraScreens(props: Props) {
               </span>
             </div>
             <h2>링크를 열면 같은 메뉴판에 연결돼요</h2>
-            <Squircle className="invite-link" radius={20}>
+            <Squircle className="surface invite-link" radius={30}>
               <span>{inviteUrl.replace(/^https?:\/\//, "")}</span>
               <IconButton
                 asset="59934.svg"
@@ -1755,7 +1755,7 @@ export default function ExtraScreens(props: Props) {
                 onClick={() => go("29")}
               />
             </div>
-            <Squircle radius={20} className="profile-stats">
+            <Squircle radius={30} className="surface profile-stats">
               {[
                 [account.records.length, "주문 기록"],
                 [
@@ -1947,7 +1947,7 @@ export default function ExtraScreens(props: Props) {
                 </span>
                 <h2>저장된 기록을 모두 지울까요?</h2>
                 <p>계정에서 지워져 어느 폰에서도 다시 볼 수 없어요.</p>
-                <Squircle radius={22} className="deleted-counts">
+                <Squircle radius={30} className="surface deleted-counts">
                   {[
                     ["주문 기록 · 주문 문장", `${account.records.length}개`],
                     [

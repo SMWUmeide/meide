@@ -153,3 +153,27 @@ test("squircle geometry preserves Figma smoothing at narrow and wide sizes", () 
     );
   }
 });
+
+import { createLocalId } from "../lib/yj/id.ts";
+test("local IDs work when the HTTP origin has no randomUUID", () => {
+  const source = {
+    getRandomValues: (array) => {
+      array.set(Array.from({ length: 16 }, (_, i) => i));
+      return array;
+    },
+  };
+  assert.equal(createLocalId(source), "00010203-0405-4607-8809-0a0b0c0d0e0f");
+  const ids = Array.from({ length: 1000 }, () =>
+    createLocalId({
+      getRandomValues: (array) => globalThis.crypto.getRandomValues(array),
+    }),
+  );
+  assert.equal(new Set(ids).size, 1000);
+  assert.ok(
+    ids.every((id) =>
+      /^[\da-f]{8}-[\da-f]{4}-4[\da-f]{3}-[89ab][\da-f]{3}-[\da-f]{12}$/.test(
+        id,
+      ),
+    ),
+  );
+});

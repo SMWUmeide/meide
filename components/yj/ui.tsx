@@ -23,36 +23,79 @@ export function Asset({
     />
   );
 }
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
-export function PrimaryButton({ className = "", ...props }: ButtonProps) {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  size?: "default" | "small";
+};
+export function PrimaryButton({
+  className = "",
+  size = "default",
+  ...props
+}: ButtonProps) {
   return (
     <Squircle
       as="button"
-      radius={22}
+      radius={size === "small" ? 17.76 : 22}
       type="button"
-      className={`button primary ${className}`}
+      className={`button primary ${size === "small" ? "button--small" : ""} ${className}`}
       {...props}
     />
   );
 }
-export function SecondaryButton({ className = "", ...props }: ButtonProps) {
+export function SecondaryButton({
+  className = "",
+  size = "default",
+  ...props
+}: ButtonProps) {
   return (
     <Squircle
       as="button"
-      radius={22}
+      radius={size === "small" ? 17.76 : 22}
       type="button"
-      className={`button secondary ${className}`}
+      className={`button secondary ${size === "small" ? "button--small" : ""} ${className}`}
       {...props}
     />
   );
 }
-export function DangerButton({ className = "", ...props }: ButtonProps) {
+export function DangerButton({
+  className = "",
+  size = "default",
+  ...props
+}: ButtonProps) {
   return (
     <Squircle
       as="button"
-      radius={22}
+      radius={size === "small" ? 17.76 : 22}
       type="button"
-      className={`button danger ${className}`}
+      className={`button danger ${size === "small" ? "button--small" : ""} ${className}`}
+      {...props}
+    />
+  );
+}
+export function GlassButton({
+  className = "",
+  size = "small",
+  ...props
+}: ButtonProps) {
+  return (
+    <Glass
+      as="button"
+      type="button"
+      radius={size === "small" ? 17.76 : 22}
+      className={`button ${size === "small" ? "button--small" : ""} ${className}`}
+      {...props}
+    />
+  );
+}
+export function ActionCard({
+  className = "",
+  ...props
+}: ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <Squircle
+      as="button"
+      type="button"
+      radius={30}
+      className={`card ${className}`}
       {...props}
     />
   );
@@ -62,6 +105,7 @@ export function IconButton({
   label,
   className = "",
   glass = false,
+  size = "default",
   ...props
 }: ButtonProps & { asset: string; label: string; glass?: boolean }) {
   const Tag = glass ? Glass : Squircle;
@@ -70,7 +114,7 @@ export function IconButton({
       as="button"
       round
       type="button"
-      className={`icon-button ${className}`}
+      className={`icon-button ${size === "small" ? "icon-button--small" : ""} ${className}`}
       aria-label={label}
       {...props}
     >
@@ -182,7 +226,9 @@ export function Toggle({
   label: string;
 }) {
   return (
-    <button
+    <Squircle
+      as="button"
+      radius="chip"
       className={`toggle ${checked ? "on" : ""}`}
       type="button"
       role="switch"
@@ -191,7 +237,7 @@ export function Toggle({
       onClick={() => onChange(!checked)}
     >
       <span />
-    </button>
+    </Squircle>
   );
 }
 export function Card({
@@ -391,9 +437,15 @@ export function SplitTalkLayout({
   return (
     <div className="split-talk">
       <section className="staff-half">{staff}</section>
-      <button type="button" className="talk-end" onClick={onEnd}>
+      <Squircle
+        as="button"
+        type="button"
+        radius={17.76}
+        className="button button--small talk-end"
+        onClick={onEnd}
+      >
         대화 마치기
-      </button>
+      </Squircle>
       <section className="customer-half">{customer}</section>
     </div>
   );

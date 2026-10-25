@@ -102,16 +102,12 @@ body {
   flex-shrink: 0;
 }
 .icon-button {
-  width: 44px;
-  height: 44px;
   border: 1px solid var(--yj-border);
   background: white;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 0;
 }
 .icon-button .asset {
   max-width: 22px;
@@ -123,17 +119,11 @@ body {
 }
 .button {
   width: 100%;
-  min-height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 20px;
-  border-radius: 28px;
-  font-size: 16px;
-  font-weight: 500;
   flex-shrink: 0;
-  line-height: 1.4;
 }
 .button.primary {
   border: 0;
@@ -182,12 +172,9 @@ body {
 }
 .card {
   background: white;
-  border-radius: 20px;
-  padding: 20px;
   min-width: 0;
 }
 .card.flush {
-  padding: 0;
   overflow: hidden;
 }
 .stack {
@@ -201,13 +188,9 @@ body {
   justify-content: center;
   gap: 5px;
   flex-shrink: 0;
-  min-height: 40px;
-  padding: 8px 18px;
-  border-radius: 20px;
   border: 1px solid var(--yj-border);
   background: white;
   color: var(--yj-muted);
-  font-size: 14px;
   white-space: nowrap;
 }
 .chip.selected {
@@ -294,7 +277,6 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 18px;
   width: 100%;
   text-align: left;
   background: transparent;
@@ -367,9 +349,7 @@ body {
   font-size: 13px;
 }
 .bottom-sheet {
-  padding: 20px 20px max(24px, env(safe-area-inset-bottom));
   background: white;
-  border-radius: 24px 24px 0 0;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
 }
@@ -464,10 +444,6 @@ body {
 }
 .ai-box .box-heading p {
   font-size: 12px;
-}
-.ai-box.compact {
-  padding: 14px 16px;
-  border-radius: 16px;
 }
 .ai-box.compact h2 {
   font-size: 15px;
@@ -902,10 +878,6 @@ body {
   align-items: center;
   position: relative;
 }
-.camera-tools .icon-button {
-  width: 52px;
-  height: 52px;
-}
 .camera-tools small {
   position: absolute;
   top: 58px;
@@ -1034,8 +1006,6 @@ body {
   position: absolute;
   right: 6px;
   top: 6px;
-  width: 36px;
-  height: 36px;
   background: #0007;
 }
 .add-photo {
@@ -1138,7 +1108,6 @@ body {
   letter-spacing: -0.48px;
 }
 .permission .card {
-  padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1203,7 +1172,6 @@ body {
   flex-direction: column;
   gap: 16px;
   margin: 0 20px;
-  padding: 20px;
 }
 .analysis-step {
   display: flex;
@@ -1256,7 +1224,6 @@ body {
 }
 .stop-analysis {
   width: 140px;
-  min-height: 48px;
   margin: 16px auto 20px;
 }
 .failure {
@@ -1266,7 +1233,6 @@ body {
   padding-bottom: 8px;
 }
 .failed-photos {
-  padding: 18px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
@@ -1735,16 +1701,8 @@ body {
   gap: 8px;
 }
 .ingredient-chips .chip {
-  font-size: 13px;
-  min-height: 31px;
-  padding: 6px 12px;
   border: 0;
   color: var(--yj-ink);
-}
-.detail-body .secondary {
-  font-size: 14px;
-  min-height: 46px;
-  padding: 10px;
 }
 .facts {
   display: flex;
@@ -1910,7 +1868,6 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 24px 16px 24px 22px;
 }
 .sentence-card > div:first-child {
   flex: 1;
@@ -1967,10 +1924,6 @@ body {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-}
-.answer-chips .chip {
-  font-size: 15px;
-  padding: 8px 16px;
 }
 .large-screen {
   background: white;
@@ -2040,7 +1993,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  padding: 24px 20px;
 }
 .receipt-restaurant h2 {
   font-size: 20px;
@@ -2231,18 +2183,11 @@ body {
   .menu-card-body h3 {
     font-size: 14px;
   }
-  .answer-chips .chip {
-    font-size: 14px;
-    padding-inline: 12px;
-  }
   .match-tags > span {
     font-size: 11px;
   }
   .receipt-row strong {
     font-size: 14px;
-  }
-  .receipt-card {
-    padding-inline: 16px;
   }
   .camera-tools {
     padding-inline: 36px;
@@ -2384,21 +2329,6 @@ body {
   .yj-app .glass {
     --shape-fill: rgba(255, 255, 255, 0.9);
   }
-}
-.yj-app .button {
-  min-height: 60px;
-  padding: 16px 22px;
-}
-.yj-app .card {
-  padding: 24px;
-}
-.yj-app .card.flush {
-  padding: 0;
-}
-.yj-app .chip {
-  padding: 12px 22px;
-  min-height: 40px;
-  line-height: 16px;
 }
 .yj-app .info-note {
   --shape-fill: #e6eefd;
@@ -2554,9 +2484,6 @@ body {
   height: 54px;
   min-height: 54px;
 }
-.analysis-steps {
-  padding: 24px;
-}
 /* Shared content for the remaining routes. */
 .extra-screen .screen-content {
   padding: 8px 20px 24px;
@@ -2625,9 +2552,6 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 10px;
-  min-height: 24px;
-  font-size: 11px;
   white-space: nowrap;
   --shape-fill: #f1f1f3;
   color: #5f5f66;
@@ -2644,11 +2568,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-}
-.tag-list .inline-tag {
-  min-height: 30px;
-  padding: 5px 12px;
-  font-size: 12px;
 }
 .button-pair {
   display: flex;
@@ -2750,7 +2669,6 @@ body {
 }
 .trip-content .list-row {
   min-height: 79px;
-  padding: 16px 24px;
 }
 .trip-content .list-row.selected {
   color: #3d5fd9;
@@ -2819,10 +2737,6 @@ body {
   letter-spacing: 1px;
   margin-bottom: 16px;
 }
-.talk-language .icon-button {
-  width: 32px;
-  height: 32px;
-}
 .staff-italian {
   font-size: 26px;
   line-height: 1.4;
@@ -2840,10 +2754,8 @@ body {
   gap: 8px;
   align-self: flex-start;
   margin-top: auto;
-  padding: 12px 16px;
   color: #3d5fd9;
   --shape-fill: #e6eefd;
-  font-size: 13px;
 }
 .staff-mic > .asset {
   width: 18px;
@@ -2869,9 +2781,6 @@ body {
   flex-wrap: wrap;
 }
 .quick-replies .chip {
-  font-size: 12px;
-  padding: 10px 14px;
-  min-height: 36px;
   color: #3d5fd9;
   --shape-fill: white;
   --shape-stroke: #b9c8ef;
@@ -2906,12 +2815,6 @@ body {
 }
 .my-mic-wrap.failed .my-mic {
   opacity: 0.3;
-  width: 56px;
-  height: 56px;
-}
-.my-mic-wrap.failed .my-mic > .asset {
-  width: 24px;
-  height: 24px;
 }
 .my-mic-wrap.listening {
   padding-top: 18px;
@@ -2961,12 +2864,6 @@ body {
 .talk-failure-actions > .button {
   width: 0;
   flex: 1;
-  min-height: 44px;
-  padding: 10px 8px;
-  font-size: 12px;
-}
-.talk-intro-sentence {
-  padding: 24px;
 }
 .talk-intro-sentence h2 {
   font-size: 14px;
@@ -3018,10 +2915,6 @@ body {
   color: #5f5f66;
   margin-top: 4px;
 }
-.pending-card .chip {
-  padding: 10px 14px;
-  font-size: 13px;
-}
 .meal-record h2 {
   font-size: 18px;
   margin-top: 20px;
@@ -3070,7 +2963,6 @@ body {
 }
 .history-empty > .button {
   width: auto;
-  padding-inline: 24px;
 }
 .history-empty .empty-state {
   margin: 0;
@@ -3239,8 +3131,6 @@ body {
   display: flex;
   gap: 6px;
   align-items: center;
-  padding: 12px 18px;
-  font-size: 12px;
 }
 .map-enlarge > .asset {
   width: 16px;
@@ -3252,11 +3142,6 @@ body {
   gap: 8px;
   scrollbar-width: none;
   flex-shrink: 0;
-}
-.scroll-chips .chip {
-  font-size: 13px;
-  min-height: 36px;
-  padding: 10px 18px;
 }
 .rank-top .rank-photo {
   height: 200px;
@@ -3443,7 +3328,6 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 12px 24px 34px !important;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -3503,7 +3387,6 @@ body {
 }
 .signature {
   --shape-fill: #f6f6f7;
-  padding: 14px 18px;
   margin-top: 14px;
 }
 .signature small {
@@ -3521,10 +3404,6 @@ body {
   color: #5f5f66;
   line-height: 1.6;
   margin-top: 4px;
-}
-.restaurant-sheet > .button-pair > .button {
-  min-height: 48px;
-  font-size: 14px;
 }
 .expanded .restaurant-sheet {
   top: 218px;
@@ -3565,10 +3444,8 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 22px;
   --shape-fill: #26262b;
   color: #fff;
-  font-size: 14px;
   filter: drop-shadow(0 4px 12px #1112);
 }
 .map-toggle > .asset {
@@ -3579,7 +3456,6 @@ body {
   min-height: 354px;
   text-align: center;
   align-items: center;
-  padding-top: 24px !important;
 }
 .no-results-icon {
   width: 56px;
@@ -3640,9 +3516,6 @@ body {
   align-items: center;
   justify-content: space-between;
   font-size: 12px;
-}
-.korean-picks {
-  padding: 24px 0 !important;
 }
 .korean-picks > h2 {
   font-size: 17px;
@@ -3724,9 +3597,7 @@ body {
   justify-content: center;
   gap: 8px;
   width: 100%;
-  padding: 20px;
   color: #3d5fd9;
-  font-size: 15px;
 }
 .add-friend > .asset {
   width: 18px;
@@ -3756,9 +3627,6 @@ body {
   gap: 8px;
 }
 .taste-chips .chip {
-  font-size: 13px;
-  padding: 10px 16px;
-  min-height: 38px;
   gap: 5px;
 }
 .chip-check {
@@ -3772,12 +3640,9 @@ body {
 }
 .custom-taste .button {
   width: 68px;
-  min-height: 44px;
-  font-size: 13px;
 }
 .invite-card {
   text-align: center;
-  padding: 28px 24px !important;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -3811,17 +3676,11 @@ body {
   display: flex;
   gap: 10px;
   align-items: center;
-  padding: 10px 12px;
-  font-size: 12px;
   text-align: left;
   word-break: break-all;
 }
 .invite-link > span {
   flex: 1;
-}
-.invite-link .icon-button {
-  width: 36px;
-  height: 36px;
 }
 .qr-overlay {
   position: absolute;
@@ -3862,8 +3721,6 @@ body {
   margin-top: 4px;
 }
 .profile-heading .icon-button {
-  width: 32px;
-  height: 32px;
   --shape-stroke: transparent;
   --shape-fill: transparent;
 }
@@ -3873,7 +3730,6 @@ body {
 }
 .profile-stats {
   display: flex;
-  padding: 20px 0;
   margin-top: 24px;
   --shape-fill: #f6f6f7;
 }
@@ -3925,7 +3781,6 @@ body {
   font-size: 12px;
 }
 .privacy-list .list-row {
-  padding: 20px 18px;
   align-items: flex-start;
   gap: 10px;
 }
@@ -3936,10 +3791,6 @@ body {
   font-size: 11px;
   line-height: 1.7;
   margin-top: 5px;
-}
-.privacy-list .inline-tag {
-  font-size: 10px;
-  padding: 3px 7px;
 }
 .privacy-icon {
   width: 32px;
@@ -3967,7 +3818,6 @@ body {
 }
 .delete-sheet {
   width: 100%;
-  padding: 12px 24px 34px !important;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -4005,7 +3855,6 @@ body {
 }
 .deleted-counts {
   --shape-fill: #f6f6f7;
-  padding: 16px 20px;
   margin: 4px 0;
 }
 .deleted-counts > div {
@@ -4035,10 +3884,6 @@ body {
   }
   .quick-replies {
     margin-top: 10px;
-  }
-  .my-mic {
-    width: 64px;
-    height: 64px;
   }
   .talk-failure-actions {
     margin-top: 10px;
@@ -4073,13 +3918,6 @@ body {
 .yj-app .info-note {
   --shape-fill: #f1f1f3;
 }
-.taste-chips .chip {
-  padding: 12px 22px;
-  min-height: 40px;
-}
-.inline-tag {
-  padding: 12px 22px;
-}
 .talk-language {
   color: #4a6fe3;
 }
@@ -4098,7 +3936,6 @@ body {
   --shape-fill: white;
 }
 .privacy-list .list-row {
-  padding: 18px 20px;
   align-items: center;
   gap: 12px;
 }
@@ -4112,10 +3949,6 @@ body {
 }
 .privacy-list .row-content small {
   font-size: 13px;
-}
-.privacy-list .inline-tag {
-  font-size: 12px;
-  padding: 6px 10px;
 }
 .delete-sheet {
   min-height: 402px;
@@ -4146,8 +3979,6 @@ body {
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  min-height: 48px;
-  padding: 12px 22px;
 }
 .history-content .pending-card {
   --shape-fill: white;
@@ -4179,26 +4010,17 @@ body {
   font-size: 14px;
   padding: 0;
 }
-.history-content .button-pair > .button {
-  min-height: 48px;
-  padding: 12px 10px;
-  font-size: 13px;
-}
 .history-empty {
   padding-bottom: 160px;
 }
 .trip-content .list-row {
   min-height: 68px;
-  padding: 14px 20px;
 }
 .trip-content {
   gap: 14px;
 }
 .rate-content .rating-photo {
   height: 200px;
-}
-.pending-card > .chip {
-  padding: 12px 22px;
 }
 .home-status > svg {
   margin-top: 6px;
@@ -4215,12 +4037,6 @@ body {
   font-size: 18px;
   font-weight: 700;
   margin: 4px 20px 14px;
-}
-.map-top-panel .chip {
-  padding: 12px 22px;
-  min-height: 42px;
-  line-height: 18px;
-  font-size: 14px;
 }
 .map-canvas {
   background: #ecf1ec;
@@ -4266,10 +4082,218 @@ body {
 .empty-result {
   gap: 14px;
   min-height: 300px;
-  padding: 28px 20px 16px !important;
 }
 .empty-result > .sheet-handle {
   display: none;
 }
-.restaurant-sheet{z-index:3}
-.radius-chip,.current-location{z-index:2}
+.restaurant-sheet {
+  z-index: 3;
+}
+.radius-chip,
+.current-location {
+  z-index: 2;
+}
+/* Shared metrics: screen CSS controls layout/colors, never these component sizes. */
+.yj-app {
+  --yj-button-height: 60px;
+  --yj-button-small-height: 48px;
+  --yj-button-font: 16px;
+  --yj-button-small-font: 14px;
+  --yj-control-line: 24px;
+  --yj-control-x: 22px;
+  --yj-control-y: 16px;
+  --yj-control-small-y: 12px;
+  --yj-chip-font: 14px;
+  --yj-chip-line: 18px;
+  --yj-chip-height: 42px;
+  --yj-chip-x: 22px;
+  --yj-chip-y: 12px;
+  --yj-card-padding: 24px;
+  --yj-card-body-font: 15px;
+  --yj-card-body-line: 22px;
+  --yj-card-title-font: 18px;
+  --yj-card-title-line: 26px;
+  --yj-caption-font: 13px;
+}
+.yj-app .button {
+  min-height: var(--yj-button-height);
+  padding: var(--yj-control-y) var(--yj-control-x);
+  font-size: var(--yj-button-font);
+  font-weight: 500;
+  line-height: var(--yj-control-line);
+}
+.yj-app .button.button--small {
+  min-height: var(--yj-button-small-height);
+  padding: var(--yj-control-small-y) var(--yj-control-x);
+  font-size: var(--yj-button-small-font);
+}
+.yj-app .chip,
+.yj-app .inline-tag {
+  min-height: var(--yj-chip-height);
+  padding: var(--yj-chip-y) var(--yj-chip-x);
+  font-size: var(--yj-chip-font);
+  font-weight: 500;
+  line-height: var(--yj-chip-line);
+}
+.yj-app .card,
+.yj-app .surface {
+  padding: var(--yj-card-padding);
+  font-size: var(--yj-card-body-font);
+  font-weight: 400;
+  line-height: var(--yj-card-body-line);
+}
+.yj-app .card.flush {
+  padding: 0;
+}
+.yj-app .card h2 {
+  font-size: var(--yj-card-title-font);
+  font-weight: 600;
+  line-height: var(--yj-card-title-line);
+}
+.yj-app .ai-box.compact .box-heading h2 {
+  line-height: var(--yj-card-title-line);
+}
+.yj-app .bottom-sheet {
+  padding: var(--yj-card-padding) var(--yj-card-padding)
+    max(var(--yj-card-padding), env(safe-area-inset-bottom));
+}
+.yj-app .list-row {
+  padding: 16px var(--yj-card-padding);
+  font-size: var(--yj-card-body-font);
+  line-height: var(--yj-card-body-line);
+}
+.yj-app .icon-button {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+.yj-app .icon-button.icon-button--small {
+  width: 36px;
+  height: 36px;
+}
+.yj-app .icon-button > .asset {
+  width: 22px;
+  height: 22px;
+  max-width: 22px;
+  max-height: 22px;
+}
+.yj-app .stepper {
+  --shape-fill: white;
+  --shape-stroke: #dcdcde;
+  padding: 0 4px;
+  font-size: 16px;
+}
+.yj-app .add-photo {
+  --shape-fill: transparent;
+  --shape-stroke: #8a8a8f;
+}
+.yj-app .rev2-home .home-shortcut {
+  padding: var(--yj-card-padding);
+}
+.yj-app .home-shortcut > strong {
+  font-size: var(--yj-card-body-font);
+  line-height: 22px;
+}
+.yj-app .home-shortcut > small {
+  font-size: var(--yj-caption-font);
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.menu-card-body,
+.rank-body,
+.rank-mini > div:last-child,
+.restaurant-info {
+  padding: var(--yj-card-padding);
+}
+.yj-app .talk-end {
+  position: absolute !important;
+  width: auto;
+  z-index: 4;
+  --shape-fill: #26262b;
+}
+.staff-mic {
+  width: auto;
+  flex-shrink: 0;
+}
+.yj-app .map-enlarge,
+.yj-app .map-toggle {
+  width: auto;
+}
+.yj-app .camera-pair .glass {
+  color: #111;
+  --shape-fill: rgba(255, 255, 255, 0.84);
+}
+.camera-pair .glass .asset,
+.camera-shell .icon-button.glass .asset {
+  filter: brightness(0);
+}
+.quick-replies {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  flex-shrink: 0;
+  scrollbar-width: none;
+  padding: 2px 0;
+}
+.talk-failure-actions {
+  flex-wrap: wrap;
+}
+.talk-failure-actions > .button {
+  flex: 1 1 140px;
+  width: auto;
+}
+.custom-taste input {
+  min-width: 0;
+  flex: 1;
+}
+.custom-taste .button {
+  width: auto;
+  min-width: 84px;
+}
+.restaurant-label {
+  flex-wrap: wrap;
+}
+.privacy-list .list-row {
+  flex-wrap: wrap;
+}
+.privacy-list .row-content {
+  flex-basis: 180px;
+}
+.privacy-list .inline-tag {
+  margin-left: 52px;
+}
+.yj-app .toggle {
+  --shape-fill: #dcdcde;
+}
+.yj-app .toggle.on {
+  --shape-fill: #3d5fd9;
+}
+.current-trip strong,
+.signature strong {
+  font-size: var(--yj-card-title-font);
+  line-height: var(--yj-card-title-line);
+}
+.signature p {
+  font-size: var(--yj-card-body-font);
+  line-height: var(--yj-card-body-line);
+}
+.yj-app .photo-delete {
+  position: absolute !important;
+}
+/* Card hierarchy: section title / item title / supporting caption. */
+.yj-app .card h3,
+.yj-app .card .row-content strong {
+  font-size: var(--yj-card-body-font);
+  line-height: var(--yj-card-body-line);
+  font-weight: 500;
+}
+.yj-app .card .row-content small,
+.yj-app .card .menu-card-body > small,
+.yj-app .card .cart-item .original,
+.yj-app .card .rank-body > small {
+  font-size: var(--yj-caption-font);
+  line-height: 20px;
+}
