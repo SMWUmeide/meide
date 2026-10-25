@@ -1,3 +1,4 @@
+import { state as displayState } from "@/lib/yj/view-model";
 /* Figma Page 2 primitives — DESIGN-yj.md §12-10. */
 /* eslint-disable @next/next/no-img-element */
 import sourceAssets from "@/lib/yj/figma-assets.json";
@@ -17,7 +18,11 @@ export function Asset({
   return (
     <img
       className={`asset ${className}`}
-      src={`/assets/yj/${name}`}
+      src={
+        name.startsWith("/") || name.startsWith("https://")
+          ? name
+          : `/assets/yj/${name}`
+      }
       alt={alt}
       draggable={false}
     />
@@ -367,6 +372,7 @@ export function RatingKorean({
   rating: number;
   count: number;
 }) {
+  if (!count) return <span className="rating">아직 평가가 없어요</span>;
   return (
     <span className="rating">
       <span>★</span> {rating.toFixed(1)} · 한국인 {count}명
@@ -387,12 +393,14 @@ export function Price({
   return (
     <span className={`price ${size} ${inline ? "inline" : ""}`}>
       <span>
-        <small>EUR </small>
+        <small>{displayState.board.currency} </small>
         <span className="price-number">{amount.toFixed(2)}</span>
       </span>
-      {won && (
+      {won && displayState.rate.base === displayState.board.currency && (
         <span className="won">
-          약 {Math.round(amount * 1499).toLocaleString("ko-KR")}원
+          약{" "}
+          {Math.round(amount * displayState.rate.rate).toLocaleString("ko-KR")}
+          원
         </span>
       )}
     </span>

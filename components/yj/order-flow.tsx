@@ -38,7 +38,6 @@ import {
   orderSentences,
   fixtureScreen,
   makeAccount,
-  screenCatalog,
   type AppView,
   type Account,
   screenPaths,
@@ -49,10 +48,28 @@ import {
   type Menu,
   type Photo,
   type Screen,
-} from "@/lib/yj/model";
+} from "@/lib/yj/view-model";
 import Home from "./home";
 import ExtraScreens from "./extra-screens";
-import { readDraft, saveDraft } from "@/lib/yj/storage";
+import {
+  restoreDisplay,
+  storeDraft,
+  storeAccount,
+  applyBoard,
+  api,
+} from "@/lib/yj/services/display";
+import { state, refreshViews, canonicalTaste } from "@/lib/yj/view-model";
+import { saveBoard, savePhoto } from "@/lib/yj/storage";
+import { captureVideo, compressPhoto } from "@/lib/yj/camera";
+import {
+  cameraGuidance,
+  currentLocation,
+  speak as speakLocal,
+  stopSpeaking,
+} from "@/lib/yj/services/browser";
+import { allergenNames } from "@/lib/yj/model";
+import { restaurantView } from "@/lib/yj/presentation";
+import { useCamera } from "./use-camera";
 
 type View = AppView;
 const defaultView: View = {
@@ -60,10 +77,6 @@ const defaultView: View = {
   menuId: "zucca",
   photoIndex: 0,
   largeFrom: "03",
-};
-const question = {
-  korean: "이 음식에 우유나 치즈가 들어가나요?",
-  italian: "Questo piatto contiene latte o formaggio?",
 };
 
 function MenuPaper() {
@@ -107,10 +120,12 @@ function PhotoPreview({
     <div className={`photo-preview ${className}`}>
       {photo?.src ? (
         <img src={photo.src} alt="촬영한 메뉴판" />
-      ) : (
+      ) : api.fixtureMode() ? (
         <div className="paper-fit">
           <MenuPaper />
         </div>
+      ) : (
+        <p>저장된 사진을 불러오는 중이에요</p>
       )}
     </div>
   );
@@ -122,12 +137,25 @@ function DishPhoto({
   menu: Menu;
   className?: string;
 }) {
+  const image = state.board.items.find((i) => i.id === menu.id)?.image;
   return menu.photo ? (
-    <Asset
-      name={menu.photo}
-      alt={menu.korean}
-      className={`dish-photo ${className}`}
-    />
+    <>
+      <Asset
+        name={menu.photo}
+        alt={menu.korean}
+        className={`dish-photo ${className}`}
+      />
+      {image && (
+        <a
+          className="image-credit"
+          href={image.pageUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          참고 사진 · {image.credit} · {image.license}
+        </a>
+      )}
+    </>
   ) : (
     <div className={`photo-placeholder ${className}`}>
       <Asset name="a47a6.svg" />
@@ -174,20 +202,136 @@ export default function OrderFlow() {
   >("lunch");
   const [category, setCategory] = useState("수프");
   const [query, setQuery] = useState("");
-  const [selectedRestaurant, setSelectedRestaurant] = useState(
-    "Osteria La Solita Zuppa",
-  );
+  const [selectedRestaurant, setSelectedRestaurant] = useState("");
   const [replaceIndex, setReplaceIndex] = useState<number | null>(null);
   const [analysisStep, setAnalysisStep] = useState(0);
   const [notice, setNotice] = useState("");
   const [speaking, setSpeaking] = useState(false);
+  useEffect(() => {
+    if (!notice) return;
+    const timer = setTimeout(() => setNotice(""), 6500);
+    return () => clearTimeout(timer);
+  }, [notice]);
   const history = useRef<View[]>([]);
   const fileInput = useRef<HTMLInputElement>(null);
   const content = useRef<HTMLDivElement>(null);
   const analysisMode = useRef("auto");
   const cameraDenied = useRef(false);
+  const fixtureRef = useRef(false),
+    videoRef = useRef<HTMLVideoElement>(null),
+    captureInput = useRef<HTMLInputElement>(null);
+  const [settingsGuideShown, setSettingsGuideShown] = useState(false);
+  const [flash, setFlash] = useState(false),
+    [analysisError, setAnalysisError] = useState("");
+  const [, setTranslationVersion] = useState(0);
+  const currency = state.board.currency;
+  const camera = useCamera(
+    ready && !fixtureRef.current && ["08", "09"].includes(view.screen),
+    videoRef,
+    (message) => {
+      go("41");
+      setNotice(message);
+    },
+  );
+  useEffect(() => {
+    if (view.screen !== "41" || fixtureRef.current) return;
+    const retry = () => {
+      if (document.visibilityState === "visible") {
+        cameraDenied.current = false;
+        go("08");
+      }
+    };
+    document.addEventListener("visibilitychange", retry);
+    return () => document.removeEventListener("visibilitychange", retry);
+    // The listener is reinstalled when the permission screen changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [view.screen]);
+
   const [talkFailureMode, setTalkFailureMode] = useState(false);
   const selectedMenu = menuById(view.menuId);
+  const selectedData = state.board.items.find((i) => i.id === selectedMenu.id);
+  const question = selectedData?.ai.askStaff
+    ? {
+        korean: selectedData.ai.askStaff.korean,
+        italian: selectedData.ai.askStaff.local,
+      }
+    : {
+        korean: "이 음식의 재료와 알레르기 표기를 확인해 주세요.",
+        italian:
+          "Potrebbe confermare gli ingredienti e gli allergeni di questo piatto?",
+      };
+  const matchedRestaurant = state.account.restaurants.find(
+    (r) => r.name === selectedRestaurant,
+  );
+  const [, setRestaurantsVersion] = useState(0);
+  useEffect(() => {
+    if (!ready || !["13", "14"].includes(view.screen) || api.fixtureMode())
+      return;
+    let active = true;
+    const timer = setTimeout(() => {
+      void currentLocation(state.account.trip.location)
+        .then(({ location }) =>
+          api.findRestaurantOnMenu(
+            view.screen === "14"
+              ? query
+              : (state.board.restaurantNameOnMenu ?? ""),
+            location,
+          ),
+        )
+        .then((rows) => {
+          if (!active) return;
+          state.account.restaurants = [
+            ...rows,
+            ...state.account.restaurants.filter(
+              (r) => !rows.some((x) => x.id === r.id),
+            ),
+          ];
+          refreshViews();
+          if (rows[0]) setSelectedRestaurant(rows[0].name);
+          setRestaurantsVersion((v) => v + 1);
+        })
+        .catch((e) => {
+          if (active)
+            setNotice(
+              e instanceof Error
+                ? e.message
+                : "식당을 찾지 못했어요. 식당 없이도 계속할 수 있어요.",
+            );
+        });
+    }, 450);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [view.screen, query, ready]);
+  useEffect(() => {
+    if (!ready || !["01", "06-2"].includes(view.screen) || api.fixtureMode())
+      return;
+    let active = true;
+    const item =
+      state.board.items.find((i) => i.id === view.menuId) ??
+      state.board.items.find((i) => !i.image);
+    if (!item || item.image) return;
+    void api
+      .menuImage(item.original, item.korean)
+      .then((image) => {
+        if (!active || !image) return;
+        state.board = {
+          ...state.board,
+          items: state.board.items.map((i) =>
+            i.id === item.id ? { ...i, image } : i,
+          ),
+        };
+        refreshViews();
+        void saveBoard(state.board);
+        setTranslationVersion((v) => v + 1);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [view.screen, view.menuId, ready]);
+
   const historical = account.records.find((r) => r.id === view.recordId);
   const receiptDraft =
     view.recordId && historical
@@ -205,7 +349,9 @@ export default function OrderFlow() {
   const largeSentence = view.largeFrom === "18" ? question : sentence;
   const visibleMenus = menus.filter(
     (menu) =>
-      (!draft.partial || menu.category === "수프") &&
+      (!draft.partial ||
+        state.board.items.find((i) => i.id === menu.id)?.readConfidence ===
+          "high") &&
       menu.category === category,
   );
 
@@ -213,10 +359,24 @@ export default function OrderFlow() {
     let mounted = true;
     async function restore() {
       const params = new URLSearchParams(window.location.search);
-      const restored = await readDraft().catch(() => undefined);
+      let restored: Draft | undefined;
+      try {
+        const boot = await restoreDisplay();
+        if (!mounted) return;
+        restored = boot.draft;
+        setAccount(boot.account);
+        if (boot.capabilities.analysis === "mock")
+          setNotice("Gemini 키가 없어 예시 메뉴로 분석해요.");
+      } catch (e) {
+        setNotice(
+          e instanceof Error ? e.message : "저장된 내용을 불러오지 못했어요.",
+        );
+      }
       if (!mounted) return;
       const next = { ...initialDraft, ...restored };
       const fixture = params.get("fixture");
+      fixtureRef.current = !!fixture;
+      if (fixture) setSelectedRestaurant("Osteria La Solita Zuppa");
       if (["09", "10", "11", "39", "40"].includes(fixture ?? ""))
         next.photos = [
           { id: "sample-1", readable: true },
@@ -245,17 +405,19 @@ export default function OrderFlow() {
         screen:
           cameraDenied.current && (screen === "08" || screen === "09")
             ? "41"
-            : params.has("fixture")
-              ? screen
-              : (saved?.screen ?? screen),
+            : fixture === "interactive"
+              ? (saved?.screen ?? screen)
+              : params.has("fixture")
+                ? screen
+                : (saved?.screen ?? screen),
         menuId: window.location.pathname.startsWith("/menu/")
-          ? window.location.pathname.split("/")[2]
+          ? decodeURIComponent(window.location.pathname.split("/")[2])
           : "zucca",
         photoIndex: Number(window.location.pathname.split("/")[3]) || 0,
         subjectId: /^\/(companions|restaurants)\//.test(
           window.location.pathname,
         )
-          ? window.location.pathname.split("/")[2]
+          ? decodeURIComponent(window.location.pathname.split("/")[2])
           : undefined,
       };
       setDraft(next);
@@ -297,12 +459,15 @@ export default function OrderFlow() {
     };
   }, []);
   useEffect(() => {
-    if (ready)
-      void saveDraft(draft).catch(() =>
+    if (!ready) return;
+    const timer = setTimeout(() => {
+      void storeDraft(draft).catch((e) =>
         setNotice(
-          "임시 저장 공간을 사용할 수 없어요. 이 화면을 닫기 전에 다시 시도해 주세요.",
+          e instanceof Error ? e.message : "임시 저장 공간을 사용할 수 없어요.",
         ),
       );
+    }, 200);
+    return () => clearTimeout(timer);
   }, [draft, ready]);
   useEffect(() => {
     content.current?.scrollTo(0, 0);
@@ -313,27 +478,128 @@ export default function OrderFlow() {
       new URLSearchParams(window.location.search).get("fixture") === "39"
     )
       return;
-    let step = 0;
-    const timer = window.setInterval(() => {
-      step += 1;
-      setAnalysisStep(step);
-      if (step < 3) return;
-      window.clearInterval(timer);
-      const failed =
-        analysisMode.current === "partial" ||
-        (analysisMode.current !== "success" &&
-          draft.photos.some((photo) => !photo.readable));
-      const nextView = { ...view, screen: (failed ? "40" : "13") as Screen };
-      window.history.replaceState(
-        { ...window.history.state, yjView: nextView },
-        "",
-        screenPaths[nextView.screen],
+    const abort = new AbortController();
+    async function run() {
+      try {
+        if (api.fixtureMode()) {
+          await new Promise((r) => setTimeout(r, 300));
+          go("40", {}, true);
+          return;
+        }
+        // Flush photograph bytes before sending only images and EU allergen numbers.
+        const photos = await Promise.all(
+          draft.photos.map(async (p) => {
+            if (p.src) await savePhoto(p.id, p.src);
+            return {
+              id: p.id,
+              localKey: p.id,
+              readable: "ok" as const,
+              itemIds: [],
+            };
+          }),
+        );
+        const result = await api.analyzeMenu(
+          photos,
+          [
+            canonicalTaste(account.profile.taste),
+            ...account.friends.filter((f) => f.active).map(canonicalTaste),
+          ],
+          (phase) =>
+            setAnalysisStep(
+              phase === "uploading" ? 0 : phase === "analyzing" ? 1 : 2,
+            ),
+          abort.signal,
+        );
+        if (abort.signal.aborted) return;
+        applyBoard(result.board);
+        await saveBoard(result.board);
+        setCategory(result.board.sections[0]?.korean ?? "");
+        setDraft((d) => ({
+          ...d,
+          analyzed: true,
+          photos: d.photos.map((p) => ({
+            ...p,
+            readable:
+              result.board.photos.find((photo) => photo.id === p.id)
+                ?.readable === "ok",
+          })),
+          partial: result.board.status !== "done",
+          lines: [],
+        }));
+        go(result.board.status === "done" ? "13" : "40", {}, true);
+        if (result.mode === "mock")
+          setNotice("Gemini 키가 없어 Osteria 예시 결과를 보여드려요.");
+      } catch (e) {
+        if (!abort.signal.aborted) {
+          state.board = { ...state.board, status: "failed" };
+          void saveBoard(state.board).catch(() => {});
+          void api.saveMenuBoard(state.board).catch(() => {});
+          go("40", {}, true);
+          setAnalysisError(
+            e instanceof Error
+              ? e.message
+              : "분석을 마치지 못했어요. 사진은 보관했어요.",
+          );
+          setNotice(e instanceof Error ? e.message : "분석을 마치지 못했어요.");
+        }
+      }
+    }
+    void run();
+    return () => abort.abort();
+    // A run belongs to this screen visit, not to incidental state updates.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [view.screen]);
+  useEffect(() => {
+    if (!ready) return;
+    const timer = setTimeout(() => {
+      void storeAccount(account).catch((e) =>
+        setNotice(e instanceof Error ? e.message : "저장하지 못했어요."),
       );
-      setDraft((current) => ({ ...current, analyzed: true }));
-      setView(nextView);
-    }, 1100);
-    return () => window.clearInterval(timer);
-  }, [draft.photos, view]);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [account, ready]);
+  useEffect(() => {
+    if (!ready) return;
+    let active = true;
+    const timer = setTimeout(() => {
+      void api
+        .translateRequest(draft.request, state.board.language)
+        .then((t) => {
+          if (active) {
+            state.translation = t;
+            setTranslationVersion((v) => v + 1);
+          }
+        })
+        .catch(() => {
+          if (active) {
+            state.translation = { local: "", ok: false };
+            setTranslationVersion((v) => v + 1);
+          }
+        });
+    }, 450);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [draft.request, ready]);
+  useEffect(() => {
+    if (!ready || api.fixtureMode()) return;
+    let active = true;
+    void api
+      .exchangeRate(state.board.currency, "KRW")
+      .then((r) => {
+        if (active) {
+          state.rate = r;
+          setTranslationVersion((v) => v + 1);
+        }
+      })
+      .catch(() =>
+        setNotice("환율을 불러오지 못해 이전 기준 환율을 표시해요."),
+      );
+    return () => {
+      active = false;
+    };
+  }, [ready, currency]);
 
   function go(screen: Screen, options: Partial<View> = {}, replace = false) {
     const next = {
@@ -342,25 +608,26 @@ export default function OrderFlow() {
       screen:
         screen === "08" && cameraDenied.current ? ("41" as const) : screen,
     };
+    if (next.recordId && next.recordId !== view.recordId) {
+      const record = state.account.records.find((r) => r.id === next.recordId);
+      const board = state.account.boards.find(
+        (b) => b.id === record?.menuBoardId,
+      );
+      if (board) {
+        state.board = board;
+        refreshViews();
+      }
+    }
     if (!replace) history.current.push(view);
     let path = screenPaths[next.screen];
     if (next.screen === "06-2" || next.screen === "18")
-      path = `/menu/${next.menuId}${next.screen === "18" ? "/ask" : ""}`;
-    if (next.screen === "32") path = `/restaurants/${next.subjectId ?? "rosa"}`;
+      path = `/menu/${encodeURIComponent(next.menuId)}${next.screen === "18" ? "/ask" : ""}`;
+    if (next.screen === "32")
+      path = `/restaurants/${encodeURIComponent(next.subjectId ?? "rosa")}`;
     if (next.screen === "25" || next.screen === "27")
       path = `/companions/${next.subjectId ?? "miyoung"}/${next.screen === "25" ? "taste" : "invite"}`;
-    const stateUrl = screenCatalog.find(([n]) => n === next.screen)?.[2];
-    if (
-      stateUrl?.includes("fixture=") &&
-      !["01", "02", "03", "04", "15", "17", "39", "45"].includes(next.screen)
-    ) {
-      const fixture = new URLSearchParams(stateUrl.split("?")[1]).get(
-        "fixture",
-      );
-      if (fixture) path += `?fixture=${fixture}`;
-    }
-    if (next.screen === "11")
-      path = `/capture/photos/${next.photoIndex}?fixture=11`;
+    if (next.screen === "11") path = `/capture/photos/${next.photoIndex}`;
+    if (fixtureRef.current) path += "?fixture=interactive";
     if (["16", "45", "44"].includes(next.screen) && talkFailureMode)
       path += (path.includes("?") ? "&" : "?") + "talk=failure";
     window.history[replace ? "replaceState" : "pushState"](
@@ -382,67 +649,67 @@ export default function OrderFlow() {
       lines: updateQuantity(current.lines, id, change),
     }));
   }
-  function capture(src?: string) {
-    const photos = [...draft.photos];
-    const photo: Photo = {
-      id: createLocalId(),
-      src,
-      readable: replaceIndex !== null || photos.length === 0,
-    };
-    if (replaceIndex !== null) photos[replaceIndex] = photo;
-    else photos.push(photo);
-    setDraft((current) => ({
-      ...current,
-      photos,
-      analyzed: false,
-      partial: false,
-    }));
+  async function capture() {
+    if (!fixtureRef.current && camera.fallback) {
+      captureInput.current?.click();
+      return;
+    }
+    try {
+      const src = fixtureRef.current
+        ? undefined
+        : captureVideo(videoRef.current!);
+      setFlash(true);
+      setTimeout(() => setFlash(false), 160);
+      await addPhotos([src]);
+    } catch (e) {
+      setNotice(
+        e instanceof Error ? e.message : "카메라가 준비되면 다시 눌러주세요.",
+      );
+    }
+  }
+  async function addPhotos(sources: (string | undefined)[]) {
+    if (!fixtureRef.current && state.board.status !== "analyzing") {
+      state.board = {
+        ...state.board,
+        id: createLocalId(),
+        createdAt: new Date().toISOString(),
+        status: "analyzing",
+        items: [],
+        sections: [],
+        restaurantId: undefined,
+        restaurantNameOnMenu: undefined,
+      };
+      refreshViews();
+    }
+    const photos = await Promise.all(
+      sources.map(async (src) => {
+        const id = createLocalId();
+        if (src) await savePhoto(id, src);
+        return { id, src, readable: true };
+      }),
+    );
+    setDraft((d) => {
+      const next = [...d.photos];
+      if (replaceIndex !== null) {
+        next.splice(replaceIndex, 1, ...photos);
+      } else next.push(...photos);
+      return { ...d, photos: next, analyzed: false, partial: false };
+    });
     setReplaceIndex(null);
     go("09");
   }
   async function upload(event: ChangeEvent<HTMLInputElement>) {
     const files = [...(event.target.files ?? [])];
-    if (!files.length) return;
     try {
-      const sources = await Promise.all(
-        files.map(
-          (file) =>
-            new Promise<string>((resolve, reject) => {
-              if (
-                !file.type.startsWith("image/") ||
-                file.size > 12 * 1024 * 1024
-              ) {
-                reject(new Error("12MB 이하의 사진을 골라주세요."));
-                return;
-              }
-              const reader = new FileReader();
-              reader.onload = () => resolve(String(reader.result));
-              reader.onerror = () => reject(new Error("사진을 열지 못했어요."));
-              reader.readAsDataURL(file);
-            }),
-        ),
-      );
-      setDraft((current) => ({
-        ...current,
-        photos: [
-          ...current.photos,
-          ...sources.map((src) => ({
-            id: createLocalId(),
-            src,
-            readable: true,
-          })),
-        ],
-        analyzed: false,
-      }));
-      go("09");
-    } catch (error) {
-      setNotice(
-        error instanceof Error ? error.message : "사진을 열지 못했어요.",
-      );
+      if (files.length)
+        await addPhotos(await Promise.all(files.map(compressPhoto)));
+    } catch (e) {
+      setNotice(e instanceof Error ? e.message : "사진을 열지 못했어요.");
     }
     event.target.value = "";
   }
   function analyze() {
+    setAnalysisError("");
     setAnalysisStep(0);
     go("39");
   }
@@ -451,41 +718,37 @@ export default function OrderFlow() {
     go("08");
   }
   function removePhoto(index: number) {
+    if (!fixtureRef.current && state.board.status !== "analyzing") {
+      state.board = {
+        ...state.board,
+        id: createLocalId(),
+        createdAt: new Date().toISOString(),
+        status: "analyzing",
+        items: [],
+        sections: [],
+        restaurantId: undefined,
+      };
+      refreshViews();
+    }
     setDraft((current) => ({
       ...current,
       photos: current.photos.filter((_, i) => i !== index),
+      analyzed: false,
+      partial: false,
     }));
   }
   function speak(text: string, language = "it-IT") {
     if (speaking) {
-      window.speechSynthesis?.cancel();
+      stopSpeaking();
       setSpeaking(false);
       return;
     }
-    if (!("speechSynthesis" in window)) {
-      setNotice(
-        "이 브라우저는 음성 재생을 지원하지 않아요. 크게 보여주기를 이용해 주세요.",
-      );
-      return;
-    }
-    const voice = window.speechSynthesis
-      .getVoices()
-      .find(
-        (voice) =>
-          voice.localService && voice.lang.startsWith(language.slice(0, 2)),
-      );
-    if (!voice) {
-      setNotice(
-        "기기에 이탈리아어 음성이 없어요. 크게 보여주기를 이용해 주세요.",
-      );
-      return;
-    }
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = language;
-    utterance.voice = voice;
-    utterance.onend = utterance.onerror = () => setSpeaking(false);
     setSpeaking(true);
-    window.speechSynthesis.speak(utterance);
+    void speakLocal(text, language)
+      .catch((e) =>
+        setNotice(e instanceof Error ? e.message : "소리를 재생하지 못했어요."),
+      )
+      .finally(() => setSpeaking(false));
   }
   function sentenceCard(korean: string, italian: string, source: "03" | "18") {
     return (
@@ -576,16 +839,30 @@ export default function OrderFlow() {
           title={hasPhotos ? "다음 장도 찍어주세요" : "메뉴판을 찍어주세요"}
           onClose={() => go("home")}
           right={
-            <IconButton
-              glass
-              asset="b1f78.svg"
-              label="플래시 (목업)"
-              disabled
-            />
+            camera.torchAvailable ? (
+              <IconButton
+                glass
+                asset="b1f78.svg"
+                label="플래시"
+                aria-pressed={camera.torch}
+                onClick={() => void camera.toggleTorch()}
+              />
+            ) : undefined
           }
         >
           <div className={`capture-preview ${hasPhotos ? "captured" : ""}`}>
-            <MenuPaper />
+            {fixtureRef.current ? (
+              <MenuPaper />
+            ) : (
+              <video
+                ref={videoRef}
+                className="camera-video"
+                autoPlay
+                muted
+                playsInline
+              />
+            )}
+            {flash && <div className="shutter-flash" />}
           </div>
           <div className={`viewfinder ${hasPhotos ? "captured" : ""}`}>
             <i />
@@ -616,9 +893,12 @@ export default function OrderFlow() {
               </div>
               <button
                 className="shutter"
+                disabled={
+                  !fixtureRef.current && !camera.fallback && !camera.ready
+                }
                 type="button"
                 aria-label={replaceIndex !== null ? "교체 사진 촬영" : "셔터"}
-                onClick={() => capture()}
+                onClick={() => void capture()}
               >
                 <Asset name="b81fa.svg" />
                 <Asset name="3bf72.svg" />
@@ -759,17 +1039,28 @@ export default function OrderFlow() {
               <span>카메라</span>
               <Asset name="b2856.svg" />
             </div>
-            <p>설정 → MEIDE → 카메라</p>
+            <p>
+              {typeof navigator !== "undefined"
+                ? cameraGuidance(navigator.userAgent)
+                : "브라우저의 카메라 권한을 허용해 주세요."}
+            </p>
           </Card>
         </div>,
         <>
           <PrimaryButton
             onClick={() => {
-              cameraDenied.current = false;
-              go("08");
+              if (settingsGuideShown) {
+                cameraDenied.current = false;
+                go("08");
+              } else {
+                setSettingsGuideShown(true);
+                setNotice(cameraGuidance(navigator.userAgent));
+              }
             }}
           >
-            설정에서 허용하기
+            {settingsGuideShown
+              ? "허용한 뒤 다시 시도하기"
+              : "설정에서 허용하기"}
           </PrimaryButton>
           <SecondaryButton onClick={() => fileInput.current?.click()}>
             앨범에서 사진 고르기
@@ -790,11 +1081,7 @@ export default function OrderFlow() {
           </div>
           <div className="analysis-space" aria-hidden="true" />
           <Card className="analysis-steps">
-            {[
-              "메뉴 이름 읽기",
-              "가격과 재료 확인하기",
-              "한국 음식에 빗대어 설명하기",
-            ].map((label, index) => (
+            {["사진 업로드", "메뉴판 분석", "결과 정리"].map((label, index) => (
               <div
                 key={label}
                 className={`analysis-step ${analysisStep > index ? "done" : analysisStep === index ? "current" : "pending"}`}
@@ -807,9 +1094,9 @@ export default function OrderFlow() {
                   {analysisStep >= index && (
                     <p>
                       {index === 0
-                        ? `${draft.partial ? 4 : 7}개 메뉴를 찾았어요`
+                        ? `${draft.photos.length}장 업로드하고 있어요`
                         : index === 1
-                          ? `${draft.photos.length}장 중 1장째`
+                          ? "사진에 적힌 이름·가격·재료를 확인하고 있어요"
                           : "익숙한 맛으로 설명하고 있어요"}
                     </p>
                   )}
@@ -839,7 +1126,19 @@ export default function OrderFlow() {
       screen = shell(
         "메뉴판 확인",
         <div className="stack failure">
-          <h2 className="light-heading">메뉴판 일부를 읽지 못했어요</h2>
+          <h2 className="light-heading">
+            {analysisError
+              ? "메뉴판 분석을 마치지 못했어요"
+              : "메뉴판 일부를 읽지 못했어요"}
+          </h2>
+          {analysisError && (
+            <WarningBanner>
+              {analysisError}
+              <SecondaryButton size="small" onClick={analyze}>
+                같은 사진으로 다시 시도하기
+              </SecondaryButton>
+            </WarningBanner>
+          )}
           <Card className="failed-photos">
             {draft.photos.map((photo, index) => (
               <div
@@ -853,42 +1152,49 @@ export default function OrderFlow() {
                   <Asset
                     name={index === failedIndex ? "d7819.svg" : "91e62.svg"}
                   />
-                  {index === failedIndex ? "흐려서 못 읽음" : "읽기 완료"}
+                  {analysisError
+                    ? "사진 보관됨"
+                    : index === failedIndex
+                      ? "흐려서 못 읽음"
+                      : "읽기 완료"}
                 </span>
               </div>
             ))}
           </Card>
-          <Card className="flush">
-            <ListRow
-              leading={
-                <span className="reason-icon">
-                  <Asset name="ca49f.svg" />
-                </span>
-              }
-            >
-              <strong>빛이 반사됐어요</strong>
-              <small>조명을 피해 살짝 비스듬히 찍어보세요</small>
-            </ListRow>
-            <ListRow
-              leading={
-                <span className="reason-icon">
-                  <Asset name="97736.svg" />
-                </span>
-              }
-            >
-              <strong>글자가 흐려요</strong>
-              <small>메뉴판에 조금 더 가까이 대주세요</small>
-            </ListRow>
-          </Card>
+          {!analysisError && (
+            <Card className="flush">
+              <ListRow
+                leading={
+                  <span className="reason-icon">
+                    <Asset name="ca49f.svg" />
+                  </span>
+                }
+              >
+                <strong>빛이 반사됐어요</strong>
+                <small>조명을 피해 살짝 비스듬히 찍어보세요</small>
+              </ListRow>
+              <ListRow
+                leading={
+                  <span className="reason-icon">
+                    <Asset name="97736.svg" />
+                  </span>
+                }
+              >
+                <strong>글자가 흐려요</strong>
+                <small>메뉴판에 조금 더 가까이 대주세요</small>
+              </ListRow>
+            </Card>
+          )}
         </div>,
         <>
           <PrimaryButton onClick={() => retake(failedIndex)}>
             {failedIndex + 1}번째 사진 다시 찍기
           </PrimaryButton>
           <SecondaryButton
+            disabled={!state.board.items.length}
             onClick={() => {
               setDraft((current) => ({ ...current, partial: true }));
-              setCategory("수프");
+              setCategory(state.board.sections[0]?.korean ?? "");
               go("13");
             }}
           >
@@ -908,19 +1214,29 @@ export default function OrderFlow() {
               <span>
                 <Asset name="80923.svg" />
               </span>
-              <strong>Osteria La Solita Zuppa</strong>
+              <strong>
+                {selectedRestaurant ||
+                  state.board.restaurantNameOnMenu ||
+                  "식당을 찾고 있어요"}
+              </strong>
             </div>
             <Asset name="7bd45.svg" className="my-location" />
           </div>
           <div className="restaurant-info">
-            <h2>Osteria La Solita Zuppa</h2>
-            <p>Via Porsenna, 21 · Chiusi</p>
+            <h2>
+              {selectedRestaurant ||
+                state.board.restaurantNameOnMenu ||
+                "식당 정보 없음"}
+            </h2>
+            <p>{matchedRestaurant?.address ?? "주소 정보 없음"}</p>
             <div className="match-tags">
               <span>
                 <Asset name="cd341.svg" />
                 메뉴판 이름과 같아요
               </span>
-              <span>여기서 120m</span>
+              <span>
+                {api.fixtureMode() ? "여기서 120m" : "© OpenStreetMap"}
+              </span>
             </div>
           </div>
         </Card>,
@@ -929,8 +1245,12 @@ export default function OrderFlow() {
             onClick={() => {
               setDraft((current) => ({
                 ...current,
-                restaurant: "Osteria La Solita Zuppa",
+                restaurant: selectedRestaurant || null,
               }));
+              state.board = {
+                ...state.board,
+                restaurantId: matchedRestaurant?.id,
+              };
               go("01");
             }}
           >
@@ -943,12 +1263,37 @@ export default function OrderFlow() {
       );
       break;
     case "14": {
-      const restaurants = [
-        ["Osteria La Solita Zuppa", "수프 전문 · 도보 2분 · 120m", "60d97.png"],
-        ["Trattoria Da Rosa", "토스카나 가정식 · 도보 3분 · 220m", "fb60b.png"],
-        ["Osteria del Ponte", "수프·스튜 · 도보 5분 · 380m", "6415e.png"],
-        ["Zuppe della Nonna", "수프 전문 · 도보 6분 · 460m", "dfb35.png"],
-      ].filter(([name]) =>
+      const restaurants = (
+        api.fixtureMode()
+          ? [
+              [
+                "Osteria La Solita Zuppa",
+                "수프 전문 · 도보 2분 · 120m",
+                "60d97.png",
+              ],
+              [
+                "Trattoria Da Rosa",
+                "토스카나 가정식 · 도보 3분 · 220m",
+                "fb60b.png",
+              ],
+              ["Osteria del Ponte", "수프·스튜 · 도보 5분 · 380m", "6415e.png"],
+              ["Zuppe della Nonna", "수프 전문 · 도보 6분 · 460m", "dfb35.png"],
+            ]
+          : state.account.restaurants
+              .filter((r) => r.id.startsWith("osm:"))
+              .map((r) => {
+                const v = restaurantView(
+                  r,
+                  state.account.trip.location,
+                  state.account.trip,
+                );
+                return [
+                  r.name,
+                  `${v.type} · 약 ${v.walk}분 · ${v.distance}m`,
+                  v.photoUrl || "60d97.png",
+                ];
+              })
+      ).filter(([name]) =>
         `${name} Chiusi ${name === "Osteria La Solita Zuppa" ? "Via Porsenna, 21" : ""}`
           .toLowerCase()
           .includes(query.trim().toLowerCase()),
@@ -1023,15 +1368,19 @@ export default function OrderFlow() {
         <>
           <Companion />
           <div className="category-chips">
-            {["수프", "메인 요리", "로제 와인"].map((name) => (
-              <Chip
-                key={name}
-                selected={name === category}
-                onClick={() => setCategory(name)}
-              >
-                {name}
-              </Chip>
-            ))}
+            {state.board.sections
+              .slice()
+              .sort((a, b) => a.order - b.order)
+              .map((s) => s.korean)
+              .map((name) => (
+                <Chip
+                  key={name}
+                  selected={name === category}
+                  onClick={() => setCategory(name)}
+                >
+                  {name}
+                </Chip>
+              ))}
           </div>
           <div className="section-heading">
             <small>
@@ -1101,7 +1450,8 @@ export default function OrderFlow() {
         </>,
         <>
           <p className="menu-footnote">
-            재료와 조리법은 식당마다 다를 수 있어요. · 2026-10-16 목업 환율
+            재료와 조리법은 식당마다 다를 수 있어요. · 환율 기준{" "}
+            {state.rate.date}
           </p>
           <PrimaryButton
             className="cart-button"
@@ -1157,8 +1507,16 @@ export default function OrderFlow() {
                 {selectedMenu.ingredients.map(([name, original]) => (
                   <div key={name}>
                     <strong>{name}</strong> <small>{original}</small>
-                    {original === "farro" && (
-                      <p>보리처럼 톡톡 씹히는 고대 밀</p>
+                    {selectedData?.confirmed.ingredients.find(
+                      (i) => i.original === original,
+                    )?.note && (
+                      <p>
+                        {
+                          selectedData.confirmed.ingredients.find(
+                            (i) => i.original === original,
+                          )?.note
+                        }
+                      </p>
                     )}
                   </div>
                 ))}
@@ -1186,8 +1544,20 @@ export default function OrderFlow() {
                 <hr />
                 <h4>알레르기 가능성</h4>
                 <div>
-                  <strong>유제품 (EU 7)</strong>
-                  <p>치즈가 들어갔을 수 있어요</p>
+                  {selectedData?.ai.possibleAllergens.map((a) => (
+                    <div key={a.code}>
+                      <strong>
+                        {allergenNames[a.code]} (EU {a.code})
+                      </strong>
+                      <p>{a.reason}</p>
+                    </div>
+                  ))}
+                  {!selectedData?.ai.possibleAllergens.length && (
+                    <p>
+                      AI가 특정한 알레르기 가능성은 없어요. 필요한 경우 직원에게
+                      확인해 주세요.
+                    </p>
+                  )}
                   {draft.answers[selectedMenu.id] && (
                     <p className="answer-record">
                       직원 답변: {draft.answers[selectedMenu.id]}
@@ -1220,8 +1590,12 @@ export default function OrderFlow() {
         <div className="stack">
           <AIBox
             compact
-            title="유제품 (EU 7) 가능성"
-            subtitle={`${selectedMenu.korean} · 치즈가 들어갔을 수 있어요`}
+            title={
+              selectedData?.ai.possibleAllergens
+                .map((a) => `${allergenNames[a.code]} (EU ${a.code})`)
+                .join(" · ") + " 확인"
+            }
+            subtitle={`${selectedMenu.korean} · ${selectedData?.ai.possibleAllergens.map((a) => a.reason).join(" · ") ?? "직원에게 재료를 확인해 주세요"}`}
           />
           {sentenceCard(question.korean, question.italian, "18")}
           <h2 className="answer-heading">직원의 대답은요?</h2>
@@ -1520,10 +1894,22 @@ export default function OrderFlow() {
               <Asset name="41ac6.svg" className="receipt-line" />
               <div className="receipt-row">
                 <div>
-                  <strong>코페르토 · 2명</strong>
-                  <small>Coperto · 1인 EUR 2.50</small>
+                  <strong>코페르토 · {state.cart.members.length}명</strong>
+                  <small>
+                    Coperto · 1인{" "}
+                    {state.board.coperto?.currency ?? state.board.currency}{" "}
+                    {((state.board.coperto?.amount ?? 0) / 100).toFixed(2)}
+                    {!state.board.coperto && " (메뉴판 표기 없음)"}
+                  </small>
                 </div>
-                <Price amount={5} won={false} size="small" />
+                <Price
+                  amount={
+                    ((state.board.coperto?.amount ?? 0) / 100) *
+                    state.cart.members.length
+                  }
+                  won={false}
+                  size="small"
+                />
               </div>
               <InfoNote>
                 빵·식기·자리 준비 비용이에요.
@@ -1537,13 +1923,17 @@ export default function OrderFlow() {
                   <strong>물 (시켰다면)</strong>
                   <small>Acqua in bottiglia · 합계에 포함 안 됨</small>
                 </div>
-                <span className="water-price">+EUR 3.00</span>
+                <span className="water-price">
+                  {api.fixtureMode() ? "+EUR 3.00" : "가격 별도 확인"}
+                </span>
               </div>
               <InfoNote>
                 이탈리아 식당은 물이 유료예요.
                 <br />병 물을 시켰다면
                 <br />
-                1병에 약 3유로가 붙어요.
+                {api.fixtureMode()
+                  ? "1병에 약 3유로가 붙어요."
+                  : "메뉴판에 적힌 물 가격을 확인해 주세요."}
               </InfoNote>
               <div className="receipt-row">
                 <div>
@@ -1631,6 +2021,15 @@ export default function OrderFlow() {
       ) : (
         <div className="loading-shell" aria-label="화면 준비 중" />
       )}
+      <input
+        className="visually-hidden"
+        ref={captureInput}
+        type="file"
+        accept="image/*"
+        capture="environment"
+        onChange={upload}
+        aria-label="기기 카메라로 메뉴판 촬영"
+      />
       <input
         className="visually-hidden"
         ref={fileInput}

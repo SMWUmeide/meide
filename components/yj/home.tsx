@@ -1,6 +1,6 @@
 "use client";
 import { Asset, Avatar, Glass, TabBar } from "./ui";
-import { pendingRatings, type Account, type Screen } from "@/lib/yj/model";
+import { pendingRatings, type Account, type Screen } from "@/lib/yj/view-model";
 export function HomeCaptureCard({ onClick }: { onClick: () => void }) {
   return (
     <Glass

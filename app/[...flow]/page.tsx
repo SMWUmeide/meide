@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import OrderFlow from "@/components/yj/order-flow";
-import { isFlowPath } from "@/lib/yj/model";
+import { isFlowPath } from "@/lib/yj/routes";
 export default async function FlowPage({
   params,
 }: {

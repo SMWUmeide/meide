@@ -44,11 +44,17 @@ export function citySearch(env: CityEnvironment, origin: string) {
   const rows = async (path: string) => {
     const r = await asset(path);
     if (!r.ok) throw Error("여행지 데이터 연결 실패");
-    return JSON.parse(
-      await new Response(
-        r.body!.pipeThrough(new DecompressionStream("gzip")),
-      ).text(),
-    ) as CityRow[];
+    // Some asset bindings transparently decode Content-Encoding: gzip.
+    const bytes = new Uint8Array(await r.arrayBuffer());
+    const text =
+      bytes[0] === 0x1f && bytes[1] === 0x8b
+        ? await new Response(
+            new Response(bytes).body!.pipeThrough(
+              new DecompressionStream("gzip"),
+            ),
+          ).text()
+        : new TextDecoder().decode(bytes);
+    return JSON.parse(text) as CityRow[];
   };
   const map = (r: CityRow) => {
     const c = europeanCountries.find((c) => c.code === r.code);

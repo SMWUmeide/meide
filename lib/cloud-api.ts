@@ -1,3 +1,4 @@
+import { handleYjRequest } from "./yj/services/server";
 import {
   getRestaurantCatalog,
   getUsabilityMenu,
@@ -12,6 +13,7 @@ export async function cloudApi(
   env: CityEnvironment & { DB?: D1Database },
 ) {
   const path = new URL(request.url).pathname;
+  if (path.startsWith("/api/yj/")) return handleYjRequest(request, env);
   try {
     if (
       request.method !== "POST" &&

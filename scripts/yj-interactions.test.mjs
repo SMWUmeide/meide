@@ -27,7 +27,13 @@ const click = async (name, id) => {
   if (id) await screen(id);
 };
 const open = async (path, id) => {
-  await page.goto(base + path);
+  await page.goto(
+    base +
+      path +
+      (path.includes("fixture=")
+        ? ""
+        : (path.includes("?") ? "&" : "?") + "fixture=interactive"),
+  );
   await screen(id);
 };
 try {
@@ -72,6 +78,11 @@ try {
   await screen("02");
   await click("주문 문장 만들기", "03");
   await page.locator("textarea").fill("치즈 빼고 주세요");
+  await page.waitForFunction(() =>
+    document
+      .querySelector(".sentence-italian")
+      ?.textContent.includes("Senza formaggio"),
+  );
   assert.match(
     await page.locator(".sentence-italian").innerText(),
     /Senza formaggio/,
@@ -99,7 +110,7 @@ try {
   await screen("19");
   await click("평가하기", "20");
   while (await page.locator('[data-screen="20"]').count())
-    await click("또 먹고 싶어요 한국인 평점에 반영돼요");
+    await click("또 먹고 싶어요 내 맛 기록에 저장돼요");
   await screen("19");
   console.log(
     "PASS capture → partial analysis → empty cart → ingredient question → talk → order → receipt → history → ratings",
@@ -195,16 +206,14 @@ try {
     album.on("pageerror", (e) => errors.push(e.message));
     await album.goto(base + "/capture?fixture=08");
     await album.waitForSelector('main[data-screen="08"][aria-busy=false]');
-    await album
-      .getByLabel("메뉴판 사진 선택")
-      .setInputFiles({
-        name: "menu.png",
-        mimeType: "image/png",
-        buffer: Buffer.from(
-          "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aD1sAAAAASUVORK5CYII=",
-          "base64",
-        ),
-      });
+    await album.getByLabel("메뉴판 사진 선택").setInputFiles({
+      name: "menu.png",
+      mimeType: "image/png",
+      buffer: Buffer.from(
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aD1sAAAAASUVORK5CYII=",
+        "base64",
+      ),
+    });
     await album.waitForSelector('main[data-screen="09"]');
     assert.equal(
       await album.getByRole("button", { name: "사진 1장 펼쳐보기" }).count(),
@@ -212,7 +221,7 @@ try {
     );
     assert.match(
       await album.locator(".photo-stack img").getAttribute("src"),
-      /^data:image\/png/,
+      /^data:image\/jpeg/,
     );
     console.log(
       "PASS mobile album upload creates a photo ID on the HTTP origin",
@@ -223,6 +232,15 @@ try {
   assert.deepEqual(errors, []);
   assert.deepEqual(api, []);
   console.log("PASS error fallback and all interactions without API requests");
+} catch (error) {
+  console.log(
+    "FAILED_STATE",
+    page.url(),
+    await page.locator("main").getAttribute("data-screen"),
+    await page.evaluate(() => history.state?.yjView),
+  );
+  await page.screenshot({ path: "/tmp/yj-interaction-failure.png" });
+  throw error;
 } finally {
   await context.close();
   await browser.close();

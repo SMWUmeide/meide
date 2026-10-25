@@ -1,5 +1,9 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
+import { api } from "@/lib/yj/services/display";
+import { state, refreshViews, setDestinations } from "@/lib/yj/view-model";
+import { listen, currentLocation } from "@/lib/yj/services/browser";
+import type { KoreanCategory } from "@/lib/yj/model";
 import { createLocalId } from "@/lib/yj/id";
 import {
   useEffect,
@@ -55,7 +59,7 @@ import {
   type Friend,
   type Screen,
   type Taste,
-} from "@/lib/yj/model";
+} from "@/lib/yj/view-model";
 
 type Go = (
   screen: Screen,
@@ -158,8 +162,11 @@ export function MockMap({
   return (
     <div
       className={`map-canvas ${mini ? "mini" : ""}`}
-      aria-label="목업 주변 지도"
+      aria-label="주변 식당 위치 개략도"
     >
+      <small className="osm-credit">
+        © OpenStreetMap · 도보 시간은 직선거리 추정
+      </small>
       <div className="map-river" />
       {[280, 430, 520].map((y) => (
         <i key={"h" + y} className="road horizontal" style={{ top: y }} />
@@ -186,11 +193,39 @@ export function MockMap({
       <DesignAsset screen="05-2" name="img500M" className="map-radius" />
       <DesignAsset screen="05-2" name="img" className="map-position" />
       {!empty &&
-        [
-          ["rosa", 163.5, 330],
-          ["ponte", 67, 301],
-          ["nonna", 92, 481],
-        ]
+        (api.fixtureMode()
+          ? [
+              ["rosa", 163.5, 330],
+              ["ponte", 67, 301],
+              ["nonna", 92, 481],
+            ]
+          : mockRestaurants
+              .filter((r) => r.id.startsWith("osm:"))
+              .map((r) => {
+                const origin = state.origin ?? state.account.trip.location;
+                return [
+                  r.id,
+                  Math.max(
+                    30,
+                    Math.min(
+                      330,
+                      195 +
+                        (r.location.lng - origin.lng) *
+                          111000 *
+                          Math.cos((origin.lat * Math.PI) / 180) *
+                          0.2,
+                    ),
+                  ),
+                  Math.max(
+                    200,
+                    Math.min(
+                      550,
+                      380 - (r.location.lat - origin.lat) * 111000 * 0.2,
+                    ),
+                  ),
+                ];
+              })
+        )
           .filter(([id]) => !visibleIds || visibleIds.includes(String(id)))
           .map(([id, x, y]) => {
             const r = mockRestaurants.find((r) => r.id === id)!;
@@ -215,7 +250,7 @@ export function MockMap({
               </button>
             );
           })}
-      <small className="map-attribution">© OpenStreetMap · 목업</small>
+      <small className="map-attribution">© OpenStreetMap · 개략도</small>
     </div>
   );
 }
@@ -229,7 +264,11 @@ function RestaurantInfo({
   return (
     <div className="restaurant-item">
       <div className="restaurant-head">
-        <Picture name={restaurant.photo || "fb60b.png"} alt={restaurant.name} />
+        {restaurant.photo ? (
+          <Picture name={restaurant.photo} alt={restaurant.name} />
+        ) : (
+          <span className="restaurant-photo-placeholder">사진 없음</span>
+        )}
         <div>
           <h3>{restaurant.name}</h3>
           <p>
@@ -243,7 +282,7 @@ function RestaurantInfo({
           </small>
         </div>
       </div>
-      {signature && (
+      {signature && !!restaurant.signature && (
         <Squircle radius={30} className="surface signature">
           <small>대표 메뉴</small>
           <strong>{restaurant.signature}</strong>
@@ -349,21 +388,180 @@ export default function ExtraScreens(props: Props) {
     typeof window === "undefined"
       ? ""
       : `${window.location.origin}/companions/${friend?.id ?? "youngsu"}/invite?joined=1`;
+  const [manual, setManual] = useState(false),
+    [manualText, setManualText] = useState("");
+  const [talkDirection, setTalkDirection] = useState<"ko" | "it">("ko");
+  const talkDirectionRef = useRef<"ko" | "it">("ko");
+  const recognition = useRef<ReturnType<typeof listen>>(undefined);
+  const talkRef = useRef({ go, notify });
+  useEffect(() => {
+    talkRef.current = { go, notify };
+  }, [go, notify]);
+  const [, redraw] = useState(0);
+  const [loadingResults, setLoadingResults] = useState(false);
+  async function translate(
+    text: string,
+    from: "ko" | "it" = talkDirectionRef.current,
+  ) {
+    setSpoken(text);
+    try {
+      const r = await api.translateTalk(
+        text,
+        from,
+        from === "ko" ? "it" : "ko",
+      );
+      if (!r.ok)
+        throw Error("번역하지 못했어요. Gemini 키와 연결을 확인해 주세요.");
+      if (from === "ko") {
+        setStaffText(r.text);
+        setStaffKorean(text);
+      } else {
+        setCustomerText(r.text);
+        setCustomerItalian(text);
+      }
+      talkRef.current.go("16", {}, true);
+      setManual(false);
+    } catch (e) {
+      talkRef.current.notify(
+        e instanceof Error ? e.message : "번역하지 못했어요.",
+      );
+      talkRef.current.go("44", {}, true);
+    }
+  }
   useEffect(() => {
     if (view.screen !== "45" || freeze) return;
-    const timer = window.setTimeout(() => {
-      if (talkFailure) {
-        go("44", {}, true);
-      } else {
-        setStaffText(
-          "Una bottiglia di acqua frizzante e ancora un po’ di pane, per favore.",
-        );
+    if (api.fixtureMode()) {
+      const timer = setTimeout(() => {
         setStaffKorean("탄산수 한 병이랑 빵 조금 더 주세요.");
-        go("16", {}, true);
-      }
-    }, 3000);
-    return () => window.clearTimeout(timer);
-  }, [view.screen, freeze, talkFailure, go]);
+        talkRef.current.go(talkFailure ? "44" : "16", {}, true);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+    const input = listen(
+      talkDirectionRef.current === "ko" ? "ko-KR" : "it-IT",
+      (text) => void translate(text),
+      (message) => {
+        setManual(true);
+        talkRef.current.notify(message);
+      },
+    );
+    recognition.current = input;
+    if (!input) setManual(true);
+    return () => {
+      input?.abort();
+      recognition.current = undefined;
+    };
+    // Recognition lives for one screen visit; callbacks use refs.
+  }, [view.screen, freeze, talkFailure]);
+  useEffect(() => {
+    if (
+      !["07", "38", "43"].includes(view.screen) ||
+      !query.trim() ||
+      api.fixtureMode()
+    )
+      return;
+    let active = true;
+    const timer = setTimeout(() => {
+      setLoadingResults(true);
+      void api
+        .searchDestinations(query)
+        .then((rows) => {
+          if (active) {
+            setDestinations(rows);
+            redraw((v) => v + 1);
+          }
+        })
+        .catch((e) => {
+          if (active)
+            talkRef.current.notify(
+              e instanceof Error ? e.message : "도시를 찾지 못했어요.",
+            );
+        })
+        .finally(() => {
+          if (active) setLoadingResults(false);
+        });
+    }, 400);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [query, view.screen]);
+  useEffect(() => {
+    if (
+      !["31", "05-2", "05-3", "42", "32"].includes(view.screen) ||
+      api.fixtureMode()
+    )
+      return;
+    let active = true;
+    queueMicrotask(() => {
+      if (active) setLoadingResults(true);
+    });
+    void currentLocation(state.account.trip.location)
+      .then(({ location }) => {
+        state.origin = location;
+        return api.nearbyRestaurants(
+          location,
+          appliedRadius === "500m"
+            ? 500
+            : appliedRadius === "1km"
+              ? 1000
+              : 3000,
+          ([
+            "국물 요리",
+            "밥·죽",
+            "면 요리",
+            "고기 구이",
+            "해산물",
+            "빵·피자",
+          ].includes(filter)
+            ? filter
+            : undefined) as KoreanCategory | undefined,
+        );
+      })
+      .then((rows) => {
+        if (!active) return;
+        state.account.restaurants = [
+          ...rows,
+          ...state.account.restaurants.filter(
+            (r) => !rows.some((x) => x.id === r.id),
+          ),
+        ];
+        refreshViews();
+        redraw((v) => v + 1);
+      })
+      .catch((e) => {
+        if (active) {
+          talkRef.current.notify(
+            e instanceof Error ? e.message : "근처 식당을 불러오지 못했어요.",
+          );
+          if (["05-2", "05-3"].includes(view.screen))
+            talkRef.current.go("42", {}, true);
+        }
+      })
+      .finally(() => {
+        if (active) setLoadingResults(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, [view.screen, filter, appliedRadius]);
+  useEffect(() => {
+    if (!["31", "33"].includes(view.screen) || api.fixtureMode()) return;
+    let active = true;
+    void api
+      .koreanRanking(state.account.trip.city)
+      .then((rows) => {
+        if (active) {
+          state.rankings = rows;
+          refreshViews();
+          redraw((v) => v + 1);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [view.screen]);
   useEffect(() => {
     if (!showQR) return;
     let active = true;
@@ -574,6 +772,7 @@ export default function ExtraScreens(props: Props) {
         state === "07" ? "어디로 떠나시나요?" : "여행지 선택",
         <div className="stack trip-content">
           {field}
+          {loadingResults && <p role="status">불러오는 중이에요…</p>}
           {state === "07" ? (
             <>
               <h2 className="eyebrow">지금 여행 중</h2>
@@ -732,10 +931,10 @@ export default function ExtraScreens(props: Props) {
                   type="button"
                   className="staff-mic"
                   onClick={() => {
-                    setCustomerText("일반 물과 탄산수 중 어떤 걸 드릴까요?");
-                    setCustomerItalian(
-                      "Preferisce acqua naturale o frizzante?",
-                    );
+                    talkDirectionRef.current = "it";
+                    setTalkDirection("it");
+                    setManualText("");
+                    go("45");
                   }}
                 >
                   <DesignAsset screen="16" name="imgFrame1" />
@@ -770,11 +969,7 @@ export default function ExtraScreens(props: Props) {
                 )}
               </div>
               <p className="customer-korean">
-                {listening
-                  ? spoken
-                  : failed
-                    ? "탄산수 한 병 더 주세요."
-                    : customerText}
+                {listening ? spoken : failed ? spoken : customerText}
               </p>
               <p className="talk-subtitle">
                 {listening
@@ -788,13 +983,7 @@ export default function ExtraScreens(props: Props) {
                   <PrimaryButton
                     size="small"
                     onClick={() => {
-                      setStaffText(
-                        "Ancora una bottiglia di acqua frizzante, per favore.",
-                      );
-                      setStaffKorean("탄산수 한 병 더 주세요.");
-                      if (talkFailure)
-                        notify("목업 번역 실패 조건이 유지되고 있어요.");
-                      else go("16", {}, true);
+                      void translate(spoken);
                     }}
                   >
                     다시 번역하기
@@ -820,8 +1009,10 @@ export default function ExtraScreens(props: Props) {
                       <Chip
                         key={ko}
                         onClick={() => {
-                          setStaffText(it);
-                          setStaffKorean(ko);
+                          if (api.fixtureMode()) {
+                            setStaffText(it);
+                            setStaffKorean(ko);
+                          } else void translate(ko, "ko");
                         }}
                       >
                         {ko}
@@ -829,6 +1020,23 @@ export default function ExtraScreens(props: Props) {
                     ))}
                   </div>
                 )
+              )}
+              {listening && manual && (
+                <label className="manual-talk">
+                  {talkDirection === "ko" ? "직접 입력" : "Scrivi qui"}
+                  <textarea
+                    aria-label="대화 직접 입력"
+                    value={manualText}
+                    onChange={(e) => setManualText(e.target.value)}
+                  />
+                  <SecondaryButton
+                    size="small"
+                    disabled={!manualText.trim()}
+                    onClick={() => void translate(manualText)}
+                  >
+                    번역하기
+                  </SecondaryButton>
+                </label>
               )}
               {listening && (
                 <div className="talk-wave" aria-hidden="true">
@@ -861,13 +1069,14 @@ export default function ExtraScreens(props: Props) {
                   disabled={failed}
                   onClick={() => {
                     if (listening) {
-                      setStaffText(
-                        "Una bottiglia di acqua frizzante e ancora un po’ di pane, per favore.",
-                      );
-                      setStaffKorean(spoken);
-                      go(talkFailure ? "44" : "16", {}, true);
+                      if (manual) void translate(manualText || spoken);
+                      else recognition.current?.stop();
                     } else {
-                      setSpoken("탄산수 한 병이랑 빵 조금 더…");
+                      talkDirectionRef.current = "ko";
+                      setTalkDirection("ko");
+                      setManual(false);
+                      setManualText("");
+                      setSpoken("말씀해 주세요…");
                       go("45");
                     }
                   }}
@@ -1009,7 +1218,7 @@ export default function ExtraScreens(props: Props) {
                   />
                   <span>
                     <strong>{label}</strong>
-                    {i === 0 && <small>한국인 평점에 반영돼요</small>}
+                    {i === 0 && <small>내 맛 기록에 저장돼요</small>}
                   </span>
                 </ActionCard>
               ),
@@ -1068,7 +1277,7 @@ export default function ExtraScreens(props: Props) {
           <p className="muted">가까운 한식당 · 아시안 식당 · 아시안 마켓</p>
           <Card className="flush">
             {mockRestaurants
-              .filter((r) => r.kind === "asian")
+              .filter((r) => ["asian", "korean", "market"].includes(r.kind))
               .map((r, i) => (
                 <ListRow
                   key={r.id}
@@ -1219,6 +1428,7 @@ export default function ExtraScreens(props: Props) {
     case "42": {
       const list = nearbyRestaurants(filter, query);
       const empty = view.screen === "42" || !list.length;
+      // API results replace nearby fixtures in normal browsing.
       const expanded = view.screen === "05-3";
       const selected =
         list.find((r) => r.id === selectedRestaurant) ??
@@ -1438,10 +1648,13 @@ export default function ExtraScreens(props: Props) {
         <div className="screen restaurant-detail">
           <div className="detail-scroll">
             <div className="restaurant-hero">
-              <Asset
-                name={restaurant.photo || "fb60b.png"}
-                alt={restaurant.name}
-              />
+              {restaurant.photo ? (
+                <Asset name={restaurant.photo} alt={restaurant.name} />
+              ) : (
+                <div className="restaurant-photo-placeholder">
+                  사진 정보가 없어요
+                </div>
+              )}
               <IconButton
                 asset="5097c.svg"
                 label="뒤로 가기"
@@ -1462,45 +1675,51 @@ export default function ExtraScreens(props: Props) {
                 />
                 <small className="open">● {restaurant.hours}</small>
               </div>
-              <Card className="korean-picks flush">
-                <h2>한국인이 많이 고른 메뉴</h2>
-                {[
-                  [
-                    "리볼리타",
-                    "채소를 푹 끓인 우거지국처럼 구수해요",
-                    "6415e.png",
-                    94,
-                  ],
-                  [
-                    "피치 알 라구",
-                    "굵은 칼국수에 고기 소스를 얹은 맛",
-                    "fb60b.png",
-                    89,
-                  ],
-                  [
-                    "파파 알 포모도로",
-                    "빵을 넣고 끓인 토마토 죽 같아요",
-                    "60d97.png",
-                    81,
-                  ],
-                ].map(([label, desc, img, percent]) => (
-                  <ListRow
-                    key={label}
-                    leading={<Picture name={String(img)} />}
-                    trailing={<b className="ai-text">{percent}%</b>}
-                  >
-                    <strong>{label}</strong>
-                    <small className="ai-text">{desc}</small>
-                  </ListRow>
-                ))}
-              </Card>
+              {!restaurant.id.startsWith("osm:") ? (
+                <Card className="korean-picks flush">
+                  <h2>한국인이 많이 고른 메뉴</h2>
+                  {[
+                    [
+                      "리볼리타",
+                      "채소를 푹 끓인 우거지국처럼 구수해요",
+                      "6415e.png",
+                      94,
+                    ],
+                    [
+                      "피치 알 라구",
+                      "굵은 칼국수에 고기 소스를 얹은 맛",
+                      "fb60b.png",
+                      89,
+                    ],
+                    [
+                      "파파 알 포모도로",
+                      "빵을 넣고 끓인 토마토 죽 같아요",
+                      "60d97.png",
+                      81,
+                    ],
+                  ].map(([label, desc, img, percent]) => (
+                    <ListRow
+                      key={label}
+                      leading={<Picture name={String(img)} />}
+                      trailing={<b className="ai-text">{percent}%</b>}
+                    >
+                      <strong>{label}</strong>
+                      <small className="ai-text">{desc}</small>
+                    </ListRow>
+                  ))}
+                </Card>
+              ) : (
+                <Card>
+                  <p>아직 한국인 평가가 모이지 않았어요.</p>
+                </Card>
+              )}
               <Card>
                 <div className="address-row">
                   <DesignAsset screen="32" name="imgFrame3" />
                   <span>{restaurant.address}</span>
                   <button
                     type="button"
-                    onClick={() => void copy(restaurant.address)}
+                    onClick={() => void copy(restaurant.address ?? "")}
                   >
                     복사
                   </button>
@@ -1617,7 +1836,7 @@ export default function ExtraScreens(props: Props) {
         </div>,
         <>
           {isNew && (
-            <p>입력한 정보는 로그인한 계정에 저장돼 폰을 바꿔도 그대로예요</p>
+            <p>이 브라우저의 임시 계정에 저장해요. 다른 폰 연결은 준비 중이에요</p>
           )}
           <PrimaryButton
             disabled={isNew && !name.trim()}
@@ -1667,7 +1886,7 @@ export default function ExtraScreens(props: Props) {
                 <DesignAsset screen="27" name="imgFrame" />
               </span>
             </div>
-            <h2>링크를 열면 같은 메뉴판에 연결돼요</h2>
+            <h2>초대 링크와 QR을 미리 확인해요</h2>
             <Squircle className="surface invite-link" radius={30}>
               <span>{inviteUrl.replace(/^https?:\/\//, "")}</span>
               <IconButton
@@ -1747,7 +1966,7 @@ export default function ExtraScreens(props: Props) {
                   {account.destination.country} · {account.destination.city}{" "}
                   여행 중
                 </p>
-                <small>카카오 계정으로 로그인 중</small>
+                <small>브라우저 임시 계정으로 사용 중</small>
               </div>
               <IconButton
                 asset="33ada.svg"
@@ -1868,14 +2087,14 @@ export default function ExtraScreens(props: Props) {
               [
                 "imgFrame",
                 "주문 기록 · 입맛 메모",
-                "로그인한 계정에 저장돼 폰을 바꿔도 그대로예요",
+                "이 브라우저의 임시 계정에 저장해요. 정식 로그인은 준비 중이에요",
                 "내 계정",
               ],
               [
                 "imgFrame1",
                 "메뉴판 사진",
-                "해석이 끝나면 서버에서 바로 지워요",
-                "분석 후 삭제",
+                "메뉴판 사진은 분석을 위해 Google Gemini로 보내요. 무료 등급에서는 서비스 개선에 쓰일 수 있어요. 사진은 기기에 임시 보관해요",
+                "외부 전송",
               ],
               [
                 "imgFrame2",
@@ -1886,7 +2105,7 @@ export default function ExtraScreens(props: Props) {
               [
                 "imgFrame3",
                 "대화 음성",
-                "번역을 위해 번역 서비스로 보내요",
+                "브라우저 음성 인식 후 대화 글을 Google Gemini로 번역해요",
                 "외부 전송",
               ],
             ].map(([icon, title, desc, tag], i) => (
@@ -1946,7 +2165,7 @@ export default function ExtraScreens(props: Props) {
                   <DesignAsset screen="46" name="imgFrame6" />
                 </span>
                 <h2>저장된 기록을 모두 지울까요?</h2>
-                <p>계정에서 지워져 어느 폰에서도 다시 볼 수 없어요.</p>
+                <p>이 임시 계정의 기록을 지워요. 되돌릴 수 없어요.</p>
                 <Squircle radius={30} className="surface deleted-counts">
                   {[
                     ["주문 기록 · 주문 문장", `${account.records.length}개`],
@@ -1989,7 +2208,14 @@ export default function ExtraScreens(props: Props) {
                         ordered: false,
                       }));
                       go("30", {}, true);
-                      notify("목업 기록을 지웠어요.");
+                      notify("기록을 지웠어요.");
+                      void api
+                        .eraseData()
+                        .catch(() =>
+                          notify(
+                            "서버 기록을 지우지 못했어요. 다시 시도해 주세요.",
+                          ),
+                        );
                     }}
                   >
                     기록 지우기

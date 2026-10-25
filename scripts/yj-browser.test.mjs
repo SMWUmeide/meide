@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
-import { screenCatalog } from "../lib/yj/model.ts";
+import { modules } from "./yj-test-module.mjs";
+const { screenCatalog } = await modules();
 const { chromium } = await import(
   process.env.PLAYWRIGHT_MODULE || "playwright"
 );
@@ -56,7 +57,11 @@ try {
     const home = id.startsWith("home-");
     const width = home ? 402 : 390,
       height = home ? 874 : 844;
-    const { context, page } = await open(path, width, height);
+    const fixturePath =
+      path +
+      (path.includes("?") ? "&" : "?") +
+      (!path.includes("fixture=") ? "fixture=" + id : "visual=1");
+    const { context, page } = await open(fixturePath, width, height);
     const actual = await page.locator("main").getAttribute("data-screen");
     assert.equal(actual, home ? "home" : id, `${id}: ${path}`);
     const broken = await page.evaluate(() =>
