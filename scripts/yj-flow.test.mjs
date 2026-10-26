@@ -1,8 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
 import { modules } from "./yj-test-module.mjs";
 import { getSvgPath } from "figma-squircle";
 const m = await modules();
+test("production root cannot be shadowed by the legacy static prototype", () => {
+  assert.equal(existsSync(new URL("../public/index.html", import.meta.url)), false);
+});
 const {
   fixtureBoard: board,
   fixtureAccount,
