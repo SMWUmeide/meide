@@ -1,0 +1,13 @@
+{
+  "name": "hanip-design-journey",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node --check dist/app.js && node --check dist/city-worker.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "capturedAt": "2026-10-27",
+  "publicUrl": "https://hanip-design-journey.alswn2963.chatgpt.site",
+  "sourceCommit": "7b26503539ffa4300b64ad7a55249433ace8e1aa",
+  "layoutReference": "Galaxy S26 · 360 × 780 CSS px",
+  "scope": "Design demonstration; real local destination search; other service integrations simulated",
+  "excluded": [
+    ".git",
+    ".openai",
+    "credentials",
+    "local user storage"
+  ]
+}
