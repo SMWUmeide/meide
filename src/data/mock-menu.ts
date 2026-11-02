@@ -1,8 +1,8 @@
 // 1단계 전용 예시 데이터예요. 실제 메뉴·환율·AI 분석 결과가 아니에요.
 export const restaurant = { name: "Osteria La Solita Zuppa", location: "이탈리아 · 키우시", exchangeRate: 1499 };
 export const categories = [{ id: "soup", name: "수프", original: "zuppe" }, { id: "main", name: "메인 요리", original: "secondi" }, { id: "wine", name: "주류", original: "vini" }] as const;
-export type Category = typeof categories[number]["id"];
-export type MenuItem = { id: string; category: Category; originalName: string; name: string; priceEur: number; photoUrl: string | null; detailPhotoUrl?: string; analogy: string; description: string; ingredients: { name: string; original: string }[]; allergen: string; estimated: string[]; method: string; possibleAllergen: string };
+import type { MenuBoard, MenuItem } from "./menu-schema";
+export type { Category, MenuItem } from "./menu-schema";
 const soup = { analogy: "따뜻하고 든든한 채소 수프에 가까워요", description: "재료를 푹 끓여 부드럽고 고소한 맛이 나는 예시 메뉴예요.", ingredients: [] as MenuItem["ingredients"], allergen: "메뉴판에서 확인되지 않았어요", estimated: ["양파", "올리브유", "채소 육수"], method: "채소를 부드럽게 끓이는 것이 일반적이에요. 실제 조리법은 직원에게 확인해 주세요.", possibleAllergen: "유제품 등이 들어갈 수 있어요" };
 export const menuItems: MenuItem[] = [
   { ...soup, id: "ceci", category: "soup", originalName: "ZUPPA DI CECI E PORCINI", name: "병아리콩과 포르치니 버섯 수프", priceEur: 11, photoUrl: "/figma/124aa.png", ingredients: [{ name: "병아리콩", original: "ceci" }, { name: "포르치니 버섯", original: "porcini" }] },
@@ -19,3 +19,5 @@ export const ranking = [
   { id: "ceci", name: "병아리콩·포르치니 버섯 수프", photo: "/figma/124aa.png", score: "4.7" },
 ];
 export function krw(eur: number) { return Math.round(eur * restaurant.exchangeRate).toLocaleString("ko-KR"); }
+
+export const demoBoard: MenuBoard = { restaurantName: restaurant.name, categories: [...categories], items: menuItems, source: "demo", skipped: 0 };

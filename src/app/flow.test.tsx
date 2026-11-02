@@ -46,20 +46,19 @@ describe("1단계 화면 흐름", () => {
     await user.click(screen.getByRole("button", { name: "호박과 고대 밀 수프 담기 취소" }));
     expect(screen.getByRole("status")).toHaveTextContent("미영님이 담은 메뉴예요"); expect(screen.getByRole("button", { name: "3개 보기" })).toBeInTheDocument();
   });
-  it("실제 사진은 로컬 미리보기로만 보이고 분석 요청은 보내지 않아요", async () => {
+  it("분석하기를 누르기 전에는 사진을 전송하지 않아요", async () => {
     window.history.replaceState(null, "", "/#/capture"); const request = vi.spyOn(window, "fetch").mockRejectedValue(new Error("외부 전송 금지"));
     try {
       const user = userEvent.setup(); render(<App />); const file = new File(["image"], "menu.jpg", { type: "image/jpeg" });
       await user.upload(screen.getByLabelText("메뉴판 사진 파일 선택"), file);
       expect(await screen.findByRole("img", { name: "선택한 메뉴판 사진" })).toBeInTheDocument();
-      expect(screen.getByText("1장")).toBeInTheDocument(); await user.click(screen.getByRole("button", { name: "선택한 사진으로 메뉴 고르기" }));
-      expect(screen.getByRole("heading", { name: "Osteria La Solita Zuppa" })).toBeInTheDocument(); expect(request).not.toHaveBeenCalled();
+      expect(screen.getByText("1장")).toBeInTheDocument(); expect(screen.getByRole("button", { name: "메뉴판 분석하기" })).toBeInTheDocument(); expect(request).not.toHaveBeenCalled();
     } finally { request.mockRestore(); }
   });
   it("용량이 너무 큰 사진은 거부해요", () => {
     window.history.replaceState(null, "", "/#/capture"); render(<App />);
     const file = new File(["image"], "huge.jpg", { type: "image/jpeg" }); Object.defineProperty(file, "size", { value: 11 * 1024 * 1024 });
-    fireEvent.change(screen.getByLabelText("메뉴판 사진 파일 선택"), { target: { files: [file] } }); expect(screen.getByRole("status")).toHaveTextContent("10MB 이하"); expect(screen.getByText("0장")).toBeInTheDocument();
+    fireEvent.change(screen.getByLabelText("메뉴판 사진 파일 선택"), { target: { files: [file] } }); expect(screen.getByText("사진은 한 장에 10MB 이하로 선택해 주세요")).toBeInTheDocument(); expect(screen.getByText("0장")).toBeInTheDocument();
   });
   it("AI 확인 시트는 닫을 수 있고 확인된 정보와 구분돼요", async () => {
     window.history.replaceState(null, "", "/#/detail/zucca"); const user = userEvent.setup(); render(<App />);

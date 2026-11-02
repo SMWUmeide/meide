@@ -10,30 +10,33 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "lint": "eslint src scripts vite.config.ts",
+    "lint": "eslint src api server scripts vite.config.ts",
     "test": "vitest run",
     "check:design": "node scripts/check-design.mjs"
   },
   "dependencies": {
+    "@ai-sdk/google": "^4.0.109",
+    "ai": "^7.0.159",
+    "pretendard": "1.3.9",
     "react": "19.2.6",
     "react-dom": "19.2.6",
-    "pretendard": "1.3.9"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "@types/node": "22.19.19",
-    "@vitejs/plugin-react": "6.0.2",
-    "vite": "8.0.13",
-    "typescript": "5.9.3",
-    "eslint": "9.39.4",
     "@eslint/js": "9.39.4",
-    "typescript-eslint": "^8.0.0",
-    "eslint-plugin-react-hooks": "^7.0.0",
-    "vitest": "^4.0.0",
-    "jsdom": "^27.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.0.0",
-    "@testing-library/jest-dom": "^6.0.0"
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "eslint": "9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "jsdom": "^27.0.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.0.0",
+    "vite": "8.0.13",
+    "vitest": "^4.0.0"
   }
 }

@@ -111,3 +111,4 @@
 .toast { position: fixed; z-index: 20; left: 50%; bottom: calc(var(--home-nav-height) + var(--space-2xl)); transform: translateX(-50%); max-width: calc(100% - var(--space-xl) - var(--space-xl)); width: max-content; padding: var(--space-md) var(--space-lg); background: var(--color-primary); color: var(--color-on-primary); border-radius: var(--rounded-md); box-shadow: var(--shadow-md); pointer-events: none; }
 .toast[data-visible="false"] { display: none; }
 @media (max-width: 380px) { .cart-label { font-size: var(--type-label-md-size); line-height: var(--type-label-md-line-height); } .cart-bar { padding-left: var(--space-lg); } .cart-bar .button { padding-left: var(--space-md); padding-right: var(--space-md); } .home-shortcuts .card { padding: var(--space-lg); } .home-nav { overflow: hidden; } }
+.analysis-error { color: var(--color-error); }
