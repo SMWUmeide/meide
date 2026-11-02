@@ -1,0 +1,89 @@
+/* meide tokens — Figma Variables "9주차 · meide / …" 와 같은 이름
+   값은 DESIGN.md YAML과 같다. 화면·컴포넌트에서는 이 변수만 쓴다. */
+
+:root {
+  /* ── Color (Light) ── */
+  --color-neutral: #F2F4F6;
+  --color-surface: #FFFFFF;
+  --color-on-surface: #212121;
+  --color-secondary: #626773;
+  --color-border: #ECEEF1;
+  --color-primary: #212121;
+  --color-primary-pressed: #000000;
+  --color-disabled: #B4B8BE;
+  --color-error: #CC3D3D;
+
+  /* extensions */
+  --color-on-primary: #FFFFFF;
+  --color-brand: #28A745;
+  --color-brand-pressed: #1C7D33;
+  --color-brand-light: #7DD88E;
+  --color-rating: #FFD33D;
+  --color-info-bg: #EAF7EE;
+  --color-info-text: #3D4A41;
+  --color-ai-text: #5A5FD8;
+  --color-ai-gradient-start: #61CCD1;
+  --color-ai-gradient-mid: #5285F2;
+  --color-ai-gradient-end: #9E7AF2;
+  --gradient-ai: linear-gradient(135deg, var(--color-ai-gradient-start) 0%, var(--color-ai-gradient-mid) 50%, var(--color-ai-gradient-end) 100%);
+  --gradient-orb: radial-gradient(circle at 30% 25%, var(--color-brand-light) 0%, var(--color-brand) 45%, var(--color-brand-pressed) 100%);
+  --color-person-1: #FDC7AA;
+  --color-person-2: #A5E4FF;
+  --color-person-3: #FFF1CA;
+  --color-person-4: #ECFFF2;
+
+  /* ── Typography ── */
+  --font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  --type-headline-lg-size: 30px; --type-headline-lg-line-height: 39px; --type-headline-lg-weight: 500; --type-headline-lg-tracking: -0.03em;
+  --type-headline-md-size: 22px; --type-headline-md-line-height: 29px; --type-headline-md-weight: 500; --type-headline-md-tracking: -0.02em;
+  --type-title-md-size: 17px;    --type-title-md-line-height: 24px;    --type-title-md-weight: 700;    --type-title-md-tracking: -0.01em;
+  --type-body-md-size: 16px;     --type-body-md-line-height: 23px;     --type-body-md-weight: 500;     --type-body-md-tracking: -0.01em;
+  --type-label-md-size: 14px;    --type-label-md-line-height: 20px;    --type-label-md-weight: 500;    --type-label-md-tracking: -0.01em;
+  --type-body-sm-size: 13px;     --type-body-sm-line-height: 19px;     --type-body-sm-weight: 400;     --type-body-sm-tracking: -0.01em;
+
+  /* ── Spacing ── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+
+  /* ── Rounded ── */
+  --rounded-sm: 14px;
+  --rounded-md: 20px;
+  --rounded-lg: 24px;
+  --rounded-full: 999px;
+
+  /* ── Shadow ── */
+  --shadow-sm: 0 3px 12px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 8px 20px -4px rgba(0, 0, 0, 0.18);
+
+  /* ── Size ── */
+  --touch-min: 44px;
+}
+
+/* Dark — 1차 출시에서는 사용하지 않음 (Figma Variables에 값만 정의) */
+[data-theme="dark"] {
+  --color-neutral: #121314;
+  --color-surface: #1C1D1F;
+  --color-on-surface: #F2F4F6;
+  --color-secondary: #A3A8B2;
+  --color-border: #2C2E31;
+  --color-primary: #FFFFFF;
+  --color-primary-pressed: #E3E6E9;
+  --color-disabled: #5A5F66;
+  --color-error: #F07272;
+  --color-on-primary: #212121;
+  --color-info-bg: #2C2E31;
+  --color-info-text: #EAF7EE;
+  --color-ai-text: #9DA0F0;
+}
+
+/* 글자 단계 유틸리티 */
+.t-headline-lg { font: var(--type-headline-lg-weight) var(--type-headline-lg-size)/var(--type-headline-lg-line-height) var(--font-family); letter-spacing: var(--type-headline-lg-tracking); }
+.t-headline-md { font: var(--type-headline-md-weight) var(--type-headline-md-size)/var(--type-headline-md-line-height) var(--font-family); letter-spacing: var(--type-headline-md-tracking); }
+.t-title-md    { font: var(--type-title-md-weight) var(--type-title-md-size)/var(--type-title-md-line-height) var(--font-family); letter-spacing: var(--type-title-md-tracking); }
+.t-body-md     { font: var(--type-body-md-weight) var(--type-body-md-size)/var(--type-body-md-line-height) var(--font-family); letter-spacing: var(--type-body-md-tracking); }
+.t-label-md    { font: var(--type-label-md-weight) var(--type-label-md-size)/var(--type-label-md-line-height) var(--font-family); letter-spacing: var(--type-label-md-tracking); }
+.t-body-sm     { font: var(--type-body-sm-weight) var(--type-body-sm-size)/var(--type-body-sm-line-height) var(--font-family); letter-spacing: var(--type-body-sm-tracking); }
