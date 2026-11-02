@@ -4,3 +4,11 @@
 /.codex/
 /outputs/
 /work/
+
+# Root application
+/node_modules/
+/dist/
+/coverage/
+.env*
+!.env.example
+*.tsbuildinfo

@@ -1,0 +1,8 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--color-neutral); color: var(--color-on-surface); font: var(--type-body-md-weight) var(--type-body-md-size)/var(--type-body-md-line-height) var(--font-family); letter-spacing: var(--type-body-md-tracking); }
+button { font: inherit; cursor: pointer; }
+button:disabled { cursor: default; }
+button, dialog { color: inherit; }
+h1, h2, h3, p { margin: 0; }
+button:focus-visible, [data-state="focus"] { outline: 2px solid var(--color-brand); outline-offset: var(--space-xs); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }

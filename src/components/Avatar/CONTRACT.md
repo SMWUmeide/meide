@@ -11,7 +11,7 @@
 | size | `34` · `40` | `34` |
 
 - 배경 `--color-person-1~4` (me = 1, companion-1 = 2 …).
-- 글자 `--color-on-surface` Bold (34 → 12px, 40 → 14px).
+- 글자 `--color-on-surface` Bold (34 → body-sm 13px, 40 → label-md 14px).
 - AvatarGroup: 겹침 -8, 각 아바타 테두리 2px `--color-neutral`.
 
 ## 사용 규칙
@@ -29,3 +29,5 @@
 ```tsx
 <Avatar person="me" initial="나" style={{ background: "var(--color-brand)" }} />
 ```
+
+> 충돌 해소: DESIGN.md의 13px 미만 금지 규칙에 따라 34 크기의 글자를 원안 12px에서 body-sm 13px로 맞췄어요.

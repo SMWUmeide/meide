@@ -61,6 +61,24 @@
 
   /* ── Size ── */
   --touch-min: 44px;
+  /* CONTRACT.md에 명시된 컴포넌트 치수·효과 (새 디자인 값 아님) */
+  --button-height: 56px;
+  --icon-navigation: 20px;
+  --icon-action: 22px;
+  --avatar-sm: 34px;
+  --avatar-md: 40px;
+  --menu-photo-height: 150px;
+  --cart-height: 64px;
+  --ai-icon-size: 30px;
+  --ai-border-width: 1.5px;
+  --info-icon-size: 16px;
+  --sheet-handle-width: 40px;
+  --sheet-handle-height: 5px;
+  --motion-sheet: 200ms;
+  --opacity-overlay: 0.55;
+  --opacity-glass: 16%;
+  --opacity-person-tag: 92%;
+  --opacity-ai-tint: 8%;
 }
 
 /* Dark — 1차 출시에서는 사용하지 않음 (Figma Variables에 값만 정의) */
