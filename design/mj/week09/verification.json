@@ -1,0 +1,76 @@
+{
+  "semanticCount": 25,
+  "primitiveCount": 30,
+  "aliasModeChecks": 50,
+  "contrast": [
+    {
+      "mode": "Light",
+      "foreground": "secondary",
+      "background": "surface",
+      "ratio": 7.457
+    },
+    {
+      "mode": "Light",
+      "foreground": "secondary",
+      "background": "neutral",
+      "ratio": 6.849
+    },
+    {
+      "mode": "Light",
+      "foreground": "secondary",
+      "background": "gradient-start",
+      "ratio": 5.917
+    },
+    {
+      "mode": "Light",
+      "foreground": "secondary",
+      "background": "gradient-end",
+      "ratio": 4.647
+    },
+    {
+      "mode": "Light",
+      "foreground": "secondary",
+      "background": "disabled",
+      "ratio": 6.107
+    },
+    {
+      "mode": "Dark",
+      "foreground": "secondary",
+      "background": "surface",
+      "ratio": 9.472
+    },
+    {
+      "mode": "Dark",
+      "foreground": "secondary",
+      "background": "neutral",
+      "ratio": 10.437
+    },
+    {
+      "mode": "Dark",
+      "foreground": "secondary",
+      "background": "gradient-start",
+      "ratio": 8.496
+    },
+    {
+      "mode": "Dark",
+      "foreground": "secondary",
+      "background": "gradient-end",
+      "ratio": 7.881
+    },
+    {
+      "mode": "Dark",
+      "foreground": "secondary",
+      "background": "disabled",
+      "ratio": 6.474
+    }
+  ],
+  "warningContrast": 7.939,
+  "responsiveCases": 9,
+  "functionalChecks": 6,
+  "cartFixedHeadingAndSubtotal": true,
+  "emptyDisabled": true,
+  "limits": [
+    "Scope: core UI design and existing interactions",
+    "Dark tokens verified"
+  ]
+}

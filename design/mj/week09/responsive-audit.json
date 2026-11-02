@@ -1,0 +1,389 @@
+[
+  {
+    "buttonsWithoutName": [],
+    "height": 844,
+    "layout": [
+      {
+        "cls": "home-content",
+        "gap": "12px",
+        "padding": "16px 20px",
+        "radius": "0px",
+        "shadow": "none",
+        "width": 360
+      },
+      {
+        "cls": "home-camera-circle",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "51px",
+        "shadow": "rgba(115, 65, 77, 0.075) 0px 10px 24px 0px, rgba(255, 255, 255, 0.85) 1px 1.5px 1px 0px inset, rgba(255, 255, 255, 0.42) -1px -1.5px 2px 0px inset, rgba(255, 255, 255, 0.15) 0px 0px 12px 0px inset",
+        "width": 177
+      }
+    ],
+    "overflow": 0,
+    "screen": "home",
+    "smallTargets": [],
+    "typeMismatch": [],
+    "width": 360
+  },
+  {
+    "buttonsWithoutName": [],
+    "height": 844,
+    "layout": [
+      {
+        "cls": "food-grid",
+        "gap": "24px 12px",
+        "padding": "4px 0px 24px",
+        "radius": "0px",
+        "shadow": "none",
+        "width": 320
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 154
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 154
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 154
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 154
+      },
+      {
+        "cls": "fixed-bottom",
+        "gap": "normal",
+        "padding": "12px 20px 16px",
+        "radius": "24px 24px 0px 0px",
+        "shadow": "rgba(0, 0, 0, 0.1) 0px 12px 32px 0px",
+        "width": 360
+      }
+    ],
+    "overflow": 0,
+    "screen": "menu",
+    "smallTargets": [],
+    "typeMismatch": [],
+    "width": 360
+  },
+  {
+    "buttonsWithoutName": [],
+    "height": 844,
+    "layout": [
+      {
+        "cls": "cart-content",
+        "gap": "12px",
+        "padding": "12px 20px 16px",
+        "radius": "0px",
+        "shadow": "none",
+        "width": 360
+      },
+      {
+        "cls": "cart-group cart-owner-self",
+        "gap": "normal",
+        "padding": "16px",
+        "radius": "24px",
+        "shadow": "rgba(71, 51, 41, 0.09) 0px 8px 28px 0px",
+        "width": 320
+      },
+      {
+        "cls": "cart-group cart-owner-companion",
+        "gap": "normal",
+        "padding": "16px",
+        "radius": "24px",
+        "shadow": "rgba(71, 51, 41, 0.09) 0px 8px 28px 0px",
+        "width": 320
+      },
+      {
+        "cls": "fixed-bottom",
+        "gap": "normal",
+        "padding": "12px 20px 16px",
+        "radius": "0px",
+        "shadow": "rgba(0, 0, 0, 0.1) 0px 12px 32px 0px",
+        "width": 360
+      }
+    ],
+    "overflow": 0,
+    "screen": "cart",
+    "smallTargets": [],
+    "typeMismatch": [],
+    "width": 360
+  },
+  {
+    "buttonsWithoutName": [],
+    "height": 844,
+    "layout": [
+      {
+        "cls": "home-content",
+        "gap": "12px",
+        "padding": "16px 20px",
+        "radius": "0px",
+        "shadow": "none",
+        "width": 390
+      },
+      {
+        "cls": "home-camera-circle",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "51px",
+        "shadow": "rgba(115, 65, 77, 0.075) 0px 10px 24px 0px, rgba(255, 255, 255, 0.85) 1px 1.5px 1px 0px inset, rgba(255, 255, 255, 0.42) -1px -1.5px 2px 0px inset, rgba(255, 255, 255, 0.15) 0px 0px 12px 0px inset",
+        "width": 177
+      }
+    ],
+    "overflow": 0,
+    "screen": "home",
+    "smallTargets": [],
+    "typeMismatch": [],
+    "width": 390
+  },
+  {
+    "buttonsWithoutName": [],
+    "height": 844,
+    "layout": [
+      {
+        "cls": "food-grid",
+        "gap": "24px 12px",
+        "padding": "4px 0px 24px",
+        "radius": "0px",
+        "shadow": "none",
+        "width": 350
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 169
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 169
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 169
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 169
+      },
+      {
+        "cls": "fixed-bottom",
+        "gap": "normal",
+        "padding": "12px 20px 16px",
+        "radius": "24px 24px 0px 0px",
+        "shadow": "rgba(0, 0, 0, 0.1) 0px 12px 32px 0px",
+        "width": 390
+      }
+    ],
+    "overflow": 0,
+    "screen": "menu",
+    "smallTargets": [],
+    "typeMismatch": [],
+    "width": 390
+  },
+  {
+    "buttonsWithoutName": [],
+    "height": 844,
+    "layout": [
+      {
+        "cls": "cart-content",
+        "gap": "12px",
+        "padding": "12px 20px 16px",
+        "radius": "0px",
+        "shadow": "none",
+        "width": 390
+      },
+      {
+        "cls": "cart-group cart-owner-self",
+        "gap": "normal",
+        "padding": "16px",
+        "radius": "24px",
+        "shadow": "rgba(71, 51, 41, 0.09) 0px 8px 28px 0px",
+        "width": 350
+      },
+      {
+        "cls": "cart-group cart-owner-companion",
+        "gap": "normal",
+        "padding": "16px",
+        "radius": "24px",
+        "shadow": "rgba(71, 51, 41, 0.09) 0px 8px 28px 0px",
+        "width": 350
+      },
+      {
+        "cls": "fixed-bottom",
+        "gap": "normal",
+        "padding": "12px 20px 16px",
+        "radius": "0px",
+        "shadow": "rgba(0, 0, 0, 0.1) 0px 12px 32px 0px",
+        "width": 390
+      }
+    ],
+    "overflow": 0,
+    "screen": "cart",
+    "smallTargets": [],
+    "typeMismatch": [],
+    "width": 390
+  },
+  {
+    "buttonsWithoutName": [],
+    "height": 844,
+    "layout": [
+      {
+        "cls": "home-content",
+        "gap": "12px",
+        "padding": "16px 20px",
+        "radius": "0px",
+        "shadow": "none",
+        "width": 440
+      },
+      {
+        "cls": "home-camera-circle",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "51px",
+        "shadow": "rgba(115, 65, 77, 0.075) 0px 10px 24px 0px, rgba(255, 255, 255, 0.85) 1px 1.5px 1px 0px inset, rgba(255, 255, 255, 0.42) -1px -1.5px 2px 0px inset, rgba(255, 255, 255, 0.15) 0px 0px 12px 0px inset",
+        "width": 177
+      }
+    ],
+    "overflow": 0,
+    "screen": "home",
+    "smallTargets": [],
+    "typeMismatch": [],
+    "width": 440
+  },
+  {
+    "buttonsWithoutName": [],
+    "height": 844,
+    "layout": [
+      {
+        "cls": "food-grid",
+        "gap": "24px 12px",
+        "padding": "4px 0px 24px",
+        "radius": "0px",
+        "shadow": "none",
+        "width": 400
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 194
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 194
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 194
+      },
+      {
+        "cls": "food-photo",
+        "gap": "normal",
+        "padding": "0px",
+        "radius": "12px",
+        "shadow": "none",
+        "width": 194
+      },
+      {
+        "cls": "fixed-bottom",
+        "gap": "normal",
+        "padding": "12px 20px 16px",
+        "radius": "24px 24px 0px 0px",
+        "shadow": "rgba(0, 0, 0, 0.1) 0px 12px 32px 0px",
+        "width": 440
+      }
+    ],
+    "overflow": 0,
+    "screen": "menu",
+    "smallTargets": [],
+    "typeMismatch": [],
+    "width": 440
+  },
+  {
+    "buttonsWithoutName": [],
+    "height": 844,
+    "layout": [
+      {
+        "cls": "cart-content",
+        "gap": "12px",
+        "padding": "12px 20px 16px",
+        "radius": "0px",
+        "shadow": "none",
+        "width": 440
+      },
+      {
+        "cls": "cart-group cart-owner-self",
+        "gap": "normal",
+        "padding": "16px",
+        "radius": "24px",
+        "shadow": "rgba(71, 51, 41, 0.09) 0px 8px 28px 0px",
+        "width": 400
+      },
+      {
+        "cls": "cart-group cart-owner-companion",
+        "gap": "normal",
+        "padding": "16px",
+        "radius": "24px",
+        "shadow": "rgba(71, 51, 41, 0.09) 0px 8px 28px 0px",
+        "width": 400
+      },
+      {
+        "cls": "fixed-bottom",
+        "gap": "normal",
+        "padding": "12px 20px 16px",
+        "radius": "0px",
+        "shadow": "rgba(0, 0, 0, 0.1) 0px 12px 32px 0px",
+        "width": 440
+      }
+    ],
+    "overflow": 0,
+    "screen": "cart",
+    "smallTargets": [],
+    "typeMismatch": [],
+    "width": 440
+  }
+]

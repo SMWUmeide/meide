@@ -1,0 +1,1170 @@
+{
+  "home": {
+    "groups": [],
+    "height": 844,
+    "overflow": 0,
+    "smallTargets": [],
+    "text": [
+      {
+        "background": "rgb(255, 255, 255)",
+        "cls": "location-pill",
+        "color": "rgb(48, 51, 59)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "lineHeight": "18px",
+        "text": "이탈리아 · 키우시 "
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(169, 64, 99)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "lineHeight": "18px",
+        "text": "미영"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "26px",
+        "fontWeight": "700",
+        "lineHeight": "39px",
+        "text": "메뉴판을 찍으면"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "26px",
+        "fontWeight": "700",
+        "lineHeight": "39px",
+        "text": "번역부터 주문까지"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "방금 본 메뉴판"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "Osteria La Solita Zuppa"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "평가 안 한 메뉴"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "2개 남았어요"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "내 주변 식당 찾기"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "section-label",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "700",
+        "lineHeight": "27px",
+        "text": "실시간 음식 순위"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "전체 보기"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-number",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "1"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-name",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": "서양 대파·감자 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "Osteria La Solita Zuppa"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-score",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": " 4.8"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-number",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "2"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-name",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": "호박·밀알 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "Osteria La Solita Zuppa"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-score",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": " 4.7"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-number",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "3"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-name",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": "토마토 소스 대구 튀김"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "Osteria La Solita Zuppa"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-score",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": " 4.7"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-number",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "4"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-name",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": "병아리콩·포르치니 버섯 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "Osteria La Solita Zuppa"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-score",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": " 4.7"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-number",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "5"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-name",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": "레드와인·허브 멧돼지고기 요리"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "Osteria La Solita Zuppa"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "home-rank-score",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": " 4.5"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "active",
+        "color": "rgb(159, 61, 91)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "홈"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "주문내역"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "동반인"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "마이페이지"
+      }
+    ],
+    "width": 440
+  },
+  "menu": {
+    "groups": [],
+    "height": 844,
+    "overflow": 0,
+    "smallTargets": [],
+    "text": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "700",
+        "lineHeight": "27px",
+        "text": "메뉴를 골라주세요"
+      },
+      {
+        "background": "rgb(255, 227, 235)",
+        "cls": "avatar",
+        "color": "rgb(165, 45, 84)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "나"
+      },
+      {
+        "background": "rgb(245, 245, 247)",
+        "cls": "avatar",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "김"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "small",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "lineHeight": "18px",
+        "text": "김미영님과 함께 고르는 중"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "small blue",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "초대"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "active",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "수프4"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "lineHeight": "18px",
+        "text": "4"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "text": "메인 요리12"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "12"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "text": "칵테일6"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "6"
+      },
+      {
+        "background": "rgb(255, 120, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "600",
+        "lineHeight": "18px",
+        "text": "버섯 포함"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "ZUPPA DI CECI E PORCINI"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "병아리콩·포르치니 버섯 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "병아리콩과 포르치니 버섯을 넣은 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "price",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "€ 11.00"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "won",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "약 17,050원"
+      },
+      {
+        "background": "rgb(255, 120, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "600",
+        "lineHeight": "18px",
+        "text": "가지 포함"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "ZUPPA DI MELANZANE FUME'"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "장작에 익힌 가지 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "장작 오븐에 익힌 가지로 훈제 향을 낸 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "price",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "€ 11.00"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "won",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "약 17,050원"
+      },
+      {
+        "background": "rgb(255, 227, 235)",
+        "cls": "selection-person selection-self",
+        "color": "rgb(165, 45, 84)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "lineHeight": "18px",
+        "text": "나 1개"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "ZUPPA DI PORRI E PATATE"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "서양 대파·감자 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "서양 대파와 감자를 부드럽게 만든 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "price",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "€ 10.00"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "won",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "약 15,500원"
+      },
+      {
+        "background": "rgb(245, 245, 247)",
+        "cls": "selection-person selection-companion",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "lineHeight": "18px",
+        "text": "김미영 1개"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "ZUPPA DI ZUCCA E FARRO"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "호박·밀알 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "호박과 파로 밀알을 넣은 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "price",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "€ 10.00"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "won",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "약 15,500원"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "subtle-note",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "공식 웹메뉴 보관 자료 · 2026.10.10원화는 시연 환율 €1 = 1,550원 기준이에요."
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(255, 255, 255)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "3개"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(255, 255, 255)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "장바구니 가기"
+      }
+    ],
+    "width": 440
+  },
+  "cart": {
+    "groups": [
+      {
+        "height": 139,
+        "overflow": "auto",
+        "scrollHeight": 140
+      },
+      {
+        "height": 139,
+        "overflow": "auto",
+        "scrollHeight": 297
+      }
+    ],
+    "height": 844,
+    "overflow": 0,
+    "smallTargets": [],
+    "text": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "700",
+        "lineHeight": "27px",
+        "text": "함께 담은 장바구니"
+      },
+      {
+        "background": "rgb(240, 240, 242)",
+        "cls": "cart-owner-avatar",
+        "color": "rgb(85, 85, 93)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "600",
+        "lineHeight": "18px",
+        "text": "나"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "cart-owner-name",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "내 메뉴"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "muted small",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "· 1개"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "ZUPPA DI PORRI E PATATE"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "서양 대파·감자 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "price",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "€ 10.00"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "won",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "약 15,500원"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "27px",
+        "text": "−"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "lineHeight": "21px",
+        "text": "1"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "내 합계"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "€ 10.00"
+      },
+      {
+        "background": "rgb(240, 240, 242)",
+        "cls": "cart-owner-avatar",
+        "color": "rgb(85, 85, 93)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "600",
+        "lineHeight": "18px",
+        "text": "김"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "cart-owner-name",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "김미영님 메뉴"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "muted small",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "· 2개"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "ZUPPA DI ZUCCA E FARRO"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "호박·밀알 수프"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "price",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "€ 10.00"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "won",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "약 15,500원"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "27px",
+        "text": "−"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "lineHeight": "21px",
+        "text": "1"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "original",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "CINGHIALE IN SALMI'"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "레드와인·허브 멧돼지고기 요리"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "price",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "€ 15.00"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "won",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "약 23,250원"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "27px",
+        "text": "−"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "lineHeight": "21px",
+        "text": "1"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "김미영님 합계"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "€ 25.00"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "tip-check",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "21px",
+        "text": "선택 팁 포함"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "5%"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "10%"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "15%"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "직접 입력"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "음식 € 35.00"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "팁 미포함"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "700",
+        "lineHeight": "24px",
+        "text": "예상 총액"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(85, 84, 94)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "text": "총 3개 · 약 54,250원"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "cls": "",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "26px",
+        "fontWeight": "700",
+        "lineHeight": "39px",
+        "text": "€ 35.00"
+      },
+      {
+        "background": "rgb(0, 0, 0)",
+        "cls": "primary",
+        "color": "rgb(255, 255, 255)",
+        "fontFamily": "\"Noto Sans KR\", sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "text": "주문 문장 만들기"
+      }
+    ],
+    "width": 440
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-03",
+  "figmaFile": "8LZ8hgBkYEi8fFa2U96F2L",
+  "pageId": "87:2",
+  "boardId": "91:9",
+  "semanticCollection": "VariableCollectionId:86:3",
+  "beforeFrames": [
+    "94:2",
+    "94:246",
+    "94:500"
+  ],
+  "afterFrames": [
+    "94:124",
+    "94:373",
+    "94:634"
+  ],
+  "implementationChat": "01a19d2b-207f-7203-a885-331d9274f29e",
+  "independentReviewChat": "01a19d2f-1ee4-7d32-a32b-b4dd948553cc",
+  "coreScreens": [
+    "home",
+    "menu",
+    "cart"
+  ],
+  "designBranch": "design",
+  "memberBranch": "members",
+  "remaining": [
+    "Dark screen implementation and Dark Effect Styles",
+    "Figma clones versus final CSS pixel parity"
+  ]
+}

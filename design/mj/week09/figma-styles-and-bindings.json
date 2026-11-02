@@ -1,0 +1,159 @@
+{
+  "textStyles": [
+    {
+      "id": "S:170769f0e98a22008946cf578530477b1534d572,",
+      "name": "Hanip/h1",
+      "fontName": {
+        "family": "Noto Sans KR",
+        "style": "Bold",
+        "variationSettings": {
+          "wght": 700
+        }
+      },
+      "fontSize": 26,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 39
+      }
+    },
+    {
+      "id": "S:a4b25afafe7ecdb8b7ac47b06eacb01c6ec46444,",
+      "name": "Hanip/h2",
+      "fontName": {
+        "family": "Noto Sans KR",
+        "style": "Bold",
+        "variationSettings": {
+          "wght": 700
+        }
+      },
+      "fontSize": 18,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 27
+      }
+    },
+    {
+      "id": "S:19cbeaf1ec2cb7dc38f1f6af36c3d7f892c88c45,",
+      "name": "Hanip/h3",
+      "fontName": {
+        "family": "Noto Sans KR",
+        "style": "Bold",
+        "variationSettings": {
+          "wght": 700
+        }
+      },
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 24
+      }
+    },
+    {
+      "id": "S:b40fcc6a06b7ff5de5774a28354e9443fb1f64c4,",
+      "name": "Hanip/body-md",
+      "fontName": {
+        "family": "Noto Sans KR",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 21
+      }
+    },
+    {
+      "id": "S:7f251e3db34e4376a806c0c9e7d9b976867e057e,",
+      "name": "Hanip/label-sm",
+      "fontName": {
+        "family": "Noto Sans KR",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 18
+      }
+    }
+  ],
+  "effectStyles": [
+    {
+      "id": "S:7cb9b2b7afb9b1ee449d76a2100e6143669f6a82,",
+      "name": "Hanip/card",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 28,
+          "boundVariables": {},
+          "color": {
+            "r": 0.27843138575553894,
+            "g": 0.20000000298023224,
+            "b": 0.16078431904315948,
+            "a": 0.09000000357627869
+          },
+          "offset": {
+            "x": 0,
+            "y": 8
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": true
+        }
+      ]
+    },
+    {
+      "id": "S:9f7171828caff098f9a10a94719d9464d10bd8f8,",
+      "name": "Hanip/floating",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 32,
+          "boundVariables": {},
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.10000000149011612
+          },
+          "offset": {
+            "x": 0,
+            "y": 12
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": true
+        }
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "id": "94:124",
+      "textNodes": 34,
+      "withTextStyle": 34,
+      "boundNodes": 56,
+      "effectStyled": 4
+    },
+    {
+      "id": "94:373",
+      "textNodes": 38,
+      "withTextStyle": 38,
+      "boundNodes": 64,
+      "effectStyled": 1
+    },
+    {
+      "id": "94:634",
+      "textNodes": 37,
+      "withTextStyle": 37,
+      "boundNodes": 60,
+      "effectStyled": 3
+    }
+  ]
+}

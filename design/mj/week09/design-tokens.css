@@ -1,0 +1,41 @@
+/* Generated from design/mj/week09/tokens.json. Semantic foundations: 25. */
+:root{
+  --color-primary:#000000;
+  --color-secondary:#55545E;
+  --color-tertiary:#D94878;
+  --color-neutral:#F5F5F7;
+  --color-surface:#FFFFFF;
+  --color-primary-pressed:#262626;
+  --color-disabled:#E8E8ED;
+  --color-gradient-start:#FFDED5;
+  --color-gradient-end:#F7BDCA;
+  --type-h1:26px; --line-h1:39px; --weight-h1:700;
+  --type-h2:18px; --line-h2:27px; --weight-h2:700;
+  --type-h3:16px; --line-h3:24px; --weight-h3:700;
+  --type-body-md:14px; --line-body-md:21px; --weight-body-md:400;
+  --type-label-sm:12px; --line-label-sm:18px; --weight-label-sm:400;
+  --space-xs:4px;
+  --space-sm:8px;
+  --space-md:12px;
+  --space-lg:16px;
+  --space-xl:20px;
+  --space-2xl:24px;
+  --rounded-sm:12px;
+  --rounded-md:16px;
+  --rounded-lg:24px;
+  --shadow-card:0 8px 28px rgba(71,51,41,0.09);
+  --shadow-floating:0 12px 32px rgba(0,0,0,0.10);
+}
+[data-theme="dark"]{
+  --color-primary:#FFFFFF;
+  --color-secondary:#C5C5CE;
+  --color-tertiary:#F080A3;
+  --color-neutral:#17171A;
+  --color-surface:#202024;
+  --color-primary-pressed:#DCDCE2;
+  --color-disabled:#3B3B43;
+  --color-gradient-start:#38232A;
+  --color-gradient-end:#432535;
+  --shadow-card:0 8px 28px rgba(0,0,0,0.30);
+  --shadow-floating:0 12px 32px rgba(0,0,0,0.45);
+}

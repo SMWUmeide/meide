@@ -1,0 +1,154 @@
+/* Week 09: load after design-tokens.css and the existing style.css.
+   Scope is deliberately limited to home, menu and cart. */
+:is(.home-screen, .screen:has(> .menu-header), .screen:has(> .cart-content)) {
+  --ink: var(--color-primary);
+  --muted: var(--color-secondary);
+  --blue: var(--color-tertiary);
+  color: var(--color-primary);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: calc(var(--type-body-md) * var(--user-font-scale, 1));
+  line-height: var(--line-body-md);
+  min-width: 0;
+}
+#app:has(> .screen > :is(.menu-header, .cart-content)) { background: var(--color-surface); }
+:is(.screen:has(> .menu-header), .screen:has(> .cart-content)) { background: var(--color-surface); }
+:is(.home-screen, .screen:has(> .menu-header), .screen:has(> .cart-content)) :is(button, select, input:not([type='checkbox']), [role='button']) {
+  min-width: 44px;
+  min-height: 44px;
+}
+:is(.home-screen, .screen:has(> .menu-header), .screen:has(> .cart-content)) :is(button, a, input, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+:is(.home-screen, .screen:has(> .menu-header), .screen:has(> .cart-content)) :is(button:disabled, [aria-disabled='true']) {
+  background: var(--color-disabled) !important;
+  color: var(--color-secondary) !important;
+  opacity: 1;
+  cursor: default;
+  box-shadow: none;
+}
+:is(.screen:has(> .menu-header), .screen:has(> .cart-content)) .topbar {
+  height: 56px;
+  padding-inline: var(--space-xl);
+}
+:is(.screen:has(> .menu-header), .screen:has(> .cart-content)) .topbar strong {
+  font-size: var(--type-h2);
+  line-height: var(--line-h2);
+  font-weight: var(--weight-h2);
+}
+:is(.screen:has(> .menu-header), .screen:has(> .cart-content)) .fixed-bottom {
+  padding: var(--space-md) var(--space-xl) calc(var(--space-lg) + env(safe-area-inset-bottom));
+  background: var(--color-surface);
+  box-shadow: var(--shadow-floating);
+  flex-shrink: 0;
+}
+:is(.screen:has(> .menu-header), .screen:has(> .cart-content)) .primary {
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-size: var(--type-body-md);
+  line-height: var(--line-body-md);
+  border-radius: var(--rounded-md);
+  min-height: 52px;
+}
+:is(.screen:has(> .menu-header), .screen:has(> .cart-content)) .primary:active:not(:disabled) { background: var(--color-primary-pressed); }
+
+/* Home: preserve the camera's glass recipe and its brand exception. */
+.home-screen .home-content {
+  padding: max(var(--space-lg), env(safe-area-inset-top)) var(--space-xl) var(--space-lg);
+  gap: var(--space-md);
+  background-image: linear-gradient(180deg, #ffffff00 24%, #ffffff70 44%, #fff 64%), linear-gradient(100deg, var(--color-gradient-start), var(--color-gradient-end));
+}
+.home-screen .location-pill { height: 44px; font-size: var(--type-label-sm); line-height: var(--line-label-sm); }
+.home-screen .home-scan-hero { padding-top: var(--space-sm); padding-bottom: var(--space-xl); }
+.home-screen .home-scan-hero .home-heading { font-size: calc(var(--type-h1) * var(--user-font-scale, 1)); line-height: 1.5; font-weight: var(--weight-h1); }
+.home-screen .home-scan-hero .home-camera-circle { width: 177px; max-width: 100%; height: 120px; bottom: var(--space-xl); border-radius: 51px; }
+.home-screen .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
+.home-screen .quick-card {
+  height: auto; min-height: 112px; min-width: 0; padding: var(--space-lg);
+  background: var(--color-surface); border-radius: var(--rounded-lg); box-shadow: var(--shadow-card);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+}
+.home-screen :is(.quick-card b, .home-nearby-banner b) { font-size: var(--type-h3); line-height: var(--line-h3); font-weight: var(--weight-h3); }
+.home-screen .quick-card small { font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); overflow-wrap: anywhere; }
+.home-screen .home-nearby-banner { padding-inline: var(--space-lg); border-radius: var(--rounded-lg); box-shadow: var(--shadow-card); }
+.home-screen .home-ranking-heading { height: auto; min-height: 44px; margin-top: var(--space-lg); gap: var(--space-sm); }
+.home-screen .home-ranking-heading h2 { font-size: var(--type-h2); line-height: var(--line-h2); }
+.home-screen .home-ranking-all { font-size: var(--type-label-sm); line-height: var(--line-label-sm); }
+.home-screen .home-rank-row { grid-template-columns: 56px 16px minmax(0, 1fr) 44px; gap: var(--space-sm); padding-block: var(--space-md); }
+.home-screen .home-rank-photo { border-radius: var(--rounded-sm); }
+.home-screen :is(.home-rank-name, .home-rank-score, .home-rank-number) { font-size: var(--type-body-md); line-height: var(--line-body-md); }
+.home-screen .home-rank-original { font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); white-space: normal; overflow-wrap: anywhere; }
+.home-screen > .bottom-nav { height: auto; min-height: 72px; margin-bottom: calc(var(--space-md) + env(safe-area-inset-bottom)); }
+.home-screen .bottom-nav button { font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); }
+
+/* Menu: roles are explicit so icons, badges and titles retain their hierarchy. */
+#app:has(.menu-header) .menu-header { padding: var(--space-xs) var(--space-xl) var(--space-md); }
+#app:has(.menu-header) .menu-header .small { color: var(--color-secondary) !important; font-size: var(--type-label-sm); line-height: var(--line-label-sm); }
+#app:has(.menu-header) .menu-category-tabs { gap: var(--space-2xl); margin-inline: calc(-1 * var(--space-xl)); padding-inline: var(--space-xl); }
+#app:has(.menu-header) .menu-category-tabs button { font-size: var(--type-h3); line-height: var(--line-h3); color: var(--color-secondary); }
+#app:has(.menu-header) .menu-category-tabs button.active { color: var(--color-primary); }
+#app:has(.menu-header) .menu-category-tabs button span { font-size: var(--type-label-sm); line-height: var(--line-label-sm); opacity: 1; }
+#app:has(.menu-header) .scroll { padding-inline: var(--space-xl); padding-bottom: var(--space-2xl); }
+#app:has(.menu-header) .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2xl) var(--space-md); }
+#app:has(.menu-header) .food-photo { border-radius: var(--rounded-sm); }
+#app:has(.menu-header) .food-copy { padding: var(--space-md) 0 0; }
+#app:has(.menu-header) .food-copy .original {
+  display: block; height: auto; font-size: var(--type-label-sm); line-height: var(--line-label-sm);
+  color: var(--color-secondary); white-space: normal; overflow: visible; overflow-wrap: anywhere; margin-bottom: var(--space-xs);
+}
+#app:has(.menu-header) .food-copy h3 { font-size: var(--type-h3); line-height: var(--line-h3); font-weight: var(--weight-h3); overflow-wrap: anywhere; }
+#app:has(.menu-header) .food-copy p { display: block; height: auto; font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); white-space: normal; overflow: visible; overflow-wrap: anywhere; }
+#app:has(.menu-header) .menu-price-line { gap: var(--space-xs); white-space: normal; }
+#app:has(.menu-header) .food-copy .price { font-size: var(--type-body-md); line-height: var(--line-body-md); }
+#app:has(.menu-header) .food-copy .won { font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); }
+#app:has(.menu-header) .food-photo .add { width: 44px; height: 44px; border-radius: var(--rounded-md); }
+#app:has(.menu-header) .food-photo-warnings > span { background: #FF7800; color: var(--color-primary); font-size: var(--type-label-sm); line-height: var(--line-label-sm); padding: var(--space-xs) var(--space-sm); }
+#app:has(.menu-header) :is(.selection-person, .scan-food-icon) { font-size: var(--type-label-sm); line-height: var(--line-label-sm); }
+#app:has(.menu-header) :is(.selection-companion, .avatars .avatar:not(:first-child)) { background: var(--color-neutral); color: var(--color-primary); }
+#app:has(.menu-header) .subtle-note { font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); }
+
+/* Cart: headers and subtotals are fixed flex siblings of each scroll region. */
+.cart-content { padding: var(--space-md) var(--space-xl) var(--space-lg); gap: var(--space-md); }
+.cart-content :is(.cart-group, .cart-group.cart-owner-companion) { padding: var(--space-lg); border-radius: var(--rounded-lg); box-shadow: var(--shadow-card); }
+.cart-content .cart-title { padding-bottom: var(--space-sm); font-size: var(--type-h3); line-height: var(--line-h3); flex-shrink: 0; }
+.cart-content .cart-title .small { font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); }
+.cart-content .cart-items { min-height: 0; flex: 1; overflow: auto; overscroll-behavior: contain; padding: var(--space-xs); }
+.cart-content .cart-item { gap: var(--space-md); margin-bottom: var(--space-lg); padding-bottom: var(--space-lg); }
+.cart-content .cart-item img { border-radius: var(--rounded-sm); }
+.cart-content .cart-item .original { display: block; font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); white-space: normal; overflow-wrap: anywhere; padding-right: var(--space-2xl); }
+.cart-content .cart-item h3 { font-size: var(--type-h3); line-height: var(--line-h3); font-weight: var(--weight-h3); }
+.cart-content .cart-item .price { font-size: var(--type-body-md); line-height: var(--line-body-md); }
+.cart-content .cart-item .won { font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); }
+.cart-content .stepper { width: 120px; height: 44px; margin-top: var(--space-sm); border-radius: var(--rounded-sm); }
+.cart-content .stepper button { width: 44px; height: 44px; font-size: var(--type-h2); }
+.cart-content .stepper span { font-size: var(--type-body-md); line-height: var(--line-body-md); }
+.cart-content .total-line { margin-top: var(--space-sm); padding-top: var(--space-sm); font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); flex-shrink: 0; }
+.cart-content .total-line b { font-size: var(--type-body-md); line-height: var(--line-body-md); }
+.screen:has(> .cart-content) :is(.tip-check, .tip-custom-field, .tip-custom-field input) { font-size: var(--type-body-md); line-height: var(--line-body-md); }
+.screen:has(> .cart-content) .tip-check { min-height: 44px; }
+.screen:has(> .cart-content) .tip-check input { accent-color: var(--color-primary); }
+.screen:has(> .cart-content) :is(.tip-rate-controls select, .tip-custom-field) { height: 44px; font-size: var(--type-label-sm); border-radius: var(--rounded-sm); }
+.screen:has(> .cart-content) :is(.summary-row, .summary-total small) { font-size: var(--type-label-sm); line-height: var(--line-label-sm); color: var(--color-secondary); }
+.screen:has(> .cart-content) .summary-total b { font-size: var(--type-h3); line-height: var(--line-h3); }
+.screen:has(> .cart-content) .summary-total strong { font-size: var(--type-h1); line-height: var(--line-h1); }
+.screen:has(> .cart-content) .empty { font-size: var(--type-body-md); line-height: var(--line-body-md); }
+.screen:has(> .cart-content) .empty h3 { font-size: var(--type-h3); line-height: var(--line-h3); }
+@media (prefers-reduced-motion: reduce) {
+  :is(.home-screen, .screen:has(> .menu-header), .screen:has(> .cart-content)),
+  :is(.home-screen, .screen:has(> .menu-header), .screen:has(> .cart-content)) *,
+  .home-screen .home-camera-circle::before, .home-screen .home-camera-circle::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .home-screen .home-camera-circle:active { transform: none; }
+}
+/* The status strip remains above the content, including a device safe inset. */
+#app:has(> .home-screen, > .screen > .menu-header, > .screen > .cart-content) { padding-top: calc(27px + env(safe-area-inset-top)); }
+.screen:has(> .cart-content) .empty p { color: var(--color-secondary); }
+#app:has(.menu-header) .food-photo .selection { max-width: calc(100% - 64px); }
+#app:has(.menu-header) .selection-person { white-space: normal; overflow-wrap: anywhere; }
+
+/* Review correction: text line-height is separate from avatar/button geometry. */
+#app:has(.menu-header) .avatars .avatar,
+.cart-content .cart-owner-avatar { line-height:var(--line-label-sm); display:inline-flex; align-items:center; justify-content:center; }
+.cart-content .stepper button { line-height:var(--line-h2); }
+.screen:has(> .cart-content) .tip-rate-controls select { line-height:var(--line-label-sm); }
+
+.screen:has(> .cart-content) .tip-rate-controls option { line-height:var(--line-label-sm); }

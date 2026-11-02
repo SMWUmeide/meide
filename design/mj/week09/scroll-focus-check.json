@@ -1,0 +1,33 @@
+{
+  "before": {
+    "scrolls": [
+      0,
+      0
+    ],
+    "subtotals": [
+      300,
+      563
+    ],
+    "titles": [
+      111,
+      374
+    ]
+  },
+  "after": {
+    "focusedLabel": "김미영님 음식 목록",
+    "focusedRole": "region",
+    "outline": "rgb(0, 0, 0) solid 2px",
+    "scrolls": [
+      0,
+      157.5
+    ],
+    "subtotals": [
+      300,
+      563
+    ],
+    "titles": [
+      111,
+      374
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "baseline": "b4d874ada545b29ba82fd32ab6a9ff55ac56b5e9",
+  "files": [
+    {
+      "file": "menu-enrichment.js",
+      "unchanged": true,
+      "sha256": "75af8b1e92cdae5850e53dea4c9fe6cd4f1e6640491a72487221f87ac0b5527c"
+    },
+    {
+      "file": "city-worker.js",
+      "unchanged": true,
+      "sha256": "35c2d8042b04aacbf72293ac4d351a3c38c1d392f018ddfb95869122743fecf5"
+    },
+    {
+      "file": "destinations.js",
+      "unchanged": true,
+      "sha256": "d01a32fd4a556a0f809f9aadab70c634cfac8904b30c8b4f4983d81dd3c75832"
+    },
+    {
+      "file": "restaurant-nearby.js",
+      "unchanged": true,
+      "sha256": "d25be2b4179eee5ec529522391529d3b962a2151a9d9a16e40ef26ecf3f2f6e7"
+    },
+    {
+      "file": "api-client.js",
+      "unchanged": true,
+      "sha256": "fbdf679220646d2a8ce1509fa491bba4dc4577245b70deead5e617a34599d1e1"
+    },
+    {
+      "file": "food-catalog.js",
+      "unchanged": true,
+      "sha256": "950acc096de83aa629c4f04007b20a439fa5c511456a1be81c93217cab247594"
+    },
+    {
+      "file": "korean-place.js",
+      "unchanged": true,
+      "sha256": "54871586f64e2973bbb5a8cde7fbe1cd3dfada7b5a254a26af02b946b09c76e0"
+    },
+    {
+      "file": "korean-dining.js",
+      "unchanged": true,
+      "sha256": "1d0e6f98eb36b5fe3f3d3518c940f4cf0b17660673ed3b86d987e2349e21d13e"
+    },
+    {
+      "file": "api-config.js",
+      "unchanged": true,
+      "sha256": "2a8ad5142910b97fef8b60e408c452b643a3594206a4210abb5cc5a76bd8f985"
+    },
+    {
+      "file": "google-menu-map.js",
+      "unchanged": true,
+      "sha256": "9872691ca13028548e68282110a41217fbc1934f05fb7b2931ebcd5ed0c8be0d"
+    },
+    {
+      "file": "app.js",
+      "unchanged": true,
+      "sha256": "370437adb0b179a05926f986c19ac4c428e2450c57a38526f49f2410f93b77dd"
+    },
+    {
+      "file": "menu-camera.js",
+      "unchanged": true,
+      "sha256": "70fb071c2ae8546d9c1c1041202c38ff145ad27d1f372335f24f462be506adf7"
+    }
+  ]
+}
