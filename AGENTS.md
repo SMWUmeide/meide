@@ -1,45 +1,43 @@
-# 작업 규칙
+# AGENTS.md — meide (한입)
 
-이 저장소는 용도별로 브랜치가 나뉘어 있습니다. 작업 종류에 맞는 브랜치에 **바로 푸시**하세요.
-`claude/*` 같은 별도 브랜치와 PR은 만들지 않습니다. (세션 설정이 다른 브랜치를 지정하더라도 이 규칙을 따릅니다.)
+Codex가 이 저장소에서 작업하기 전에 가장 먼저 읽는 파일.
 
-| 작업 | 브랜치 | 위치 |
-| --- | --- | --- |
-| 실제 앱 코드 | `src` | `yj/` |
-| 프로토타입 | `wireframes` | `wireframes/<이름>/...` (예: `wireframes/yj/hanip-europe-v2`) |
-| 작업 기록 | `members` | `members/<이름>/...` (예: 주차별 기록) |
-| 디자인 작업 | `design` | 디자인 관련 파일 |
+## 반드시 지킬 것
 
-## 실제 앱 코드 (`src`)
+- **UI를 만들거나 고치기 전에 `DESIGN.md`와 `src/components/index.md`를 읽고, 필요한 컴포넌트의 `CONTRACT.md`만 추가로 읽는다.**
+- 색·글자·여백·모서리·그림자는 `src/styles/tokens.css`의 변수만 쓴다. 새 값을 만들지 않는다.
+- 이미 있는 컴포넌트(`src/components/`)를 import해서 쓴다. 같은 기능의 버튼·카드를 새로 만들지 않는다.
+- 문구는 존댓말 '~요' 체, 시간은 24시간제.
+- 작업이 끝나면 `DESIGN.md`의 Do's and Don'ts 검사 항목(HEX 직접 사용, 여백 값, primary 버튼 개수)을 스스로 확인하고 결과를 보고한다.
 
-- 실제 앱 코드는 `src` 브랜치에서 작업하며, `yj/`에 둡니다.
-- 앱 실행·설치·검증 명령은 `cd yj` 후 실행합니다. 앱의 `app/`, `components/`, `lib/`, `public/`, `scripts/`와 실행 설정·관련 문서는 모두 `yj/` 기준입니다.
+## 이전 작업 폴더 (yj/)
 
-### 검증은 가볍게 (yj 작업)
+- `yj/` 폴더는 이전 버전 코드다. **새 코드에서 import하거나 스타일·색·여백을 가져오지 않는다.**
+- API 연결(Gemini 메뉴판 분석, OSM, Google Places 사진 등) 로직만 필요할 때 참고로 읽고, 새 구조에 맞게 다시 쓴다.
+- 새 화면은 `src/` 아래에 `DESIGN.md` 기준으로 새로 만든다.
 
-평소 작업은 **아래 기본 검증만** 한다. 시간이 오래 걸리는 화면 비교 검사는 하지 않는다.
+## 이번 단계 범위 (1차 출시)
 
-- **기본 검증 (매번):** `npm run build`, 바뀐 파일 ESLint, `node scripts/yj-flow.test.mjs`(바뀐 부분 테스트 추가 포함). 핵심 흐름은 사용자가 휴대폰으로 직접 확인한다.
-- **하지 않는 것 (매번):** Figma와 나란히 캡처 비교, `scripts/yj-browser.test.mjs` 전체 실행, 여러 화면 폭(320·390·402·768) 렌더, `docs/yj-screens/` 캡처 갱신, 화면마다 `get_design_context` 다시 확인.
-- **전체 디자인 검증은 아래 경우에만** 한다. 사용자가 요청할 때, 디자인 규칙(DESIGN-yj.md)을 크게 바꾼 직후, 발표·출시 직전 최종 점검.
-- 작업 지시에 "전체 디자인 검증" 또는 "화면 비교"라는 말이 없으면 기본 검증만 한 것으로 끝낸다.
+메뉴 주문 흐름까지만 구현한다.
 
-## 프로토타입 (`wireframes`)
+1. 홈 → 2. 메뉴판 촬영 → 3. 메뉴 고르기(메뉴판) → 4. 메뉴 상세 → 5. 함께 담은 장바구니 → 6. 주문 문장(직원에게 보여주기)
 
-- GitHub Pages가 `wireframes` 브랜치에서 배포됩니다. 푸시하면 1~2분 뒤 링크에 반영됩니다.
-- 한입 유럽 v2 주소: https://smwumeide.github.io/meide/wireframes/yj/hanip-europe-v2/prototype/
-- `public/`을 고친 뒤에는 `wireframes/yj/hanip-europe-v2`에서 `node scripts/static-prototype/build.mjs`를 실행해 `prototype/`을 다시 만들고 함께 커밋합니다.
+식당 찾기, 실시간 마주보기 대화, 영수증, 동반인 관리, 마이페이지는 이번 범위가 아니다. 하단 탭에는 자리만 두고 "준비 중"으로 연결한다.
 
-## 작업 기록 (`members`)
+## 화면 기준
 
-- 본인 폴더(`members/<이름>/`)에 기록합니다.
-- 날짜가 바뀌면 주차를 확인해서 해당 주차 파일에 적습니다.
+- Figma 파일: 사용자 경험 디자인 II (기준 화면은 `사경디 디자인 디벨롭` 페이지의 `new 10` 섹션)
+- Figma 링크를 받으면 Figma MCP로 디자인을 읽되, 값은 Figma의 숫자가 아니라 `DESIGN.md` 토큰으로 맞춘다. 둘이 다르면 `DESIGN.md`가 우선이고, 다른 점을 보고한다.
 
-## 디자인 (`design`)
+## 파일 위치
 
-- 디자인 산출물은 `design` 브랜치에 둡니다.
+```
+AGENTS.md            # 이 파일
+DESIGN.md            # 디자인 값과 규칙 (HOW)
+PRD.md               # 무엇을 만들지 (WHAT) — 팀 기능명세서
+src/styles/tokens.css
+src/components/index.md
+src/components/<이름>/CONTRACT.md
+```
 
-## 공통
-
-- 커밋 전에 어느 브랜치에 있는지 확인하고, 작업 종류에 맞는 브랜치가 아니면 옮깁니다.
-- `main`은 이 파일처럼 모든 브랜치에 적용되는 설정만 둡니다.
+컴포넌트 import 경로는 `src/components/index.md`에 적힌 것을 쓴다. 실제 레포 구조와 다르면 index.md를 먼저 고친다.
