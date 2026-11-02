@@ -45,7 +45,7 @@ src/components/<이름>/CONTRACT.md
 ## 개발 환경
 
 - Node.js 22.13 이상을 사용한다. 새 앱 루트는 저장소 최상위이며 React + TypeScript + Vite를 쓴다. `npm ci`, `npm run dev`로 실행한다. 기본 주소는 `http://127.0.0.1:5173`이다.
-- 새 코드는 `src/`에 둔다. `@/`는 `src/`를 가리킨다. `src/main.tsx`에서 Pretendard와 `src/styles/tokens.css`를 불러온다. 화면은 별도 요청 전까지 만들지 않는다.
+- 새 코드는 `src/`에 둔다. `@/`는 `src/`를 가리킨다. `src/main.tsx`에서 Pretendard와 `src/styles/tokens.css`를 불러온다. 1단계의 홈·촬영·메뉴 고르기·메뉴 상세·장바구니는 가짜 데이터로 연결했다. API·서버리스 구현은 사용자 준비와 재개 요청 후 진행한다.
 - 검증: 저장소 최상위에서 `npm run build`, `npm run lint`, `npm test`, `npm run check:design`. 화면 비교·여러 폭 캡처·Figma 재조회는 요청 또는 출시 전 최종 점검 때만 한다.
 - 이전 앱은 `cd yj` 후 `npm ci`, `npm run dev`로 실행한다. 이전 앱 검증은 그 폴더에서 `npm run build`, 변경 파일 ESLint, `node scripts/yj-flow.test.mjs`를 쓴다. 새 앱 작업으로 `yj/`를 수정하거나 import하지 않는다.
 - 이전 API 환경변수 이름은 `GEMINI_API_KEY`, `GEMINI_MODEL`, `GEMINI_DAILY_LIMIT`, `PEXELS_API_KEY`, `OSM_USER_AGENT`다(`yj/.env.example` 참고). 과거 AGENTS.md에는 API 키 설정이 없었다. 새 앱은 아직 API 미연결이며 컴포넌트 실행에는 키가 필요 없다. API 구현 시 서버 환경에만 키를 두고 `VITE_` 접두사로 노출하지 않는다. 실제 키와 `.env.local`은 커밋하지 않는다.

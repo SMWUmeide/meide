@@ -4,6 +4,7 @@ import "./styles/fonts.css";
 import "./styles/tokens.css";
 import "./styles/global.css";
 import "./styles/components.css";
+import "./styles/screens.css";
 import { App } from "./app/App";
 
 createRoot(document.getElementById("root")!).render(<StrictMode><App /></StrictMode>);

@@ -12,12 +12,10 @@ import { CartBar } from "@/components/CartBar";
 import { AICard } from "@/components/AICard";
 import { InfoNote } from "@/components/InfoNote";
 import { BottomSheet } from "@/components/BottomSheet";
-import { App } from "@/app/App";
 
 const menu: MenuCardProps = { originalName: "ZUPPA", name: "호박 수프", priceEur: 10, priceKrw: 14990, onToggle: vi.fn(), onOpen: vi.fn() };
 
 describe("앱과 공용 액션", () => {
-  it("제품 화면을 아직 렌더하지 않아요", () => { const { container } = render(<App />); expect(container).toBeEmptyDOMElement(); });
   it("brand는 pill만 허용해요", () => {
     render(<Button variant="brand" size="pill">3개 보기</Button>);
     expect(screen.getByRole("button")).toHaveAttribute("data-size", "pill");

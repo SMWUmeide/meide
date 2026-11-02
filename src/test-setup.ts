@@ -9,3 +9,5 @@ HTMLDialogElement.prototype.close = function () { this.removeAttribute("open"); 
 
 window.PointerEvent = MouseEvent as typeof PointerEvent;
 HTMLElement.prototype.setPointerCapture = function () {};
+
+window.scrollTo = function () {};

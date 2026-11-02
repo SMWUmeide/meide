@@ -12,8 +12,8 @@ export function MenuCard({ originalName, name, priceEur, priceKrw, photoUrl = nu
         {photoUrl && failedUrl !== photoUrl ? <img src={photoUrl} alt={name} onError={() => setFailedUrl(photoUrl)} /> : <span className="t-body-sm">사진 준비 중</span>}
         {addedBy && <span className="menu-overlay" data-person={addedBy} />}
       </button>
-      {addedBy && <span className="menu-person t-body-sm"><Avatar person={addedBy} initial={personName} />{personName}{addedBy === "me" && !addedByName ? "가" : "님이"} 담았어요</span>}
-      <IconButton className="menu-toggle" icon={addedBy ? "added" : "add"} tone={addedBy ? "brand" : "surface"} label={`${name} ${addedBy ? "담기 취소" : "담기"}`} disabled={disabled} state={loading ? "loading" : "default"} onClick={event => { event.stopPropagation(); onToggle(); }} />
+      {addedBy && <span className="menu-person t-body-sm"><Avatar person={addedBy} initial={personName} />{addedBy === "me" && !addedByName ? "내가 담았어요" : `${personName}님이 담았어요`}</span>}
+      <IconButton className="menu-toggle" icon={addedBy ? "added" : "add"} iconSrc={addedBy ? "/figma/d7b72.svg" : "/figma/e1322.svg"} tone={addedBy ? "brand" : "surface"} label={`${name} ${addedBy ? "담기 취소" : "담기"}`} disabled={disabled} state={loading ? "loading" : "default"} onClick={event => { event.stopPropagation(); onToggle(); }} />
     </div>
     <button type="button" className="menu-details" onClick={onOpen} disabled={disabled}>
       <span className="menu-original t-body-sm">{originalName}</span><span className="menu-name t-body-md">{name}</span>
