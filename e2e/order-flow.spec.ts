@@ -136,18 +136,40 @@ test('전체 메뉴를 연속 표시하고 탭 이동·스크롤 선택·상세 
   await expect(page.getByRole('region', { name: '주류 메뉴', exact: true })).toBeAttached();
   await page.getByRole('button', { name: '메인 요리 3', exact: true }).click();
   await expect(page.getByRole('button', { name: '메인 요리 3' })).toHaveAttribute('aria-pressed', 'true');
-  await expect.poll(() => page.locator('#menu-section-main').evaluate(e => Math.abs(e.getBoundingClientRect().top - 64))).toBeLessThan(2);
+  await expect.poll(() => page.locator('#menu-section-main').evaluate(e => Math.abs(e.getBoundingClientRect().top - 72))).toBeLessThan(2);
   await expect(page.locator('.menu-category-nav')).toBeInViewport();
-  await expect(page.locator('.menu-category-nav')).toHaveCSS('padding-top', '0px');
-  expect((await page.locator('.menu-category-nav .chip').first().boundingBox())!.y).toBeCloseTo(0, 1);
+  await expect(page.locator('.menu-category-nav')).toHaveCSS('padding-top', '8px');
+  expect((await page.locator('.menu-category-nav .chip').first().boundingBox())!.y).toBeCloseTo(8, 1);
   await page.getByRole('button', { name: '후추 향의 토스카나 소고기 스튜 상세 보기' }).click();
   await page.getByRole('button', { name: '메뉴 고르기로 돌아가기' }).click();
-  await expect.poll(() => page.locator('#menu-section-main').evaluate(e => Math.abs(e.getBoundingClientRect().top - 64))).toBeLessThan(2);
-  await page.locator('#menu-section-wine').evaluate(e => window.scrollTo(0, window.scrollY + e.getBoundingClientRect().top - 64));
+  await expect.poll(() => page.locator('#menu-section-main').evaluate(e => Math.abs(e.getBoundingClientRect().top - 72))).toBeLessThan(2);
+  await page.locator('#menu-section-wine').evaluate(e => window.scrollTo(0, window.scrollY + e.getBoundingClientRect().top - 72));
   await expect(page.getByRole('button', { name: '주류 6' })).toHaveAttribute('aria-pressed', 'true');
   await page.evaluate(() => window.scrollTo(0, 0));
   await expect(page.getByRole('button', { name: '수프 4' })).toHaveAttribute('aria-pressed', 'true');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.getByRole('button', { name: '주류 6' }).click();
-  await expect.poll(() => page.locator('#menu-section-wine').evaluate(e => Math.abs(e.getBoundingClientRect().top - 64))).toBeLessThan(2);
+  await expect.poll(() => page.locator('#menu-section-wine').evaluate(e => Math.abs(e.getBoundingClientRect().top - 72))).toBeLessThan(2);
+});
+
+
+test('상태바 영역 뒤로 메뉴 사진이 비치지 않아요', async ({ page }) => {
+  await page.goto('/#/menu');
+  // Desktop browsers report zero safe area; emulate the supplied phone's inset.
+  await page.locator('.menu-category-nav').evaluate(e => (e as HTMLElement).style.setProperty('--menu-safe-top', '62px'));
+  await page.getByRole('button', { name: '메인 요리 3', exact: true }).click();
+  await expect(page.locator('.menu-category-nav')).toHaveAttribute('data-stuck', 'true');
+  const cover = await page.locator('.menu-category-nav').evaluate(e => {
+    const s = getComputedStyle(e, '::before'); const r = e.getBoundingClientRect();
+    return { top: r.top + parseFloat(s.top), left: r.left + parseFloat(s.left), right: r.right - parseFloat(s.right), color: s.backgroundColor, content: s.content };
+  });
+  expect(cover.top).toBeCloseTo(0, 1);
+  expect(cover.left).toBe(0);
+  expect(cover.right).toBe(412);
+  expect(cover.color).toBe('rgb(242, 244, 246)');
+  expect(cover.content).not.toBe('none');
+  await expect.poll(() => page.locator('#menu-section-main').evaluate(e => Math.abs(e.getBoundingClientRect().top - 134))).toBeLessThan(1);
+  await page.mouse.wheel(0, -10000);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(page.locator('.menu-category-nav')).toHaveAttribute('data-stuck', 'false');
 });

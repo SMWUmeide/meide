@@ -26,7 +26,9 @@ export function Menu({ board, cart, category, setCategory, go, onToggle }: { boa
     };
     const sync = () => {
       syncing.current = 0;
-      if (navigating.current || !navigation.current?.offsetHeight) return;
+      if (!navigation.current?.offsetHeight) return;
+      navigation.current.dataset.stuck = String(navigation.current.getBoundingClientRect().top <= topInset() + 1);
+      if (navigating.current) return;
       let current = categories[0].id;
       for (const item of categories) {
         if ((sections.current.get(item.id)?.getBoundingClientRect().top ?? Infinity) <= offset() + 1) current = item.id;

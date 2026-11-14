@@ -125,4 +125,7 @@
 .figma-flow .cart-bar .button[data-variant="brand"]:active { background: var(--color-brand-pressed); }
 
 /* One continuous menu; category navigation stays available while scrolling. */
-.figma-flow .menu-category-nav { position: sticky; top: env(safe-area-inset-top, 0); z-index: 3; background: var(--color-neutral); padding: 0 0 var(--space-sm); margin-bottom: calc(-1 * var(--space-sm)); }
+.figma-flow .menu-category-nav { --menu-safe-top: env(safe-area-inset-top, 0); position: sticky; top: var(--menu-safe-top); z-index: 3; isolation: isolate; background: var(--color-neutral); padding: var(--space-sm) 0; margin-top: calc(-1 * var(--space-sm)); margin-bottom: calc(-1 * var(--space-sm)); }
+
+/* Cover the real device status area only while the category strip is pinned. */
+.figma-flow .menu-category-nav[data-stuck="true"]::before { content: ""; position: absolute; z-index: -1; top: calc(-1 * var(--menu-safe-top)); bottom: 0; left: calc(-1 * var(--space-xl)); right: calc(-1 * var(--space-xl)); background: var(--color-neutral); pointer-events: none; }
