@@ -1,6 +1,6 @@
 /* Figma reference width 412. Content grows naturally for translations and font scaling. */
 .figma-flow { max-width: 412px; font: var(--type-body-md-weight) var(--type-body-md-size)/var(--type-body-md-line-height) var(--font-family); letter-spacing: var(--type-body-md-tracking); }
-.figma-flow .page { padding-top: max(var(--figma-status-space), env(safe-area-inset-top)); }
+.figma-flow .page { padding-top: env(safe-area-inset-top, 0); }
 .figma-flow .toolbar { height: 56px; min-height: 56px; padding: 0 var(--space-xl); }
 .figma-flow .toolbar h1 { flex: 1; }
 .figma-flow .tiny { font-size: var(--figma-tiny-size); line-height: var(--figma-tiny-line); font-weight: 500; letter-spacing: 0; }
@@ -25,9 +25,9 @@
 .figma-flow .menu-toggle[data-tone="brand"] { background: var(--color-primary); }
 .figma-flow .menu-toggle img { width: auto; height: auto; object-fit: contain; }
 .figma-flow .cart-bar { background: var(--figma-cart-bg); border: 1px solid var(--figma-cart-border); box-shadow: var(--figma-cart-shadow); padding-left: var(--space-xl); }
-.figma-flow .detail-page { padding-bottom: 0; }
+.figma-flow .detail-page { padding-bottom: calc(var(--cart-height) + var(--space-2xl) + env(safe-area-inset-bottom, 0)); }
 .figma-flow .detail-hero::after { content: ""; position: absolute; inset: 0 0 auto; height: 140px; background: var(--figma-photo-overlay); pointer-events: none; }
-.figma-flow .detail-back { top: calc(max(var(--figma-status-space), env(safe-area-inset-top)) + var(--space-sm)); z-index: 1; }
+.figma-flow .detail-back { top: calc(env(safe-area-inset-top, 0) + var(--space-sm)); z-index: 1; }
 .figma-flow .photo-caption { bottom: var(--figma-space-40); background: var(--figma-photo-caption); padding: var(--space-sm) var(--space-md); }
 .figma-flow .detail-content { display: flex; flex-direction: column; padding-bottom: max(var(--space-2xl), env(safe-area-inset-bottom)); margin-top: calc(-1 * var(--figma-space-28)); background: linear-gradient(var(--color-surface), var(--color-neutral) 39%); gap: var(--space-xl); }
 .figma-flow .detail-title { gap: var(--space-xs); }
@@ -41,7 +41,7 @@
 .figma-flow .ai-content > .stack-xl { gap: var(--space-lg); }
 
 .figma-flow .allergen-confirm { padding: 0; min-height: 44px; border: 0; background: transparent; color: var(--color-on-surface); text-align: left; display: flex; flex-direction: column; gap: var(--space-xs); font-size: var(--type-body-md-size); }
-.figma-flow .detail-dock { width: 100%; padding: 0; background: transparent; }
+.figma-flow .detail-dock { position: fixed; z-index: 5; left: 50%; bottom: 0; transform: translateX(-50%); width: 100%; max-width: 412px; padding: var(--space-2xl) var(--space-xl) max(var(--space-2xl), env(safe-area-inset-bottom)); pointer-events: none; }
 .figma-flow .detail-dock .cart-bar { padding-left: var(--space-xl); }
 .figma-flow .detail-dock .button { min-height: 44px; }
 .figma-flow .cart-page { height: 100dvh; min-height: 480px; padding-bottom: 0; display: flex; flex-direction: column; }
@@ -78,7 +78,7 @@
 .figma-flow textarea::placeholder { color: var(--color-secondary); opacity: 1; }
 .figma-flow textarea:focus-visible, .figma-flow select:focus-visible { outline: 2px solid var(--color-brand); outline-offset: var(--space-xs); }
 .figma-flow .order-footer { margin-top: auto; padding: var(--space-xl) var(--space-xl) max(var(--space-2xl), env(safe-area-inset-bottom)); }
-.figma-flow .order-expanded { width: min(100%, 700px); max-width: 100%; height: 100dvh; max-height: 100dvh; border: 0; padding: max(var(--figma-status-space), env(safe-area-inset-top)) var(--space-xl) var(--space-2xl); background: var(--color-surface); color: var(--color-on-surface); }
+.figma-flow .order-expanded { width: min(100%, 700px); max-width: 100%; height: 100dvh; max-height: 100dvh; border: 0; padding: env(safe-area-inset-top, 0) var(--space-xl) var(--space-2xl); background: var(--color-surface); color: var(--color-on-surface); }
 .figma-flow .order-expanded[open] { display: flex; flex-direction: column; gap: var(--space-2xl); }
 .figma-flow .order-expanded p { margin: auto 0; overflow-wrap: anywhere; font: var(--type-headline-lg-weight) var(--type-headline-lg-size)/var(--type-headline-lg-line-height) var(--font-family); letter-spacing: var(--type-headline-lg-tracking); }
 .figma-flow .order-expanded .icon-button { align-self: flex-end; flex-shrink: 0; }
@@ -118,3 +118,8 @@
 .figma-flow .detail-content .ai-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: var(--ai-border-width); background: var(--gradient-ai); mask: linear-gradient(var(--color-surface) 0 0) content-box, linear-gradient(var(--color-surface) 0 0); mask-composite: exclude; pointer-events: none; }
 .figma-flow .detail-content .ingredient-tag { max-width: 100%; overflow-wrap: anywhere; }
 .figma-flow .detail-title .price { flex-wrap: wrap; }
+
+/* 849:1082 / 849:1093: floating charcoal bars and dark green actions. */
+.figma-flow .cart-dock { background: transparent; }
+.figma-flow .cart-bar .button[data-variant="brand"] { background: var(--figma-cart-action); }
+.figma-flow .cart-bar .button[data-variant="brand"]:active { background: var(--color-brand-pressed); }

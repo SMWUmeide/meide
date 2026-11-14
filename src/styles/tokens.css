@@ -125,11 +125,11 @@
   --menu-photo-height: 148px;
   --figma-allergy: var(--color-error);
   --figma-allergy-text: var(--color-on-primary);
-  --figma-cart-bg: var(--color-primary);
+  --figma-cart-bg: rgba(32,35,34,0.7);
+  --figma-cart-action: #176B38;
   --figma-cart-border: rgba(255,255,255,0.22);
   --figma-cart-shadow: 0 6px 20px -4px rgba(20,36,26,0.16);
   --figma-space-20: 20px;
-  --figma-status-space: 54px;
   --figma-space-28: 28px;
   --figma-space-40: 40px;
   --figma-radius-16: 16px;

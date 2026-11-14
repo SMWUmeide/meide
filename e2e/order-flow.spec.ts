@@ -107,16 +107,22 @@ for (const width of [320, 360, 412]) {
           mismatches,
           cardInsets: cards.map(card => card.firstElementChild!.getBoundingClientRect().left - card.getBoundingClientRect().left),
           sectionGaps: children.slice(1).map((child,i) => child.getBoundingClientRect().top - children[i].getBoundingClientRect().bottom),
-          dockPosition: getComputedStyle(content.querySelector('.detail-dock')!).position,
+          dockPosition: getComputedStyle(document.querySelector('.detail-dock')!).position,
           overflow: document.documentElement.scrollWidth > innerWidth,
         };
       });
       expect(measurements.mismatches, id).toEqual([]);
       expect(measurements.cardInsets, id).toEqual([24,24,24]);
-      expect(measurements.sectionGaps, id).toEqual([24,24,24,24]);
-      expect(measurements.dockPosition).toBe('static');
+      expect(measurements.sectionGaps, id).toEqual([24,24,24]);
+      expect(measurements.dockPosition).toBe('fixed');
       expect(measurements.overflow).toBe(false);
-      await page.locator('.detail-dock button').scrollIntoViewIfNeeded();
+      const initialDock = await page.locator('.detail-dock').boundingBox();
+      await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+      const scrolledDock = await page.locator('.detail-dock').boundingBox();
+      expect(scrolledDock!.y).toBeCloseTo(initialDock!.y, 1);
+      const lastCard = await page.locator('.detail-content > .ai-card').last().boundingBox();
+      const bar = await page.locator('.detail-dock .cart-bar').boundingBox();
+      expect(lastCard!.y + lastCard!.height).toBeLessThanOrEqual(bar!.y);
       await expect(page.locator('.detail-dock button')).toBeInViewport();
     }
   });
