@@ -1,3 +1,4 @@
+import { apiAccess, type ApiEnv } from "./http";
 import { generateText, Output } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
@@ -14,12 +15,11 @@ EUR 또는 €가 메뉴판에 확인되면 EUR, 다른 통화는 OTHER, 확인 
 analogy, description, estimated, method, possibleAllergen은 일반적인 음식 지식에 따른 AI 추정임을 전제로 한국어 존댓말 '~요'로 작성하세요. 알레르기가 없다고 단정하지 마세요.
 사진이 메뉴판이 아니거나 글자를 읽을 수 없으면 isMenu=false, items=[]로 반환하세요. 최대 80개, 다른 설명 없이 지정된 구조만 반환하세요.`;
 
-type Env = { GEMINI_API_KEY?: string; GEMINI_MODEL?: string };
+type Env = ApiEnv;
 export async function analyzeMenu(request: Request, env: Env = process.env): Promise<Response> {
-  const reply = (body: unknown, status: number) => Response.json(body, { status, headers: { "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff" } });
-  if (request.method !== "POST") return new Response(null, { status: 405, headers: { Allow: "POST" } });
-  const origin = request.headers.get("origin");
-  if (origin && origin !== new URL(request.url).origin) return reply({ error: "ORIGIN", message: "이 앱에서 다시 촬영해 주세요" }, 403);
+  const { reply, response } = apiAccess(request, env);
+  if (response) return response;
+  if (request.method !== "POST") return new Response(null, { status: 405, headers: { Allow: "POST, OPTIONS" } });
   if (!request.headers.get("content-type")?.startsWith("application/json")) return reply({ error: "CONTENT_TYPE", message: "사진을 다시 선택해 주세요" }, 415);
   if (!env.GEMINI_API_KEY?.trim()) return reply({ error: "CONFIG", message: "분석에 실패했어요" }, 503);
   const model = env.GEMINI_MODEL?.trim() || "gemini-3.5-flash-lite";

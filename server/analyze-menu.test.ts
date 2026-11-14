@@ -20,7 +20,7 @@ describe("Gemini 서버 함수", () => {
   });
   it("환경변수로 모델을 바꿀 수 있어요", async () => { await analyzeMenu(request(), { ...env, GEMINI_MODEL: "test-configured-model" }); expect(provider).toHaveBeenCalledWith("test-configured-model"); });
   it("키가 없으면 공급자를 호출하지 않아요", async () => { expect((await analyzeMenu(request(), {})).status).toBe(503); expect(generate).not.toHaveBeenCalled(); });
-  it("GET은 거부해요", async () => { const result = await analyzeMenu(new Request("https://meide.test/api/analyze-menu"), env); expect(result.status).toBe(405); expect(result.headers.get("Allow")).toBe("POST"); });
+  it("GET은 거부해요", async () => { const result = await analyzeMenu(new Request("https://meide.test/api/analyze-menu"), env); expect(result.status).toBe(405); expect(result.headers.get("Allow")).toBe("POST, OPTIONS"); });
   it("다른 사이트의 브라우저 요청을 거부해요", async () => { expect((await analyzeMenu(request(body, { origin: "https://another.test" }), env)).status).toBe(403); expect(generate).not.toHaveBeenCalled(); });
   it.each([{ images: [] }, { images: Array(7).fill(body.images[0]) }, { images: [{ mediaType: "image/svg+xml", data: jpeg }] }, { images: [{ mediaType: "image/jpeg", data: "https://another.test/file" }] }, { images: [{ mediaType: "image/jpeg", data: "aGVsbG8=" }] }])("잘못된 사진 요청을 거부해요: %j", async value => { expect((await analyzeMenu(request(value), env)).status).toBe(400); expect(generate).not.toHaveBeenCalled(); });
   it("content-length가 없어도 큰 본문은 공급자 호출 전에 거부해요", async () => { const result = await analyzeMenu(request({ images: [], extra: "x".repeat(MAX_BODY_BYTES) }), env); expect(result.status).toBe(413); expect(generate).not.toHaveBeenCalled(); });

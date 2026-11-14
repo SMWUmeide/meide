@@ -35,3 +35,5 @@
 ```tsx
 <AICard kind="estimated">글루텐 (EU 1) — 메뉴판에 적혀 있어요</AICard>  // 확인된 정보를 AI 카드에, source 누락
 ```
+
+- `compact?: boolean`이 true이면 출처는 스크린리더에 유지하고 머리에는 AI 아이콘과 제목만 보여요. 894 상세 화면에서 사용해요.

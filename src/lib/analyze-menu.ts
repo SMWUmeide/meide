@@ -1,3 +1,4 @@
+import { apiUrl } from "./api";
 import { menuBoardSchema, type MenuBoard } from "@/data/menu-schema";
 
 const MAX_REQUEST_BYTES = 3_900_000;
@@ -40,7 +41,7 @@ export async function prepareImages(files: File[], signal: AbortSignal): Promise
 
 export async function analyzePhotos(files: File[], signal: AbortSignal): Promise<MenuBoard> {
   const images = await prepareImages(files, signal);
-  const response = await fetch("/api/analyze-menu", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ images }), signal });
+  const response = await fetch(apiUrl("/api/analyze-menu"), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ images }), signal });
   if (!response.ok) throw new Error("분석에 실패했어요");
   const value = await response.json();
   // 서버가 HTML 오류나 잘못된 객체를 반환해도 성공으로 취급하지 않아요.

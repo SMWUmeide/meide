@@ -12,10 +12,19 @@
     "preview": "vite preview --host 127.0.0.1",
     "lint": "eslint src api server scripts vite.config.ts",
     "test": "vitest run",
-    "check:design": "node scripts/check-design.mjs"
+    "check:design": "node scripts/check-design.mjs",
+    "android:sync": "node scripts/prepare-android.mjs",
+    "android:open": "cap open android",
+    "android:prepare:release": "node scripts/prepare-android.mjs --release",
+    "test:e2e": "playwright test",
+    "preview:figma": "node scripts/preview-figma.mjs"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.109",
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/camera": "^8.2.6",
+    "@capacitor/core": "^8.6.2",
     "ai": "^7.0.159",
     "pretendard": "1.3.9",
     "react": "19.2.6",
@@ -23,7 +32,9 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.6.2",
     "@eslint/js": "9.39.4",
+    "@playwright/test": "^1.65.1",
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.0.0",
@@ -36,7 +47,7 @@
     "jsdom": "^27.0.0",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.0.0",
-    "vite": "8.0.13",
+    "vite": "^8.3.8",
     "vitest": "^4.0.0"
   }
 }

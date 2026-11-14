@@ -33,4 +33,4 @@ for (const file of files) {
   }
 }
 if (errors.length) { console.error(errors.join("\n")); process.exitCode = 1; }
-else console.log(`검사 통과: ${files.length}개 파일, 직접 색 값 0건, 토큰 밖 여백 0건, 13px 미만 글자 0건, 화면 primary 총 ${primaryCount}개(파일당 최대 1개).\n의미 검토: brand는 알약·담김·안내 아이콘, AI 효과는 AICard에만 사용. AI 메뉴 사진 생성 없음.`);
+else console.log(`검사 통과: ${files.length}개 파일, 직접 색 값 0건, 토큰 밖 여백 0건, 직접 쓴 13px 미만 글자 값 0건, 화면 primary 총 ${primaryCount}개(파일당 최대 1개).\nFigma 우선 화면은 11px 보조 글자·32px 모서리·추가 여백 토큰을 허용해요(2026-11-14 사용자 지시). 값 검사는 화면 일치나 접근성 검증을 대신하지 않아요.`);

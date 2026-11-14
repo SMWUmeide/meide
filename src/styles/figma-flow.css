@@ -1,0 +1,104 @@
+/* Figma reference width 412. Content grows naturally for translations and font scaling. */
+.figma-flow { max-width: 412px; }
+.figma-flow .page { padding-top: max(var(--figma-status-space), env(safe-area-inset-top)); }
+.figma-flow .toolbar { min-height: 56px; padding: var(--figma-space-6) var(--space-xl); }
+.figma-flow .toolbar h1 { flex: 1; }
+.figma-flow .tiny { font-size: var(--figma-tiny-size); line-height: var(--figma-tiny-line); font-weight: 500; }
+.figma-flow hr { border: 0; border-top: 1px solid var(--color-border); width: 100%; margin: 0; }
+.figma-flow .button[data-size="lg"] { min-height: 64px; border-radius: var(--rounded-lg); }
+.figma-flow .button[data-size="pill"] { min-height: 44px; font-size: var(--type-label-md-size); font-weight: 500; padding: var(--space-md) var(--figma-space-20); }
+.figma-flow .cart-dock, .figma-flow .fixed-action, .figma-flow .bottom-sheet { max-width: 412px; }
+.figma-flow .cart-dock { padding-bottom: max(var(--space-2xl), env(safe-area-inset-bottom)); }
+.figma-flow .menu-page .page-content { padding-top: var(--space-lg); gap: var(--space-2xl); }
+.figma-flow .people-heading { margin-bottom: calc(-1 * var(--space-lg)); }
+.figma-flow .people-heading p { font-size: var(--type-body-md-size); line-height: var(--type-body-md-line-height); font-weight: 500; }
+.figma-flow .avatar-group .avatar + .avatar { margin-left: calc(-1 * var(--figma-space-10)); }
+.figma-flow .chip { height: 40px; min-height: 40px; padding: var(--figma-space-10) var(--figma-space-18); }
+.figma-flow .menu-grid { gap: var(--space-lg); }
+.figma-flow .menu-card { border-radius: 24px; }
+.figma-flow .menu-name { min-height: 48px; }
+.figma-flow .menu-original, .figma-flow .menu-price .t-body-sm { font-size: var(--figma-tiny-size); line-height: var(--figma-tiny-line); font-weight: 500; }
+.figma-flow .menu-price { margin-top: var(--space-md); }
+.figma-flow .menu-details { padding: var(--space-lg); }
+.figma-flow .menu-photo-open { background: var(--color-photo-empty); }
+.figma-flow .menu-toggle { box-shadow: var(--figma-toggle-shadow); }
+.figma-flow .menu-toggle[data-tone="brand"] { background: var(--color-primary); }
+.figma-flow .menu-toggle img { width: auto; height: auto; object-fit: contain; }
+.figma-flow .cart-bar { background: var(--figma-cart-bg); border: 1px solid var(--figma-cart-border); box-shadow: var(--figma-cart-shadow); padding-left: var(--figma-space-22); }
+.figma-flow .detail-page { padding-bottom: calc(var(--cart-height) + var(--space-2xl) * 2); }
+.figma-flow .detail-hero::after { content: ""; position: absolute; inset: 0 0 auto; height: 140px; background: var(--figma-photo-overlay); pointer-events: none; }
+.figma-flow .detail-back { top: calc(max(var(--figma-status-space), env(safe-area-inset-top)) + var(--figma-space-6)); z-index: 1; }
+.figma-flow .photo-caption { bottom: var(--figma-space-40); background: var(--figma-photo-caption); padding: var(--figma-space-6) var(--space-md); }
+.figma-flow .detail-content { margin-top: calc(-1 * var(--figma-space-28)); background: linear-gradient(var(--color-surface), var(--color-neutral) 39%); gap: var(--space-xl); }
+.figma-flow .detail-content > .stack-sm { gap: var(--space-xs); }
+.figma-flow .detail-content .card { gap: var(--space-sm); }
+.figma-flow .detail-content .card .ingredient-tag { display: inline-flex; gap: var(--space-xs); }
+.figma-flow .ingredient-tags { gap: var(--space-xs); }
+.figma-flow .ingredient-tag { padding: var(--figma-space-7) var(--figma-space-14); }
+.figma-flow .ai-card { background: var(--figma-ai-fill) padding-box, linear-gradient(var(--color-surface), var(--color-surface)) padding-box, var(--gradient-ai) border-box; }
+.figma-flow .ai-heading { align-items: center; }
+.figma-flow .ai-content .muted { color: var(--figma-body-secondary); }
+.figma-flow .ai-content > .stack-xl { gap: var(--space-lg); }
+
+.figma-flow .allergen-confirm { padding: 0; min-height: 44px; border: 0; background: transparent; color: var(--color-on-surface); text-align: left; display: flex; flex-direction: column; gap: var(--space-xs); font-size: var(--type-body-md-size); }
+.figma-flow .detail-dock { background: transparent; padding-top: var(--space-sm); }
+.figma-flow .detail-dock .cart-bar { padding-left: var(--space-xl); }
+.figma-flow .detail-dock .button { min-height: 44px; }
+.figma-flow .cart-page { height: 100dvh; min-height: 480px; padding-bottom: 0; display: flex; flex-direction: column; }
+.figma-flow .cart-page .toolbar { flex-shrink: 0; }
+.figma-flow .cart-scroll { overflow-y: auto; flex: 1; min-height: 0; display: flex; flex-direction: column; gap: var(--space-xl); overscroll-behavior: contain; }
+.figma-flow .cart-group { display: flex; flex-direction: column; gap: var(--figma-space-18); flex-shrink: 0; }
+.figma-flow .cart-group > header { gap: var(--figma-space-10); }
+.figma-flow .cart-group .avatar { width: 32px; height: 32px; font-size: var(--space-md); }
+.figma-flow .cart-item { gap: var(--figma-space-14); }
+.figma-flow .cart-item-info { padding-bottom: var(--space-xs); }
+.figma-flow .cart-item .price { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: var(--space-sm); padding-top: var(--space-xs); }
+.figma-flow .cart-item .price > div .t-body-sm { font-size: var(--figma-tiny-size); }
+.figma-flow .cart-photo-button { border-radius: var(--figma-radius-16); }
+.figma-flow .cart-photo-button .photo-placeholder { font-size: var(--figma-tiny-size); background: var(--color-photo-empty); }
+.figma-flow .quantity { height: 36px; gap: 0; position: relative; margin-top: var(--space-xs); }
+.figma-flow .quantity .icon-button { background: transparent; }
+.figma-flow .quantity output { min-width: 12px; text-align: center; }
+.figma-flow .cart-subtotal { align-items: flex-start; }
+.figma-flow .cart-subtotal .price > div span:last-child { font-size: var(--type-body-md-size); }
+.figma-flow .cart-checkout { position: relative; flex-shrink: 0; left: auto; transform: none; max-width: none; display: flex; flex-direction: column; gap: var(--space-lg); padding: var(--space-xl) var(--space-xl) max(var(--space-2xl), env(safe-area-inset-bottom)); }
+.figma-flow .tip-toggle { min-height: 36px; }
+.figma-flow .checkbox-art { border-radius: 7px; }
+.figma-flow .tip-rate { display: flex; align-items: center; background: var(--color-neutral); border-radius: 14px; position: relative; }
+.figma-flow .tip-rate select { appearance: none; border: 0; background: transparent; color: inherit; font: inherit; min-height: 36px; padding: var(--space-sm) var(--space-2xl) var(--space-sm) var(--space-md); }
+.figma-flow .tip-rate img { position: absolute; right: var(--space-md); pointer-events: none; }
+.figma-flow .price-large .t-headline-lg { white-space: nowrap; }
+.figma-flow .order-page { min-height: 100dvh; display: flex; flex-direction: column; }
+.figma-flow .order-content { display: flex; flex-direction: column; gap: var(--space-xl); }
+.figma-flow .order-sentence { display: flex; flex-direction: column; gap: var(--space-lg); }
+.figma-flow .order-sentence > p:not(.muted) { overflow-wrap: anywhere; }
+.figma-flow .order-sentence > p:nth-child(2) { line-height: 25px; }
+.figma-flow .order-italian { font-size: var(--figma-order-size); line-height: var(--figma-order-line); }
+.figma-flow .request-card { display: flex; flex-direction: column; gap: var(--space-md); }
+.figma-flow textarea { width: 100%; min-height: 76px; resize: vertical; border: 0; border-radius: var(--figma-radius-16); background: var(--color-neutral); color: var(--color-on-surface); padding: var(--space-lg); font: 400 var(--type-body-sm-size)/22px var(--font-family); }
+.figma-flow textarea::placeholder { color: var(--color-secondary); opacity: 1; }
+.figma-flow textarea:focus-visible, .figma-flow select:focus-visible { outline: 2px solid var(--color-brand); outline-offset: var(--space-xs); }
+.figma-flow .order-footer { margin-top: auto; padding: var(--space-xl) var(--space-xl) max(var(--space-2xl), env(safe-area-inset-bottom)); }
+.figma-flow .order-expanded { width: min(100%, 700px); max-width: 100%; height: 100dvh; max-height: 100dvh; border: 0; padding: max(var(--figma-status-space), env(safe-area-inset-top)) var(--space-xl) var(--space-2xl); background: var(--color-surface); color: var(--color-on-surface); }
+.figma-flow .order-expanded[open] { display: flex; flex-direction: column; gap: var(--space-2xl); }
+.figma-flow .order-expanded p { margin: auto 0; overflow-wrap: anywhere; font-size: var(--type-headline-lg-size); line-height: 1.5; }
+.figma-flow .order-expanded .icon-button { align-self: flex-end; flex-shrink: 0; }
+.figma-flow .receipt-page .page-content { padding-bottom: max(var(--figma-space-40), env(safe-area-inset-bottom)); }
+.figma-flow .receipt-card { display: flex; flex-direction: column; gap: var(--space-xl); margin-top: var(--space-xl); }
+.figma-flow .receipt-row { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-md); }
+.figma-flow .receipt-row p { min-width: 0; }
+.figma-flow .receipt-amount { display: inline-flex; align-items: baseline; gap: var(--space-xs); flex-shrink: 0; }
+.figma-flow .receipt-dashed { border-top-style: dashed; }
+.figma-flow .receipt-total { align-items: flex-end; }
+.figma-flow .receipt-disclaimer { text-align: center; margin-top: var(--space-lg); }
+.figma-flow .receipt-actions { margin-top: var(--space-xl); }
+.figma-flow .info-note { padding: var(--space-md) var(--figma-space-14); }
+.figma-flow .info-note > img { flex-shrink: 0; }
+@media (max-width: 359px) {
+  .figma-flow .page-content { padding-left: var(--space-lg); padding-right: var(--space-lg); }
+  .figma-flow .menu-details { padding: var(--space-md); }
+  .figma-flow .cart-item .price { gap: var(--space-xs); }
+  .figma-flow .receipt-row { flex-wrap: wrap; }
+}
+
+.figma-flow .menu-allergen { position: absolute; top: var(--space-md); left: var(--space-md); border-radius: var(--rounded-full); background: var(--figma-allergy); color: var(--figma-allergy-text); padding: var(--figma-space-3) var(--space-sm); pointer-events: none; }

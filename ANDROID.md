@@ -1,0 +1,68 @@
+# meide Android 앱
+
+React + TypeScript 화면을 Capacitor 8 Android 프로젝트에 번들링해요. 웹사이트를 원격으로 띄우는 설정은 사용하지 않아요. `android/`를 Android Studio에서 열 수 있어요.
+
+## 실행
+
+- Node.js 22.13 이상에서 `npm ci`를 실행해요.
+- `npm run dev`로 웹 화면을 확인해요. 주소는 `http://127.0.0.1:5173`예요.
+- `npm run android:sync`로 웹 앱을 빌드하고 Android 프로젝트에 복사해요.
+- `npm run android:open`으로 Android Studio를 열어요.
+- Android Studio 2025.2.1 이상, SDK 36과 기기/에뮬레이터가 필요해요. 기본 설정은 minSdk 24, targetSdk 36이에요.
+- 현재 개발용 ID는 `app.meide.preview`예요. 정식 앱 ID로 확정한 값이 아니에요.
+
+## 구현한 화면과 동작
+
+Figma `EyR8e24IyNMuHpg5Z617dc`의 894:6011, 894:5914, 894:5703, 894:6379, 894:5817을 기준으로 해요. 2026-11-14 사용자 지시에 따라 이 다섯 화면은 DESIGN.md의 기존 값보다 Figma를 우선해요.
+
+- 메뉴 고르기 → 상세 → 장바구니 → 주문 문장 → 영수증 미리보기가 연결돼요.
+- 상태바 시계·신호·배터리와 홈 인디케이터를 웹 UI로 복제하지 않아요. 상단 54px 빈 공간과 기기 안전 영역을 확보해요. Android가 그리는 시스템 UI는 OS가 관리해요.
+- Figma 전용 값은 `tokens.css`의 `.figma-flow` 범위에 있어요. 홈·촬영 화면의 기존 스타일은 유지해요.
+- 장바구니 수량, 팁 비율, 요청사항은 기기 로컬 저장소에 보관돼요. 사진 파일과 API 키는 그 저장소에 넣지 않아요.
+- Android에서는 시스템 카메라·사진 선택기, 뒤로 가기, 기기 음성 합성을 사용해요. 외부 카메라 사용 중 앱이 종료됐다가 복원되면 반환된 사진을 다시 받아요.
+- 주문 문장은 원어 메뉴명과 수량을 그대로 조합해요. 현재 대상 언어는 Figma와 같은 이탈리아어예요. 등록된 요청 문구는 오프라인에서도 동작하고 자유 입력은 서버 번역을 사용해요.
+- 번역 중·실패 상태에서 확대/듣기/영수증 전환을 막아 요청사항이 빠진 문장을 완료로 보이지 않게 해요.
+- 영수증은 예상 금액이에요. 예시 데이터에서만 코페르토와 물값 예시를 표시하고, 실제 분석 데이터에는 확인되지 않은 요금을 추가하지 않아요.
+
+## Figma와 의도적으로 다른 데이터
+
+- Figma 메뉴판의 담김 표시와 장바구니의 메뉴 구성이 서로 달라요. 앱은 장바구니 상태와 담김 표시를 일치시켜요.
+- Figma 주문 문장은 멧돼지 요리, 장바구니/영수증은 소고기 요리로 달라요. 앱은 실제 담은 메뉴명으로 문장을 만들어요.
+- 호박·파로 메뉴의 Figma 배지는 '버섯 포함'이지만 상세의 확인 재료는 파로(밀)예요. 배지에는 확인된 정보인 '글루텐 포함'을 표시해요.
+- 날짜·수량·합계는 고정된 디자인 문구가 아니라 실제 상태에서 계산해요. 예시 환율 1,499원 기준 EUR 46.80은 반올림하면 70,153원이에요.
+- 수량 스테퍼는 Figma의 36px 높이 배경을 유지하면서 버튼 터치 영역은 44px로 확보해요.
+- AI 설명 출처는 스크린리더에 유지해요. 알레르기 가능성 영역을 누르면 직원에게 확인할 문장을 열어요.
+
+## API 설정
+
+프로젝트 최상위의 gitignore된 `.env.local`에 공개 가능한 주소만 `VITE_API_BASE_URL=https://실제-API-호스트`로 설정해요. 주소가 없으면 웹은 같은 호스트의 API를 사용하고 Android는 연결되지 않았다고 처리해요. 실제 서버 주소는 아직 정해지지 않았어요.
+
+서버에만 다음 값을 설정해요.
+
+- `GEMINI_API_KEY`: 메뉴 분석·자유 입력 요청사항 번역용 키예요. 앱에 번들링하거나 `VITE_` 이름으로 저장하지 않아요.
+- `GEMINI_MODEL`: 선택 사항이며 현재 기본 모델은 기존 앱과 동일해요.
+- `NATIVE_APP_ORIGINS=https://localhost`: 기본 Android WebView origin을 명시적으로 허용해요. 쉼표로 여러 origin을 지정할 수 있어요. CORS는 사용자 인증이나 사용량 제한의 대체 수단이 아니에요.
+
+`/api/analyze-menu`와 `/api/translate-request`는 POST와 OPTIONS를 지원해요. 서버 비밀 정보·사진·요청사항 원문은 오류 로그나 응답에 넣지 않아요.
+
+## 제출용 빌드 준비
+
+1. 정식 앱 ID와 실제 HTTPS API를 확정해요.
+2. `.env.local`에 `MEIDE_APPLICATION_ID`와 `VITE_API_BASE_URL`을 설정하고 `npm run android:prepare:release`를 실행해요. 하나라도 없으면 준비 명령이 실패해요.
+3. Android Studio의 로컬 Gradle 설정 또는 명령의 `-PMEIDE_APPLICATION_ID=...`로 같은 ID를 전달해요. `MEIDE_VERSION_CODE`와 `MEIDE_VERSION_NAME`도 지정할 수 있어요. Java namespace는 개발 때 생성한 값을 유지해도 applicationId와 별도로 사용할 수 있어요.
+4. 업로드 키로 서명된 Android App Bundle(AAB)을 만들어요. 키·비밀번호·local.properties는 커밋하지 않아요. Release Gradle 작업도 개발용 ID 또는 준비 파일이 없으면 실패해요.
+5. 실제 Android 기기에서 카메라 취소/권한, 외부 카메라 복귀, 음성 데이터 미설치, 뒤로 가기, 키보드, 글자 확대와 edge-to-edge를 확인해요.
+6. 운영 API의 인증/남용 제한, 사진·요청사항 처리에 대한 개인정보처리방침과 Play 데이터 보안 정보를 준비해요. 현재 원본 디자인 예시 사진의 배포 권리와 앱 아이콘/스플래시도 확정해야 해요.
+
+현재 환경에는 Android SDK/JDK가 없어 Android 컴파일·기기 검증·서명 AAB 생성은 수행하지 못했어요. 생성된 Android 런처 아이콘/스플래시는 Capacitor 기본 리소스예요. 이 저장소 상태가 곧바로 Play 제출 완료를 뜻하지 않아요.
+
+## 검증
+
+- `npm run build`, `npm run lint`, `npm test`, `npm run check:design`
+- `npm run test:e2e`: 설치된 Chrome에서 320/360/412px 화면, 주문 흐름, 확대 포커스 복귀, 번역 실패·재시도, 저장 복원, 빈 장바구니를 확인해요.
+- `npm run preview:figma`: 로컬 서버 실행 중 다섯 화면을 `outputs/figma-review/`에 캡처해요.
+- 디자인 검사에서 직접 HEX·rgb 값과 직접 여백 값은 금지하고 토큰을 사용해요. Figma에서 가져온 11px 보조 글자와 추가 여백 값은 의도적인 예외예요. 화면 primary 버튼은 최대 1개예요.
+
+참고: [Capacitor Android 환경](https://capacitorjs.com/docs/getting-started/environment-setup), [Google Play 대상 API 요구사항](https://developer.android.com/google/play/requirements/target-sdk), [Android 음성 합성](https://developer.android.com/reference/android/speech/tts/TextToSpeech)
+
+최종 자동 검증: 단위·통합 테스트 79개와 브라우저 테스트 6개가 통과했어요. 실행용 의존성 보안 검사(`npm audit --omit=dev`)는 0건이에요. 개발용 린터의 minimatch 의존성에는 moderate 경고 7건이 남아 있어요. 실제 Gemini 호출은 로컬 키가 없어 검증하지 못했고 서버 계약·실패·재시도는 테스트 대체 응답으로 확인했어요.

@@ -45,3 +45,9 @@
 ```tsx
 <MenuCard … addedBy="me" style={{ outline: "3px solid green" }} />  // 담김을 테두리로 표시
 ```
+
+## 894 화면 확장 · 2026-11-14
+
+- `presentation="figma"`는 사람 오버레이·태그 없이 검정 담김 버튼을 표시해요. 기본값은 기존 `default`예요.
+- `allergenLabel?: string`은 메뉴판에서 확인한 성분 배지를 표시해요. Figma 예시 문구를 실제 성분으로 간주하지 않아요.
+- Figma 화면의 색·간격·글자는 `.figma-flow` 범위의 토큰을 사용해요. 이번 사용자 지시에 따라 기존 DESIGN.md보다 Figma를 우선해요.

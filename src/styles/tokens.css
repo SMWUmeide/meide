@@ -106,3 +106,48 @@
 .t-body-md     { font: var(--type-body-md-weight) var(--type-body-md-size)/var(--type-body-md-line-height) var(--font-family); letter-spacing: var(--type-body-md-tracking); }
 .t-label-md    { font: var(--type-label-md-weight) var(--type-label-md-size)/var(--type-label-md-line-height) var(--font-family); letter-spacing: var(--type-label-md-tracking); }
 .t-body-sm     { font: var(--type-body-sm-weight) var(--type-body-sm-size)/var(--type-body-sm-line-height) var(--font-family); letter-spacing: var(--type-body-sm-tracking); }
+
+/* Linked 894:* screens: Figma fidelity takes priority (user instruction, 2026-11-14).
+   Scoped so the existing home/capture screens keep their current appearance. */
+.figma-flow {
+  --color-secondary: #91949E;
+  --color-brand: #176B38;
+  --color-brand-pressed: #105B2F;
+  --color-border: #E5E8EB;
+  --color-photo-empty: #E7EAED;
+  --color-ai-gradient-start: #61CCD1;
+  --color-ai-gradient-mid: #4F7BF7;
+  --color-ai-gradient-end: #9B6BF2;
+  --rounded-lg: 32px;
+  --rounded-md: 32px;
+  --button-height: 64px;
+  --menu-photo-height: 148px;
+  --figma-allergy: #DB2626;
+  --figma-allergy-text: #FFF0F0;
+  --figma-space-3: 3px;
+  --figma-cart-bg: #202322;
+  --figma-cart-border: rgba(255,255,255,0.22);
+  --figma-cart-shadow: 0 6px 20px -4px rgba(20,36,26,0.16);
+  --figma-space-20: 20px;
+  --figma-space-22: 22px;
+  --figma-status-space: 54px;
+  --figma-space-2: 2px;
+  --figma-space-6: 6px;
+  --figma-space-7: 7px;
+  --figma-space-10: 10px;
+  --figma-space-14: 14px;
+  --figma-space-18: 18px;
+  --figma-space-28: 28px;
+  --figma-space-40: 40px;
+  --figma-radius-16: 16px;
+  --figma-tiny-size: 11px;
+  --figma-tiny-line: 15px;
+  --figma-order-size: 20px;
+  --figma-order-line: 29px;
+  --figma-caption-ink: #74777F;
+  --figma-body-secondary: #626773;
+  --figma-ai-fill: linear-gradient(145deg, rgba(79,123,247,0.07), rgba(155,107,242,0.10));
+  --figma-photo-overlay: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0));
+  --figma-photo-caption: rgba(0,0,0,0.5);
+  --figma-toggle-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}

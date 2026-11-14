@@ -41,10 +41,10 @@ describe("1단계 화면 흐름", () => {
     await user.click(screen.getByRole("button", { name: "서양 대파와 감자 크림 수프 수량 줄이기" }));
     expect(screen.queryByRole("heading", { name: /내 메뉴/ })).not.toBeInTheDocument(); expect(checkout).toHaveTextContent("28.00");
   });
-  it("동반인 메뉴는 지우지 않고 안내해요", async () => {
+  it("함께 담은 메뉴도 목록에서 취소할 수 있어요", async () => {
     window.history.replaceState(null, "", "/#/menu"); const user = userEvent.setup(); render(<App />);
     await user.click(screen.getByRole("button", { name: "호박과 고대 밀 수프 담기 취소" }));
-    expect(screen.getByRole("status")).toHaveTextContent("미영님이 담은 메뉴예요"); expect(screen.getByRole("button", { name: "3개 보기" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "호박과 고대 밀 수프 담기" })).toBeInTheDocument(); expect(screen.getByRole("button", { name: "2개 보기" })).toBeInTheDocument();
   });
   it("분석하기를 누르기 전에는 사진을 전송하지 않아요", async () => {
     window.history.replaceState(null, "", "/#/capture"); const request = vi.spyOn(window, "fetch").mockRejectedValue(new Error("외부 전송 금지"));
