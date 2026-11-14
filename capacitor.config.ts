@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appId: process.env.MEIDE_APPLICATION_ID || "app.meide.preview",
   appName: "meide",
   webDir: "dist",
-  plugins: { SystemBars: { insetsHandling: "css", initialViewportFitValueHint: "cover", style: "LIGHT" } },
+  plugins: { SystemBars: { insetsHandling: "native", initialViewportFitValueHint: "auto", style: "LIGHT" } },
   android: { allowMixedContent: false },
 };
 export default config;

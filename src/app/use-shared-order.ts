@@ -1,3 +1,5 @@
+import { companionActivity } from '@/lib/companion-activity';
+import type { CompanionActivity } from '@/components/CompanionNotice';
 import { useEffect, useRef, useState } from 'react';
 import { changeOrderItem, orderClient, orderIdentity, readOrderRoom, type SharedSnapshot } from '@/lib/shared-order';
 function mergeSnapshot(old: SharedSnapshot | null, next: SharedSnapshot) {
@@ -13,6 +15,16 @@ export function useSharedOrder() {
   const [status, setStatus] = useState('');
   const [connected, setConnected] = useState(false);
   const [pending, setPending] = useState(false);
+  const [activity,setActivity]=useState<CompanionActivity | null>(null);
+  useEffect(()=>{if(!activity)return;const timer=setTimeout(()=>setActivity(null),4000);return()=>clearTimeout(timer);},[activity]);
+  const observed=useRef<SharedSnapshot | null>(null);
+  const identity=useRef('');
+  function receive(next: SharedSnapshot, announce: boolean) {
+    const previous=observed.current;
+    if(previous?.id===next.id && previous.revision>=next.revision)return;
+    if(announce){const event=companionActivity(previous,next,identity.current);if(event)setActivity(event);}
+    observed.current=next;setSnapshot(old=>mergeSnapshot(old,next));
+  }
   const busy = useRef(false);
   const currentRoom = useRef(roomId);
   useEffect(() => {
@@ -20,22 +32,21 @@ export function useSharedOrder() {
     if (!roomId) return;
     let disposed = false;
     let channel: ReturnType<ReturnType<typeof orderClient>['channel']> | undefined;
-    let loading = false, queued = false;
-    const apply = (next: SharedSnapshot) => setSnapshot(old => mergeSnapshot(old,next));
-    async function refresh() {
-      if (loading) { queued = true; return; }
+    let loading = false, queued = false, queuedAnnouncement = false;
+    async function refresh(announce = false) {
+      if (loading) { queued = true; queuedAnnouncement ||= announce; return; }
       loading = true;
-      try { const next = await readOrderRoom(roomId!); if (!disposed) { apply(next); setStatus(''); } }
+      try { const next = await readOrderRoom(roomId!); if (!disposed) { receive(next,announce); setStatus(''); } }
       catch (error) { if (!disposed) setStatus(error instanceof Error ? error.message : '다시 연결하고 있어요'); }
-      finally { loading = false; if (queued && !disposed) { queued = false; void refresh(); } }
+      finally { loading = false; if (queued && !disposed) { queued = false; const nextAnnouncement=queuedAnnouncement;queuedAnnouncement=false;void refresh(nextAnnouncement); } }
     }
     void orderIdentity().then(id => {
       if (disposed) return;
-      setUserId(id);
-      channel = orderClient().channel(`order:${roomId}`).on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'order_rooms', filter: `id=eq.${roomId}` }, () => void refresh()).subscribe(state => {
+      setUserId(id); identity.current=id;
+      channel = orderClient().channel(`order:${roomId}`).on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'order_rooms', filter: `id=eq.${roomId}` }, () => void refresh(true)).subscribe(state => {
         if (disposed) return;
         setConnected(state === 'SUBSCRIBED');
-        if (state === 'SUBSCRIBED') void refresh();
+        if (state === 'SUBSCRIBED') { observed.current=null; void refresh(); }
         else if (state === 'CHANNEL_ERROR' || state === 'TIMED_OUT' || state === 'CLOSED') setStatus('연결을 다시 확인하고 있어요. 저장된 메뉴는 그대로예요');
       });
       void refresh();
@@ -45,7 +56,7 @@ export function useSharedOrder() {
     return () => { disposed = true; window.removeEventListener('online', reconnect); document.removeEventListener('visibilitychange', reconnect); if (channel) void orderClient().removeChannel(channel); };
   }, [roomId]);
   function open(id: string | null) {
-    currentRoom.current = id; setSnapshot(null); setConnected(false); setStatus(''); setRoomId(id);
+    currentRoom.current = id; observed.current=null;setActivity(null); setSnapshot(null); setConnected(false); setStatus(''); setRoomId(id);
     try { if (id) localStorage.setItem(key,id); else localStorage.removeItem(key); } catch { /* Session remains usable. */ }
   }
   async function mutate(menuId: string, action: 'add' | 'remove' | 'increase' | 'decrease') {
@@ -53,8 +64,8 @@ export function useSharedOrder() {
     busy.current = true; setPending(true);
     try {
       const next = await changeOrderItem(roomId, menuId, action);
-      if (currentRoom.current === roomId) setSnapshot(old => mergeSnapshot(old,next));
+      if (currentRoom.current === roomId) receive(next,true);
     } finally { busy.current = false; setPending(false); }
   }
-  return { roomId, snapshot, userId, status, connected, pending, open, mutate };
+  return { activity, roomId, snapshot, userId, status, connected, pending, open, mutate };
 }

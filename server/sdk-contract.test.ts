@@ -16,3 +16,5 @@ it("실제 Google SDK의 HTTP 형식과 구조화 응답을 끝까지 검증해�
   const body = JSON.parse(init.body); expect(body.contents[0].parts[0].inlineData).toEqual({ mimeType: "image/jpeg", data: photo });
   expect(body.generationConfig.responseMimeType).toBe("application/json");
 });
+
+vi.mock("./api-budget", async importOriginal => ({ ...await importOriginal<typeof import("./api-budget")>(), reserveApiCalls: vi.fn().mockResolvedValue(undefined) }));

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { menuPhotoSchema, type MenuPhoto } from "./menu-photo";
+import { menuPhotoSchema, cutoutUrlSchema, type MenuPhoto } from "./menu-photo";
 
 const text = z.string().trim().min(1).max(800);
 export const analysisSchema = z.object({
@@ -50,5 +50,5 @@ export function normalizeAnalysis(value: unknown): MenuBoard {
   return { restaurantName: analysis.restaurantName || "촬영한 메뉴판", categories, items, source: "gemini", skipped };
 }
 
-const menuItemSchema = analysisSchema.shape.items.element.omit({ categoryName: true, categoryOriginal: true }).extend({ id: text, category: text, priceEur: z.number().min(0).max(10000), photoUrl: z.union([z.null(), menuPhotoSchema.shape.url]), photo: menuPhotoSchema.optional() });
+const menuItemSchema = analysisSchema.shape.items.element.omit({ categoryName: true, categoryOriginal: true }).extend({ id: text, category: text, priceEur: z.number().min(0).max(10000), photoUrl: z.union([z.null(), menuPhotoSchema.shape.url, cutoutUrlSchema]), photo: menuPhotoSchema.optional() });
 export const menuBoardSchema = z.object({ restaurantName: text, categories: z.array(z.object({ id: text, name: text, original: z.string().max(160) })).min(1).max(80), items: z.array(menuItemSchema).min(1).max(80), source: z.literal("gemini"), skipped: z.number().int().min(0).max(80) }).refine(board => board.items.every(item => board.categories.some(category => category.id === item.category)) && new Set(board.items.map(item => item.id)).size === board.items.length && new Set(board.categories.map(category => category.id)).size === board.categories.length);

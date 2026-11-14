@@ -33,3 +33,7 @@ describe("모바일 요청사항 번역", () => {
     expect(result.status).toBe(502); expect(await result.text()).not.toContain("test-secret");
   });
 });
+
+
+
+vi.mock("./api-budget", async importOriginal => ({ ...await importOriginal<typeof import("./api-budget")>(), reserveApiCalls: vi.fn().mockResolvedValue(undefined) }));

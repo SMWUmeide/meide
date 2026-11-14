@@ -7,6 +7,8 @@ const report = (ok, message) => { console.log(`${ok ? '✓' : '!'} ${message}`);
 report(Boolean(env.GEMINI_API_KEY?.trim()), '로컬 Gemini 서버 키 설정 (값은 출력하지 않아요)');
 report(Boolean(env.PEXELS_API_KEY?.trim()), '음식 사진 검색 서버 키 설정 (값은 출력하지 않아요)');
 report(Boolean(env.VITE_SUPABASE_URL && env.VITE_SUPABASE_PUBLISHABLE_KEY), 'Supabase 공개 연결 설정');
+report(Boolean(env.SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY), '서버 호출 카운터 연결 설정');
+console.log('· 배경 제거 허용 횟수:', env.PHOTOROOM_LIFETIME_LIMIT || '0 (비활성)');
 const origins = (env.NATIVE_APP_ORIGINS || '').split(',').map(value => value.trim());
 report(origins.includes('https://localhost'), 'Android 앱 origin 허용');
 let base = 'http://127.0.0.1:5173';

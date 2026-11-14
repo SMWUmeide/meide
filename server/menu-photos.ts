@@ -1,3 +1,5 @@
+import { cutoutPhoto } from "./cutout-photo";
+import { reserveApiCalls, ApiBudgetError } from "./api-budget";
 import { z } from 'zod';
 import { apiAccess, readSmallJson, type ApiEnv } from './http';
 import { menuPhotoSchema, type MenuPhoto } from '../src/data/menu-photo';
@@ -15,18 +17,22 @@ export async function menuPhotos(request: Request, env: ApiEnv = process.env): P
   catch (error) { return reply({ error:'INVALID_INPUT' },error instanceof RangeError ? 413 : 400); }
   try {
     const photos = await Promise.all(parsed.queries.map(async ({id,query}) => {
-      const key = query.toLowerCase(); const stored = cache.get(key);
+      const key = `${env.PHOTOROOM_API_KEY && Number(env.PHOTOROOM_LIFETIME_LIMIT)>0 ? 'cutout' : 'original'}:${query.toLowerCase()}`; const stored = cache.get(key);
       if (stored && stored.expires>Date.now()) return {id,photo:stored.photo};
       const url = new URL('https://api.pexels.com/v1/search');
       url.searchParams.set('query',query); url.searchParams.set('per_page','1'); url.searchParams.set('orientation','landscape');
+      await reserveApiCalls('pexels',env);
       const result = await fetch(url,{headers:{Authorization:env.PEXELS_API_KEY!},signal:AbortSignal.any([request.signal,AbortSignal.timeout(8000)])});
       if (!result.ok) throw new Error('PHOTO_PROVIDER');
       const value = await result.json(); const first = value.photos?.[0];
       const photo = first ? menuPhotoSchema.parse({url:first.src?.large, page:first.url, photographer:first.photographer}) : null;
+      if(photo) {
+        try { const cutout=await cutoutPhoto(photo.url,env,request.signal);if(cutout)photo.cutoutUrl=cutout; } catch { /* Keep the original with attribution if segmentation is unavailable. */ }
+      }
       if (cache.size>=500) cache.delete(cache.keys().next().value!);
-      cache.set(key,{photo,expires:Date.now()+24*60*60*1000});
+      if(!photo || !env.PHOTOROOM_API_KEY || Number(env.PHOTOROOM_LIFETIME_LIMIT || 0)<=0 || photo.cutoutUrl) cache.set(key,{photo,expires:Date.now()+24*60*60*1000});
       return {id,photo};
     }));
     return reply({photos},200);
-  } catch { return reply({error:'PHOTOS_UNAVAILABLE',message:'음식 사진을 불러오지 못했어요. 메뉴는 계속 볼 수 있어요'},502); }
+  } catch (error) { if(error instanceof ApiBudgetError) return reply({error:'CALL_LIMIT',message:error.message},error.status); return reply({error:'PHOTOS_UNAVAILABLE',message:'음식 사진을 불러오지 못했어요. 메뉴는 계속 볼 수 있어요'},502); }
 }

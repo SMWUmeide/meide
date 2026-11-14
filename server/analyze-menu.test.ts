@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { reserveApiCalls, ApiBudgetError } from "./api-budget";
 import { analyzeMenu, MAX_BODY_BYTES } from "./analyze-menu";
 import { analysisFixture } from "./analysis-fixture";
 import { normalizeAnalysis } from "../src/data/menu-schema";
@@ -37,3 +38,9 @@ describe("메뉴 분석 정규화", () => {
   it.each(["OTHER", "UNKNOWN"])("%s 통화는 유로 가격으로 오인하지 않아요", currency => { expect(() => normalizeAnalysis({ ...analysisFixture, currency })).toThrow(); });
   it("아무 가격도 읽지 못하면 실패해요", () => { expect(() => normalizeAnalysis({ ...analysisFixture, items: [{ ...analysisFixture.items[0], priceEur: null }] })).toThrow(); });
 });
+
+
+
+vi.mock("./api-budget", async importOriginal => ({ ...await importOriginal<typeof import("./api-budget")>(), reserveApiCalls: vi.fn().mockResolvedValue(undefined) }));
+
+it("호출 한도가 차면 Gemini에 요청하지 않아요", async()=>{vi.mocked(reserveApiCalls).mockRejectedValueOnce(new ApiBudgetError(429));const response=await analyzeMenu(request(),{GEMINI_API_KEY:"test"});expect(response.status).toBe(429);expect(generate).not.toHaveBeenCalled();});

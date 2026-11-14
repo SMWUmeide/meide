@@ -14,3 +14,7 @@ describe('음식 대표 사진 검색',()=>{
   it('신뢰하지 않는 이미지 주소를 전달하지 않아요',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json({photos:[{src:{large:'https://evil.test/track'},url:'https://www.pexels.com/photo/1/',photographer:'Test'}]})));expect((await menuPhotos(request('unsafe test'),{PEXELS_API_KEY:'key'})).status).toBe(502);});
   it('미설정·과도한 요청은 공급자를 호출하지 않아요',async()=>{const fetch=vi.fn();vi.stubGlobal('fetch',fetch);expect((await menuPhotos(request('soup'),{})).status).toBe(503);expect((await menuPhotos(request('a'.repeat(5000)),{PEXELS_API_KEY:'key'})).status).toBe(413);expect(fetch).not.toHaveBeenCalled();});
 });
+
+
+
+vi.mock("./api-budget", async importOriginal => ({ ...await importOriginal<typeof import("./api-budget")>(), reserveApiCalls: vi.fn().mockResolvedValue(undefined) }));

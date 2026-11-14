@@ -1,5 +1,5 @@
 /* Figma reference width 412. Content grows naturally for translations and font scaling. */
-.figma-flow { --menu-safe-top: env(safe-area-inset-top, 0); max-width: 412px; font: var(--type-body-md-weight) var(--type-body-md-size)/var(--type-body-md-line-height) var(--font-family); letter-spacing: var(--type-body-md-tracking); }
+.figma-flow { max-width: 412px; font: var(--type-body-md-weight) var(--type-body-md-size)/var(--type-body-md-line-height) var(--font-family); letter-spacing: var(--type-body-md-tracking); }
 .figma-flow .page { padding-top: env(safe-area-inset-top, 0); }
 .figma-flow .toolbar { height: 56px; min-height: 56px; padding: 0 var(--space-xl); }
 .figma-flow .toolbar h1 { flex: 1; }
@@ -125,10 +125,18 @@
 .figma-flow .cart-bar .button[data-variant="brand"]:active { background: var(--color-brand-pressed); }
 
 /* One continuous menu; category navigation stays available while scrolling. */
-.figma-flow .menu-category-nav { position: sticky; top: var(--menu-safe-top); z-index: 3; isolation: isolate; background: var(--color-neutral); padding: var(--space-sm) 0; margin-top: calc(-1 * var(--space-sm)); margin-bottom: calc(-1 * var(--space-sm)); }
+.figma-flow .menu-category-nav { position: sticky; top: 0; z-index: 3; isolation: isolate; background: var(--color-neutral); padding: var(--space-sm) 0; margin-top: calc(-1 * var(--space-sm)); margin-bottom: calc(-1 * var(--space-sm)); }
 
-/* A real fixed layer, independent of the sticky element's clipping/stacking. */
-.figma-flow .menu-status-cover { position: fixed; z-index: 4; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 412px; height: var(--menu-safe-top); background: var(--color-neutral); pointer-events: none; }
+/* The OS/browser owns the status area; the sticky strip starts at viewport top. */
 .figma-flow .menu-category-nav::before { content: ""; position: absolute; z-index: -1; inset: 0 calc(-1 * var(--space-xl)); background: var(--color-neutral); pointer-events: none; }
 
 .figma-flow .request-input { width: 100%; min-width: 0; min-height: var(--touch-min); padding: var(--space-md) var(--space-lg); border: 1px solid var(--color-border); border-radius: var(--rounded-sm); background: var(--color-neutral); color: var(--color-on-surface); font: inherit; }
+
+/* Figma 961:1001, 24px above the floating bar's visible top edge. */
+.figma-flow .companion-notice { position: fixed; z-index: 6; left: 50%; transform: translateX(-50%); bottom: calc(max(var(--space-2xl), env(safe-area-inset-bottom, 0px)) + var(--cart-height) + var(--space-xl)); width: max-content; max-width: calc(min(100vw, 412px) - var(--space-xl) * 2); padding: var(--space-sm) var(--space-xl); border: 1px solid var(--figma-cart-border); border-radius: var(--rounded-lg); background: var(--figma-cart-bg); color: var(--color-on-primary); pointer-events: none; animation: companion-notice-fade calc(var(--motion-sheet) * 20) ease both; }
+.figma-flow .companion-notice p { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@keyframes companion-notice-fade { 0%, 100% { opacity: 0; } 15%, 80% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .figma-flow .companion-notice { animation: none; } }
+
+.figma-flow .menu-card[data-cutout="true"] .menu-photo, .figma-flow .detail-hero[data-cutout="true"] { background: var(--color-surface); }
+.figma-flow .menu-card[data-cutout="true"] .menu-photo-open img, .figma-flow .detail-hero[data-cutout="true"] .dish-photo { object-fit: contain; }

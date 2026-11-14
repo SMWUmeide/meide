@@ -153,25 +153,13 @@ test('전체 메뉴를 연속 표시하고 탭 이동·스크롤 선택·상세 
 });
 
 
-test('상태바 영역 뒤로 메뉴 사진이 비치지 않아요', async ({ page }) => {
+test('탭 위에 별도 상태바 여백을 만들지 않아요', async ({ page }) => {
   await page.goto('/#/menu');
-  // Desktop browsers report zero safe area; emulate the supplied phone's inset.
-  await page.locator('.figma-flow').evaluate(e => (e as HTMLElement).style.setProperty('--menu-safe-top', '62px'));
-  await page.getByRole('button', { name: '메인 요리 3', exact: true }).click();
-  await expect(page.locator('.menu-category-nav')).toHaveAttribute('data-stuck', 'true');
-  const cover = await page.locator('.menu-status-cover').evaluate(e => {
-    const s = getComputedStyle(e); const r = e.getBoundingClientRect();
-    return { top: r.top, left: r.left, right: r.right, bottom: r.bottom, color: s.backgroundColor, position: s.position };
-  });
-  expect(cover).toEqual({ top: 0, left: 0, right: 412, bottom: 62, color: 'rgb(242, 244, 246)', position: 'fixed' });
-  // Hit-test the actual painted layer, rather than just a pseudo-element's geometry.
-  await page.locator('.menu-status-cover').evaluate(e => (e as HTMLElement).style.pointerEvents = 'auto');
-  expect(await page.evaluate(() => [8, 206, 404].every(x => document.elementFromPoint(x, 32)?.classList.contains('menu-status-cover')))).toBe(true);
-  await page.locator('.menu-status-cover').evaluate(e => (e as HTMLElement).style.pointerEvents = 'none');
-  await expect.poll(() => page.locator('#menu-section-main').evaluate(e => Math.abs(e.getBoundingClientRect().top - 134))).toBeLessThan(1);
-  await page.mouse.wheel(0, -10000);
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await expect(page.locator('.menu-category-nav')).toHaveAttribute('data-stuck', 'false');
+  await expect(page.locator('meta[name="viewport"]')).toHaveAttribute('content', /viewport-fit=auto/);
+  await expect(page.locator('.menu-status-cover')).toHaveCount(0);
+  await page.getByRole('button',{name:'메인 요리 3',exact:true}).click();
+  await expect.poll(()=>page.locator('.menu-category-nav').evaluate(e=>e.getBoundingClientRect().top)).toBe(0);
+  expect((await page.locator('.menu-category-nav .chip').first().boundingBox())!.y).toBe(8);
 });
 
 test('실제 분석 응답의 메뉴·AI 상세·사진 출처를 연결해요', async ({ page }) => {
@@ -192,4 +180,17 @@ test('실제 분석 응답의 메뉴·AI 상세·사진 출처를 연결해요',
   await expect(page.getByRole('link',{name:'사진: 테스트 작가 · Pexels'})).toHaveAttribute('href','https://www.pexels.com/photo/1/');
   await page.reload();
   await expect(page.getByRole('heading',{name:'토마토 파스타',exact:true})).toBeVisible();
+});
+
+test('동반인 알림은 플로팅 바 위 24px에 나타났다 사라져요',async({page})=>{
+  await page.goto('/e2e/fixtures/notice.html');
+  const notice=page.locator('.companion-notice');await expect(notice).toBeVisible();
+  await expect.poll(()=>notice.evaluate(e=>Number(getComputedStyle(e).opacity))).toBeGreaterThan(.95);
+  const toast=await notice.boundingBox();const bar=await page.locator('.cart-bar').boundingBox();
+  expect(bar!.y-(toast!.y+toast!.height)).toBeCloseTo(24,1);
+  await expect(notice).toHaveCSS('font-size','14px');await expect(notice).toHaveCSS('padding-top','8px');await expect(notice).toHaveCSS('padding-left','24px');
+  await page.screenshot({path:'outputs/figma-review/companion-notice.png'});
+  await expect(notice).toHaveCount(0,{timeout:5000});
+  await page.emulateMedia({reducedMotion:'reduce'});await page.reload();
+  await expect(page.locator('.companion-notice')).toHaveCSS('animation-name','none');
 });

@@ -7,6 +7,7 @@ import { Cart } from "./screens/Cart";
 import { Order } from "./screens/Order";
 import { Receipt } from "./screens/Receipt";
 import { changeQuantity, type CartLine } from "./cart";
+import { CompanionNotice } from "@/components/CompanionNotice";
 import { MenuTools } from "./MenuTools";
 import { useSharedOrder } from "./use-shared-order";
 import { sharedView } from "@/lib/shared-order";
@@ -70,6 +71,7 @@ export function App() {
       : activeRoute === "receipt" ? <Receipt board={board} cart={cart} tip={tip} tipRate={tipRate} go={go} />
       : item && activeRoute.startsWith("detail/") ? <Detail key={item.id} item={item} source={board.source} added={cart.some(line => line.menuId === item.id && (!shared.roomId || line.person === "me"))} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} onAdd={() => { toggle(item.id); if (!shared.roomId) setNotice("장바구니에 담았어요"); }} go={go} />
       : <Menu tools={tools} people={view?.people} shared={Boolean(shared.roomId)} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} syncMessage={shared.status || (shared.roomId ? shared.connected ? "동반인과 실시간으로 함께 고르고 있어요" : "동반인과 연결하고 있어요" : "")} board={board} cart={cart} category={category} setCategory={setCategory} go={go} onToggle={toggle} />}
+    {(activeRoute === "menu" || activeRoute.startsWith("detail/")) && <CompanionNotice activity={shared.activity} />}
     <div className="toast t-body-sm" role="status" aria-live="polite" data-visible={!!notice}>{notice}</div>
   </div>;
 }

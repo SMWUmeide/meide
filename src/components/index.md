@@ -36,3 +36,5 @@ import 경로가 실제 레포와 다르면 이 표를 먼저 고친다.
 - AICard의 `onConfirm`을 전달하면 “직원에게 확인하는 문장 보기” 버튼을 표시해요. 내용의 섹션 라벨에는 `className="ai-section-label"`을 사용해요.
 - BottomSheet는 네이티브 dialog로 포커스 제한·복귀를 처리해요. `label`로 접근 가능한 제목을 지정해요. 닫기를 허용할 때 `onClose`에서 부모의 `open`을 false로 바꿔요. 다른 시트가 열려 있으면 중첩을 거부해요.
 - 기준 충돌: Avatar 34의 12px 글자는 DESIGN.md의 최소 글자 규칙에 맞춰 13px로 조정했어요.
+
+- `CompanionNotice`: `@/components/CompanionNotice` — 동반인 담기 알림. [계약](CompanionNotice/CONTRACT.md).

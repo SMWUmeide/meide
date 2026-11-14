@@ -1,3 +1,4 @@
+import { reserveApiCalls, ApiBudgetError } from "./api-budget";
 import { apiAccess, type ApiEnv } from "./http";
 import { generateText, Output } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
@@ -47,6 +48,7 @@ export async function analyzeMenu(request: Request, env: Env = process.env): Pro
       const valid = image.mediaType === "image/jpeg" ? bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255 : image.mediaType === "image/png" ? bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) : bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WEBP";
       if (!valid) return reply({ error: "INVALID_INPUT", message: "사진을 다시 선택해 주세요" }, 400);
     }
+    await reserveApiCalls("gemini", env);
     const google = createGoogleGenerativeAI({ apiKey: env.GEMINI_API_KEY });
     const result = await generateText({
       model: google(model),
@@ -59,6 +61,7 @@ export async function analyzeMenu(request: Request, env: Env = process.env): Pro
     });
     return reply({ board: normalizeAnalysis(result.output) }, 200);
   } catch (error) {
+    if (error instanceof ApiBudgetError) return reply({ error: "CALL_LIMIT", message: error.message }, error.status);
     // 공급자 오류에는 키·사진·응답 원문이 포함될 수 있어요. 그대로 로깅하거나 반환하지 않아요.
     const isInput = error instanceof SyntaxError;
     return reply({ error: isInput ? "INVALID_INPUT" : "ANALYSIS_FAILED", message: "분석에 실패했어요" }, isInput ? 400 : 502);

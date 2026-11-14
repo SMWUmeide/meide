@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Avatar } from "../Avatar";
 import { IconButton } from "../IconButton";
 import { personNames, type Person } from "../_shared/action";
-export type MenuCardProps = { originalName: string; name: string; priceEur: number; priceKrw: number; photoUrl?: string | null; addedBy?: Person | null; onToggle: () => void; onOpen: () => void; addedByName?: string; disabled?: boolean; loading?: boolean; presentation?: "default" | "figma"; allergenLabel?: string; companionLabel?: string; toggleDisabled?: boolean };
-export function MenuCard({ originalName, name, priceEur, priceKrw, photoUrl = null, addedBy = null, onToggle, onOpen, addedByName, disabled = false, loading = false, presentation = "default", allergenLabel, companionLabel, toggleDisabled = false }: MenuCardProps) {
+export type MenuCardProps = { originalName: string; name: string; priceEur: number; priceKrw: number; photoUrl?: string | null; addedBy?: Person | null; onToggle: () => void; onOpen: () => void; addedByName?: string; disabled?: boolean; loading?: boolean; presentation?: "default" | "figma"; allergenLabel?: string; companionLabel?: string; toggleDisabled?: boolean; cutout?: boolean };
+export function MenuCard({ originalName, name, priceEur, priceKrw, photoUrl = null, addedBy = null, onToggle, onOpen, addedByName, disabled = false, loading = false, presentation = "default", allergenLabel, companionLabel, toggleDisabled = false, cutout = false }: MenuCardProps) {
   const [failedUrl, setFailedUrl] = useState<string | null>(null);
   const personName = addedByName || (addedBy ? personNames[addedBy] : "");
-  return <article className="menu-card" data-presentation={presentation} aria-label={name}>
+  return <article className="menu-card" data-presentation={presentation} data-cutout={cutout} aria-label={name}>
     <div className="menu-photo">
       <button type="button" className="menu-photo-open" onClick={onOpen} disabled={disabled} aria-label={`${name} 상세 보기`}>
         {photoUrl && failedUrl !== photoUrl ? <img src={photoUrl} alt={name} onError={() => setFailedUrl(photoUrl)} /> : <span className="t-body-sm">사진 준비 중</span>}

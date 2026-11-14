@@ -76,7 +76,7 @@ export function MenuTools({ board, roomId, invite, onBoard, onPhotos, onRoom, no
           <Button variant="secondary" disabled={busy} onClick={()=>void pick()}>메뉴판 사진 선택하기{files.length?` · ${files.length}장`:''}</Button>
           {files.length>0 && <><p className="t-body-sm muted">최대 6장 · 분석 시 사진을 Gemini로 전송해요. 음식 사진은 Pexels의 대표 이미지예요.</p><Button variant="secondary" state={busy?'loading':'default'} onClick={()=>void analyze()}>메뉴판 분석하기</Button></>}
         </>}
-        {!roomId && !invite && board.items.some(item=>!item.photoUrl && item.photoQuery) && <Button variant="secondary" disabled={busy} onClick={()=>void retryPhotos()}>음식 사진 다시 불러오기</Button>}
+        {!roomId && !invite && board.items.some(item=>(!item.photoUrl || (item.photo && !item.photo.cutoutUrl)) && item.photoQuery) && <Button variant="secondary" disabled={busy} onClick={()=>void retryPhotos()}>음식 사진 다시 불러오기</Button>}
         {(!roomId || invite) && <>
           <label className="stack-xs"><span>동반인에게 보일 이름</span><input className="request-input" value={name} maxLength={20} disabled={busy} onChange={event=>setName(event.target.value)} placeholder="이름을 입력해 주세요" /></label>
           <p className="t-body-sm muted">{invite?'초대받은 메뉴판과 장바구니에 참여해요.':'새 공동 장바구니는 비어 있는 상태로 시작해요. 최대 4명이 24시간 동안 함께 고를 수 있어요.'}</p>
