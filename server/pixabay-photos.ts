@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
-import { reserveApiCalls } from './api-budget';
-import type { ApiEnv } from './http';
-import { menuPhotoSchema, type MenuPhoto } from '../src/data/menu-photo';
+import { reserveApiCalls } from './api-budget.js';
+import type { ApiEnv } from './http.js';
+import { menuPhotoSchema, type MenuPhoto } from '../src/data/menu-photo.js';
 const hitSchema=z.object({id:z.number().int().positive(),pageURL:z.string().url(),webformatURL:z.string().url(),user:z.string().min(1)});
 function sourceUrl(value:string) {
   const u=new URL(value);

@@ -1,9 +1,9 @@
-import { pixabayPhoto } from './pixabay-photos';
-import { cutoutPhoto } from "./cutout-photo";
-import { reserveApiCalls, ApiBudgetError } from "./api-budget";
+import { pixabayPhoto } from './pixabay-photos.js';
+import { cutoutPhoto } from "./cutout-photo.js";
+import { reserveApiCalls, ApiBudgetError } from "./api-budget.js";
 import { z } from 'zod';
-import { apiAccess, readSmallJson, type ApiEnv } from './http';
-import { menuPhotoSchema, type MenuPhoto } from '../src/data/menu-photo';
+import { apiAccess, readSmallJson, type ApiEnv } from './http.js';
+import { menuPhotoSchema, type MenuPhoto } from '../src/data/menu-photo.js';
 const input = z.object({ queries: z.array(z.object({ id: z.string().min(1).max(100), query: z.string().trim().min(2).max(120) }).strict()).min(1).max(4) }).strict();
 // Bounded, best-effort cache. Missing results are cached too; failures are not.
 const cache = new Map<string, { photo: MenuPhoto | null; expires: number }>();

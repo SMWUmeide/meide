@@ -1,9 +1,9 @@
-import { reserveApiCalls, ApiBudgetError } from "./api-budget";
-import { apiAccess, type ApiEnv } from "./http";
+import { reserveApiCalls, ApiBudgetError } from "./api-budget.js";
+import { apiAccess, type ApiEnv } from "./http.js";
 import { generateText, Output } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
-import { analysisSchema, normalizeAnalysis } from "../src/data/menu-schema";
+import { analysisSchema, normalizeAnalysis } from "../src/data/menu-schema.js";
 
 // Nested maxItems constraints exceed Gemini's structured-output complexity
 // budget. Keep the exact shape for generation and enforce all original bounds

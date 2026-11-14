@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { menuPhotoSchema, cutoutUrlSchema, type MenuPhoto } from "./menu-photo";
+import { menuPhotoSchema, cutoutUrlSchema, type MenuPhoto } from "./menu-photo.js";
 
 const text = z.string().trim().min(1).max(800);
 export const analysisSchema = z.object({

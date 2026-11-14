@@ -1,4 +1,4 @@
-import { analyzeMenu } from "../server/analyze-menu";
+import { analyzeMenu } from "../server/analyze-menu.js";
 
 export async function POST(request: Request) {
   return analyzeMenu(request);

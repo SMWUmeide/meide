@@ -1,4 +1,4 @@
-import type { ApiEnv } from './http';
+import type { ApiEnv } from './http.js';
 export class ApiBudgetError extends Error {
   constructor(public status: number) { super(status===429?'설정한 호출 한도에 도달했어요. 나중에 다시 시도해 주세요':'호출 제한 서버를 연결해 주세요'); }
 }

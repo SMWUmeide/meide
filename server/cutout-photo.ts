@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
-import { reserveApiCalls } from './api-budget';
-import type { ApiEnv } from './http';
-import { menuPhotoSchema } from '../src/data/menu-photo';
+import { reserveApiCalls } from './api-budget.js';
+import type { ApiEnv } from './http.js';
+import { menuPhotoSchema } from '../src/data/menu-photo.js';
 async function imageBytes(response: Response, maxBytes=4_000_000) {
   if(!response.ok || !response.headers.get('content-type')?.startsWith('image/'))throw new Error('IMAGE');
   const reader=response.body?.getReader();if(!reader)throw new Error('IMAGE');

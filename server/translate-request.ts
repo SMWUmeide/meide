@@ -1,8 +1,8 @@
-import { reserveApiCalls, ApiBudgetError } from "./api-budget";
+import { reserveApiCalls, ApiBudgetError } from "./api-budget.js";
 import { generateText, Output } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
-import { apiAccess, readSmallJson, type ApiEnv } from "./http";
+import { apiAccess, readSmallJson, type ApiEnv } from "./http.js";
 
 const inputSchema = z.object({ text: z.string().trim().min(1).max(500) }).strict();
 const outputSchema = z.object({ translation: z.string().trim().min(1).max(2000) });
