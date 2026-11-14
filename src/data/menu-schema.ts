@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { menuPhotoSchema, type MenuPhoto } from "./menu-photo";
 
 const text = z.string().trim().min(1).max(800);
 export const analysisSchema = z.object({
@@ -9,6 +10,7 @@ export const analysisSchema = z.object({
     categoryName: text.describe("메뉴판 섹션을 한국어로 번역한 이름"),
     categoryOriginal: z.string().max(160),
     originalName: text,
+    photoQuery: z.string().max(120).optional().describe("사진 검색용 구체적인 영어 음식명. 요리 이름을 정확히 모르면 빈 문자열"),
     name: text.describe("한국어 메뉴명"),
     priceEur: z.number().min(0).max(10000).nullable().describe("메뉴판에서 읽은 EUR 가격. 안 보이거나 모호하면 null. 추정 금지"),
     analogy: text.describe("한국 음식에 빗댄 설명. 불확실하면 직원에게 확인하도록 안내"),
@@ -23,7 +25,7 @@ export const analysisSchema = z.object({
 export type Analysis = z.infer<typeof analysisSchema>;
 export type MenuCategory = { id: string; name: string; original: string };
 export type Category = string;
-export type MenuItem = Omit<Analysis["items"][number], "categoryName" | "categoryOriginal" | "priceEur"> & { id: string; category: Category; priceEur: number; photoUrl: string | null; detailPhotoUrl?: string };
+export type MenuItem = Omit<Analysis["items"][number], "categoryName" | "categoryOriginal" | "priceEur"> & { id: string; category: Category; priceEur: number; photoUrl: string | null; detailPhotoUrl?: string; photo?: MenuPhoto };
 export type MenuBoard = { restaurantName: string; categories: MenuCategory[]; items: MenuItem[]; source: "gemini" | "demo"; skipped: number };
 
 export function normalizeAnalysis(value: unknown): MenuBoard {
@@ -48,5 +50,5 @@ export function normalizeAnalysis(value: unknown): MenuBoard {
   return { restaurantName: analysis.restaurantName || "촬영한 메뉴판", categories, items, source: "gemini", skipped };
 }
 
-const menuItemSchema = analysisSchema.shape.items.element.omit({ categoryName: true, categoryOriginal: true }).extend({ id: text, category: text, priceEur: z.number().min(0).max(10000), photoUrl: z.null() });
+const menuItemSchema = analysisSchema.shape.items.element.omit({ categoryName: true, categoryOriginal: true }).extend({ id: text, category: text, priceEur: z.number().min(0).max(10000), photoUrl: z.union([z.null(), menuPhotoSchema.shape.url]), photo: menuPhotoSchema.optional() });
 export const menuBoardSchema = z.object({ restaurantName: text, categories: z.array(z.object({ id: text, name: text, original: z.string().max(160) })).min(1).max(80), items: z.array(menuItemSchema).min(1).max(80), source: z.literal("gemini"), skipped: z.number().int().min(0).max(80) }).refine(board => board.items.every(item => board.categories.some(category => category.id === item.category)) && new Set(board.items.map(item => item.id)).size === board.items.length && new Set(board.categories.map(category => category.id)).size === board.categories.length);

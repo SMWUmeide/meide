@@ -1,4 +1,4 @@
-export type ApiEnv = { GEMINI_API_KEY?: string; GEMINI_MODEL?: string; NATIVE_APP_ORIGINS?: string };
+export type ApiEnv = { GEMINI_API_KEY?: string; GEMINI_MODEL?: string; NATIVE_APP_ORIGINS?: string; PEXELS_API_KEY?: string };
 
 export function apiAccess(request: Request, env: ApiEnv) {
   const origin = request.headers.get("origin");

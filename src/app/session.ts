@@ -6,7 +6,7 @@ import { initialCart, type CartLine } from "./cart";
 const key = "meide.order.v1";
 const schema = z.object({
   version: z.literal(1), board: z.union([z.literal("demo"), menuBoardSchema]),
-  cart: z.array(z.object({ menuId: z.string(), person: z.enum(["me", "companion-1"]), quantity: z.number().int().min(1).max(20) })).max(160),
+  cart: z.array(z.object({ menuId: z.string(), person: z.enum(["me", "companion-1", "companion-2", "companion-3"]), quantity: z.number().int().min(1).max(20) })).max(160),
   category: z.string(), tip: z.boolean(), tipRate: z.union([z.literal(5), z.literal(10), z.literal(15), z.literal(20)]), request: z.string().max(500),
 });
 export type OrderSession = { board: MenuBoard; cart: CartLine[]; category: string; tip: boolean; tipRate: number; request: string };

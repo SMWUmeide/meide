@@ -8,14 +8,14 @@ import { defineConfig } from "vitest/config";
 function localMenuApi(): Plugin {
   return { name: "local-menu-api", configureServer(server) {
     const env = loadEnv(server.config.mode, server.config.root, "");
-    for (const endpoint of ["analyze-menu", "translate-request"]) server.middlewares.use(`/api/${endpoint}`, async (req, res) => {
+    for (const endpoint of ["analyze-menu", "translate-request", "menu-photos"]) server.middlewares.use(`/api/${endpoint}`, async (req, res) => {
       const controller = new AbortController();
       res.on("close", () => { if (!res.writableEnded) controller.abort(); });
       try {
-        const handler = endpoint === "analyze-menu" ? (await import("./server/analyze-menu")).analyzeMenu : (await import("./server/translate-request")).translateRequest;
+        const handler = endpoint === "analyze-menu" ? (await import("./server/analyze-menu")).analyzeMenu : endpoint === "translate-request" ? (await import("./server/translate-request")).translateRequest : (await import("./server/menu-photos")).menuPhotos;
         const init: RequestInit & { duplex: "half" } = { method: req.method, headers: Object.fromEntries(Object.entries(req.headers).filter((entry): entry is [string, string] => typeof entry[1] === "string")), duplex: "half", signal: controller.signal };
         if (req.method !== "GET" && req.method !== "HEAD") init.body = Readable.toWeb(req) as ReadableStream;
-        const response = await handler(new Request(`http://${req.headers.host || "127.0.0.1:5173"}/api/${endpoint}`, init), { GEMINI_API_KEY: process.env.GEMINI_API_KEY || env.GEMINI_API_KEY, GEMINI_MODEL: process.env.GEMINI_MODEL || env.GEMINI_MODEL, NATIVE_APP_ORIGINS: process.env.NATIVE_APP_ORIGINS || env.NATIVE_APP_ORIGINS });
+        const response = await handler(new Request(`http://${req.headers.host || "127.0.0.1:5173"}/api/${endpoint}`, init), { PEXELS_API_KEY: process.env.PEXELS_API_KEY || env.PEXELS_API_KEY, GEMINI_API_KEY: process.env.GEMINI_API_KEY || env.GEMINI_API_KEY, GEMINI_MODEL: process.env.GEMINI_MODEL || env.GEMINI_MODEL, NATIVE_APP_ORIGINS: process.env.NATIVE_APP_ORIGINS || env.NATIVE_APP_ORIGINS });
         res.statusCode = response.status; response.headers.forEach((value, key) => res.setHeader(key, value));
         res.end(Buffer.from(await response.arrayBuffer()));
       } catch { res.statusCode = 500; res.setHeader("Content-Type", "application/json"); res.end(JSON.stringify({ message: "분석에 실패했어요" })); }

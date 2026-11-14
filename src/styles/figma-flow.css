@@ -130,3 +130,5 @@
 /* A real fixed layer, independent of the sticky element's clipping/stacking. */
 .figma-flow .menu-status-cover { position: fixed; z-index: 4; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 412px; height: var(--menu-safe-top); background: var(--color-neutral); pointer-events: none; }
 .figma-flow .menu-category-nav::before { content: ""; position: absolute; z-index: -1; inset: 0 calc(-1 * var(--space-xl)); background: var(--color-neutral); pointer-events: none; }
+
+.figma-flow .request-input { width: 100%; min-width: 0; min-height: var(--touch-min); padding: var(--space-md) var(--space-lg); border: 1px solid var(--color-border); border-radius: var(--rounded-sm); background: var(--color-neutral); color: var(--color-on-surface); font: inherit; }

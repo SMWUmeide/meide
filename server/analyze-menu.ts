@@ -13,6 +13,7 @@ const prompt = `당신은 한국인 여행자의 메뉴판 읽기를 돕습니�
 EUR 또는 €가 메뉴판에 확인되면 EUR, 다른 통화는 OTHER, 확인 불가능하면 UNKNOWN입니다. 가격이 안 보이면 null입니다. 1인/잔/병/크기가 다른 가격은 별도 메뉴명으로 구분하세요.
 재료 ingredients와 allergen은 이름·원문에 명시된 것만 쓰세요. 없는 재료는 넣지 말고 없는 알레르기는 '메뉴판에서 확인되지 않았어요'라고 하세요.
 analogy, description, estimated, method, possibleAllergen은 일반적인 음식 지식에 따른 AI 추정임을 전제로 한국어 존댓말 '~요'로 작성하세요. 알레르기가 없다고 단정하지 마세요.
+photoQuery에는 사진 검색용 구체적인 영어 요리명을 적으세요. 요리를 특정할 수 없으면 빈 문자열로 두세요.
 사진이 메뉴판이 아니거나 글자를 읽을 수 없으면 isMenu=false, items=[]로 반환하세요. 최대 80개, 다른 설명 없이 지정된 구조만 반환하세요.`;
 
 type Env = ApiEnv;

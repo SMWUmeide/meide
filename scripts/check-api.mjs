@@ -5,6 +5,8 @@ const env = { ...loadEnv('development', process.cwd(), ''), ...process.env };
 let failed = false;
 const report = (ok, message) => { console.log(`${ok ? '✓' : '!'} ${message}`); if (!ok) failed = true; };
 report(Boolean(env.GEMINI_API_KEY?.trim()), '로컬 Gemini 서버 키 설정 (값은 출력하지 않아요)');
+report(Boolean(env.PEXELS_API_KEY?.trim()), '음식 사진 검색 서버 키 설정 (값은 출력하지 않아요)');
+report(Boolean(env.VITE_SUPABASE_URL && env.VITE_SUPABASE_PUBLISHABLE_KEY), 'Supabase 공개 연결 설정');
 const origins = (env.NATIVE_APP_ORIGINS || '').split(',').map(value => value.trim());
 report(origins.includes('https://localhost'), 'Android 앱 origin 허용');
 let base = 'http://127.0.0.1:5173';
@@ -17,7 +19,7 @@ if (env.VITE_API_BASE_URL?.trim()) {
   } catch { report(false, '외부 API 서버 주소 형식'); }
 } else console.log('· 외부 서버 주소 미정: 웹은 로컬 API를 사용해요. Android 실연결 전에는 HTTPS 주소가 필요해요.');
 if (process.argv.includes('--probe')) {
-  for (const endpoint of ['analyze-menu', 'translate-request']) {
+  for (const endpoint of ['analyze-menu', 'translate-request', 'menu-photos']) {
     try {
       const response = await globalThis.fetch(`${base}/api/${endpoint}`, { method: 'OPTIONS', headers: { Origin: 'https://localhost', 'Access-Control-Request-Method': 'POST', 'Access-Control-Request-Headers': 'Content-Type' }, signal: globalThis.AbortSignal.timeout(5000) });
       report(response.status === 204 && response.headers.get('Access-Control-Allow-Origin') === 'https://localhost', `${endpoint}: Android 사전 요청 연결`);

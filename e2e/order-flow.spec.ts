@@ -173,3 +173,23 @@ test('상태바 영역 뒤로 메뉴 사진이 비치지 않아요', async ({ pa
   await page.evaluate(() => window.scrollTo(0, 0));
   await expect(page.locator('.menu-category-nav')).toHaveAttribute('data-stuck', 'false');
 });
+
+test('실제 분석 응답의 메뉴·AI 상세·사진 출처를 연결해요', async ({ page }) => {
+  const { analysisFixture } = await import('../server/analysis-fixture');
+  const { normalizeAnalysis } = await import('../src/data/menu-schema');
+  const board=normalizeAnalysis(analysisFixture);
+  await page.route('**/api/analyze-menu',route=>route.fulfill({json:{board}}));
+  await page.route('**/api/menu-photos',route=>route.fulfill({json:{photos:[{id:'scan-1',photo:{url:'https://images.pexels.com/photos/1/test.jpg',page:'https://www.pexels.com/photo/1/',photographer:'테스트 작가'}}]}}));
+  await page.goto('/#/menu');
+  await page.getByRole('button',{name:'메뉴판 불러오기와 동반인 공유'}).click();
+  // A real 1x1 PNG exercises image decoding/compression and the API boundary.
+  await page.getByLabel('분석할 메뉴판 사진').setInputFiles({name:'menu.png',mimeType:'image/png',buffer:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=','base64')});
+  await page.getByRole('button',{name:'메뉴판 분석하기',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Trattoria Test'})).toBeVisible();
+  await page.getByRole('button',{name:'토마토 파스타 상세 보기'}).click();
+  await expect(page.getByText(analysisFixture.items[0].analogy,{exact:true})).toBeVisible();
+  await expect(page.getByText(analysisFixture.items[0].method,{exact:true})).toBeVisible();
+  await expect(page.getByRole('link',{name:'사진: 테스트 작가 · Pexels'})).toHaveAttribute('href','https://www.pexels.com/photo/1/');
+  await page.reload();
+  await expect(page.getByRole('heading',{name:'토마토 파스타',exact:true})).toBeVisible();
+});
