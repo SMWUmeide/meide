@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Capacitor } from "@capacitor/core";
 import { App as NativeApp } from "@capacitor/app";
 import { TestSetup } from "./screens/TestSetup";
@@ -12,7 +12,7 @@ import { CompanionNotice } from "@/components/CompanionNotice";
 import { MenuTools } from "./MenuTools";
 import { useSharedOrder } from "./use-shared-order";
 import { sharedView } from "@/lib/shared-order";
-import type { Category, MenuBoard } from "@/data/menu-schema";
+import { withReviewedPhotos, type Category, type MenuBoard } from "@/data/menu-schema";
 import { readSession, saveSession } from "./session";
 
 // This release starts at the menu board. Older home/camera links also land here.
@@ -28,7 +28,7 @@ export function App({ initialBoard, onBackToPrevious }: { initialBoard?: MenuBoa
   const [localBoard,setBoard] = useState(saved.board);
   const shared = useSharedOrder();
   const view = shared.snapshot ? sharedView(shared.snapshot, shared.userId) : null;
-  const board = shared.snapshot?.board ?? localBoard;
+  const board = useMemo(()=>withReviewedPhotos(shared.snapshot?.board ?? localBoard),[shared.snapshot?.board,localBoard]);
   const [invite, setInvite] = useState(() => /^#\/join\/([a-f0-9]{64})$/.exec(window.location.hash)?.[1] ?? "");
   const [request, setRequest] = useState(saved.request);
   const [tipRate, setTipRate] = useState(saved.tipRate);

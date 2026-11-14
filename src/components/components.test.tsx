@@ -47,7 +47,7 @@ describe("앱과 공용 액션", () => {
 describe("메뉴와 사람·장바구니", () => {
   it("사진이 없거나 실패하면 대체 문구와 두 통화를 표시해요", () => {
     const { rerender } = render(<MenuCard {...menu} photoUrl="/actual-photo.jpg" />);
-    fireEvent.error(screen.getByRole("img")); expect(screen.getByText("사진 준비 중")).toBeInTheDocument();
+    fireEvent.error(screen.getByRole("img")); expect(screen.getByText("사진을 불러오지 못했어요")).toBeInTheDocument();
     expect(screen.getByText("EUR")).toBeInTheDocument(); expect(screen.getByText("약 14,990원")).toBeInTheDocument();
     rerender(<MenuCard {...menu} photoUrl="/another-photo.jpg" />); expect(screen.getByRole("img")).toHaveAttribute("src", "/another-photo.jpg");
   });

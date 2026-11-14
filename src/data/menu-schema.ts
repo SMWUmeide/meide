@@ -52,3 +52,12 @@ export function normalizeAnalysis(value: unknown): MenuBoard {
 
 const menuItemSchema = analysisSchema.shape.items.element.omit({ categoryName: true, categoryOriginal: true }).extend({ id: text, category: text, priceEur: z.number().min(0).max(10000), photoUrl: z.union([z.null(), menuPhotoSchema.shape.url, cutoutUrlSchema]), photo: menuPhotoSchema.optional() });
 export const menuBoardSchema = z.object({ restaurantName: text, categories: z.array(z.object({ id: text, name: text, original: z.string().max(160) })).min(1).max(80), items: z.array(menuItemSchema).min(1).max(80), source: z.literal("gemini"), skipped: z.number().int().min(0).max(80) }).refine(board => board.items.every(item => board.categories.some(category => category.id === item.category)) && new Set(board.items.map(item => item.id)).size === board.items.length && new Set(board.categories.map(category => category.id)).size === board.categories.length);
+
+// Historical search-only photos must never reappear through local storage or shared rooms.
+export function withReviewedPhotos(board:MenuBoard):MenuBoard {
+ return {...board,items:board.items.map(item=>{
+  const p=item.photo;
+  if(p?.reviewVersion==='dish-v5'&&p.reviewedFor===item.originalName&&p.cutoutUrl)return {...item,photoUrl:p.cutoutUrl,detailPhotoUrl:undefined};
+  return {...item,photo:undefined,photoUrl:null,detailPhotoUrl:undefined};
+ })};
+}

@@ -10,6 +10,6 @@ export function Price({ eur, large = false }: { eur: number; large?: boolean }) 
 }
 export function Photo({ src, name, className = "" }: { src: string | null; name: string; className?: string }) {
   const [failed, setFailed] = useState<string | null>(null);
-  return src && failed !== src ? <img className={`dish-photo ${className}`} src={src} alt={`${name} 예시 사진`} onError={() => setFailed(src)} /> : <div className={`photo-placeholder t-body-sm ${className}`}>사진 준비 중</div>;
+  return src && failed !== src ? <img className={`dish-photo ${className}`} src={src} alt={`${name} 예시 사진`} onError={() => setFailed(src)} /> : <div className={`photo-placeholder t-body-sm ${className}`}>{src ? "사진을 불러오지 못했어요" : "검증된 사진이 없어요"}</div>;
 }
 export function Divider({ wide = false, src }: { wide?: boolean; src?: string }) { return <span className="asset-divider" aria-hidden="true"><img src={src ?? (wide ? "/figma/3e16a.svg" : "/figma/146e2.svg")} alt="" /></span>; }

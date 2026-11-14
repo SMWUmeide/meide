@@ -140,3 +140,9 @@
 
 .figma-flow .menu-card[data-cutout="true"] .menu-photo, .figma-flow .detail-hero[data-cutout="true"] { background: var(--color-surface); }
 .figma-flow .menu-card[data-cutout="true"] .menu-photo-open img, .figma-flow .detail-hero[data-cutout="true"] .dish-photo { object-fit: contain; }
+/* Reviewed photos include their own white margin; never crop the container. */
+.figma-flow .menu-card[data-cutout="true"] .menu-photo-open,
+.figma-flow .cart-photo-button { background: var(--color-surface); }
+.figma-flow .cart-photo-button .dish-photo { object-fit: contain; }
+
+.figma-flow .detail-hero[data-cutout="true"]::after { display: none; }

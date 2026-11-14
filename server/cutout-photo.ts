@@ -3,28 +3,19 @@ import { removeBackground } from './remove-background.js';
 import { reserveApiCalls } from './api-budget.js';
 import type { ApiEnv } from './http.js';
 import { menuPhotoSchema } from '../src/data/menu-photo.js';
-async function imageBytes(response: Response, maxBytes=4_000_000) {
-  if(!response.ok || !response.headers.get('content-type')?.startsWith('image/'))throw new Error('IMAGE');
-  const reader=response.body?.getReader();if(!reader)throw new Error('IMAGE');
-  const chunks:Uint8Array[]=[];let size=0;
-  while(true){const {value,done}=await reader.read();if(done)break;size+=value.length;if(size>maxBytes){await reader.cancel();throw new Error('IMAGE_SIZE');}chunks.push(value);}
-  return Buffer.concat(chunks);
-}
-export async function cutoutPhoto(source: string, env: ApiEnv, signal: AbortSignal): Promise<string | null> {
-  menuPhotoSchema.shape.url.parse(source);
-  if(!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY)return null;
-  const base=new URL(env.SUPABASE_URL);
-  if(base.protocol!=='https:' || !base.hostname.endsWith('.supabase.co'))throw new Error('STORAGE_CONFIG');
-  const name=createHash('sha256').update(`u2netp-white-v2:${source}`).digest('hex')+'.png';
-  const publicUrl=new URL(`/storage/v1/object/public/menu-cutouts/${name}`,base).href;
-  const cached=await fetch(publicUrl,{method:'HEAD',signal:AbortSignal.any([signal,AbortSignal.timeout(5000)])});
-  if(cached.ok)return publicUrl;
-  if(cached.status!==404 && cached.status!==400)throw new Error('STORAGE');
-  const photo=await fetch(source,{redirect:'error',signal:AbortSignal.any([signal,AbortSignal.timeout(8000)])});
-  const bytes=await imageBytes(photo);
-  await reserveApiCalls('cutout',env);
-  const png=await removeBackground(bytes);
-  const saved=await fetch(new URL(`/storage/v1/object/menu-cutouts/${name}`,base),{method:'POST',headers:{Authorization:`Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,apikey:env.SUPABASE_SERVICE_ROLE_KEY,'Content-Type':'image/png','x-upsert':'true','Cache-Control':'max-age=31536000'},body:new Uint8Array(png),signal:AbortSignal.any([signal,AbortSignal.timeout(8000)])});
-  if(!saved.ok)throw new Error('STORAGE');
-  return publicUrl;
+import {reviewCutout,boxSchema,type Box} from './photo-review.js';
+export async function cutoutPhoto(source:string,env:ApiEnv,signal:AbortSignal,review:{bytes:Buffer;box:Box}):Promise<string>{
+ menuPhotoSchema.shape.url.parse(source);boxSchema.parse(review.box);
+ if(!env.SUPABASE_URL||!env.SUPABASE_SERVICE_ROLE_KEY)throw Error('STORAGE_CONFIG');
+ const base=new URL(env.SUPABASE_URL);if(base.protocol!=='https:'||!base.hostname.endsWith('.supabase.co'))throw Error('STORAGE_CONFIG');
+ const name=createHash('sha256').update(`dish-v5:${source}:${JSON.stringify(review.box)}`).digest('hex')+'.png';
+ const publicUrl=new URL(`/storage/v1/object/public/menu-cutouts/${name}`,base).href;
+ const timed=()=>AbortSignal.any([signal,AbortSignal.timeout(10000)]);
+ const cached=await fetch(publicUrl,{method:'HEAD',signal:timed()});if(cached.ok)return publicUrl;
+ if(![400,404].includes(cached.status))throw Error('STORAGE');
+ await reserveApiCalls('cutout',env);
+ const png=await removeBackground(review.bytes,review.box);
+ if(!await reviewCutout(review.bytes,png,env,signal))throw Error('CUTOUT_REVIEW_FAILED');
+ const saved=await fetch(new URL(`/storage/v1/object/menu-cutouts/${name}`,base),{method:'POST',headers:{Authorization:`Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,apikey:env.SUPABASE_SERVICE_ROLE_KEY,'Content-Type':'image/png','x-upsert':'true'},body:new Uint8Array(png),signal:timed()});
+ if(!saved.ok)throw Error('STORAGE');return publicUrl;
 }

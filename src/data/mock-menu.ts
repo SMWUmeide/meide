@@ -17,7 +17,8 @@ const exampleItems: MenuItem[] = [
 // Resolve every demo image through the same Pixabay metadata as scanned menus.
 export const menuItems: MenuItem[] = exampleItems.map(item => {
   const entry = demoPhotos[item.id as keyof typeof demoPhotos];
-  const photo = entry?.photo ? menuPhotoSchema.parse(entry.photo) : undefined;
+  const candidate=entry?.photo?menuPhotoSchema.parse(entry.photo):undefined;
+  const photo=candidate?.reviewVersion==='dish-v5'&&candidate.reviewedFor===item.originalName?candidate:undefined;
   return {...item, photoQuery: entry?.query, photo, photoUrl: photo?.cutoutUrl ?? photo?.url ?? null, detailPhotoUrl: undefined};
 });
 export const ranking = [
