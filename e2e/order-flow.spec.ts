@@ -156,18 +156,18 @@ test('전체 메뉴를 연속 표시하고 탭 이동·스크롤 선택·상세 
 test('상태바 영역 뒤로 메뉴 사진이 비치지 않아요', async ({ page }) => {
   await page.goto('/#/menu');
   // Desktop browsers report zero safe area; emulate the supplied phone's inset.
-  await page.locator('.menu-category-nav').evaluate(e => (e as HTMLElement).style.setProperty('--menu-safe-top', '62px'));
+  await page.locator('.figma-flow').evaluate(e => (e as HTMLElement).style.setProperty('--menu-safe-top', '62px'));
   await page.getByRole('button', { name: '메인 요리 3', exact: true }).click();
   await expect(page.locator('.menu-category-nav')).toHaveAttribute('data-stuck', 'true');
-  const cover = await page.locator('.menu-category-nav').evaluate(e => {
-    const s = getComputedStyle(e, '::before'); const r = e.getBoundingClientRect();
-    return { top: r.top + parseFloat(s.top), left: r.left + parseFloat(s.left), right: r.right - parseFloat(s.right), color: s.backgroundColor, content: s.content };
+  const cover = await page.locator('.menu-status-cover').evaluate(e => {
+    const s = getComputedStyle(e); const r = e.getBoundingClientRect();
+    return { top: r.top, left: r.left, right: r.right, bottom: r.bottom, color: s.backgroundColor, position: s.position };
   });
-  expect(cover.top).toBeCloseTo(0, 1);
-  expect(cover.left).toBe(0);
-  expect(cover.right).toBe(412);
-  expect(cover.color).toBe('rgb(242, 244, 246)');
-  expect(cover.content).not.toBe('none');
+  expect(cover).toEqual({ top: 0, left: 0, right: 412, bottom: 62, color: 'rgb(242, 244, 246)', position: 'fixed' });
+  // Hit-test the actual painted layer, rather than just a pseudo-element's geometry.
+  await page.locator('.menu-status-cover').evaluate(e => (e as HTMLElement).style.pointerEvents = 'auto');
+  expect(await page.evaluate(() => [8, 206, 404].every(x => document.elementFromPoint(x, 32)?.classList.contains('menu-status-cover')))).toBe(true);
+  await page.locator('.menu-status-cover').evaluate(e => (e as HTMLElement).style.pointerEvents = 'none');
   await expect.poll(() => page.locator('#menu-section-main').evaluate(e => Math.abs(e.getBoundingClientRect().top - 134))).toBeLessThan(1);
   await page.mouse.wheel(0, -10000);
   await page.evaluate(() => window.scrollTo(0, 0));

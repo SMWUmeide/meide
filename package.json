@@ -17,7 +17,8 @@
     "android:open": "cap open android",
     "android:prepare:release": "node scripts/prepare-android.mjs --release",
     "test:e2e": "playwright test",
-    "preview:figma": "node scripts/preview-figma.mjs"
+    "preview:figma": "node scripts/preview-figma.mjs",
+    "check:api": "node scripts/check-api.mjs"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.109",
