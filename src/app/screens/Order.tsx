@@ -56,7 +56,7 @@ export function Order({ board, cart, request, setRequest, go }: {
     <Toolbar title="주문하기" onBack={() => go("cart")} />
     <div className="page-content order-content">
       {text.korean ? <><Card className="order-sentence">
-        <p>{text.korean}{input && ` ${input}`}</p>
+        <p className="t-body-md">{text.korean}{input && ` ${input}`}</p>
         <hr />
         <p className="order-italian t-headline-md" lang="it">{italian}</p>
         <div className="order-actions">
