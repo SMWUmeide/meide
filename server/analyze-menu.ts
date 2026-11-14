@@ -5,6 +5,17 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
 import { analysisSchema, normalizeAnalysis } from "../src/data/menu-schema";
 
+// Nested maxItems constraints exceed Gemini's structured-output complexity
+// budget. Keep the exact shape for generation and enforce all original bounds
+// with normalizeAnalysis() before returning any data to the client.
+const modelItem = analysisSchema.shape.items.element;
+export const modelAnalysisSchema = analysisSchema.extend({
+  items: z.array(modelItem.extend({
+    ingredients: z.array(modelItem.shape.ingredients.element),
+    estimated: z.array(modelItem.shape.estimated.element),
+  })),
+});
+
 export const MAX_BODY_BYTES = 4_000_000;
 const imageSchema = z.object({ mediaType: z.enum(["image/jpeg", "image/png", "image/webp"]), data: z.string().min(4).max(3_800_000).regex(/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/) });
 const requestSchema = z.object({ images: z.array(imageSchema).min(1).max(6) });
@@ -52,7 +63,7 @@ export async function analyzeMenu(request: Request, env: Env = process.env): Pro
     const google = createGoogleGenerativeAI({ apiKey: env.GEMINI_API_KEY });
     const result = await generateText({
       model: google(model),
-      output: Output.object({ schema: analysisSchema }),
+      output: Output.object({ schema: modelAnalysisSchema }),
       system: prompt,
       messages: [{ role: "user", content: parsed.data.images.map(image => ({ type: "file" as const, data: image.data, mediaType: image.mediaType })) }],
       maxRetries: 0,
