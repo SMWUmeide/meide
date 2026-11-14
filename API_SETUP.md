@@ -117,4 +117,9 @@ Unsplash는 무료 Demo 50회/시간, Production 승인 후 1,000회/시간이�
 
 TheMealDB의 테스트 키는 개발·교육용 무료지만 앱스토어 공개에는 supporter 키가 필요하므로 무료 출시 후보에서 제외해요. https://www.themealdb.com/api.php
 
-이번 변경은 대안 조사까지이며, Pixabay 공급자 코드는 아직 연결하지 않았어요. Pixabay 키를 기존 `PEXELS_API_KEY`에 넣으면 안 돼요.
+Pixabay 공급자 연결을 구현했어요. `PIXABAY_API_KEY`를 설정하면 Pexels보다 우선 사용해요. Supabase의 공개 `menu-photos` 버킷에 사진을 저장하고 비공개 `menu-photo-cache` 버킷에 24시간 검색 캐시를 보관해요. 서버 키만 쓰기 권한을 가지며 메뉴판 원본은 저장하지 않아요. 앱 기본 호출 상한은 분당 20회·UTC 하루 200회예요. `PIXABAY_MINUTE_LIMIT`, `PIXABAY_DAILY_LIMIT`으로 조정해요. 배경 제거는 활성화하지 않았어요.
+
+
+## 외부 폰 기능 테스트
+
+`/#/menu`는 Figma 메뉴판이에요. `/#/test`는 별도 기능 테스트 화면이며 메뉴판 사진 선택·Gemini 분석·Pixabay 사진 불러오기·동반인 초대 링크 생성을 제공해요. 초대 링크를 복사한 후 본인 폰에서 “공동 메뉴판 열기”, 다른 폰에서 초대 링크 열기와 이름 입력을 진행해요. 메뉴판에서 장바구니·주문 문장·영수증으로 이동할 수 있어요. 실제 결제/식당 주문 전송, 환율 API, 배경 제거는 포함하지 않아요.

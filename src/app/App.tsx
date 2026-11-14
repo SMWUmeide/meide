@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Capacitor } from "@capacitor/core";
 import { App as NativeApp } from "@capacitor/app";
+import { TestSetup } from "./screens/TestSetup";
 import { Menu } from "./screens/Menu";
 import { Detail } from "./screens/Detail";
 import { Cart } from "./screens/Cart";
@@ -17,14 +18,14 @@ import { readSession, saveSession } from "./session";
 // This release starts at the menu board. Older home/camera links also land here.
 function readRoute() {
   const route = window.location.hash.slice(2);
-  return ["menu", "cart", "order", "receipt"].includes(route) || /^detail\/[^/]+$/.test(route) ? route : "menu";
+  return ["menu", "cart", "order", "receipt", "test"].includes(route) || /^detail\/[^/]+$/.test(route) ? route : "menu";
 }
 export function App({ initialBoard, onBackToPrevious }: { initialBoard?: MenuBoard; onBackToPrevious?: () => void } = {}) {
   const [saved] = useState(() => {
     const session = readSession();
     return initialBoard ? { ...session, board: initialBoard, cart: [], category: initialBoard.categories[0].id, request: "" } : session;
   });
-  const [localBoard] = useState(saved.board);
+  const [localBoard,setBoard] = useState(saved.board);
   const shared = useSharedOrder();
   const view = shared.snapshot ? sharedView(shared.snapshot, shared.userId) : null;
   const board = shared.snapshot?.board ?? localBoard;
@@ -69,7 +70,7 @@ export function App({ initialBoard, onBackToPrevious }: { initialBoard?: MenuBoa
   }
 
   return <div className="app-shell figma-flow">
-    {activeRoute === "cart" ? <Cart people={view?.people} shared={Boolean(shared.roomId)} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} board={board} cart={cart} tip={tip} setTip={setTip} tipRate={tipRate} setTipRate={setTipRate} onQuantity={(id, delta, person) => { if(shared.roomId) { if(person==='me') void sharedChange(id,delta>0?'increase':'decrease'); } else setCart(current => changeQuantity(current, id, delta, person)); }} go={go} />
+    {activeRoute === "test" ? <TestSetup board={localBoard} onBoard={next=>{shared.open(null);setBoard(next);setCart([]);setCategory(next.categories[0].id);setRequest("");}} onRoom={id=>{shared.open(id);go("menu");}} onMenu={()=>{shared.open(null);go("menu");}} /> : activeRoute === "cart" ? <Cart people={view?.people} shared={Boolean(shared.roomId)} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} board={board} cart={cart} tip={tip} setTip={setTip} tipRate={tipRate} setTipRate={setTipRate} onQuantity={(id, delta, person) => { if(shared.roomId) { if(person==='me') void sharedChange(id,delta>0?'increase':'decrease'); } else setCart(current => changeQuantity(current, id, delta, person)); }} go={go} />
       : activeRoute === "order" ? <Order board={board} cart={cart} request={request} setRequest={setRequest} go={go} />
       : activeRoute === "receipt" ? <Receipt board={board} cart={cart} tip={tip} tipRate={tipRate} go={go} />
       : item && activeRoute.startsWith("detail/") ? <Detail key={item.id} item={item} source={board.source} added={cart.some(line => line.menuId === item.id && (!shared.roomId || line.person === "me"))} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} onAdd={() => { toggle(item.id); if (!shared.roomId) setNotice("장바구니에 담았어요"); }} go={go} />

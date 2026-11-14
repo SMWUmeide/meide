@@ -1,3 +1,4 @@
+import { pixabayPhoto } from './pixabay-photos';
 import { cutoutPhoto } from "./cutout-photo";
 import { reserveApiCalls, ApiBudgetError } from "./api-budget";
 import { z } from 'zod';
@@ -10,13 +11,14 @@ export async function menuPhotos(request: Request, env: ApiEnv = process.env): P
   const { reply, response } = apiAccess(request,env);
   if (response) return response;
   if (request.method !== 'POST') return reply({ message:'사진 검색을 다시 시도해 주세요' },405);
-  if (!env.PEXELS_API_KEY?.trim()) return reply({ error:'CONFIG', message:'음식 사진 서버를 아직 연결하지 않았어요' },503);
+  if (!env.PIXABAY_API_KEY?.trim() && !env.PEXELS_API_KEY?.trim()) return reply({ error:'CONFIG', message:'음식 사진 서버를 아직 연결하지 않았어요' },503);
   if (!request.headers.get('content-type')?.startsWith('application/json')) return reply({ error:'CONTENT_TYPE' },415);
   let parsed: z.infer<typeof input>;
   try { parsed = input.parse(await readSmallJson(request,4096)); }
   catch (error) { return reply({ error:'INVALID_INPUT' },error instanceof RangeError ? 413 : 400); }
   try {
     const photos = await Promise.all(parsed.queries.map(async ({id,query}) => {
+      if(env.PIXABAY_API_KEY?.trim())return {id,photo:await pixabayPhoto(query,env,request.signal)};
       const key = `${env.PHOTOROOM_API_KEY && Number(env.PHOTOROOM_LIFETIME_LIMIT)>0 ? 'cutout' : 'original'}:${query.toLowerCase()}`; const stored = cache.get(key);
       if (stored && stored.expires>Date.now()) return {id,photo:stored.photo};
       const url = new URL('https://api.pexels.com/v1/search');
