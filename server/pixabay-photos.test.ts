@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { pixabayPhoto } from './pixabay-photos';
 import { reserveApiCalls } from './api-budget';
+vi.mock('./cutout-photo',()=>({cutoutPhoto:vi.fn().mockResolvedValue(null)}));
 vi.mock('./api-budget',()=>({reserveApiCalls:vi.fn().mockResolvedValue(undefined)}));
 const env={PIXABAY_API_KEY:'secret-pixabay',SUPABASE_URL:'https://test.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'secret-server'};
 const photo={provider:'pixabay',url:'https://test.supabase.co/storage/v1/object/public/menu-photos/pixabay-123.jpg',page:'https://pixabay.com/photos/soup-123/',photographer:'Author'};

@@ -1,4 +1,4 @@
-export type ApiEnv = { PIXABAY_API_KEY?: string; PIXABAY_MINUTE_LIMIT?: string; PIXABAY_DAILY_LIMIT?: string; GEMINI_API_KEY?: string; GEMINI_MODEL?: string; NATIVE_APP_ORIGINS?: string; PEXELS_API_KEY?: string; PHOTOROOM_API_KEY?: string; PHOTOROOM_LIFETIME_LIMIT?: string; SUPABASE_URL?: string; SUPABASE_SERVICE_ROLE_KEY?: string; GEMINI_MINUTE_LIMIT?: string; GEMINI_DAILY_LIMIT?: string; PEXELS_HOURLY_LIMIT?: string; PEXELS_MONTHLY_LIMIT?: string };
+export type ApiEnv = { CUTOUT_MINUTE_LIMIT?: string; CUTOUT_DAILY_LIMIT?: string; PIXABAY_API_KEY?: string; PIXABAY_MINUTE_LIMIT?: string; PIXABAY_DAILY_LIMIT?: string; GEMINI_API_KEY?: string; GEMINI_MODEL?: string; NATIVE_APP_ORIGINS?: string; PEXELS_API_KEY?: string; PHOTOROOM_API_KEY?: string; PHOTOROOM_LIFETIME_LIMIT?: string; SUPABASE_URL?: string; SUPABASE_SERVICE_ROLE_KEY?: string; GEMINI_MINUTE_LIMIT?: string; GEMINI_DAILY_LIMIT?: string; PEXELS_HOURLY_LIMIT?: string; PEXELS_MONTHLY_LIMIT?: string };
 
 export function apiAccess(request: Request, env: ApiEnv) {
   const origin = request.headers.get("origin");

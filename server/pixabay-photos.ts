@@ -1,3 +1,4 @@
+import { cutoutPhoto } from './cutout-photo.js';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import { reserveApiCalls } from './api-budget.js';
@@ -16,10 +17,15 @@ export async function pixabayPhoto(query:string,env:ApiEnv,signal:AbortSignal):P
   const headers={apikey:env.SUPABASE_SERVICE_ROLE_KEY,Authorization:`Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`};
   const timed=()=>AbortSignal.any([signal,AbortSignal.timeout(15000)]);
   const normalized=query.toLowerCase().trim().slice(0,100);
-  const key=createHash('sha256').update(normalized).digest('hex');
+  const key=createHash('sha256').update(`white-v2:${normalized}`).digest('hex');
   const cacheUrl=new URL(`/storage/v1/object/menu-photo-cache/${key}.json`,base);
   const cached=await fetch(cacheUrl,{headers,signal:timed()});
-  if(cached.ok){const data=await cached.json();if(typeof data.expires==='number'&&data.expires>Date.now())return data.photo===null?null:menuPhotoSchema.parse(data.photo);}
+  if(cached.ok){const data=await cached.json();if(typeof data.expires==='number'&&data.expires>Date.now()){
+    if(data.photo===null)return null;
+    const photo=menuPhotoSchema.parse(data.photo);
+    if(!photo.cutoutUrl){try{photo.cutoutUrl=await cutoutPhoto(photo.url,env,signal)??undefined;}catch{ /* Original remains available; next request can retry. */ }}
+    return photo;
+  }}
   else if(![400,404].includes(cached.status))throw Error('CACHE_READ');
   await reserveApiCalls('pixabay',env);
   const url=new URL('https://pixabay.com/api/');
@@ -27,8 +33,8 @@ export async function pixabayPhoto(query:string,env:ApiEnv,signal:AbortSignal):P
   const result=await fetch(url,{signal:timed()});if(!result.ok)throw Error('PHOTO_PROVIDER');
   const hits=z.object({hits:z.array(hitSchema)}).parse(await result.json()).hits;
   let photo:MenuPhoto|null=null;
-  if(hits[0]){
-    const hit=hits[0];sourceUrl(hit.pageURL);
+  for(const hit of hits){
+    sourceUrl(hit.pageURL);
     const response=await fetch(sourceUrl(hit.webformatURL),{redirect:'error',signal:timed()});
     const type=response.headers.get('content-type')?.split(';')[0];
     if(!response.ok || !['image/jpeg','image/png','image/webp'].includes(type||''))throw Error('PHOTO_IMAGE');
@@ -38,7 +44,10 @@ export async function pixabayPhoto(query:string,env:ApiEnv,signal:AbortSignal):P
     const ext=type==='image/png'?'png':type==='image/webp'?'webp':'jpg';const name=`pixabay-${hit.id}.${ext}`;
     const saved=await fetch(new URL(`/storage/v1/object/menu-photos/${name}`,base),{method:'POST',headers:{...headers,'Content-Type':type!,'x-upsert':'true'},body:new Uint8Array(Buffer.concat(chunks)),signal:timed()});
     if(!saved.ok)throw Error('PHOTO_SAVE');
-    photo=menuPhotoSchema.parse({provider:'pixabay',url:new URL(`/storage/v1/object/public/menu-photos/${name}`,base).href,page:hit.pageURL,photographer:hit.user});
+    const candidate=menuPhotoSchema.parse({provider:'pixabay',url:new URL(`/storage/v1/object/public/menu-photos/${name}`,base).href,page:hit.pageURL,photographer:hit.user});
+    try{candidate.cutoutUrl=await cutoutPhoto(candidate.url,env,signal)??undefined;}catch{ /* Try the next candidate if the main subject was lost. */ }
+    photo ??= candidate;
+    if(candidate.cutoutUrl){photo=candidate;break;}
   }
   const saved=await fetch(cacheUrl,{method:'POST',headers:{...headers,'Content-Type':'application/json','x-upsert':'true'},body:JSON.stringify({photo,expires:Date.now()+86400000}),signal:timed()});
   if(!saved.ok)throw Error('CACHE_SAVE');

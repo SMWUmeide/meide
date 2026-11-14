@@ -8,8 +8,8 @@ function limit(value: string | undefined, fallback: number) {
   if(!Number.isSafeInteger(parsed) || parsed<0) throw new ApiBudgetError(503);
   return parsed;
 }
-export async function reserveApiCalls(provider: 'gemini'|'pexels'|'pixabay'|'photoroom', env: ApiEnv, units=1) {
-  const caps=provider==='pixabay' ? {minute:limit(env.PIXABAY_MINUTE_LIMIT,20),day:limit(env.PIXABAY_DAILY_LIMIT,200)} : provider==='gemini' ? {minute:limit(env.GEMINI_MINUTE_LIMIT,5),day:limit(env.GEMINI_DAILY_LIMIT,50)} : provider==='pexels' ? {hour:limit(env.PEXELS_HOURLY_LIMIT,100),month:limit(env.PEXELS_MONTHLY_LIMIT,1000)} : {lifetime:limit(env.PHOTOROOM_LIFETIME_LIMIT,0)};
+export async function reserveApiCalls(provider: 'gemini'|'pexels'|'pixabay'|'photoroom'|'cutout', env: ApiEnv, units=1) {
+  const caps=provider==='cutout' ? {minute:limit(env.CUTOUT_MINUTE_LIMIT,20),day:limit(env.CUTOUT_DAILY_LIMIT,200)} : provider==='pixabay' ? {minute:limit(env.PIXABAY_MINUTE_LIMIT,20),day:limit(env.PIXABAY_DAILY_LIMIT,200)} : provider==='gemini' ? {minute:limit(env.GEMINI_MINUTE_LIMIT,5),day:limit(env.GEMINI_DAILY_LIMIT,50)} : provider==='pexels' ? {hour:limit(env.PEXELS_HOURLY_LIMIT,100),month:limit(env.PEXELS_MONTHLY_LIMIT,1000)} : {lifetime:limit(env.PHOTOROOM_LIFETIME_LIMIT,0)};
   if(Object.values(caps).some(value=>value<units)) throw new ApiBudgetError(429);
   if(!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) throw new ApiBudgetError(503);
   try {

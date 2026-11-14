@@ -2,6 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
   "functions": {
-    "api/analyze-menu.ts": { "maxDuration": 90 }
-  }
+    "api/analyze-menu.ts": {
+      "maxDuration": 90
+    },
+    "api/menu-photos.ts": {
+      "maxDuration": 90,
+      "includeFiles": "server/models/**",
+      "excludeFiles": "node_modules/onnxruntime-node/bin/napi-v6/{darwin,win32,linux/arm64}/**"
+    }
+  },
+  "installCommand": "ONNXRUNTIME_NODE_INSTALL=skip npm ci"
 }

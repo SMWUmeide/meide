@@ -1,0 +1,131 @@
+{
+  "ceci": {
+    "query": "chickpea soup",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-1354468.jpg",
+      "page": "https://pixabay.com/photos/soupe-chickpeas-food-gastronomy-1354468/",
+      "photographer": "magdus",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/11d978e89bcec3b2a1007ac6a1e05422e24ea0da74d8d9a81292ec734693de78.png"
+    }
+  },
+  "porri": {
+    "query": "potato soup",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-2152254.jpg",
+      "page": "https://pixabay.com/photos/potato-soup-potato-soup-wild-garlic-2152254/",
+      "photographer": "RitaE",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/0d204fa70dd81bbda89c7f7befa5c512ed14a34d293709e75cf9c58e031c97ed.png"
+    }
+  },
+  "zucca": {
+    "query": "pumpkin soup bowl",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-2972858.jpg",
+      "page": "https://pixabay.com/photos/pumpkin-soup-soup-2972858/",
+      "photographer": "congerdesign",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/47dac4f4ecf58f5f5044fdef0c1cc293e9adadebef9d53856e3e6d28d306ea0a.png"
+    }
+  },
+  "melanzane": {
+    "query": "eggplant soup",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-3604721.jpg",
+      "page": "https://pixabay.com/photos/green-curry-thai-food-3604721/",
+      "photographer": "Huahom",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/b1b8a9ce0a6c71ecc7a329b118199cd953b08c77a5b64e537de966b249de00df.png"
+    }
+  },
+  "ossobuco": {
+    "query": "ossobuco",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-2535546.jpg",
+      "page": "https://pixabay.com/photos/ossobuco-flesh-calf-veal-beef-2535546/",
+      "photographer": "RitaE",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/c059c2cd2e28ca3b69c3e1bc98c56a9dae77ce906d87ca45059d77cd8d4ac070.png"
+    }
+  },
+  "peposo": {
+    "query": "beef stew",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-7556198.jpg",
+      "page": "https://pixabay.com/photos/food-thanksgiving-meat-red-meat-7556198/",
+      "photographer": "dipakpatel_in",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/32a6d64e913a067364d93c75b5f828988fc75130afd7f5a360395ba242297ade.png"
+    }
+  },
+  "baccala": {
+    "query": "fish tomato sauce",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-4469926.jpg",
+      "page": "https://pixabay.com/photos/fish-pikeperch-pikeperch-fillet-4469926/",
+      "photographer": "RitaE",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/d7f9ac04c267b8364a722eb595d4ec70b3089367479ade092a9ee77d8e32f78e.png"
+    }
+  },
+  "wine-0": {
+    "query": "red wine glass",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-1543170.jpg",
+      "page": "https://pixabay.com/photos/wine-splash-glass-red-alcohol-1543170/",
+      "photographer": "ponce_photography",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/5dc31e0e1b8245eccd517a102dba02b5c715fa76d5d0ccfe836807a774d425df.png"
+    }
+  },
+  "wine-1": {
+    "query": "white wine glass",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-1543170.jpg",
+      "page": "https://pixabay.com/photos/wine-splash-glass-red-alcohol-1543170/",
+      "photographer": "ponce_photography",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/5dc31e0e1b8245eccd517a102dba02b5c715fa76d5d0ccfe836807a774d425df.png"
+    }
+  },
+  "wine-2": {
+    "query": "red wine glass",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-1543170.jpg",
+      "page": "https://pixabay.com/photos/wine-splash-glass-red-alcohol-1543170/",
+      "photographer": "ponce_photography",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/5dc31e0e1b8245eccd517a102dba02b5c715fa76d5d0ccfe836807a774d425df.png"
+    }
+  },
+  "wine-3": {
+    "query": "white wine glass",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-1543170.jpg",
+      "page": "https://pixabay.com/photos/wine-splash-glass-red-alcohol-1543170/",
+      "photographer": "ponce_photography",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/5dc31e0e1b8245eccd517a102dba02b5c715fa76d5d0ccfe836807a774d425df.png"
+    }
+  },
+  "wine-4": {
+    "query": "sparkling wine glass",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-1964457.jpg",
+      "page": "https://pixabay.com/photos/pink-wine-champagne-celebration-1964457/",
+      "photographer": "JillWellington"
+    }
+  },
+  "wine-5": {
+    "query": "grape juice glass",
+    "photo": {
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-896065.jpg",
+      "page": "https://pixabay.com/photos/grapes-black-food-fruit-wine-896065/",
+      "photographer": "627389",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/53ba44e9871eb0f4354cf9ef8bfe918bf2131c2e6290248d6cd5d2b9e4a9fd10.png"
+    }
+  }
+}
