@@ -87,3 +87,37 @@ test('장바구니 마지막 항목에 접근하고 빈 장바구니의 주문�
   await expect(page.getByText('아직 담은 메뉴가 없어요')).toBeVisible();
   await expect(page.getByRole('button', { name: '주문 문장 만들기' })).toBeDisabled();
 });
+
+for (const width of [320, 360, 412]) {
+  test(`네 수프 상세의 글자 토큰·실제 카드 여백·하단 순서를 ${width}px에서 확인해요`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 917 });
+    for (const id of ['ceci', 'porri', 'zucca', 'melanzane']) {
+      await page.goto(`/#/detail/${id}`);
+      await page.evaluate(() => document.fonts.ready);
+      const measurements = await page.locator('.detail-content').evaluate(content => {
+        const children = [...content.children];
+        const cards = [...content.querySelectorAll(':scope > .ai-card,:scope > .card')];
+        const tokenStyles = [[11,500,14.3,0],[13,400,18.85,-.13],[14,500,19.6,-.14],[16,500,23.2,-.16],[17,700,23.8,-.17],[22,500,28.6,-.44]];
+        const mismatches = [...content.querySelectorAll('*')].filter(el => [...el.childNodes].some(n => n.nodeType === Node.TEXT_NODE && n.textContent?.trim()) && !el.closest('.sr-only')).flatMap(el => {
+          const s = getComputedStyle(el);
+          const values = [parseFloat(s.fontSize), Number(s.fontWeight), parseFloat(s.lineHeight), parseFloat(s.letterSpacing) || 0];
+          return tokenStyles.some(token => token.every((v,i) => Math.abs(v-values[i]) < .02)) ? [] : [{text: el.textContent, values}];
+        });
+        return {
+          mismatches,
+          cardInsets: cards.map(card => card.firstElementChild!.getBoundingClientRect().left - card.getBoundingClientRect().left),
+          sectionGaps: children.slice(1).map((child,i) => child.getBoundingClientRect().top - children[i].getBoundingClientRect().bottom),
+          dockPosition: getComputedStyle(content.querySelector('.detail-dock')!).position,
+          overflow: document.documentElement.scrollWidth > innerWidth,
+        };
+      });
+      expect(measurements.mismatches, id).toEqual([]);
+      expect(measurements.cardInsets, id).toEqual([24,24,24]);
+      expect(measurements.sectionGaps, id).toEqual([24,24,24,24]);
+      expect(measurements.dockPosition).toBe('static');
+      expect(measurements.overflow).toBe(false);
+      await page.locator('.detail-dock button').scrollIntoViewIfNeeded();
+      await expect(page.locator('.detail-dock button')).toBeInViewport();
+    }
+  });
+}

@@ -32,7 +32,7 @@ export function Receipt({ board, cart, tip, tipRate, go }: { board: MenuBoard; c
         <div className="section-heading receipt-total"><div className="stack-xs"><h3 className="t-title-md">예상 합계</h3><p className="t-body-sm muted">{board.source === "demo" ? "물 제외" : "추가 요금 제외"}</p></div><Price eur={Math.round((total.total + coperto) * 100) / 100} large /></div>
       </Card>
       <p className="receipt-disclaimer tiny muted">식당이 발행한 영수증이 아니에요. 실제 계산서와 다를 수 있어요.</p>
-      <div className="receipt-actions stack-sm"><Button variant="primary" onClick={() => go("home")}>홈으로 가기</Button><Button variant="secondary" onClick={() => go("menu")}>추가 주문하기</Button></div>
+      <div className="receipt-actions stack-sm"><Button variant="primary" onClick={() => go("menu")}>메뉴판으로 돌아가기</Button><Button variant="secondary" onClick={() => go("menu")}>추가 주문하기</Button></div>
     </div>
   </main>;
 }

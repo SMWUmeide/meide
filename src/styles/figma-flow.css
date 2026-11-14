@@ -25,13 +25,13 @@
 .figma-flow .menu-toggle[data-tone="brand"] { background: var(--color-primary); }
 .figma-flow .menu-toggle img { width: auto; height: auto; object-fit: contain; }
 .figma-flow .cart-bar { background: var(--figma-cart-bg); border: 1px solid var(--figma-cart-border); box-shadow: var(--figma-cart-shadow); padding-left: var(--space-xl); }
-.figma-flow .detail-page { padding-bottom: calc(var(--cart-height) + var(--space-2xl) * 2); }
+.figma-flow .detail-page { padding-bottom: 0; }
 .figma-flow .detail-hero::after { content: ""; position: absolute; inset: 0 0 auto; height: 140px; background: var(--figma-photo-overlay); pointer-events: none; }
 .figma-flow .detail-back { top: calc(max(var(--figma-status-space), env(safe-area-inset-top)) + var(--space-sm)); z-index: 1; }
 .figma-flow .photo-caption { bottom: var(--figma-space-40); background: var(--figma-photo-caption); padding: var(--space-sm) var(--space-md); }
-.figma-flow .detail-content { margin-top: calc(-1 * var(--figma-space-28)); background: linear-gradient(var(--color-surface), var(--color-neutral) 39%); gap: var(--space-xl); }
-.figma-flow .detail-content > .stack-sm { gap: var(--space-xs); }
-.figma-flow .detail-content .card { gap: var(--space-sm); }
+.figma-flow .detail-content { display: flex; flex-direction: column; padding-bottom: max(var(--space-2xl), env(safe-area-inset-bottom)); margin-top: calc(-1 * var(--figma-space-28)); background: linear-gradient(var(--color-surface), var(--color-neutral) 39%); gap: var(--space-xl); }
+.figma-flow .detail-title { gap: var(--space-xs); }
+.figma-flow .detail-verified { display: flex; flex-direction: column; gap: var(--space-sm); }
 .figma-flow .detail-content .card .ingredient-tag { display: inline-flex; gap: var(--space-xs); }
 .figma-flow .ingredient-tags { gap: var(--space-xs); }
 .figma-flow .ingredient-tag { padding: var(--space-sm) var(--space-lg); }
@@ -41,7 +41,7 @@
 .figma-flow .ai-content > .stack-xl { gap: var(--space-lg); }
 
 .figma-flow .allergen-confirm { padding: 0; min-height: 44px; border: 0; background: transparent; color: var(--color-on-surface); text-align: left; display: flex; flex-direction: column; gap: var(--space-xs); font-size: var(--type-body-md-size); }
-.figma-flow .detail-dock { background: transparent; padding-top: var(--space-sm); }
+.figma-flow .detail-dock { width: 100%; padding: 0; background: transparent; }
 .figma-flow .detail-dock .cart-bar { padding-left: var(--space-xl); }
 .figma-flow .detail-dock .button { min-height: 44px; }
 .figma-flow .cart-page { height: 100dvh; min-height: 480px; padding-bottom: 0; display: flex; flex-direction: column; }
@@ -103,12 +103,18 @@
 /* Card anatomy: 16 inset, 4 name gap, 16 before price, 4 conversion gap. */
 .figma-flow .detail-content .ai-content > .stack-sm { gap: var(--space-xs); }
 .figma-flow .verified-heading > div { display: flex; flex-direction: column; gap: var(--space-xs); }
-.figma-flow .detail-content > .stack-sm > .price { padding-top: var(--space-xs); gap: var(--space-xs); }
-.figma-flow .detail-content > .stack-sm > .price > div > .t-body-sm { font: var(--type-label-md-weight) var(--type-label-md-size)/var(--type-label-md-line-height) var(--font-family); }
-.figma-flow .detail-content > .stack-sm > .price > div > .t-label-md { font: var(--type-title-md-weight) var(--type-title-md-size)/var(--type-title-md-line-height) var(--font-family); }
-.figma-flow .allergen-confirm { font: inherit; letter-spacing: inherit; }
+.figma-flow .detail-title > .price { padding-top: var(--space-xs); gap: var(--space-xs); }
+.figma-flow .detail-title > .price > div > .t-body-sm { font: var(--type-label-md-weight) var(--type-label-md-size)/var(--type-label-md-line-height) var(--font-family); }
+.figma-flow .detail-title > .price > div > .t-label-md { font: var(--type-title-md-weight) var(--type-title-md-size)/var(--type-title-md-line-height) var(--font-family); }
+
 .figma-flow .ai-section-label { letter-spacing: var(--type-body-sm-tracking); }
 
 .figma-flow .cart-item .price > div .t-body-sm,
 .figma-flow .cart-photo-button .photo-placeholder { font: 500 var(--figma-tiny-size)/var(--figma-tiny-line) var(--font-family); letter-spacing: 0; }
 .figma-flow .cart-subtotal .price > div span:last-child { font: var(--type-body-md-weight) var(--type-body-md-size)/var(--type-body-md-line-height) var(--font-family); }
+
+/* Figma draws the AI stroke inside the frame: it must not add to P24. */
+.figma-flow .detail-content .ai-card { position: relative; border: 0; background: var(--figma-ai-fill), var(--color-surface); }
+.figma-flow .detail-content .ai-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: var(--ai-border-width); background: var(--gradient-ai); mask: linear-gradient(var(--color-surface) 0 0) content-box, linear-gradient(var(--color-surface) 0 0); mask-composite: exclude; pointer-events: none; }
+.figma-flow .detail-content .ingredient-tag { max-width: 100%; overflow-wrap: anywhere; }
+.figma-flow .detail-title .price { flex-wrap: wrap; }

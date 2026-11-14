@@ -2,17 +2,16 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { App } from "./App";
+import { Capture } from "./screens/Capture";
+import { useState } from "react";
+function CapturePreview() { const [files, setFiles] = useState<File[]>([]); const [notice, notify] = useState(""); return <><Capture files={files} setFiles={setFiles} onBack={() => {}} onContinue={() => {}} onDemo={() => {}} analyzing={false} notify={notify} /><p>{notice}</p></>; }
 import { changeQuantity, initialCart, totals } from "./cart";
 import { menuItems, categories } from "@/data/mock-menu";
 
 beforeEach(() => { window.history.replaceState(null, "", "/"); });
 describe("1단계 화면 흐름", () => {
-  it("홈 → 촬영 → 메뉴 고르기 → 상세 → 장바구니를 연결해요", async () => {
+  it("메뉴판에서 시작해 상세와 장바구니로 연결해요", async () => {
     const user = userEvent.setup(); render(<App />);
-    expect(screen.getByRole("heading", { name: /메뉴판을 찍으면\s*번역부터 주문까지/ })).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "메뉴판 찍기" }));
-    expect(screen.getByRole("heading", { name: "메뉴판 찍기" })).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "예시 메뉴판으로 시작하기" }));
     expect(screen.getByRole("heading", { name: "Osteria La Solita Zuppa" })).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "병아리콩과 포르치니 버섯 수프 상세 보기" }));
     expect(screen.getByRole("heading", { name: "병아리콩과 포르치니 버섯 수프" })).toBeInTheDocument();
@@ -49,14 +48,14 @@ describe("1단계 화면 흐름", () => {
   it("분석하기를 누르기 전에는 사진을 전송하지 않아요", async () => {
     window.history.replaceState(null, "", "/#/capture"); const request = vi.spyOn(window, "fetch").mockRejectedValue(new Error("외부 전송 금지"));
     try {
-      const user = userEvent.setup(); render(<App />); const file = new File(["image"], "menu.jpg", { type: "image/jpeg" });
+      const user = userEvent.setup(); render(<CapturePreview />); const file = new File(["image"], "menu.jpg", { type: "image/jpeg" });
       await user.upload(screen.getByLabelText("메뉴판 사진 파일 선택"), file);
       expect(await screen.findByRole("img", { name: "선택한 메뉴판 사진" })).toBeInTheDocument();
       expect(screen.getByText("1장")).toBeInTheDocument(); expect(screen.getByRole("button", { name: "메뉴판 분석하기" })).toBeInTheDocument(); expect(request).not.toHaveBeenCalled();
     } finally { request.mockRestore(); }
   });
   it("용량이 너무 큰 사진은 거부해요", () => {
-    window.history.replaceState(null, "", "/#/capture"); render(<App />);
+    window.history.replaceState(null, "", "/#/capture"); render(<CapturePreview />);
     const file = new File(["image"], "huge.jpg", { type: "image/jpeg" }); Object.defineProperty(file, "size", { value: 11 * 1024 * 1024 });
     fireEvent.change(screen.getByLabelText("메뉴판 사진 파일 선택"), { target: { files: [file] } }); expect(screen.getByText("사진은 한 장에 10MB 이하로 선택해 주세요")).toBeInTheDocument(); expect(screen.getByText("0장")).toBeInTheDocument();
   });
@@ -74,7 +73,7 @@ describe("1단계 화면 흐름", () => {
   });
   it("각 화면의 실제 primary 버튼은 하나 이하예요", () => {
     const { container, unmount } = render(<App />); expect(container.querySelectorAll('button[data-variant="primary"]')).toHaveLength(0); unmount();
-    for (const route of ["capture", "menu", "detail/zucca", "cart"]) {
+    for (const route of ["menu", "detail/zucca", "cart", "order", "receipt"]) {
       window.history.replaceState(null, "", `/#/${route}`); const result = render(<App />);
       expect(result.container.querySelectorAll('button[data-variant="primary"]:not(:disabled)').length).toBeLessThanOrEqual(1); result.unmount();
     }
