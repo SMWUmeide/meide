@@ -123,3 +123,6 @@
 .figma-flow .cart-dock { background: transparent; }
 .figma-flow .cart-bar .button[data-variant="brand"] { background: var(--figma-cart-action); }
 .figma-flow .cart-bar .button[data-variant="brand"]:active { background: var(--color-brand-pressed); }
+
+/* One continuous menu; category navigation stays available while scrolling. */
+.figma-flow .menu-category-nav { position: sticky; top: env(safe-area-inset-top, 0); z-index: 3; background: var(--color-neutral); padding: var(--space-sm) 0; margin-top: calc(-1 * var(--space-sm)); margin-bottom: calc(-1 * var(--space-sm)); }

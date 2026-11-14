@@ -127,3 +127,25 @@ for (const width of [320, 360, 412]) {
     }
   });
 }
+
+test('전체 메뉴를 연속 표시하고 탭 이동·스크롤 선택·상세 복귀를 연결해요', async ({ page }) => {
+  await page.goto('/#/menu');
+  await expect(page.locator('.menu-card')).toHaveCount(13);
+  await expect(page.getByRole('region', { name: '수프 메뉴', exact: true })).toBeAttached();
+  await expect(page.getByRole('region', { name: '메인 요리 메뉴', exact: true })).toBeAttached();
+  await expect(page.getByRole('region', { name: '주류 메뉴', exact: true })).toBeAttached();
+  await page.getByRole('button', { name: '메인 요리 3', exact: true }).click();
+  await expect(page.getByRole('button', { name: '메인 요리 3' })).toHaveAttribute('aria-pressed', 'true');
+  await expect.poll(() => page.locator('#menu-section-main').evaluate(e => Math.abs(e.getBoundingClientRect().top - 72))).toBeLessThan(2);
+  await expect(page.locator('.menu-category-nav')).toBeInViewport();
+  await page.getByRole('button', { name: '후추 향의 토스카나 소고기 스튜 상세 보기' }).click();
+  await page.getByRole('button', { name: '메뉴 고르기로 돌아가기' }).click();
+  await expect.poll(() => page.locator('#menu-section-main').evaluate(e => Math.abs(e.getBoundingClientRect().top - 72))).toBeLessThan(2);
+  await page.locator('#menu-section-wine').evaluate(e => window.scrollTo(0, window.scrollY + e.getBoundingClientRect().top - 72));
+  await expect(page.getByRole('button', { name: '주류 6' })).toHaveAttribute('aria-pressed', 'true');
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(page.getByRole('button', { name: '수프 4' })).toHaveAttribute('aria-pressed', 'true');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.getByRole('button', { name: '주류 6' }).click();
+  await expect.poll(() => page.locator('#menu-section-wine').evaluate(e => Math.abs(e.getBoundingClientRect().top - 72))).toBeLessThan(2);
+});
