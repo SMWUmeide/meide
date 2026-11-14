@@ -13,8 +13,10 @@ beforeAll(async()=>{
     create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
     grant usage on schema auth to authenticated; grant execute on function auth.uid() to authenticated;`);
   for(const id of [a,b,c]) await db.query('insert into auth.users values($1)',[id]);
+  await db.exec('alter default privileges in schema public grant execute on functions to anon, authenticated, service_role');
   await db.exec(await readFile(new URL('../supabase/migrations/202611140001_shared_order.sql',import.meta.url),'utf8'));
   await db.exec(await readFile(new URL('../supabase/migrations/202611140002_api_budgets.sql',import.meta.url),'utf8'));
+  await db.exec(await readFile(new URL('../supabase/migrations/202611140004_restrict_budget_rpc.sql',import.meta.url),'utf8'));
 },20000);
 afterAll(async()=>{await db?.close();});
 describe('공동 장바구니 서버 권한과 변경',()=>{
@@ -25,6 +27,9 @@ describe('공동 장바구니 서버 권한과 변경',()=>{
     await db.exec('set role authenticated');
     await expect(rpc('public.reserve_api_calls($1,$2,$3)',['test-provider',{day:999},1])).rejects.toThrow('permission denied');
     await expect(db.query('delete from public.api_usage_counts')).rejects.toThrow('permission denied');
+    await db.exec('reset role');
+    await db.exec('set role anon');
+    await expect(rpc('public.reserve_api_calls($1,$2,$3)',['test-provider',{day:999},1])).rejects.toThrow('permission denied');
     await db.exec('reset role');
   });
   it('초대 참여·동시 담기·수량·본인 소유권·외부 차단을 검증해요',async()=>{

@@ -21,9 +21,13 @@ export async function orderIdentity() {
   const supabase = orderClient();
   const { data, error } = await supabase.auth.getSession();
   if (error) throw new Error('공유 연결을 다시 시도해 주세요');
-  if (data.session) return data.session.user.id;
+  if (data.session) {
+    await supabase.realtime.setAuth(data.session.access_token);
+    return data.session.user.id;
+  }
   const signed = await supabase.auth.signInAnonymously();
-  if (signed.error || !signed.data.user) throw new Error('공유 로그인을 하지 못했어요. 잠시 후 다시 시도해 주세요');
+  if (signed.error || !signed.data.user || !signed.data.session) throw new Error('공유 로그인을 하지 못했어요. 잠시 후 다시 시도해 주세요');
+  await supabase.realtime.setAuth(signed.data.session.access_token);
   return signed.data.user.id;
 }
 const member = z.object({ id: z.string().uuid(), name: z.string().min(1).max(20), slot: z.number().int().min(0).max(3) });
