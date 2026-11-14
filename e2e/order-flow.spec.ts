@@ -12,6 +12,31 @@ for (const width of [320, 360, 412]) {
       await expect(page.getByText('9:41', { exact: true })).toHaveCount(0);
       await expect.poll(() => page.locator('img').evaluateAll(images => images.every(image => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0))).toBe(true);
       expect(await page.locator('button[data-variant="primary"]').count()).toBeLessThanOrEqual(1);
+      for (const content of await page.locator('.page-content,.detail-content,.cart-dock,.fixed-action,.order-footer').all()) {
+        await expect(content).toHaveCSS('padding-left', '24px');
+        await expect(content).toHaveCSS('padding-right', '24px');
+      }
+      if (route === 'menu') {
+        const card = page.locator('.menu-card').first();
+        await expect(card.locator('.menu-details')).toHaveCSS('padding', '16px');
+        await expect(card.locator('.menu-toggle')).toHaveCSS('right', '12px');
+        await expect(card.locator('.menu-toggle')).toHaveCSS('bottom', '12px');
+        const gaps = await card.evaluate(element => {
+          const rect = (selector: string) => element.querySelector(selector)!.getBoundingClientRect();
+          return [rect('.menu-name').top - rect('.menu-original').bottom, rect('.menu-price').top - rect('.menu-name').bottom, rect('.menu-conversion').top - rect('.menu-price').bottom];
+        });
+        expect(gaps).toEqual([4, 16, 4]);
+      }
+      if (route === 'detail/zucca') {
+        await expect(page.locator('.detail-content h1')).toHaveCSS('font-size', '22px');
+        await expect(page.locator('.detail-content h1')).toHaveCSS('line-height', '28.6px');
+        await expect(page.locator('.detail-content .ai-content').first()).toHaveCSS('line-height', '23.2px');
+      }
+      if (route === 'order') {
+        const text = await page.locator('.order-italian').boundingBox();
+        const actions = await page.locator('.order-actions').boundingBox();
+        expect(actions!.y).toBeGreaterThanOrEqual(text!.y + text!.height + 15.9);
+      }
     }
     expect(errors).toEqual([]);
   });

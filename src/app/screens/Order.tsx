@@ -56,14 +56,13 @@ export function Order({ board, cart, request, setRequest, go }: {
     <Toolbar title="주문하기" onBack={() => go("cart")} />
     <div className="page-content order-content">
       {text.korean ? <><Card className="order-sentence">
-        <p className="t-body-sm muted">한국어</p>
         <p>{text.korean}{input && ` ${input}`}</p>
         <hr />
-        <div className="section-heading"><span className="t-body-sm muted">이탈리아어</span><div className="inline">
+        <p className="order-italian t-headline-md" lang="it">{italian}</p>
+        <div className="order-actions">
           <IconButton icon="added" iconSrc="/figma/43c20.svg" tone="neutral" label={speaking ? "듣기 멈추기" : "주문 문장 듣기"} disabled={pending} onClick={() => void listen()} />
           <span ref={element => { expandButton.current = element?.querySelector("button") ?? null; }}><IconButton icon="added" iconSrc="/figma/a89fe.svg" tone="neutral" label="주문 문장 확대" disabled={pending} onClick={() => dialog.current?.showModal()} /></span>
-        </div></div>
-        <p className="order-italian" lang="it">{italian}</p>
+        </div>
       </Card>
       <Card className="request-card"><label className="t-title-md" htmlFor="order-request">요청사항</label>
         <textarea id="order-request" maxLength={500} value={request} placeholder={"입력하면 주문 문장에 바로 반영돼요.\n예: 치즈는 빼주세요"} onChange={event => { stopSpeech(); setSpeaking(false); setError(""); setRequest(event.target.value); }} />

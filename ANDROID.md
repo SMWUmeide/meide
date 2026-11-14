@@ -66,3 +66,16 @@ Figma `EyR8e24IyNMuHpg5Z617dc`의 894:6011, 894:5914, 894:5703, 894:6379, 894:58
 참고: [Capacitor Android 환경](https://capacitorjs.com/docs/getting-started/environment-setup), [Google Play 대상 API 요구사항](https://developer.android.com/google/play/requirements/target-sdk), [Android 음성 합성](https://developer.android.com/reference/android/speech/tts/TextToSpeech)
 
 최종 자동 검증: 단위·통합 테스트 79개와 브라우저 테스트 6개가 통과했어요. 실행용 의존성 보안 검사(`npm audit --omit=dev`)는 0건이에요. 개발용 린터의 minimatch 의존성에는 moderate 경고 7건이 남아 있어요. 실제 Gemini 호출은 로컬 키가 없어 검증하지 못했고 서버 계약·실패·재시도는 테스트 대체 응답으로 확인했어요.
+
+## Figma 간격·타이포 재점검 (2026-11-14)
+
+이번 보정은 화면 좌우 24px, 4px 단위 간격, `meide v2` 텍스트 스타일, 컬러 팔레트 `887:296`을 우선해요. 기존 DESIGN.md는 수정하지 않았어요.
+
+- 메뉴 카드: 내부 16px / 사진의 담기 버튼 우·하단 12px / 원어명–이름 4px / 이름–가격 16px / 가격–환산액 4px. 2열 간격 16px.
+- 텍스트: Pretendard Display 30 M(125%, -3%), Heading 22 M(130%, -2%), Title 17 B(140%, -1%), Body 16 M(145%, -1%), Label 14 M(140%, -1%), Caption 13 R(145%, -1%), Tiny 11 M(130%, 0%). 줄 높이를 정수 px로 반올림하지 않아요.
+- 상세 화면은 모든 메뉴가 동일한 템플릿을 사용해요. 가격의 EUR는 Label 14 M, 가격 숫자는 Title 17 B이며, AI 설명/제목 간격과 확인된 정보의 헤더/재료/알레르기 간격을 조정했어요.
+- 주문 화면은 새 `894:6379` 배치대로 한국어 → 구분선 → 이탈리아어 → 우측 듣기/확대 버튼 → 별도 요청사항 카드 순서예요.
+- 기존 구현의 6/7/10/14/18/22px 간격과 좁은 화면의 좌우 16px 예외를 제거했어요. 화면 아래 CTA를 밀어 내는 `margin-top:auto`, 기기의 safe-area, 위치 확인용 상단 54px는 콘텐츠 간격 토큰과 별개예요.
+- Figma 자체와 요청 기준의 충돌: 상세 화면의 7/14px 칩 여백은 8/16px로 맞췄어요. 주문 이탈리아어의 로컬 20px/29px 지정은 7개 스타일에 없어 Heading 22 M으로 맞췄어요. 기존 894 화면의 짙은 초록/연한 회색 대신 지정 팔레트의 brand #28A745 / secondary #626773 / border #ECEEF1을 적용했어요. 따라서 이 충돌 지점은 원본 픽셀과 동일하다고 주장하지 않아요.
+- `894:5240`은 디자인 컨텍스트 조회가 실패했지만 파일의 로컬 TextStyle을 직접 조회해 `meide v2` 7개 정의를 확인했어요.
+- 320/360/412px에서 실제 렌더링된 여백·카드 그리드·상세 줄 높이·버튼 순서를 검사해요. 메뉴/상세/장바구니/주문/영수증 모두 가로 넘침이 없어요.
