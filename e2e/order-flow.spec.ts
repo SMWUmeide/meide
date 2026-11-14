@@ -162,17 +162,18 @@ test('탭 위에 별도 상태바 여백을 만들지 않아요', async ({ page 
   expect((await page.locator('.menu-category-nav .chip').first().boundingBox())!.y).toBe(8);
 });
 
-test('실제 분석 응답의 메뉴·AI 상세·사진 출처를 연결해요', async ({ page }) => {
+test('앞 화면이 전달한 메뉴·AI 상세·사진 출처를 연결해요', async ({ page }) => {
   const { analysisFixture } = await import('../server/analysis-fixture');
   const { normalizeAnalysis } = await import('../src/data/menu-schema');
   const board=normalizeAnalysis(analysisFixture);
-  await page.route('**/api/analyze-menu',route=>route.fulfill({json:{board}}));
-  await page.route('**/api/menu-photos',route=>route.fulfill({json:{photos:[{id:'scan-1',photo:{url:'https://images.pexels.com/photos/1/test.jpg',page:'https://www.pexels.com/photo/1/',photographer:'테스트 작가'}}]}}));
+  board.items[0].photo={url:'https://images.pexels.com/photos/1/test.jpg',page:'https://www.pexels.com/photo/1/',photographer:'테스트 작가'};
+  board.items[0].photoUrl=board.items[0].photo.url;
+  await page.addInitScript(board => {
+    if (!localStorage.getItem('meide.order.v1')) localStorage.setItem('meide.order.v1',JSON.stringify({version:1,board,cart:[],category:board.categories[0].id,tip:false,tipRate:10,request:''}));
+  },board);
   await page.goto('/#/menu');
-  await page.getByRole('button',{name:'메뉴판 불러오기와 동반인 공유'}).click();
-  // A real 1x1 PNG exercises image decoding/compression and the API boundary.
-  await page.getByLabel('분석할 메뉴판 사진').setInputFiles({name:'menu.png',mimeType:'image/png',buffer:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=','base64')});
-  await page.getByRole('button',{name:'메뉴판 분석하기',exact:true}).click();
+  await expect(page.getByRole('button',{name:'메뉴판 불러오기와 동반인 공유'})).toHaveCount(0);
+  await expect(page.getByRole('button',{name:'뒤로 가기',exact:true})).toBeVisible();
   await expect(page.getByRole('heading',{name:'Trattoria Test'})).toBeVisible();
   await page.getByRole('button',{name:'토마토 파스타 상세 보기'}).click();
   await expect(page.getByText(analysisFixture.items[0].analogy,{exact:true})).toBeVisible();

@@ -11,7 +11,7 @@ import { CompanionNotice } from "@/components/CompanionNotice";
 import { MenuTools } from "./MenuTools";
 import { useSharedOrder } from "./use-shared-order";
 import { sharedView } from "@/lib/shared-order";
-import type { Category } from "@/data/menu-schema";
+import type { Category, MenuBoard } from "@/data/menu-schema";
 import { readSession, saveSession } from "./session";
 
 // This release starts at the menu board. Older home/camera links also land here.
@@ -19,9 +19,12 @@ function readRoute() {
   const route = window.location.hash.slice(2);
   return ["menu", "cart", "order", "receipt"].includes(route) || /^detail\/[^/]+$/.test(route) ? route : "menu";
 }
-export function App() {
-  const [saved] = useState(readSession);
-  const [localBoard, setBoard] = useState(saved.board);
+export function App({ initialBoard, onBackToPrevious }: { initialBoard?: MenuBoard; onBackToPrevious?: () => void } = {}) {
+  const [saved] = useState(() => {
+    const session = readSession();
+    return initialBoard ? { ...session, board: initialBoard, cart: [], category: initialBoard.categories[0].id, request: "" } : session;
+  });
+  const [localBoard] = useState(saved.board);
   const shared = useSharedOrder();
   const view = shared.snapshot ? sharedView(shared.snapshot, shared.userId) : null;
   const board = shared.snapshot?.board ?? localBoard;
@@ -64,13 +67,14 @@ export function App() {
     if (shared.roomId) { void sharedChange(id, cart.some(line=>line.menuId===id && line.person==='me') ? 'remove' : 'add'); return; }
     setCart(current => current.some(line => line.menuId === id) ? current.filter(line => line.menuId !== id) : [...current, { menuId: id, person: "me", quantity: 1 }]);
   }
-  const tools = <MenuTools key={invite || "tools"} board={board} roomId={shared.roomId} invite={invite} notify={setNotice} onPhotos={setBoard} onRoom={id=>{ shared.open(id); setInvite(""); go("menu"); }} onBoard={next=>{ setBoard(next); setCart([]); setCategory(next.categories[0].id); setRequest(""); go("menu"); }} />;
+
   return <div className="app-shell figma-flow">
     {activeRoute === "cart" ? <Cart people={view?.people} shared={Boolean(shared.roomId)} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} board={board} cart={cart} tip={tip} setTip={setTip} tipRate={tipRate} setTipRate={setTipRate} onQuantity={(id, delta, person) => { if(shared.roomId) { if(person==='me') void sharedChange(id,delta>0?'increase':'decrease'); } else setCart(current => changeQuantity(current, id, delta, person)); }} go={go} />
       : activeRoute === "order" ? <Order board={board} cart={cart} request={request} setRequest={setRequest} go={go} />
       : activeRoute === "receipt" ? <Receipt board={board} cart={cart} tip={tip} tipRate={tipRate} go={go} />
       : item && activeRoute.startsWith("detail/") ? <Detail key={item.id} item={item} source={board.source} added={cart.some(line => line.menuId === item.id && (!shared.roomId || line.person === "me"))} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} onAdd={() => { toggle(item.id); if (!shared.roomId) setNotice("장바구니에 담았어요"); }} go={go} />
-      : <Menu tools={tools} people={view?.people} shared={Boolean(shared.roomId)} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} syncMessage={shared.status || (shared.roomId ? shared.connected ? "동반인과 실시간으로 함께 고르고 있어요" : "동반인과 연결하고 있어요" : "")} board={board} cart={cart} category={category} setCategory={setCategory} go={go} onToggle={toggle} />}
+      : <Menu onBack={onBackToPrevious ?? (() => window.history.back())} people={view?.people} shared={Boolean(shared.roomId)} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} syncMessage={shared.status || (shared.roomId ? shared.connected ? "동반인과 실시간으로 함께 고르고 있어요" : "동반인과 연결하고 있어요" : "")} board={board} cart={cart} category={category} setCategory={setCategory} go={go} onToggle={toggle} />}
+    {invite && <MenuTools key={invite} invite={invite} onRoom={id=>{ shared.open(id); setInvite(""); go("menu"); }} onClose={()=>{setInvite("");go("menu");}} />}
     {(activeRoute === "menu" || activeRoute.startsWith("detail/")) && <CompanionNotice activity={shared.activity} />}
     <div className="toast t-body-sm" role="status" aria-live="polite" data-visible={!!notice}>{notice}</div>
   </div>;
