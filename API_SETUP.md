@@ -236,3 +236,7 @@ AI 분석은 `coverCharge`에 자릿세 원문·단가·1인당/테이블당 단
 - 포르투갈 정부의 식당 안내: https://portugal.gov.pt/api/media/edge/Project/Portal-do-Governo/Portal-do-Governo/gc23/Files/Comunicados/divulgado-guia-e-bebidas/guia_de_regras_e_boas_praticas_na_restauracao_e_bebidas.pdf
 
 실사진 점검 자료는 Sant’Andrea 공식 메뉴 PDF 1·7쪽(자릿세 €1.50/명, 물 0.75L €1.50)과 앞서 사용한 Luppolo e Farina 공식 메뉴판이에요. 실제 Gemini 결과는 `outputs/fees-analysis-report.json`, `outputs/no-fees-analysis-report.json`에 기록했어요. 자동 회귀 테스트의 `server/fixtures/real-*.json`은 이 실제 응답 중 필요한 메뉴만 추린 기록이며 앱에서는 import하지 않아요. 실제 서버·화면 점검은 `MEIDE_TEST_URL=<배포주소> node scripts/check-live-dining.mjs`, 폰 호스트 점검은 여기에 `MEIDE_ANDROID=1`을 추가해요. API 응답 가로채기나 가짜 서버 응답 없이 기록된 실분석과 실제 공유 서버를 사용해요.
+
+최종 점검(2026-11-16): 앱 코드 `a191109` 공개 배포 READY, 0.1.3(versionCode 4) APK 빌드·Galaxy S21 업데이트 설치 완료. 실제 폰 호스트와 독립 웹 동반인의 9개 점검을 통과했어요(`outputs/android-dining-report.json`). 음식 €14 + 자릿세 3명분 €4.50 + 물 2개 €3 = €21.50을 양쪽 영수증에서 확인했고, 물 제거 후 €18.50 및 물 안내 숨김을 확인했어요. 실제 무요금 메뉴판은 이탈리아·3명을 선택해도 추가 요금과 안내가 없었어요. 공개 서버에서 비로그인·비회원의 식사 정보 변경 거부도 확인했어요. 두 실제 폰 검증은 아니에요.
+
+실제 Gemini 호출은 이번 작업 3회, 당일 누적 69회로 기존에 승인된 최대 70회 이내예요. 로컬 점검 서버만 임시 상한 70으로 실행했고 종료했어요. 공개 서버의 평소 상한 50회·무료 결제 설정은 유지했어요. 당일 새 분석은 평소 한도 때문에 차단되고 다음 UTC 날짜(한국시간 2026-11-17 09:00)에 새 한도가 시작돼요. 150개 테스트·build·lint·디자인 검사 통과. 직접 색상/토큰 밖 여백 0건, 화면별 primary 최대 1개예요. APK 해시와 배포 결과는 `outputs/dining-release-report.json`에 기록했어요.
