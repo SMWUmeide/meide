@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { IconButton } from "@/components/IconButton";
-import { krw } from "@/data/mock-menu";
+import { krw } from "@/data/currency";
 import { useState } from "react";
 export function Toolbar({ title, onBack, children }: { title: string; onBack?: () => void; children?: ReactNode }) {
   return <header className="toolbar">{onBack ? <IconButton icon="back" iconSrc="/figma/2fe4a.svg" label="뒤로 가기" onClick={onBack} /> : <span className="toolbar-spacer" />}<h1 className="t-title-md">{title}</h1>{children ?? <span className="toolbar-spacer" />}</header>;

@@ -23,3 +23,17 @@ it('검증 실패 시 예전의 틀린 사진을 남기지 않아요',async()=>{
  const board={...demoBoard,items:[{...demoBoard.items[0],id:'x',photo:{...photo,reviewVersion:undefined},photoUrl:photo.url}]};
  expect((await loadMenuPhotos(board,new AbortController().signal)).items[0].photoUrl).toBeNull();
 });
+it('사진 일부 성공 후 한도에 걸려도 완료된 사진을 유지하고 실패를 알려요',async()=>{
+ const board={...demoBoard,items:[{...demoBoard.items[0],id:'first',photo:undefined,photoUrl:null},{...demoBoard.items[1],id:'second',photo:undefined,photoUrl:null}]};
+ const fetch=vi.fn().mockResolvedValueOnce(Response.json({photos:[{id:'first',photo,status:'ready'}]})).mockResolvedValueOnce(Response.json({photos:[{id:'second',photo:null,status:'limited'}]}));
+ vi.stubGlobal('fetch',fetch);
+ const progress=vi.fn();
+ try { await loadMenuPhotos(board,new AbortController().signal,progress);throw Error('실패를 숨겼어요'); }
+ catch(error){expect(error).toMatchObject({message:expect.stringContaining('호출 한도'),board:{items:[expect.objectContaining({id:'first',photoUrl:photo.cutoutUrl}),expect.objectContaining({id:'second',photoUrl:null})]}});}
+ expect(progress).toHaveBeenCalledTimes(1);
+ expect(JSON.parse(fetch.mock.calls[0][1].body).queries).toHaveLength(1);
+});
+it('서버 내부 실패를 사진이 없는 정상 결과로 표시하지 않아요',async()=>{
+ vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json({photos:[{id:demoBoard.items[0].id,photo:null,status:'failed'}]})));
+ await expect(loadMenuPhotos({...demoBoard,items:[{...demoBoard.items[0],photo:undefined,photoUrl:null}]},new AbortController().signal)).rejects.toThrow('실패했어요');
+});

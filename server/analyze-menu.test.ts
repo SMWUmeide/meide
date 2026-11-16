@@ -44,3 +44,12 @@ describe("메뉴 분석 정규화", () => {
 vi.mock("./api-budget", async importOriginal => ({ ...await importOriginal<typeof import("./api-budget")>(), reserveApiCalls: vi.fn().mockResolvedValue(undefined) }));
 
 it("호출 한도가 차면 Gemini에 요청하지 않아요", async()=>{vi.mocked(reserveApiCalls).mockRejectedValueOnce(new ApiBudgetError(429));const response=await analyzeMenu(request(),{GEMINI_API_KEY:"test"});expect(response.status).toBe(429);expect(generate).not.toHaveBeenCalled();});
+it.each([429,503])('공급자 %s 오류를 예시 메뉴 없이 구분해서 반환해요',async statusCode=>{
+ generate.mockRejectedValueOnce(Object.assign(new Error('private provider response'),{statusCode}));
+ const response=await analyzeMenu(request(),env);
+ expect(response.status).toBe(statusCode);
+ const data=await response.json();
+ expect(data.board).toBeUndefined();
+ expect(data.message).toContain('잠시 후');
+ expect(JSON.stringify(data)).not.toContain('private');
+});

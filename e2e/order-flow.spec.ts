@@ -1,4 +1,13 @@
 import { test, expect } from '@playwright/test';
+import { demoBoard, initialCart } from '../src/data/mock-menu';
+
+// Isolated layout fixtures are explicit; the production app starts empty.
+// Live provider verification is scripts/check-live-api.mjs, with no fixtures.
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(session => {
+    if (!localStorage.getItem('meide.order.v1')) localStorage.setItem('meide.order.v1', JSON.stringify(session));
+  }, {version:1,board:{...demoBoard,source:'gemini'},cart:initialCart,category:'soup',tip:true,tipRate:10,request:''});
+});
 
 for (const width of [320, 360, 412]) {
   test(`다섯 화면은 ${width}px에서 넘치지 않고 이미지가 보여요`, async ({ page }) => {
@@ -54,7 +63,7 @@ test('장바구니 → 요청사항 → 확대 → 영수증 → 추가 주문�
   await page.keyboard.press('Escape');
   await expect(page.getByRole('button', { name: '주문 문장 확대' })).toBeFocused();
   await page.getByRole('button', { name: '영수증 보기' }).click();
-  await expect(page.locator('.receipt-total')).toContainText('57.80');
+  await expect(page.locator('.receipt-total')).toContainText('52.80');
   await page.getByRole('button', { name: '추가 주문하기' }).click();
   await page.reload();
   await page.getByRole('button', { name: '4개 보기' }).click();

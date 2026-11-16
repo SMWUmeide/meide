@@ -4,7 +4,7 @@ import { Card } from "@/components/Card";
 import { Button } from "@/components/Button";
 import { IconButton } from "@/components/IconButton";
 import { BottomSheet } from "@/components/BottomSheet";
-import type { MenuItem } from "@/data/mock-menu";
+import type { MenuItem } from "@/data/menu-schema";
 import { Divider, Photo, Price } from "../shared";
 export function Detail({ item, source, added, onAdd, go, disabled = false }: { disabled?: boolean; item: MenuItem; source: "demo" | "gemini"; added: boolean; onAdd: () => void; go: (route: string) => void }) {
   const [confirm, setConfirm] = useState(false);

@@ -16,18 +16,18 @@ describe("메뉴판부터 영수증까지의 화면 범위", () => {
     await userEvent.setup().click(screen.getByRole('button', { name: '뒤로 가기' }));
     expect(onBack).toHaveBeenCalledOnce();
   });
-  it.each(["", "home", "capture", "unknown", "detail/missing"])("%s 주소도 메뉴판으로 연결해요", route => {
+  it.each(["", "home", "capture", "unknown", "detail/missing"])("%s 주소에서 분석 전에는 사진 선택으로 연결해요", route => {
     window.history.replaceState(null, "", `/#/${route}`);
     render(<App />);
-    expect(screen.getByRole("heading", { name: "Osteria La Solita Zuppa" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "메뉴판 불러오기" })).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "메뉴판 찍기" })).not.toBeInTheDocument();
-    expect(window.location.hash).toBe("#/menu");
+    expect(window.location.hash).toBe("#/setup");
   });
   it("영수증의 돌아가기 버튼이 기존 홈 대신 메뉴판으로 연결돼요", async () => {
     window.history.replaceState(null, "", "/#/receipt");
-    render(<App />);
+    render(<App initialBoard={normalizeAnalysis(analysisFixture)} />);
     await userEvent.setup().click(screen.getByRole("button", { name: "메뉴판으로 돌아가기" }));
-    expect(screen.getByRole("heading", { name: "Osteria La Solita Zuppa" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Trattoria Test" })).toBeInTheDocument();
     expect(window.location.hash).toBe("#/menu");
   });
 });

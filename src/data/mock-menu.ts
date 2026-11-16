@@ -30,3 +30,5 @@ export const ranking = [
 export function krw(eur: number) { return Math.round(eur * restaurant.exchangeRate).toLocaleString("ko-KR"); }
 
 export const demoBoard: MenuBoard = { restaurantName: restaurant.name, categories: [...categories], items: menuItems, source: "demo", skipped: 0 };
+
+export const initialCart: import("@/app/cart").CartLine[] = [{ menuId: "porri", person: "me", quantity: 1 }, { menuId: "zucca", person: "companion-1", quantity: 1 }, { menuId: "ossobuco", person: "companion-1", quantity: 1 }];

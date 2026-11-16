@@ -1,7 +1,8 @@
+import { initialCart } from "@/data/mock-menu";
 import { describe, expect, it } from "vitest";
 import { demoBoard } from "@/data/mock-menu";
 import { orderText } from "./order";
-import { changeQuantity, initialCart, totals } from "./cart";
+import { changeQuantity, totals } from "./cart";
 import { readSession, saveSession } from "./session";
 
 describe("주문 데이터 일관성", () => {
@@ -19,8 +20,13 @@ describe("주문 데이터 일관성", () => {
     expect(orderText(demoBoard, []).italian).toBe("");
   });
   it("주문을 복원하고 손상된 저장 데이터는 버려요", () => {
-    const session = { board: demoBoard, cart: changeQuantity(initialCart, "porri", 1), category: "soup", tip: false, tipRate: 15, request: "치즈는 빼주세요" };
-    saveSession(session); expect(readSession()).toMatchObject(session);
-    localStorage.setItem("meide.order.v1", "broken"); expect(readSession().cart).toEqual(initialCart);
+    const session = { board: { ...demoBoard, source: "gemini" as const }, cart: changeQuantity(initialCart, "porri", 1), category: "soup", tip: false, tipRate: 15, request: "치즈는 빼주세요" };
+    saveSession(session); expect(readSession()).toMatchObject(JSON.parse(JSON.stringify(session)));
+    localStorage.setItem("meide.order.v1", "broken"); expect(readSession().cart).toEqual([]);
   });
+});
+it('이전 예시 메뉴와 장바구니를 실제 분석으로 복원하지 않아요',()=>{
+ localStorage.setItem('meide.order.v1',JSON.stringify({version:1,board:'demo',cart:initialCart,category:'soup',tip:true,tipRate:10,request:''}));
+ expect(readSession().board.items).toEqual([]);
+ expect(readSession().cart).toEqual([]);
 });

@@ -42,7 +42,10 @@ export async function prepareImages(files: File[], signal: AbortSignal): Promise
 export async function analyzePhotos(files: File[], signal: AbortSignal): Promise<MenuBoard> {
   const images = await prepareImages(files, signal);
   const response = await fetch(apiUrl("/api/analyze-menu"), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ images }), signal });
-  if (!response.ok) throw new Error("분석에 실패했어요");
+  if (!response.ok) {
+    const failure = await response.json().catch(() => null);
+    throw new Error(typeof failure?.message === "string" ? failure.message : "분석에 실패했어요");
+  }
   const value = await response.json();
   // 서버가 HTML 오류나 잘못된 객체를 반환해도 성공으로 취급하지 않아요.
   const result = menuBoardSchema.safeParse(value?.board);

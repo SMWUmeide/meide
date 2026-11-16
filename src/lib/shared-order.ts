@@ -1,7 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { z } from 'zod';
 import { menuBoardSchema, type MenuBoard } from '@/data/menu-schema';
-import { demoBoard } from '@/data/mock-menu';
 import type { CartLine } from '@/app/cart';
 import type { Person } from '@/components/_shared/action';
 
@@ -33,8 +32,8 @@ export async function orderIdentity() {
 const member = z.object({ id: z.string().uuid(), name: z.string().min(1).max(20), slot: z.number().int().min(0).max(3) });
 const snapshotSchema = z.object({
   id: z.string().uuid(), revision: z.number().int().positive(),
-  // Demo rooms resolve to bundled data, never arbitrary unvalidated demo JSON.
-  board: z.union([menuBoardSchema, z.object({ source: z.literal('demo') }).transform(() => demoBoard)]),
+  // Only validated real analysis can be restored from a shared room.
+  board: menuBoardSchema,
   cart: z.array(z.object({ menuId: z.string(), userId: z.string().uuid(), quantity: z.number().int().min(1).max(20) })).max(320),
   members: z.array(member).min(1).max(4),
 });
