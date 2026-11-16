@@ -207,3 +207,17 @@ Node.js 22.16.0, 로컬 앱과 실제 서버 키로 점검했어요. 실제 요�
 무료 Gemini 키를 확인했고 사용자는 공개 서버의 임시 한도도 별도로 승인했어요. 전체 추가 사용은 **16회(50→66)**로 승인한 20회 이내예요. 완료 후 production의 `GEMINI_DAILY_LIMIT`을 **50**으로 복원했고 최종 배포는 이 설정을 사용해요. 결제·유료 요금제는 변경하지 않았어요. 오늘 카운터를 삭제하지 않았으므로 정상 한도에서는 다음 UTC 날짜(한국 시간 11월 17일 09:00)까지 분석·번역의 신규 호출이 제한돼요.
 
 최종 소스 검증: build·lint·140개 테스트·check:design·실제 Android APK 빌드 통과. 직접 색상·토큰 밖 여백 0건, 화면별 primary 최대 1개예요. 실제 기기 자동 점검은 `MEIDE_ANDROID=1 npm run check:live -- /실제이미지.png`, `MEIDE_ANDROID=1 MEIDE_TEST_URL=https://meide-meide1.vercel.app npm run check:sharing -- outputs/android-live-api-report.json`으로 실행해요. `node scripts/check-native-capture.mjs`는 사용자가 실제 카메라 촬영을 마친 화면에서만 실행하며 사진을 주입하거나 페이지를 새로고침하지 않아요.
+
+## Android 초대 링크 (2026-11-16, 0.1.1)
+
+초대 주소는 `https://meide-meide1.vercel.app/join/<토큰>`이에요. Android의 검증된 App Links로 설치 앱을 열고, Capacitor의 시작 주소와 실행 중 링크 이벤트를 모두 처리해요. 기존 `/#/join/<토큰>` 웹 초대도 계속 읽을 수 있지만, 앱으로 바로 여는 점검은 새로 생성한 `/join/` 주소를 사용해요. 앱 미설치 기기는 같은 주소에서 웹 참여 화면을 열어요.
+
+두 폰 모두 `outputs/meide-0.1.1.apk`를 업데이트 설치한 다음, 메뉴판 사진 분석 화면에서 이름을 넣고 “동반인 초대 링크 만들기”를 눌러요. 만든 링크를 공유하고 본인은 “공동 메뉴판 열기”를 눌러요. 동반인은 링크를 눌러 meide에서 이름을 입력하고 “함께 고르기”를 눌러요. 메시지 앱 자체 브라우저가 링크를 가로채면 Android의 “다른 앱으로 열기”를 사용하거나 meide 앱 정보의 “기본으로 설정 → 지원되는 링크 열기”를 확인해요.
+
+`public/.well-known/assetlinks.json`에는 실제 배포 APK의 공개 인증서 SHA-256과 `app.meide.preview`를 등록했어요. 개인 서명 키는 포함하지 않아요. 이 APK는 점검용 디버그 서명이에요. Play 배포 또는 다른 서명으로 바꾸면 실제 앱 ID 및 Play 앱 서명 인증서로 이 파일과 Android 링크 설정을 갱신해야 해요.
+
+새 점검 명령은 `MEIDE_ANDROID=1 MEIDE_NATIVE_GUEST=1 MEIDE_TEST_URL=https://meide-meide1.vercel.app npm run check:sharing -- outputs/android-live-api-report.json`이에요. 이전 실제 분석 결과를 재사용하며 API 응답을 가로채거나 AI 호출을 추가하지 않아요. 연결 폰 한 대를 초대받는 설치 앱으로, 독립 브라우저를 호스트로 사용해요. 종료 상태·실행 상태의 OS 링크 전달, 실제 인증·공유·주문·영수증을 검사하고 `outputs/android-native-invite-report.json`에 기록해요. 두 실제 휴대폰 동시 점검은 두 번째 폰 연결이 가능할 때 별도로 진행해야 해요.
+
+이번 실제 점검 결과: 앱 코드 `88ed922`를 공개 서버에 배포(READY)했고, 두 공개 도메인이 Android에서 `verified`로 확인됐어요. 특정 앱을 강제로 지정하지 않은 HTTPS 링크 열기로 실제 meide 앱 실행을 확인했어요. 설치 앱이 동반인인 점검 10개가 통과했고, 실제 Realtime 프레임 13건·화면 오류 0건을 관찰했어요. 호스트와 동반인 모두 €28.00 공동 영수증을 확인했어요. APK 0.1.1(versionCode 2)을 Galaxy S21에 업데이트 설치했고, 145개 테스트·build·lint·check:design·APK 빌드가 통과했어요. 디자인 검사에서 직접 색상·토큰 밖 여백 0건, 화면별 primary 최대 1개예요. Gemini 추가 호출 0회이며 평소 한도 50회·무료 결제 설정은 변경하지 않았어요. 배포·APK 해시·도메인 인증 결과는 `outputs/native-invite-release-report.json`에 있어요.
+
+동일한 최신 APK가 초대하는 쪽인 역방향 점검도 7개 모두 통과했어요. 앱이 생성한 새 `/join/` 링크로 브라우저의 참여 화면도 정상 열렸고, 실제 서버에서 담기·수량·권한·€28.00 영수증을 확인했어요. 결과는 `outputs/android-live-sharing-report.json`이에요. 이것도 실제 폰 두 대의 동시 점검으로 간주하지 않아요.
