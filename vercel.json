@@ -11,5 +11,11 @@
       "excludeFiles": "node_modules/onnxruntime-node/bin/napi-v6/{darwin,win32,linux/arm64}/**"
     }
   },
-  "installCommand": "ONNXRUNTIME_NODE_INSTALL=skip npm ci"
+  "installCommand": "ONNXRUNTIME_NODE_INSTALL=skip npm ci",
+  "rewrites": [
+    {
+      "source": "/join/:invite",
+      "destination": "/"
+    }
+  ]
 }

@@ -6,6 +6,14 @@ import { normalizeAnalysis } from "@/data/menu-schema";
 import { analysisFixture } from "../../server/analysis-fixture";
 beforeEach(() => { window.history.replaceState(null, "", "/"); });
 describe("메뉴판부터 영수증까지의 화면 범위", () => {
+  it("HTTPS 초대 경로로 들어와 닫으면 초대를 다시 열지 않아요", async () => {
+    window.history.replaceState(null, '', `/join/${'a'.repeat(64)}`);
+    render(<App />);
+    expect(screen.getByRole('dialog', {name:'함께 메뉴를 골라요'})).toBeInTheDocument();
+    await userEvent.setup().click(screen.getByRole('button', {name:'닫기'}));
+    expect(window.location.pathname).toBe('/');
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
   it("실제 촬영 입력을 제공하고 분석 전에는 예시 메뉴나 금액을 표시하지 않아요", () => {
     render(<App />);
     expect(screen.getByRole('button', { name: '메뉴판 촬영하기' })).toBeEnabled();

@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Capacitor } from "@capacitor/core";
+import { inviteToken } from "@/lib/invite-url";
+import { listenForNativeInvites } from "@/lib/native-invites";
 import { App as NativeApp } from "@capacitor/app";
 import { TestSetup } from "./screens/TestSetup";
 import { Menu } from "./screens/Menu";
@@ -29,7 +31,7 @@ export function App({ initialBoard, onBackToPrevious }: { initialBoard?: MenuBoa
   const shared = useSharedOrder();
   const view = shared.snapshot ? sharedView(shared.snapshot, shared.userId) : null;
   const board = useMemo(()=>withReviewedPhotos(shared.snapshot?.board ?? localBoard),[shared.snapshot?.board,localBoard]);
-  const [invite, setInvite] = useState(() => /^#\/join\/([a-f0-9]{64})$/.exec(window.location.hash)?.[1] ?? "");
+  const [invite, setInvite] = useState(() => inviteToken(window.location.href) ?? "");
   const [request, setRequest] = useState(saved.request);
   const [tipRate, setTipRate] = useState(saved.tipRate);
   const [route, setRoute] = useState(() => saved.board.items.length || shared.roomId ? readRoute() : "setup");
@@ -41,7 +43,14 @@ export function App({ initialBoard, onBackToPrevious }: { initialBoard?: MenuBoa
   const item = route.startsWith("detail/") ? board.items.find(item => item.id === route.split("/")[1]) : undefined;
   const activeRoute = !board.items.length ? "setup" : route.startsWith("detail/") && !item ? "menu" : route;
 
-  useEffect(() => { const sync = () => { setRoute(readRoute()); setInvite(/^#\/join\/([a-f0-9]{64})$/.exec(window.location.hash)?.[1] ?? ""); }; window.addEventListener("hashchange", sync); return () => window.removeEventListener("hashchange", sync); }, []);
+  useEffect(() => {
+    if (!Capacitor.isNativePlatform()) return;
+    return listenForNativeInvites(token => { setInvite(token); window.location.hash = `/join/${token}`; });
+  }, []);
+  useEffect(() => {
+    if (invite && window.location.pathname.startsWith('/join/')) window.history.replaceState(null, '', `/#/join/${invite}`);
+  }, [invite]);
+  useEffect(() => { const sync = () => { setRoute(readRoute()); setInvite(inviteToken(window.location.href) ?? ""); }; window.addEventListener("hashchange", sync); return () => window.removeEventListener("hashchange", sync); }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
     if (!invite && window.location.hash !== `#/${activeRoute}`) window.history.replaceState(null, "", `#/${activeRoute}`);
