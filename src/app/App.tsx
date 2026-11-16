@@ -14,7 +14,8 @@ import { CompanionNotice } from "@/components/CompanionNotice";
 import { MenuTools } from "./MenuTools";
 import { useSharedOrder } from "./use-shared-order";
 import { sharedView } from "@/lib/shared-order";
-import { withReviewedPhotos, type Category, type MenuBoard } from "@/data/menu-schema";
+import { withReviewedPhotos, type Dining, type Category, type MenuBoard } from "@/data/menu-schema";
+import { defaultDining } from "./dining";
 import { readSession, saveSession } from "./session";
 
 // A real saved analysis opens the menu; a fresh device starts with photo selection.
@@ -73,13 +74,19 @@ export function App({ initialBoard, onBackToPrevious }: { initialBoard?: MenuBoa
     try { await shared.mutate(id, action); }
     catch(error) { setNotice(error instanceof Error ? error.message : "저장하지 못했어요"); }
   }
+  async function setDining(setting: keyof Dining, value: Dining[keyof Dining]) {
+    try {
+      if (shared.roomId) await shared.setDining(setting, value);
+      else setBoard(current => ({ ...current, dining: { ...defaultDining, ...current.dining, [setting]: value } }));
+    } catch (error) { setNotice(error instanceof Error ? error.message : '식사 정보를 저장하지 못했어요'); }
+  }
   function toggle(id: string) {
     if (shared.roomId) { void sharedChange(id, cart.some(line=>line.menuId===id && line.person==='me') ? 'remove' : 'add'); return; }
     setCart(current => current.some(line => line.menuId === id) ? current.filter(line => line.menuId !== id) : [...current, { menuId: id, person: "me", quantity: 1 }]);
   }
 
   return <div className="app-shell figma-flow">
-    {(activeRoute === "test" || activeRoute === "setup") ? <TestSetup board={localBoard} onPhotos={setBoard} onBoard={next=>{shared.open(null);setBoard(next);setCart([]);setCategory(next.categories[0].id);setRequest("");}} onRoom={id=>{shared.open(id);go("menu");}} onMenu={()=>{shared.open(null);go("menu");}} /> : activeRoute === "cart" ? <Cart people={view?.people} shared={Boolean(shared.roomId)} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} board={board} cart={cart} tip={tip} setTip={setTip} tipRate={tipRate} setTipRate={setTipRate} onQuantity={(id, delta, person) => { if(shared.roomId) { if(person==='me') void sharedChange(id,delta>0?'increase':'decrease'); } else setCart(current => changeQuantity(current, id, delta, person)); }} go={go} />
+    {(activeRoute === "test" || activeRoute === "setup") ? <TestSetup board={localBoard} onPhotos={setBoard} onBoard={next=>{shared.open(null);setBoard(next);setCart([]);setCategory(next.categories[0].id);setRequest("");}} onRoom={id=>{shared.open(id);go("menu");}} onMenu={()=>{shared.open(null);go("menu");}} /> : activeRoute === "cart" ? <Cart onDining={setDining} people={view?.people} shared={Boolean(shared.roomId)} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} board={board} cart={cart} tip={tip} setTip={setTip} tipRate={tipRate} setTipRate={setTipRate} onQuantity={(id, delta, person) => { if(shared.roomId) { if(person==='me') void sharedChange(id,delta>0?'increase':'decrease'); } else setCart(current => changeQuantity(current, id, delta, person)); }} go={go} />
       : activeRoute === "order" ? <Order board={board} cart={cart} request={request} setRequest={setRequest} go={go} />
       : activeRoute === "receipt" ? <Receipt board={board} cart={cart} tip={tip} tipRate={tipRate} go={go} />
       : item && activeRoute.startsWith("detail/") ? <Detail key={item.id} item={item} source={board.source} added={cart.some(line => line.menuId === item.id && (!shared.roomId || line.person === "me"))} disabled={Boolean(shared.roomId) && (!shared.connected || shared.pending)} onAdd={() => { toggle(item.id); if (!shared.roomId) setNotice("장바구니에 담았어요"); }} go={go} />

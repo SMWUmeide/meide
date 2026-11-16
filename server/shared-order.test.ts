@@ -17,6 +17,7 @@ beforeAll(async()=>{
   await db.exec(await readFile(new URL('../supabase/migrations/202611140001_shared_order.sql',import.meta.url),'utf8'));
   await db.exec(await readFile(new URL('../supabase/migrations/202611140002_api_budgets.sql',import.meta.url),'utf8'));
   await db.exec(await readFile(new URL('../supabase/migrations/202611140004_restrict_budget_rpc.sql',import.meta.url),'utf8'));
+  await db.exec(await readFile(new URL('../supabase/migrations/20261116105701_shared_dining_context.sql',import.meta.url),'utf8'));
 },20000);
 afterAll(async()=>{await db?.close();});
 describe('공동 장바구니 서버 권한과 변경',()=>{
@@ -35,10 +36,17 @@ describe('공동 장바구니 서버 권한과 변경',()=>{
   it('초대 참여·동시 담기·수량·본인 소유권·외부 차단을 검증해요',async()=>{
     await user(a);
     const room=await rpc<{roomId:string;invite:string}>('public.create_order_room($1,$2)',[menu,'나']);
+    await rpc('public.change_order_dining($1,$2,$3)',[room.roomId,'partySize',2]);
+    await expect(rpc('public.change_order_dining($1,$2,$3)',[room.roomId,'partySize',0])).rejects.toThrow('INVALID_DINING');
+    await expect(rpc('public.change_order_dining($1,$2,$3)',[room.roomId,'region',null])).rejects.toThrow('INVALID_DINING');
+    await user(c); await expect(rpc('public.change_order_dining($1,$2,$3)',[room.roomId,'partySize',3])).rejects.toThrow('ROOM_UNAVAILABLE');
     await user(c); await expect(rpc('public.read_order_room($1)',[room.roomId])).rejects.toThrow('ROOM_UNAVAILABLE');
     await expect(rpc('public.change_order_item($1,$2,$3)',[room.roomId,'pasta','add'])).rejects.toThrow('ROOM_UNAVAILABLE');
     await user(b); await rpc('public.join_order_room($1,$2)',[room.invite,'동반인']);
     await rpc('public.change_order_item($1,$2,$3)',[room.roomId,'pasta','add']);
+    await rpc('public.change_order_dining($1,$2,$3)',[room.roomId,'region',JSON.stringify('IT')]);
+    const dining=await rpc<{board:{dining:{partySize:number;region:string}}}>('public.read_order_room($1)',[room.roomId]);
+    expect(dining.board.dining).toEqual({partySize:2,region:'IT'});
     await user(a); await rpc('public.change_order_item($1,$2,$3)',[room.roomId,'pasta','add']);
     type Snapshot={cart:{userId:string;quantity:number}[];revision:number;members:unknown[]};
     let state=await rpc<Snapshot>('public.change_order_item($1,$2,$3)',[room.roomId,'pasta','increase']);

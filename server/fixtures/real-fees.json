@@ -1,0 +1,90 @@
+{
+  "sourceUrl": "https://www.ristorantesantandrea.com/wp-content/uploads/2025/05/MENU-ALLA-CARTA-primavera-2025-A4-con-traduzioni-ING-FRA-1.pdf",
+  "recordedAt": "2026-11-16T11:01:29.177Z",
+  "board": {
+    "restaurantName": "Ristorante Sant'Andrea",
+    "categories": [
+      {
+        "id": "category-1",
+        "name": "애피타이저",
+        "original": "Gli Antipasti"
+      },
+      {
+        "id": "category-2",
+        "name": "음료",
+        "original": "Le Bevande"
+      }
+    ],
+    "items": [
+      {
+        "kind": "food",
+        "priceEvidence": "",
+        "originalName": "La Battuta di Vitello al Coltello con Maionese al Wasabi e Chips di Patata Dolce Croccante",
+        "photoQuery": "Veal Tartare with Wasabi Mayonnaise",
+        "name": "고추냉이 마요네즈와 바삭한 고구마 칩을 곁들인 수제 송아지 육회",
+        "priceEur": 14,
+        "analogy": "부드러운 송아지고기 육회에 알싸한 고추냉이 마요네즈와 바삭한 칩을 곁들여 먹는 요리예요.",
+        "description": "Veal Tartare with Wasabi Mayonnaise and Crispy Sweet Potato Chips",
+        "ingredients": [
+          {
+            "name": "송아지고기",
+            "original": "Veal"
+          },
+          {
+            "name": "고추냉이 마요네즈",
+            "original": "Wasabi Mayonnaise"
+          },
+          {
+            "name": "고구마 칩",
+            "original": "Sweet Potato Chips"
+          }
+        ],
+        "allergen": "달걀",
+        "estimated": [
+          "송아지고기",
+          "마요네즈",
+          "고추냉이",
+          "고구마"
+        ],
+        "method": "날고기를 다져서 소스와 칩을 곁들였어요.",
+        "possibleAllergen": "달걀 알레르기가 있다면 직원에게 꼭 확인해 주세요.",
+        "id": "scan-1",
+        "category": "category-1",
+        "photoUrl": null
+      },
+      {
+        "kind": "water",
+        "priceEvidence": "Acqua Naturale/Frizzante in caraffa 0,750 lt. 1,50",
+        "originalName": "Acqua Naturale/Frizzante in caraffa 0,750 lt.",
+        "photoQuery": "Carafe of water",
+        "name": "미네랄 워터 / 탄산수 (카라페, 0.75L)",
+        "priceEur": 1.5,
+        "analogy": "식사와 곁들이기 좋은 시원한 물이에요.",
+        "description": "Natural and Sparkling Micro Filtered Water in Carafe",
+        "ingredients": [
+          {
+            "name": "물",
+            "original": "Acqua"
+          }
+        ],
+        "allergen": "메뉴판에서 확인되지 않았어요",
+        "estimated": [
+          "정수된 물"
+        ],
+        "method": "주전자에 담아 제공되는 미세 여과 정수물이에요.",
+        "possibleAllergen": "특이사항은 없지만 직원에게 문의해 주세요.",
+        "id": "scan-6",
+        "category": "category-2",
+        "photoUrl": null
+      }
+    ],
+    "source": "gemini",
+    "skipped": 0,
+    "coverCharge": {
+      "name": "자릿세",
+      "priceEur": 1.5,
+      "basis": "per_person",
+      "evidence": "Coperto € 1,50 a persona"
+    }
+  }
+}

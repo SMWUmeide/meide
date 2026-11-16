@@ -1,6 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { z } from 'zod';
-import { menuBoardSchema, type MenuBoard } from '@/data/menu-schema';
+import { menuBoardSchema, type MenuBoard, type Dining } from '@/data/menu-schema';
 import type { CartLine } from '@/app/cart';
 import type { Person } from '@/components/_shared/action';
 
@@ -69,5 +69,11 @@ export async function readOrderRoom(id: string) {
 export async function changeOrderItem(id: string, menuId: string, action: 'add' | 'remove' | 'increase' | 'decrease') {
   const { data, error } = await orderClient().rpc('change_order_item', { target: id, menu_id: menuId, action });
   if (error) throw new Error('변경사항을 저장하지 못했어요. 연결 후 다시 눌러 주세요');
+  return parseSnapshot(data);
+}
+
+export async function changeOrderDining(id: string, setting: keyof Dining, value: Dining[keyof Dining]) {
+  const { data, error } = await orderClient().rpc('change_order_dining', { target: id, setting, value });
+  if (error) throw new Error('식사 정보를 저장하지 못했어요. 연결 후 다시 선택해 주세요');
   return parseSnapshot(data);
 }

@@ -1,7 +1,8 @@
 import { companionActivity } from '@/lib/companion-activity';
 import type { CompanionActivity } from '@/components/CompanionNotice';
 import { useEffect, useRef, useState } from 'react';
-import { changeOrderItem, orderClient, orderIdentity, readOrderRoom, type SharedSnapshot } from '@/lib/shared-order';
+import type { Dining } from "@/data/menu-schema";
+import { changeOrderDining, changeOrderItem, orderClient, orderIdentity, readOrderRoom, type SharedSnapshot } from '@/lib/shared-order';
 function mergeSnapshot(old: SharedSnapshot | null, next: SharedSnapshot) {
   if (old?.id === next.id && old.revision > next.revision) return old;
   return old?.id === next.id && JSON.stringify(old.board) === JSON.stringify(next.board) ? {...next, board: old.board} : next;
@@ -72,5 +73,13 @@ export function useSharedOrder() {
       if (currentRoom.current === roomId) receive(next,true);
     } finally { busy.current = false; setPending(false); }
   }
-  return { activity, roomId, snapshot, userId, status, connected, pending, open, mutate };
+  async function setDining(setting: keyof Dining, value: Dining[keyof Dining]) {
+    if (!roomId || busy.current || !connected) throw new Error('공유 연결을 확인한 뒤 다시 눌러 주세요');
+    busy.current = true; setPending(true);
+    try {
+      const next = await changeOrderDining(roomId, setting, value);
+      if (currentRoom.current === roomId) receive(next, false);
+    } finally { busy.current = false; setPending(false); }
+  }
+  return { setDining, activity, roomId, snapshot, userId, status, connected, pending, open, mutate };
 }

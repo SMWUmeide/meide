@@ -3,17 +3,20 @@ import { Avatar } from "@/components/Avatar";
 import { Card } from "@/components/Card";
 import { Button } from "@/components/Button";
 import { IconButton } from "@/components/IconButton";
-import type { MenuBoard } from "@/data/menu-schema";
-import { totals, subtotal, type CartLine } from "../cart";
+import { defaultDining, diningTotals, regions } from "../dining";
+import type { Dining, MenuBoard } from "@/data/menu-schema";
+import { subtotal, type CartLine } from "../cart";
 import { Toolbar, Price, Photo, Divider } from "../shared";
 
-export function Cart({ board, cart, tip, setTip, tipRate, setTipRate, onQuantity, go, people, shared = false, disabled = false }: {
+export function Cart({ board, cart, tip, setTip, tipRate, setTipRate, onQuantity, go, people, onDining, shared = false, disabled = false }: {
+  onDining?: (setting: keyof Dining, value: Dining[keyof Dining]) => void;
   people?: SharedPerson[]; shared?: boolean; disabled?: boolean;
   board: MenuBoard; cart: CartLine[]; tip: boolean; setTip: (value: boolean) => void;
   tipRate: number; setTipRate: (value: number) => void;
   onQuantity: (id: string, delta: number, person: CartLine["person"]) => void; go: (route: string) => void;
 }) {
-  const total = totals(cart, tip, board.items, tipRate);
+  const total = diningTotals(board, cart, tip, tipRate);
+  const dining = board.dining ?? defaultDining;
   return <main className="page cart-page" data-screen="cart">
     <Toolbar title="함께 담은 장바구니" onBack={() => go("menu")} />
     <div className="page-content cart-scroll">
@@ -36,12 +39,21 @@ export function Cart({ board, cart, tip, setTip, tipRate, setTipRate, onQuantity
           <Divider src="/figma/d2d4f.svg" /><div className="section-heading cart-subtotal"><span className="t-body-sm muted">{person === "me" ? "내 합계" : `${name}님 합계`}{tip ? " (팁 포함)" : " (팁 제외)"}</span><Price eur={Math.round(subtotal(lines, board.items) * (tip ? 1 + tipRate / 100 : 1) * 100) / 100} /></div>
         </Card>;
       })}
+      {onDining && total.count > 0 && <Card className="stack-lg">
+        <h2 className="t-title-md">식사 정보를 확인해 주세요</h2>
+        <label className="stack-sm"><span>식사 인원</span><select className="request-input" aria-label="식사 인원" disabled={disabled} value={dining.partySize ?? ''} onChange={event => onDining('partySize', event.target.value ? Number(event.target.value) : null)}><option value="">인원을 선택해 주세요</option>{Array.from({length:30}, (_,i) => <option key={i+1} value={i+1}>{i+1}명</option>)}</select></label>
+        <label className="stack-sm"><span>여행 지역</span><select className="request-input" aria-label="여행 지역" disabled={disabled} value={dining.region} onChange={event => onDining('region', event.target.value as Dining['region'])}>{Object.entries(regions).map(([value,label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+        {board.coverCharge && <p className="t-body-sm">메뉴판 원문: {board.coverCharge.evidence}</p>}
+        {board.coverCharge && board.coverCharge.priceEur !== 0 && total.cover === 0 && <p className="t-body-sm">자릿세의 금액·부과 단위와 식사 인원이 확인되어야 합계에 넣어요. 조건이 모호하면 직원에게 확인해 주세요.</p>}
+        <p className="t-body-sm muted">실제로 식사하는 인원을 선택해 주세요. 여행 지역은 식문화 설명에만 사용하고 요금을 추가하지 않아요. 물은 메뉴판에서 담은 수량만 계산해요.</p>
+      </Card>}
       <p className="tiny muted demo-note">확인된 환율이 없어 EUR 가격만 표시해요. 실제 주문·결제는 이루어지지 않아요.</p>
     </div>
     <section className="cart-checkout" aria-label="예상 결제 금액">
       <div className="section-heading"><label className="tip-toggle"><input type="checkbox" checked={tip} aria-label={`선택 팁 ${tipRate}% 포함`} onChange={event => setTip(event.currentTarget.checked)} /><span className="checkbox-art" aria-hidden="true">{tip && <img src="/figma/8ae2f.svg" alt="" />}</span><span>선택 팁 포함</span></label><label className="tip-rate"><span className="sr-only">팁 비율</span><select value={tipRate} disabled={!tip} onChange={event => setTipRate(Number(event.target.value))}>{[5, 10, 15, 20].map(rate => <option key={rate} value={rate}>{rate}%</option>)}</select><img src="/figma/59c52.svg" alt="" /></label></div>
-      <Divider wide /><div className="section-heading"><div><h2 className="t-title-md">예상 총액</h2><p className="t-body-sm muted">음식+팁 · 총 {total.count}개</p></div><Price eur={total.total} large /></div>
-      <Button variant="primary" disabled={!total.count} onClick={() => go("order")}>주문 문장 만들기</Button>
+      {total.cover > 0 && <div className="section-heading"><span>자리 준비 요금</span><Price eur={total.cover} /></div>}
+      <Divider wide /><div className="section-heading"><div><h2 className="t-title-md">예상 총액</h2><p className="t-body-sm muted">메뉴+팁{total.cover > 0 ? "+자리 준비 요금" : ""} · 총 {total.count}개</p></div><Price eur={total.total} large /></div>
+      <Button variant="primary" disabled={!total.count || (Boolean(board.coverCharge?.priceEur) && board.coverCharge?.basis === 'per_person' && !dining.partySize)} onClick={() => go("order")}>주문 문장 만들기</Button>
     </section>
   </main>;
 }

@@ -221,3 +221,18 @@ Node.js 22.16.0, 로컬 앱과 실제 서버 키로 점검했어요. 실제 요�
 이번 실제 점검 결과: 앱 코드 `88ed922`를 공개 서버에 배포(READY)했고, 두 공개 도메인이 Android에서 `verified`로 확인됐어요. 특정 앱을 강제로 지정하지 않은 HTTPS 링크 열기로 실제 meide 앱 실행을 확인했어요. 설치 앱이 동반인인 점검 10개가 통과했고, 실제 Realtime 프레임 13건·화면 오류 0건을 관찰했어요. 호스트와 동반인 모두 €28.00 공동 영수증을 확인했어요. APK 0.1.1(versionCode 2)을 Galaxy S21에 업데이트 설치했고, 145개 테스트·build·lint·check:design·APK 빌드가 통과했어요. 디자인 검사에서 직접 색상·토큰 밖 여백 0건, 화면별 primary 최대 1개예요. Gemini 추가 호출 0회이며 평소 한도 50회·무료 결제 설정은 변경하지 않았어요. 배포·APK 해시·도메인 인증 결과는 `outputs/native-invite-release-report.json`에 있어요.
 
 동일한 최신 APK가 초대하는 쪽인 역방향 점검도 7개 모두 통과했어요. 앱이 생성한 새 `/join/` 링크로 브라우저의 참여 화면도 정상 열렸고, 실제 서버에서 담기·수량·권한·€28.00 영수증을 확인했어요. 결과는 `outputs/android-live-sharing-report.json`이에요. 이것도 실제 폰 두 대의 동시 점검으로 간주하지 않아요.
+
+## 메뉴판에 명시된 자릿세·물값 (0.1.3)
+
+AI 분석은 `coverCharge`에 자릿세 원문·단가·1인당/테이블당 단위를 보관하고, 물은 `kind: water` 주문 메뉴 및 `priceEvidence`로 보관해요. 가격·단위가 모호한 요금은 계산하지 않으며, 무료/포함은 추가 금액이 없어요. 선택형 전채(couvert)는 의무 자릿세로 처리하지 않도록 분석 지침을 구분했어요. 카라페를 밀봉 생수병으로 번역하지 않도록 명시했어요. 예전 분석 결과에는 이 필드가 없으므로 실제 메뉴판을 다시 분석해야 해요.
+
+장바구니에서 실제 식사 인원(1–30명)과 여행 지역을 선택해요. 인원은 메뉴를 담은 사람 수나 앱 접속자 수로 추정하지 않아요. 1인당 자릿세가 확인됐는데 인원을 선택하지 않으면 주문 문장으로 진행할 수 없어요. 물은 담은 수량만 기존 메뉴 합계에 들어가며 별도 요금으로 이중 합산하지 않아요. 선택 팁은 기존처럼 메뉴 금액 기준이고 자릿세에는 추가로 붙이지 않아요. 실제 반영 금액이 양수일 때만 영수증에 해당 안내가 나타나요. 인원·지역은 공유 방의 식사 정보로 저장하고 같은 방 사용자들에게 동기화해요. 로그인·방 소속·만료·입력 범위를 서버에서 검사하고 두 설정의 개별 수정이 서로 덮어쓰지 않게 처리해요.
+
+여행 지역은 안내 문구에만 사용하며 요금 유무·금액의 근거가 아니에요. 이탈리아 coperto, 프랑스 식사에 곁들이는 일반 식수와 별도 물 상품, 포르투갈 couvert의 구분을 설명해요. 그 밖의 지역은 단정적인 문화 안내 대신 해당 메뉴판 원문과 주문 수량을 기준으로 설명해요. GPS 위치나 언어만으로 여행 지역을 추정하지 않아요.
+
+참고 자료(2026-11-16 확인):
+- 이탈리아 소비자단체의 coperto 안내: https://www.altroconsumo.it/vita-privata/famiglia/viaggi-tempo-libero/speciali/coperto-al-ristorante
+- 프랑스 DGCCRF의 식수 안내: https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/transition-ecologique-quelles-obligations-pour-les-cafes-et
+- 포르투갈 정부의 식당 안내: https://portugal.gov.pt/api/media/edge/Project/Portal-do-Governo/Portal-do-Governo/gc23/Files/Comunicados/divulgado-guia-e-bebidas/guia_de_regras_e_boas_praticas_na_restauracao_e_bebidas.pdf
+
+실사진 점검 자료는 Sant’Andrea 공식 메뉴 PDF 1·7쪽(자릿세 €1.50/명, 물 0.75L €1.50)과 앞서 사용한 Luppolo e Farina 공식 메뉴판이에요. 실제 Gemini 결과는 `outputs/fees-analysis-report.json`, `outputs/no-fees-analysis-report.json`에 기록했어요. 자동 회귀 테스트의 `server/fixtures/real-*.json`은 이 실제 응답 중 필요한 메뉴만 추린 기록이며 앱에서는 import하지 않아요. 실제 서버·화면 점검은 `MEIDE_TEST_URL=<배포주소> node scripts/check-live-dining.mjs`, 폰 호스트 점검은 여기에 `MEIDE_ANDROID=1`을 추가해요. API 응답 가로채기나 가짜 서버 응답 없이 기록된 실분석과 실제 공유 서버를 사용해요.

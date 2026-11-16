@@ -7,8 +7,8 @@ android {
         applicationId (project.findProperty("MEIDE_APPLICATION_ID") ?: "app.meide.preview")
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode = (project.findProperty("MEIDE_VERSION_CODE") ?: "3").toString().toInteger()
-        versionName (project.findProperty("MEIDE_VERSION_NAME") ?: "0.1.2")
+        versionCode = (project.findProperty("MEIDE_VERSION_CODE") ?: "4").toString().toInteger()
+        versionName (project.findProperty("MEIDE_VERSION_NAME") ?: "0.1.3")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
