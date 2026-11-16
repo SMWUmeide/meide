@@ -1,0 +1,30 @@
+{
+  "versionName": "0.1.3",
+  "versionCode": 4,
+  "applicationId": "app.meide.preview",
+  "buildType": "debug",
+  "googlePlayUploadReady": false,
+  "sourceCommit": "d9466d8ecae301d53321fa48cee217af59e437b5",
+  "buildTask": ":app:bundleDebug",
+  "builtAt": "2026-11-16T22:37:45.100993+09:00",
+  "artifacts": [
+    {
+      "file": "meide-0.1.3-debug.aab",
+      "bytes": 10703503,
+      "sha256": "de6fb1de4db61b831ca1e9f33261dd7ccb2e6cbd723cacd99dbe133eb39b676d"
+    },
+    {
+      "file": "meide-0.1.3-debug.apk",
+      "bytes": 12098298,
+      "sha256": "2edfc5bd70e184e77baa809ce559a88a6b3d1381d8668a3f543b4c58688d5852"
+    }
+  ],
+  "verification": {
+    "bundletoolVersion": "1.18.3",
+    "bundleStructureValid": true,
+    "webAssetFilesIdenticalToApk": 67,
+    "serverSecretsAbsent": true,
+    "cryptographicallyVerifiedSignedEntries": 1043
+  },
+  "signingCertificateSha256": "86:11:70:35:34:EF:33:F9:E1:39:BA:98:2D:0F:C8:8D:81:C9:45:3B:49:0F:6D:0E:73:8D:28:84:D8:E1:AD:62"
+}
