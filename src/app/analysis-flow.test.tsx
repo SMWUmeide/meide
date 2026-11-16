@@ -6,6 +6,19 @@ import { normalizeAnalysis } from "@/data/menu-schema";
 import { analysisFixture } from "../../server/analysis-fixture";
 beforeEach(() => { window.history.replaceState(null, "", "/"); });
 describe("메뉴판부터 영수증까지의 화면 범위", () => {
+  it("실제 촬영 입력을 제공하고 분석 전에는 예시 메뉴나 금액을 표시하지 않아요", () => {
+    render(<App />);
+    expect(screen.getByRole('button', { name: '메뉴판 촬영하기' })).toBeEnabled();
+    expect(screen.getByLabelText('메뉴판 사진 촬영')).toHaveAttribute('capture', 'environment');
+    expect(screen.queryByText(/1,499|미영|Osteria|예시 메뉴판으로 시작/)).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '메뉴판 분석하기' })).toBeDisabled();
+  });
+  it("검증된 환율 없이 원화 금액이나 가정한 추가 요금을 만들지 않아요", () => {
+    window.history.replaceState(null, "", "/#/receipt");
+    render(<App initialBoard={normalizeAnalysis(analysisFixture)} />);
+    expect(screen.queryByText(/약 .*원|EUR 2.50|EUR 3.00/)).not.toBeInTheDocument();
+    expect(screen.getByText('자리 준비 비용과 물값은 직원에게 확인해 주세요. 확인되지 않은 추가 요금은 합계에 넣지 않았어요.')).toBeInTheDocument();
+  });
   it("앞 화면의 분석 결과와 뒤로가기 동작을 받고 새 장바구니로 시작해요", async () => {
     const onBack = vi.fn();
     render(<App initialBoard={normalizeAnalysis(analysisFixture)} onBackToPrevious={onBack} />);

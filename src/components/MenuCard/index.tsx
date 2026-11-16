@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Avatar } from "../Avatar";
 import { IconButton } from "../IconButton";
 import { personNames, type Person } from "../_shared/action";
-export type MenuCardProps = { originalName: string; name: string; priceEur: number; priceKrw: number; photoUrl?: string | null; addedBy?: Person | null; onToggle: () => void; onOpen: () => void; addedByName?: string; disabled?: boolean; loading?: boolean; presentation?: "default" | "figma"; allergenLabel?: string; companionLabel?: string; toggleDisabled?: boolean; cutout?: boolean; photoMessage?: string };
+export type MenuCardProps = { originalName: string; name: string; priceEur: number; priceKrw?: number; photoUrl?: string | null; addedBy?: Person | null; onToggle: () => void; onOpen: () => void; addedByName?: string; disabled?: boolean; loading?: boolean; presentation?: "default" | "figma"; allergenLabel?: string; companionLabel?: string; toggleDisabled?: boolean; cutout?: boolean; photoMessage?: string };
 export function MenuCard({ originalName, name, priceEur, priceKrw, photoUrl = null, addedBy = null, onToggle, onOpen, addedByName, disabled = false, loading = false, presentation = "default", allergenLabel, companionLabel, toggleDisabled = false, cutout = false, photoMessage = "사진 준비 중" }: MenuCardProps) {
   const [failedUrl, setFailedUrl] = useState<string | null>(null);
   const personName = addedByName || (addedBy ? personNames[addedBy] : "");
@@ -20,7 +20,7 @@ export function MenuCard({ originalName, name, priceEur, priceKrw, photoUrl = nu
     <button type="button" className="menu-details" onClick={onOpen} disabled={disabled}>
       <span className="menu-original t-body-sm">{originalName}</span><span className="menu-name t-body-md">{name}</span>
       <span className="menu-price"><span className="t-body-sm">EUR</span><span className="t-label-md">{priceEur.toLocaleString("ko-KR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></span>
-      <span className="menu-conversion t-body-sm">약 {Math.round(priceKrw).toLocaleString("ko-KR")}원</span>
+      {priceKrw !== undefined && <span className="menu-conversion t-body-sm">약 {Math.round(priceKrw).toLocaleString("ko-KR")}원</span>}
     </button>
   </article>;
 }

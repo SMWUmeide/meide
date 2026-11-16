@@ -18,7 +18,7 @@ export function Cart({ board, cart, tip, setTip, tipRate, setTipRate, onQuantity
     <Toolbar title="함께 담은 장바구니" onBack={() => go("menu")} />
     <div className="page-content cart-scroll">
       {total.count === 0 ? <Card className="stack-lg"><h2 className="t-headline-md">아직 담은 메뉴가 없어요</h2><Button variant="secondary" onClick={() => go("menu")}>메뉴 고르러 가기</Button></Card> : (["me", "companion-1", "companion-2", "companion-3"] as const).map(person => {
-        const name = people?.find(member=>member.person===person)?.name ?? "미영";
+        const name = people?.find(member=>member.person===person)?.name ?? "동반인";
         const lines = cart.filter(line => line.person === person);
         if (!lines.length) return null;
         return <Card key={person} className="cart-group">
@@ -36,7 +36,7 @@ export function Cart({ board, cart, tip, setTip, tipRate, setTipRate, onQuantity
           <Divider src="/figma/d2d4f.svg" /><div className="section-heading cart-subtotal"><span className="t-body-sm muted">{person === "me" ? "내 합계" : `${name}님 합계`}{tip ? " (팁 포함)" : " (팁 제외)"}</span><Price eur={Math.round(subtotal(lines, board.items) * (tip ? 1 + tipRate / 100 : 1) * 100) / 100} /></div>
         </Card>;
       })}
-      <p className="tiny muted demo-note">{board.source === "demo" && !shared ? "동반인 메뉴와 환율은 예시예요." : "환율은 예시예요."} 실제 주문·결제는 이루어지지 않아요.</p>
+      <p className="tiny muted demo-note">확인된 환율이 없어 EUR 가격만 표시해요. 실제 주문·결제는 이루어지지 않아요.</p>
     </div>
     <section className="cart-checkout" aria-label="예상 결제 금액">
       <div className="section-heading"><label className="tip-toggle"><input type="checkbox" checked={tip} aria-label={`선택 팁 ${tipRate}% 포함`} onChange={event => setTip(event.currentTarget.checked)} /><span className="checkbox-art" aria-hidden="true">{tip && <img src="/figma/8ae2f.svg" alt="" />}</span><span>선택 팁 포함</span></label><label className="tip-rate"><span className="sr-only">팁 비율</span><select value={tipRate} disabled={!tip} onChange={event => setTipRate(Number(event.target.value))}>{[5, 10, 15, 20].map(rate => <option key={rate} value={rate}>{rate}%</option>)}</select><img src="/figma/59c52.svg" alt="" /></label></div>

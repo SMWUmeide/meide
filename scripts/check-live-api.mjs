@@ -26,7 +26,7 @@ try {
     })().catch(error => { report.errors.push(`API 응답 기록 실패: ${error.message}`); }));
   });
   await page.goto(process.env.MEIDE_TEST_URL || 'http://127.0.0.1:5173');
-  await page.locator('input[type=file]').setInputFiles(photoPath);
+  await page.getByLabel('메뉴판 사진 · 최대 6장', { exact: true }).setInputFiles(photoPath);
   await page.getByRole('button', { name: '메뉴판 분석하기', exact: true }).click();
   await page.waitForFunction(() => {
     const button = [...document.querySelectorAll('button')].find(button => button.textContent === '메뉴판 분석하기');

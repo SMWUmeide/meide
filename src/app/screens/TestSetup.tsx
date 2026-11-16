@@ -1,3 +1,5 @@
+import { Capacitor } from '@capacitor/core';
+import { pickNativePhotos } from '@/lib/native-camera';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/Button';
 import { analyzePhotos } from '@/lib/analyze-menu';
@@ -6,11 +8,19 @@ import { createOrderRoom } from '@/lib/shared-order';
 import type { MenuBoard } from '@/data/menu-schema';
 import { Toolbar } from '../shared';
 export function TestSetup({board,onBoard,onPhotos,onRoom,onMenu}:{board:MenuBoard;onBoard:(board:MenuBoard)=>void;onPhotos:(board:MenuBoard)=>void;onRoom:(id:string)=>void;onMenu:()=>void}) {
+  const camera = useRef<HTMLInputElement>(null);
   const active = useRef<AbortController | null>(null);
   useEffect(() => () => active.current?.abort(), []);
   const [files,setFiles]=useState<File[]>([]),[name,setName]=useState('');
   const [busy,setBusy]=useState(false),[message,setMessage]=useState('');
   const [room,setRoom]=useState<{roomId:string;invite:string}|null>(null);
+  async function capture() {
+    if (!Capacitor.isNativePlatform()) { camera.current?.click(); return; }
+    setBusy(true);
+    try { const selected = await pickNativePhotos('camera', 1); setFiles(current => [...current, ...selected].slice(0, 6)); setMessage('촬영한 사진을 선택했어요. 분석하기를 눌러 주세요'); }
+    catch (error) { if (!(error instanceof Error && /cancel/i.test(error.message))) setMessage('사진을 촬영하지 못했어요. 카메라 권한을 확인해 주세요'); }
+    finally { setBusy(false); }
+  }
   async function analyze(){
     const controller = new AbortController(); active.current = controller;
     setBusy(true);setMessage('메뉴판을 분석하고 있어요');
@@ -35,6 +45,8 @@ export function TestSetup({board,onBoard,onPhotos,onRoom,onMenu}:{board:MenuBoar
   const link=room?`${window.location.origin}/#/join/${room.invite}`:'';
   return <main className="page"><Toolbar title="메뉴판 불러오기" onBack={()=>{if(!busy)onMenu();}}/><div className="page-content stack-xl">
     <p className="t-body-md">실제 메뉴판 사진을 선택해 주세요. AI가 메뉴와 가격을 읽어 드려요.</p>
+    <Button variant="secondary" disabled={busy || files.length >= 6} onClick={()=>void capture()}>메뉴판 촬영하기</Button>
+    <input ref={camera} className="sr-only" aria-label="메뉴판 사진 촬영" type="file" accept="image/*" capture="environment" disabled={busy} onChange={event=>{const selected=Array.from(event.target.files??[]);setFiles(current=>[...current,...selected].slice(0,6));event.target.value='';}} />
     <label className="stack-sm"><span>메뉴판 사진 · 최대 6장</span><input type="file" accept="image/*" multiple disabled={busy} onChange={e=>setFiles(Array.from(e.target.files??[]).slice(0,6))}/></label>
     <p className="t-body-sm muted">분석 시 선택한 사진을 Gemini로 전송해요. 현재 EUR 메뉴판을 지원해요. 음식 사진은 Pixabay의 대표 이미지예요. 메뉴 일치 여부와 접시 외곽을 확인하기 위해 후보 사진도 Gemini로 전송해요.</p>
     <Button variant="secondary" disabled={busy||!files.length} onClick={()=>void analyze()}>메뉴판 분석하기</Button>

@@ -9,7 +9,7 @@
 | originalName | 원어 메뉴명 ("ZUPPA DI ZUCCA E FARRO") | — |
 | name | 한국어 메뉴명 | — |
 | priceEur | `number` | — |
-| priceKrw | `number` | — |
+| priceKrw | `number` (선택, 검증된 환율이 있을 때만) | 미표시 |
 | photoUrl | `string` 또는 `null` | `null` |
 | addedBy | `"me"` · `"companion-1"` · `"companion-2"` · `"companion-3"` · `null` | `null` |
 | onToggle | `() => void` | — |
