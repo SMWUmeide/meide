@@ -1,17 +1,19 @@
 /* global document */
 import { URL } from "node:url";
 // Explicit live check: no route interception, mocked providers, or bundled menu.
-import { chromium } from '@playwright/test';
-import { mkdir, writeFile, access } from 'node:fs/promises';
+import { chromium, _android } from '@playwright/test';
+import { mkdir, writeFile, access, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import assert from 'node:assert/strict';
 const photoPath = process.argv[2];
 if (!photoPath) throw new Error('사용법: npm run check:live -- /절대/경로/메뉴판.jpg');
 await access(photoPath);
-const browser = await chromium.launch({ headless: true, channel: 'chrome' });
+const androidDevice = process.env.MEIDE_ANDROID === '1' ? (await _android.devices())[0] : null;
+if (process.env.MEIDE_ANDROID === '1' && !androidDevice) throw new Error('연결된 Android 폰이 필요해요');
+const browser = androidDevice ? null : await chromium.launch({ headless: true, channel: 'chrome' });
 const report = { startedAt: new Date().toISOString(), translation: "", input: resolve(photoPath), requests: [], errors: [], readyPhotoCount: 0, renderedPhotoCount: 0, board: null, photoResults: [], status: [], receipt: '', restored: false };
 try {
-  const page = await browser.newPage();
+  const page = androidDevice ? await (await androidDevice.webView({pkg:'app.meide.preview'})).page() : await browser.newPage();
   page.on('pageerror', error => report.errors.push(error.message));
   const pending = [];
   page.on('response', response => {
@@ -25,8 +27,8 @@ try {
       console.log(endpoint, response.status(), data.photos?.map(photo => ({ id: photo.id, status: photo.status })) ?? { items: data.board?.items.length });
     })().catch(error => { report.errors.push(`API 응답 기록 실패: ${error.message}`); }));
   });
-  await page.goto(process.env.MEIDE_TEST_URL || 'http://127.0.0.1:5173');
-  await page.getByLabel('메뉴판 사진 · 최대 6장', { exact: true }).setInputFiles(photoPath);
+  await page.goto(androidDevice ? 'https://localhost/#/setup' : process.env.MEIDE_TEST_URL || 'http://127.0.0.1:5173');
+  await page.getByLabel('메뉴판 사진 · 최대 6장', { exact: true }).setInputFiles({name:'real-menu.png',mimeType:'image/png',buffer:await readFile(photoPath)});
   await page.getByRole('button', { name: '메뉴판 분석하기', exact: true }).click();
   await page.waitForFunction(() => {
     const button = [...document.querySelectorAll('button')].find(button => button.textContent === '메뉴판 분석하기');
@@ -71,6 +73,7 @@ try {
   if ([...new Map(report.photoResults.map(photo=>[photo.id,photo])).values()].some(photo => ['failed', 'limited'].includes(photo.status))) process.exitCode = 1;
 } finally {
   await mkdir('outputs', { recursive: true });
-  await writeFile('outputs/live-api-report.json', JSON.stringify(report, null, 2));
-  await browser.close();
+  await writeFile(androidDevice ? 'outputs/android-live-api-report.json' : 'outputs/live-api-report.json', JSON.stringify(report, null, 2));
+  await browser?.close();
+  await androidDevice?.close();
 }

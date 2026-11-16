@@ -191,3 +191,19 @@ Node.js 22.16.0, 로컬 앱과 실제 서버 키로 점검했어요. 실제 요�
 초대 주소가 설치 앱 내부 `https://localhost`를 가리키지 않도록 공개 웹 주소를 사용하게 수정했어요. 네이티브에서 잘못된 주소라면 공유 방 생성 전에 오류를 표시해요. 주소 관련 테스트 3개와 화면 테스트 9개, build·lint·디자인 검사를 통과했어요.
 
 이 Mac에서 Android SDK·JDK·연결된 USB 휴대폰이 확인되지 않았어요. 실제 기기 촬영·카메라 권한·기기 간 공유 검증은 휴대폰 연결이 필요해요. Vercel 무료 요금제 화면은 계정 보안 안내 때문에 확인이 보류되어 있고, 해당 안내는 사용자가 직접 처리하도록 요청했어요. 공개 배포 완료는 아직 이 기록의 확인 범위가 아니에요.
+
+
+## 공개 배포와 실제 Galaxy 점검 · 2026-11-16
+
+사용자가 보안 안내를 처리한 뒤 Vercel **Hobby Plan Active**, 결제수단 없음, AI 자동충전 꺼짐을 확인했어요. 기존 meide 프로젝트의 production에 최신 코드를 배포했고 `https://meide-meide1.vercel.app`에서 메뉴 분석·사진·번역·영수증을 실제 호출로 통과했어요. 설치 앱 origin `https://localhost`에 대한 세 API의 OPTIONS 응답도 204로 확인했어요.
+
+**실제 기기:** 사용자가 USB 디버깅을 허용한 Galaxy S21(SM-G991N)에 공개 API 주소가 들어간 `app.meide.preview` 점검용 APK를 설치했어요. Gradle의 `versionCode` 표현식 오류를 고치고 `assembleDebug`에 성공했어요. Google Android SDK와 OpenJDK는 임시 작업 폴더에 준비했고, APK는 git에서 제외된 `outputs/meide-device-test.apk`에 있어요. 이 APK는 기기 점검용 디버그 서명이며 Play 배포용 서명 앱이 아니에요.
+
+- 실제 설치 앱의 WebView에서 공개 API를 호출해 메뉴 4개 분석, 적합한 음식 사진 1개 실제 렌더링, 요청 문구 이탈리아어 번역, €8.00 예상 영수증, 새로고침 복원을 통과했어요. 오류 0건이며 결과는 `outputs/android-live-api-report.json`에 있어요.
+- 실제 휴대폰 앱을 호스트로, 별도 브라우저 사용자를 동반인으로 삼아 실제 게스트 인증·초대 링크·양방향 담기 알림·수량 변경·새로고침 복원·€28.00 공동 영수증을 확인했어요. 초대받지 않은 사용자의 조회·수정도 거부됐어요. 결과는 `outputs/android-live-sharing-report.json`에 있어요. 두 대의 휴대폰 조합을 확인한 것은 아니에요.
+- 사용자가 휴대폰의 **메뉴판 촬영하기**로 Mac에 표시한 실제 식당 메뉴판을 직접 촬영한 뒤 앱으로 돌아왔어요. 이 사진을 교체하거나 예시 응답을 넣지 않고 분석해 LA CLASSICA €8, LA GIALLA €12, MARGHERITA A MODO MIO €12, L'IMBUFALITA €13을 확인했어요. 사진 1개 ready·3개 unavailable, €8.00 영수증까지 통과했어요. 결과는 `outputs/native-camera-report.json`에 있어요. 실제 종이 메뉴판의 모든 조명·흔들림 조건까지 검증한 것은 아니에요.
+- 공개 서버의 첫 공유 점검에서 참여 이벤트가 한 번 누락됐고 재점검은 정상 전달됐어요. 이벤트 누락에 대비해 활성 화면이 10초마다 실제 서버 상태를 다시 확인하도록 보완했어요. 정상 동작은 계속 Realtime 알림을 사용하고, 화면 종료 시 확인 타이머를 해제해요. 이 보완 코드는 실제 설치 APK에서 공유 점검을 통과했어요.
+
+무료 Gemini 키를 확인했고 사용자는 공개 서버의 임시 한도도 별도로 승인했어요. 전체 추가 사용은 **16회(50→66)**로 승인한 20회 이내예요. 완료 후 production의 `GEMINI_DAILY_LIMIT`을 **50**으로 복원했고 최종 배포는 이 설정을 사용해요. 결제·유료 요금제는 변경하지 않았어요. 오늘 카운터를 삭제하지 않았으므로 정상 한도에서는 다음 UTC 날짜(한국 시간 11월 17일 09:00)까지 분석·번역의 신규 호출이 제한돼요.
+
+최종 소스 검증: build·lint·140개 테스트·check:design·실제 Android APK 빌드 통과. 직접 색상·토큰 밖 여백 0건, 화면별 primary 최대 1개예요. 실제 기기 자동 점검은 `MEIDE_ANDROID=1 npm run check:live -- /실제이미지.png`, `MEIDE_ANDROID=1 MEIDE_TEST_URL=https://meide-meide1.vercel.app npm run check:sharing -- outputs/android-live-api-report.json`으로 실행해요. `node scripts/check-native-capture.mjs`는 사용자가 실제 카메라 촬영을 마친 화면에서만 실행하며 사진을 주입하거나 페이지를 새로고침하지 않아요.

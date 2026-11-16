@@ -7,7 +7,7 @@ android {
         applicationId (project.findProperty("MEIDE_APPLICATION_ID") ?: "app.meide.preview")
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode (project.findProperty("MEIDE_VERSION_CODE") ?: "1").toInteger()
+        versionCode = (project.findProperty("MEIDE_VERSION_CODE") ?: "1").toString().toInteger()
         versionName (project.findProperty("MEIDE_VERSION_NAME") ?: "0.1.0")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {

@@ -51,9 +51,14 @@ export function useSharedOrder() {
       });
       void refresh();
     }).catch(error => { if (!disposed) setStatus(error.message); });
+    // Postgres change notifications can be missed during a transient network
+    // interruption. Reconcile visible clients without replacing realtime events.
+    const reconciliation = window.setInterval(() => {
+      if (!disposed && document.visibilityState === 'visible' && navigator.onLine) void refresh(true);
+    }, 10000);
     const reconnect = () => { if (document.visibilityState === 'visible') void refresh(); };
     window.addEventListener('online', reconnect); document.addEventListener('visibilitychange', reconnect);
-    return () => { disposed = true; window.removeEventListener('online', reconnect); document.removeEventListener('visibilitychange', reconnect); if (channel) void orderClient().removeChannel(channel); };
+    return () => { disposed = true; window.clearInterval(reconciliation); window.removeEventListener('online', reconnect); document.removeEventListener('visibilitychange', reconnect); if (channel) void orderClient().removeChannel(channel); };
   }, [roomId]);
   function open(id: string | null) {
     currentRoom.current = id; observed.current=null;setActivity(null); setSnapshot(null); setConnected(false); setStatus(''); setRoomId(id);

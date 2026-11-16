@@ -1,5 +1,6 @@
 /* global localStorage */
-import { chromium, expect } from '@playwright/test';
+import { URL } from 'node:url';
+import { chromium, expect, _android } from '@playwright/test';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { loadEnv } from 'vite';
@@ -11,24 +12,31 @@ assert.equal(input.board?.source, 'gemini');
 assert.ok(input.restored && input.requests.some(r => r.endpoint === '/api/analyze-menu' && r.status === 200));
 const board = input.board;
 const base = process.env.MEIDE_TEST_URL || 'http://127.0.0.1:5174';
-const report = { startedAt: new Date().toISOString(), analysisRecordedAt: input.startedAt, checks: [], errors: [], realtimeFrames: 0 };
+const report = { startedAt: new Date().toISOString(), analysisRecordedAt: input.startedAt, checks: [], errors: [], realtimeFrames: 0, snapshots: [], socketEvents: [] };
+const androidDevice = process.env.MEIDE_ANDROID === '1' ? (await _android.devices())[0] : null;
+if (process.env.MEIDE_ANDROID === '1' && !androidDevice) throw new Error('연결된 Android 폰이 필요해요');
+const hostBase = androidDevice ? 'https://localhost' : base;
 const browser = await chromium.launch({ headless: true, channel: 'chrome' });
 const check = name => { report.checks.push(name); console.log('✓', name); };
 try {
   const contexts = await Promise.all([browser.newContext(), browser.newContext()]);
-  const [host, guest] = await Promise.all(contexts.map(c => c.newPage()));
+  const [desktopHost, guest] = await Promise.all(contexts.map(c => c.newPage()));
+  const host = androidDevice ? await (await androidDevice.webView({pkg:'app.meide.preview'})).page() : desktopHost;
   for (const page of [host, guest]) {
+    page.on('response', async response => { if (!response.url().includes('/rpc/')) return; try { const d = await response.json(); if (d?.revision) report.snapshots.push({path: new URL(response.url()).pathname, page: page===host?'host':'guest', revision:d.revision,members:d.members.map(m=>m.name), cartCount:d.cart.length}); } catch { /* Only record successful snapshots. */ } });
     page.on('pageerror', error => report.errors.push(error.message));
     page.on('websocket', socket => socket.on('framereceived', event => {
       if (String(event.payload).includes('postgres_changes')) report.realtimeFrames++;
+      try { const d=JSON.parse(String(event.payload));report.socketEvents.push({page:page===host?'host':'guest',event:d.event,topic:d.topic?.split(':')[0],status:d.payload?.status}); } catch { /* Heartbeats can use a non-JSON frame. */ }
     }));
   }
-  await host.goto(base);
+  await host.goto(hostBase);
   await host.evaluate(board => localStorage.setItem('meide.order.v1', JSON.stringify({ version: 1, board, cart: [], category: board.categories[0].id, tip: false, tipRate: 10, request: '' })), board);
-  await host.goto(`${base}/#/setup`); await host.reload();
+  await host.goto(`${hostBase}/#/setup`); await host.reload();
   await host.getByLabel('동반인에게 보일 이름', { exact: true }).fill('점검호스트');
   await host.getByRole('button', { name: '동반인 초대 링크 만들기', exact: true }).click();
   const invite = await host.getByLabel('동반인 초대 링크', { exact: true }).inputValue({ timeout: 30000 });
+  report.inviteOrigin = new URL(invite).origin;
   await host.getByRole('button', { name: '공동 메뉴판 열기', exact: true }).click();
   await expect(host.getByText('동반인과 실시간으로 함께 고르고 있어요', { exact: true })).toBeVisible({ timeout: 30000 });
   await guest.goto(invite);
@@ -76,6 +84,7 @@ try {
   report.success = true;
 } finally {
   await mkdir('outputs',{recursive:true});
-  await writeFile('outputs/live-sharing-report.json',JSON.stringify(report,null,2));
+  await writeFile(androidDevice ? 'outputs/android-live-sharing-report.json' : 'outputs/live-sharing-report.json',JSON.stringify(report,null,2));
   await browser.close();
+  await androidDevice?.close();
 }

@@ -13,6 +13,18 @@ const id='00000000-0000-4000-8000-000000000001';
 const state=(revision:number)=>({id,revision,board:structuredClone(demoBoard),cart:[],members:[{id,name:'나',slot:0}]});
 beforeEach(()=>{vi.clearAllMocks();localStorage.setItem('meide.shared-room.v1',id);mocks.identity.mockResolvedValue(id);mocks.read.mockResolvedValue(state(1));});
 describe('실시간 구독과 재접속',()=>{
+  it('실시간 이벤트가 유실되어도 활성 화면은 서버 상태를 다시 확인해요',async()=>{
+    const timer=vi.spyOn(window,'setInterval');
+    const {result,unmount}=renderHook(()=>useSharedOrder());
+    await waitFor(()=>expect(result.current.snapshot?.revision).toBe(1));
+    const reconcile=timer.mock.calls.find(call=>call[1]===10000)?.[0];
+    expect(typeof reconcile).toBe('function');
+    mocks.read.mockResolvedValue(state(2));
+    await act(async()=>{(reconcile as ()=>void)();});
+    await waitFor(()=>expect(result.current.snapshot?.revision).toBe(2));
+    const clear=vi.spyOn(window,'clearInterval');unmount();expect(clear).toHaveBeenCalled();
+    clear.mockRestore();timer.mockRestore();
+  });
   it('동반인 이벤트와 재연결 시 최신 상태를 읽고 메뉴 스크롤 기준을 유지해요',async()=>{
     const {result}=renderHook(()=>useSharedOrder());
     await waitFor(()=>expect(result.current.snapshot?.revision).toBe(1));
