@@ -1,4 +1,5 @@
-import { reserveApiCalls, ApiBudgetError } from "./api-budget.js";
+import { withGeminiRetry } from "./gemini-retry.js";
+import { ApiBudgetError } from "./api-budget.js";
 import { apiAccess, type ApiEnv } from "./http.js";
 import { generateText, Output } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
@@ -60,17 +61,17 @@ export async function analyzeMenu(request: Request, env: Env = process.env): Pro
       const valid = image.mediaType === "image/jpeg" ? bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255 : image.mediaType === "image/png" ? bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) : bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WEBP";
       if (!valid) return reply({ error: "INVALID_INPUT", message: "사진을 다시 선택해 주세요" }, 400);
     }
-    await reserveApiCalls("gemini", env);
+    const signal = AbortSignal.any([request.signal, AbortSignal.timeout(65_000)]);
     const google = createGoogleGenerativeAI({ apiKey: env.GEMINI_API_KEY });
-    const result = await generateText({
+    const result = await withGeminiRetry(env, signal, model => generateText({
       model: google(model),
       output: Output.object({ schema: modelAnalysisSchema }),
       system: prompt,
       messages: [{ role: "user", content: parsed.data.images.map(image => ({ type: "file" as const, data: image.data, mediaType: image.mediaType })) }],
       maxRetries: 0,
       maxOutputTokens: 16000,
-      abortSignal: AbortSignal.any([request.signal, AbortSignal.timeout(65_000)]),
-    });
+      abortSignal: signal,
+    }));
     return reply({ board: normalizeAnalysis(result.output) }, 200);
   } catch (error) {
     if (error instanceof ApiBudgetError) return reply({ error: "CALL_LIMIT", message: error.message }, error.status);

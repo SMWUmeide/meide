@@ -23,7 +23,7 @@ export async function pixabayPhoto(query:string,env:ApiEnv,signal:AbortSignal,me
  const cacheUrl=(key:string)=>new URL(`/storage/v1/object/menu-photo-cache/${createHash('sha256').update(key).digest('hex')}.json`,base);
  async function read(key:string){const r=await fetch(cacheUrl(key),{headers,signal:timed()});if(r.ok){const data=await r.json();if(typeof data.expires==='number'&&data.expires>Date.now())return data;}else if(![400,404].includes(r.status))throw Error('CACHE_READ');return null;}
  async function save(key:string,value:object){const r=await fetch(cacheUrl(key),{method:'POST',headers:{...headers,'Content-Type':'application/json','x-upsert':'true'},body:JSON.stringify({...value,expires:Date.now()+86400000}),signal:timed()});if(!r.ok)throw Error('CACHE_SAVE');}
- const reviewKey=`dish-context-v1:${JSON.stringify([normalized,menuName,menuDescription])}`;
+ const reviewKey=`dish-context-v3:${JSON.stringify([normalized,menuName,menuDescription])}`;
  const cached=await read(reviewKey);
  if(cached){if(cached.photo===null)return null;const photo=menuPhotoSchema.parse(cached.photo);if(photo.reviewVersion==='dish-v5'&&photo.reviewedFor===menuName&&photo.cutoutUrl)return photo;}
  const searchKey=`pixabay-search-v1:${normalized}`;
@@ -43,6 +43,7 @@ export async function pixabayPhoto(query:string,env:ApiEnv,signal:AbortSignal,me
  const candidates=downloaded.flatMap(result=>result.status==='fulfilled'?[result.value]:[]);
  if(!hits.length){await save(reviewKey,{photo:null,reason:'음료 종류가 일치하지 않아요'});return null;}
  if(!candidates.length)throw Error('PHOTO_IMAGE');
+ for(let attempt=0;attempt<2&&candidates.length;attempt++){
  const review=await reviewMenuPhoto(menuName,candidates,env,signal,{query,menuDescription});
  if(!review.selection){await save(reviewKey,{photo:null,reason:review.reason});return null;}
  const selected=candidates[review.selection.index];const ext=selected.type==='image/png'?'png':selected.type==='image/webp'?'webp':'jpg';const name=`pixabay-${selected.id}.${ext}`;
@@ -51,9 +52,12 @@ export async function pixabayPhoto(query:string,env:ApiEnv,signal:AbortSignal,me
  let cutoutUrl:string;
  try{cutoutUrl=await cutoutPhoto(url,env,signal,{bytes:selected.bytes,box:review.selection.box});}
  catch(error){
-  if(error instanceof Error&&/^(CUTOUT_REVIEW_FAILED|INCOMPLETE_CONTAINER|MULTIPLE_OBJECTS)/.test(error.message)){await save(reviewKey,{photo:null,reason:'접시 전체를 깔끔하게 분리하지 못했어요'});return null;}
+  if(error instanceof Error&&/^(CUTOUT_REVIEW_FAILED|INCOMPLETE_CONTAINER|MULTIPLE_OBJECTS)/.test(error.message)){candidates.splice(review.selection.index,1);continue;}
   throw error;
  }
  const photo=menuPhotoSchema.parse({provider:'pixabay',url,page:selected.pageURL,photographer:selected.user,cutoutUrl,reviewVersion:'dish-v5',reviewedFor:menuName});
  await save(reviewKey,{photo,reason:review.reason,box:review.selection.box});return photo;
+ }
+ // A processing failure must not suppress every candidate for the next 24 hours.
+ return null;
 }

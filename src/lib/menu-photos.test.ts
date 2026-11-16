@@ -37,3 +37,15 @@ it('서버 내부 실패를 사진이 없는 정상 결과로 표시하지 않�
  vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json({photos:[{id:demoBoard.items[0].id,photo:null,status:'failed'}]})));
  await expect(loadMenuPhotos({...demoBoard,items:[{...demoBoard.items[0],photo:undefined,photoUrl:null}]},new AbortController().signal)).rejects.toThrow('실패했어요');
 });
+it('일시적인 분당 한도는 안내된 시간 뒤 같은 메뉴부터 이어가요',async()=>{
+ vi.useFakeTimers();
+ try {
+  const board={...demoBoard,items:[{...demoBoard.items[0],id:'x',photo:undefined,photoUrl:null}]};
+  const fetch=vi.fn().mockResolvedValueOnce(Response.json({photos:[{id:'x',photo:null,status:'limited',retryAfterSeconds:2}]})).mockResolvedValueOnce(Response.json({photos:[{id:'x',photo,status:'ready'}]}));
+  vi.stubGlobal('fetch',fetch);const status=vi.fn();
+  const pending=loadMenuPhotos(board,new AbortController().signal,undefined,status);
+  await vi.advanceTimersByTimeAsync(1999);expect(fetch).toHaveBeenCalledTimes(1);
+  await vi.advanceTimersByTimeAsync(1);
+  expect((await pending).items[0].photoUrl).toBe(photo.cutoutUrl);expect(fetch).toHaveBeenCalledTimes(2);expect(status).toHaveBeenCalledWith(expect.stringContaining('2초'));
+ } finally {vi.useRealTimers();}
+});

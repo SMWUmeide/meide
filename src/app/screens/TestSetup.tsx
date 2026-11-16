@@ -20,7 +20,7 @@ export function TestSetup({board,onBoard,onPhotos,onRoom,onMenu}:{board:MenuBoar
       onBoard(next); setRoom(null);
       setMessage(`메뉴 ${next.items.length}개를 읽었어요. 음식 사진을 확인하고 있어요`);
       try {
-        const photographed = await loadMenuPhotos(next, AbortSignal.any([controller.signal, AbortSignal.timeout(300000)]), next => { if (!controller.signal.aborted) onPhotos(next); });
+        const photographed = await loadMenuPhotos(next, AbortSignal.any([controller.signal, AbortSignal.timeout(300000)]), next => { if (!controller.signal.aborted) onPhotos(next); }, setMessage);
         setMessage(`메뉴를 분석했어요. 조건에 맞는 사진 ${photographed.items.filter(item=>item.photoUrl).length}/${photographed.items.length}개를 불러왔어요`);
       } catch (error) {
         if (controller.signal.aborted) return;
@@ -30,7 +30,7 @@ export function TestSetup({board,onBoard,onPhotos,onRoom,onMenu}:{board:MenuBoar
     }
     catch(error){setMessage(error instanceof Error?error.message:'다시 시도해 주세요');}finally{setBusy(false);}
   }
-  async function photos(){const controller=new AbortController();active.current=controller;setBusy(true);setMessage('음식 사진을 불러오고 있어요');try{const next=await loadMenuPhotos(board,AbortSignal.any([controller.signal, AbortSignal.timeout(300000)]), next => { if (!controller.signal.aborted) onPhotos(next); } );onPhotos(next);setMessage(`조건에 맞는 사진 ${next.items.filter(item=>item.photoUrl).length}/${next.items.length}개를 불러왔어요. 확인되지 않은 사진은 표시하지 않아요`);}catch(error){if(active.current?.signal.aborted)return;if(error instanceof MenuPhotoError)onPhotos(error.board);setMessage(error instanceof Error?error.message:'다시 시도해 주세요');}finally{setBusy(false);}}
+  async function photos(){const controller=new AbortController();active.current=controller;setBusy(true);setMessage('음식 사진을 불러오고 있어요');try{const next=await loadMenuPhotos(board,AbortSignal.any([controller.signal, AbortSignal.timeout(300000)]), next => { if (!controller.signal.aborted) onPhotos(next); }, setMessage);onPhotos(next);setMessage(`조건에 맞는 사진 ${next.items.filter(item=>item.photoUrl).length}/${next.items.length}개를 불러왔어요. 확인되지 않은 사진은 표시하지 않아요`);}catch(error){if(active.current?.signal.aborted)return;if(error instanceof MenuPhotoError)onPhotos(error.board);setMessage(error instanceof Error?error.message:'다시 시도해 주세요');}finally{setBusy(false);}}
   async function share(){setBusy(true);setMessage('');try{setRoom(await createOrderRoom(board,name));setMessage('초대 링크를 복사해 다른 폰에서 열어 주세요');}catch(error){if(active.current?.signal.aborted)return;if(error instanceof MenuPhotoError)onPhotos(error.board);setMessage(error instanceof Error?error.message:'다시 시도해 주세요');}finally{setBusy(false);}}
   const link=room?`${window.location.origin}/#/join/${room.invite}`:'';
   return <main className="page"><Toolbar title="메뉴판 불러오기" onBack={()=>{if(!busy)onMenu();}}/><div className="page-content stack-xl">

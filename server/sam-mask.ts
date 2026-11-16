@@ -8,7 +8,7 @@ export function plateMask(bytes:Buffer,box:Box){const next=queue.then(()=>segmen
 async function segment(bytes:Buffer,box:Box){
  models??=Promise.all(['sam-encoder.onnx','sam-decoder.onnx'].map(file=>InferenceSession.create(join(process.cwd(),'server/models',file),{executionProviders:['cpu'],intraOpNumThreads:1,interOpNumThreads:1}))).then(s=>s as [InferenceSession,InferenceSession]).catch(e=>{models=undefined;throw e;});
  const[encoder,decoder]=await models;
- const original=await sharp(bytes,{limitInputPixels:20_000_000}).rotate().resize({width:1000,height:1000,fit:'inside',withoutEnlargement:true}).removeAlpha().toColourspace('srgb').raw().toBuffer({resolveWithObject:true});
+ const original=await sharp(bytes,{limitInputPixels:20_000_000}).rotate().resize({width:1000,height:1000,fit:'inside',withoutEnlargement:true}).flatten({background:'white'}).toColourspace('srgb').raw().toBuffer({resolveWithObject:true});
  const{width,height}=original.info,scale=1024/Math.max(width,height),rw=Math.round(width*scale),rh=Math.round(height*scale);
  const resized=await sharp(original.data,{raw:{width,height,channels:3}}).resize(rw,rh,{kernel:'linear'}).raw().toBuffer();
  const pixels=new Float32Array(3*1024*1024),mean=[.485,.456,.406],std=[.229,.224,.225];
