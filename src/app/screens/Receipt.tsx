@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
-import { InfoNote } from "@/components/InfoNote";
 import type { MenuBoard } from "@/data/menu-schema";
 import { totals, type CartLine } from "../cart";
 import { orderLines } from "../order";
@@ -24,7 +23,6 @@ export function Receipt({ board, cart, tip, tipRate, go }: { board: MenuBoard; c
         <Divider src="/figma/50326.svg" />
         <div className="stack-sm">{lines.map(({ item, quantity, person }) => <div className="receipt-row" key={`${person}-${item.id}`}><p>{item.name}{quantity > 1 && ` × ${quantity}`}</p><Amount value={item.priceEur * quantity} /></div>)}{!lines.length && <p>아직 담은 메뉴가 없어요</p>}</div>
         <Divider src="/figma/50326.svg" />
-        <InfoNote>자리 준비 비용과 물값은 직원에게 확인해 주세요. 확인되지 않은 추가 요금은 합계에 넣지 않았어요.</InfoNote>
         <div className="receipt-row"><p>선택 팁 {tip ? tipRate : 0}%</p><Amount value={total.tip} /></div>
         <Divider src="/figma/3b0ad.svg" />
         <div className="section-heading receipt-total"><div className="stack-xs"><h3 className="t-title-md">예상 합계</h3><p className="t-body-sm muted">추가 요금 제외</p></div><Price eur={total.total} large /></div>

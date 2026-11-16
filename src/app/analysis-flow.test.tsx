@@ -25,7 +25,7 @@ describe("메뉴판부터 영수증까지의 화면 범위", () => {
     window.history.replaceState(null, "", "/#/receipt");
     render(<App initialBoard={normalizeAnalysis(analysisFixture)} />);
     expect(screen.queryByText(/약 .*원|EUR 2.50|EUR 3.00/)).not.toBeInTheDocument();
-    expect(screen.getByText('자리 준비 비용과 물값은 직원에게 확인해 주세요. 확인되지 않은 추가 요금은 합계에 넣지 않았어요.')).toBeInTheDocument();
+    expect(screen.queryByText(/자리 준비 비용과 물값/)).not.toBeInTheDocument();
   });
   it("앞 화면의 분석 결과와 뒤로가기 동작을 받고 새 장바구니로 시작해요", async () => {
     const onBack = vi.fn();
