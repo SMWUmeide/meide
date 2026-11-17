@@ -1,0 +1,2 @@
+.embedded-actions { display:flex; gap:var(--space-sm); padding:var(--space-sm) var(--space-xl); background:var(--color-surface); }
+.embedded-notice { position:fixed; z-index:50; top:var(--space-lg); left:var(--space-xl); right:var(--space-xl); padding:var(--space-md); background:var(--color-surface); color:var(--color-secondary); border-radius:var(--rounded-sm); box-shadow:var(--shadow-sm); pointer-events:none; }

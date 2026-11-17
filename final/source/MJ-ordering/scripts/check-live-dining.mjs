@@ -1,0 +1,105 @@
+/* global localStorage */
+import { chromium, _android, expect } from '@playwright/test';
+import { readFile, writeFile } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { URL } from 'node:url';
+import { createClient } from '@supabase/supabase-js';
+import { loadEnv } from 'vite';
+const base = process.env.MEIDE_TEST_URL || 'http://127.0.0.1:5180';
+const real = JSON.parse(await readFile('outputs/fees-analysis-report.json','utf8'));
+const absent = JSON.parse(await readFile('outputs/no-fees-analysis-report.json','utf8'));
+assert.equal(real.status,200); assert.equal(absent.status,200);
+const board = real.board, food = board.items[0], water = board.items.find(i=>i.kind==='water');
+assert.equal(board.coverCharge.priceEur,1.5); assert.equal(food.priceEur,14); assert.equal(water.priceEur,1.5);
+const browser = await chromium.launch({channel:'chrome',headless:true});
+const device = process.env.MEIDE_ANDROID === '1' ? (await _android.devices())[0] : null;
+if(process.env.MEIDE_ANDROID === '1') assert.ok(device);
+const report = {date:new Date().toISOString(),physicalPhones:device?1:0,source:real.recordedAt,checks:[],errors:[]};
+const check = text => {report.checks.push(text);console.log('✓',text);};
+async function restore(page, data, origin) {
+ await page.goto(origin);
+ await page.evaluate(board => { localStorage.removeItem('meide.shared-room.v1');localStorage.setItem('meide.order.v1', JSON.stringify({version:1,board,cart:[],category:board.categories[0].id,tip:false,tipRate:10,request:''})); }, data);
+ await page.goto(origin+'/#/setup'); await page.reload();
+}
+try {
+ const host = device ? await (await device.webView({pkg:'app.meide.preview'})).page() : await (await browser.newContext()).newPage();
+ const guest = await (await browser.newContext()).newPage();
+ for(const p of [host,guest]) p.on('pageerror',e=>report.errors.push(e.message));
+ await restore(host, board, device?'https://localhost':base);
+ await host.getByLabel('동반인에게 보일 이름',{exact:true}).fill('요금점검호스트');
+ await host.getByRole('button',{name:'동반인 초대 링크 만들기',exact:true}).click();
+ const invite = await host.getByLabel('동반인 초대 링크',{exact:true}).inputValue({timeout:30000});
+ await host.getByRole('button',{name:'공동 메뉴판 열기',exact:true}).click();
+ await guest.goto(base+new URL(invite).pathname);
+ await guest.getByRole('dialog').getByLabel('동반인에게 보일 이름',{exact:true}).fill('요금점검동반인');
+ await guest.getByRole('button',{name:'함께 고르기',exact:true}).click();
+ await expect(host.getByText('요금점검동반인님과 함께 고르는 중',{exact:true})).toBeVisible({timeout:30000});
+ await host.getByRole('button',{name:`${food.name} 담기`,exact:true}).click();
+ for(const p of [host,guest]) { await expect(p.locator('.cart-bar button')).toBeVisible({timeout:15000});await p.locator('.cart-bar button').click(); }
+ await expect(host.getByRole('button',{name:'주문 문장 만들기',exact:true})).toBeDisabled();
+ await host.getByLabel('식사 인원',{exact:true}).selectOption('2');
+ await expect(guest.getByLabel('식사 인원',{exact:true})).toHaveValue('2',{timeout:15000});
+ await guest.getByLabel('여행 지역',{exact:true}).selectOption('IT');
+ await expect(host.getByLabel('여행 지역',{exact:true})).toHaveValue('IT',{timeout:15000});
+ await expect(host.locator('.cart-checkout')).toContainText('17.00');
+ check('인원 미확인 시 진행 방지 · 2명 자릿세 EUR 3.00 · 인원/지역 양방향 공유');
+ await guest.getByLabel('식사 인원',{exact:true}).selectOption('3');
+ await expect(host.locator('.cart-checkout')).toContainText('18.50',{timeout:15000});
+ check('메뉴 담은 사람 수와 무관하게 실제 식사 인원 3명 반영');
+ await host.getByRole('button',{name:'뒤로 가기',exact:true}).click();
+ await host.getByRole('button',{name:`${water.name} 담기`,exact:true}).click();
+ await host.locator('.cart-bar button').click();
+ await host.getByRole('button',{name:`${water.name} 수량 늘리기`,exact:true}).click();
+ await expect(guest.getByLabel(`${water.name} 수량`,{exact:true})).toHaveText('2',{timeout:15000});
+ await expect(host.locator('.cart-checkout')).toContainText('21.50');
+ check('물 2개 EUR 3.00을 메뉴 합계에 한 번만 반영');
+ for(const p of [host,guest]) {
+  await p.getByRole('button',{name:'주문 문장 만들기',exact:true}).click();
+  await p.getByRole('button',{name:'영수증 보기',exact:true}).click();
+  await expect(p.locator('.receipt-total')).toContainText('21.50');
+  await expect(p.getByRole('complementary')).toContainText('coperto');
+  await expect(p.getByRole('complementary')).toContainText('물의 수량');
+ }
+ check('두 사용자 영수증 EUR 21.50 · 실제 반영된 자리/물 안내 표시');
+ await guest.reload();
+ await expect(guest.locator('.receipt-total')).toContainText('21.50',{timeout:30000});
+ check('새로고침 후 실제 서버의 식사 정보와 합계 복원');
+ await guest.getByRole('button',{name:'뒤로 가기',exact:true}).click();
+ await guest.getByRole('button',{name:'뒤로 가기',exact:true}).click();
+ await guest.getByLabel('여행 지역',{exact:true}).selectOption('FR');
+ await expect(host.getByRole('complementary')).toContainText('프랑스',{timeout:15000});
+ await expect(host.locator('.receipt-total')).toContainText('21.50');
+ check('여행 지역 변경은 설명만 변경 · 금액을 추정해서 바꾸지 않음');
+ await host.getByRole('button',{name:'뒤로 가기',exact:true}).click();
+ await host.getByRole('button',{name:'뒤로 가기',exact:true}).click();
+ for(let n=0;n<2;n++) await host.getByRole('button',{name:`${water.name} 수량 줄이기`,exact:true}).click();
+ await host.getByRole('button',{name:'주문 문장 만들기',exact:true}).click();
+ await host.getByRole('button',{name:'영수증 보기',exact:true}).click();
+ await expect(host.locator('.receipt-total')).toContainText('18.50');
+ await expect(host.getByRole('complementary')).not.toContainText('물');
+ check('물을 모두 빼면 물값과 물 안내 제거');
+ const noFee = await (await browser.newContext()).newPage();
+ await restore(noFee,absent.board,base);
+ await noFee.getByRole('button',{name:'개인 메뉴판 열기',exact:true}).click();
+ await noFee.getByRole('button',{name:`${absent.board.items[0].name} 담기`,exact:true}).click();
+ await noFee.locator('.cart-bar button').click();
+ await noFee.getByLabel('식사 인원',{exact:true}).selectOption('3');
+ await noFee.getByLabel('여행 지역',{exact:true}).selectOption('IT');
+ await noFee.getByRole('button',{name:'주문 문장 만들기',exact:true}).click();
+ await noFee.getByRole('button',{name:'영수증 보기',exact:true}).click();
+ await expect(noFee.getByRole('complementary')).toHaveCount(0);
+ await expect(noFee.locator('.receipt-total')).toContainText(absent.board.items[0].priceEur.toFixed(2));
+ check('실제 요금 없는 메뉴판은 이탈리아·3명이어도 추가 요금과 안내 없음');
+ const env = loadEnv('development',process.cwd(),'');
+ const outsider = createClient(env.VITE_SUPABASE_URL,env.VITE_SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:false,autoRefreshToken:false}});
+ const room = await host.evaluate(()=>localStorage.getItem('meide.shared-room.v1'));
+ const unauth = await outsider.rpc('change_order_dining',{target:room,setting:'partySize',value:2});assert.ok(unauth.error);
+ assert.equal((await outsider.auth.signInAnonymously()).error,null);
+ const denied = await outsider.rpc('change_order_dining',{target:room,setting:'partySize',value:2});assert.ok(denied.error);
+ await outsider.auth.signOut();
+ check('비로그인·초대받지 않은 사용자의 식사 정보 변경 차단');
+ assert.deepEqual(report.errors,[]);report.success=true;
+} finally {
+ await writeFile(device?'outputs/android-dining-report.json':'outputs/live-dining-report.json',JSON.stringify(report,null,2));
+ await browser.close();await device?.close();
+}

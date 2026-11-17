@@ -1,0 +1,20 @@
+import{afterEach,describe,expect,it,vi}from'vitest';
+import{pixabayPhoto}from'./pixabay-photos';
+import{reviewMenuPhoto}from'./photo-review';
+import{cutoutPhoto}from'./cutout-photo';
+import{reserveApiCalls}from'./api-budget';
+vi.mock('./photo-review',()=>({reviewMenuPhoto:vi.fn()}));
+vi.mock('./cutout-photo',()=>({cutoutPhoto:vi.fn()}));
+vi.mock('./api-budget',()=>({reserveApiCalls:vi.fn().mockResolvedValue(undefined)}));
+const env={PIXABAY_API_KEY:'secret-pixabay',GEMINI_API_KEY:'secret-ai',SUPABASE_URL:'https://test.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'secret-server'};
+const photo={provider:'pixabay',url:'https://test.supabase.co/storage/v1/object/public/menu-photos/pixabay-123.jpg',page:'https://pixabay.com/photos/soup-123/',photographer:'Author',reviewVersion:'dish-v5',reviewedFor:'leek soup',cutoutUrl:`https://test.supabase.co/storage/v1/object/public/menu-cutouts/${'a'.repeat(64)}.png`};
+const hit={id:123,pageURL:photo.page,webformatURL:'https://cdn.pixabay.com/photo/soup.jpg',user:'Author',tags:'leek soup'};
+afterEach(()=>{vi.unstubAllGlobals();vi.clearAllMocks();});
+const cachedHits=(hits=[hit])=>{const fetch=vi.fn().mockResolvedValueOnce(new Response(null,{status:404})).mockResolvedValueOnce(Response.json({hits,expires:Date.now()+10000})).mockResolvedValueOnce(new Response(new Uint8Array([255,216,255]),{headers:{'Content-Type':'image/jpeg'}})).mockResolvedValue(Response.json({}));vi.stubGlobal('fetch',fetch);return fetch;};
+describe('메뉴와 접시가 검증된 사진만 제공',()=>{
+ it('메뉴명에 맞는 검토 캐시가 있으면 검색과 AI를 호출하지 않아요',async()=>{const fetch=vi.fn().mockResolvedValue(Response.json({photo,expires:Date.now()+10000}));vi.stubGlobal('fetch',fetch);expect(await pixabayPhoto('leek soup',env,new AbortController().signal)).toEqual(photo);expect(fetch).toHaveBeenCalledTimes(1);expect(reviewMenuPhoto).not.toHaveBeenCalled();expect(reserveApiCalls).not.toHaveBeenCalled();});
+ it('태국 커리 등 메뉴가 불일치하면 원본으로 우회하지 않아요',async()=>{const fetch=cachedHits();vi.mocked(reviewMenuPhoto).mockResolvedValue({selection:null,reason:'다른 음식이에요'});expect(await pixabayPhoto('eggplant soup',env,new AbortController().signal)).toBeNull();expect(cutoutPhoto).not.toHaveBeenCalled();expect(fetch.mock.calls.at(-1)![1].body).toContain('"photo":null');});
+ it('검증된 전체 접시만 가공하고 검토 이력을 보관해요',async()=>{const fetch=cachedHits();vi.mocked(reviewMenuPhoto).mockResolvedValue({selection:{index:0,box:{left:100,top:100,right:900,bottom:900}},reason:'일치해요'});vi.mocked(cutoutPhoto).mockResolvedValue(photo.cutoutUrl);expect(await pixabayPhoto('leek soup',env,new AbortController().signal)).toEqual(photo);expect(fetch.mock.calls[2][1].redirect).toBe('error');expect(fetch.mock.calls.at(-1)![1].body).not.toContain('secret-');});
+ it('누끼 실패 시 원본을 성공 사진으로 내보내지 않아요',async()=>{cachedHits();vi.mocked(reviewMenuPhoto).mockResolvedValue({selection:{index:0,box:{left:100,top:100,right:900,bottom:900}},reason:'일치해요'});vi.mocked(cutoutPhoto).mockRejectedValue(Error('INVALID_OUTLINE'));await expect(pixabayPhoto('leek soup',env,new AbortController().signal)).rejects.toThrow('INVALID_OUTLINE');});
+ it('공급자가 외부 주소를 반환하면 다운로드하지 않아요',async()=>{const fetch=cachedHits([{...hit,webformatURL:'http://127.0.0.1/private'}]);await expect(pixabayPhoto('soup',env,new AbortController().signal)).rejects.toThrow('PHOTO_URL');expect(fetch).toHaveBeenCalledTimes(2);});
+});

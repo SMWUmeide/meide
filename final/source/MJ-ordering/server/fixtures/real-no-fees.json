@@ -1,0 +1,54 @@
+{
+  "sourceUrl": "https://www.luppoloefarina.com/wp-content/uploads/pdfmenu/menu_al_tavolo_qr.pdf",
+  "recordedAt": "2026-11-16T10:59:46.867Z",
+  "board": {
+    "restaurantName": "촬영한 메뉴판",
+    "categories": [
+      {
+        "id": "category-1",
+        "name": "마르게리타와 세 자매",
+        "original": "LA MARGHERITA E LE SUE 3 SORELLE"
+      }
+    ],
+    "items": [
+      {
+        "kind": "food",
+        "priceEvidence": "",
+        "originalName": "LA CLASSICA",
+        "photoQuery": "Pizza Margherita",
+        "name": "클래식 마르게리타 피자",
+        "priceEur": 8,
+        "analogy": "토마토 소스와 치즈가 올라간 기본적인 이탈리아 피자로, 한국의 토마토 치즈 피자와 비슷해요.",
+        "description": "산 마르자노 토마토, 피오르디라테 치즈가 들어가며, 조리 후 신선한 바질이 올라가요.",
+        "ingredients": [
+          {
+            "name": "산 마르자노 토마토",
+            "original": "Pomodoro San Marzano"
+          },
+          {
+            "name": "피오르디라테 치즈",
+            "original": "Fiordilatte"
+          },
+          {
+            "name": "신선한 바질",
+            "original": "Basilico Fresco"
+          }
+        ],
+        "allergen": "메뉴판에서 확인되지 않았어요",
+        "estimated": [
+          "밀가루",
+          "토마토",
+          "우유"
+        ],
+        "method": "화덕에서 구워냈어요",
+        "possibleAllergen": "글루텐, 유제품이 포함될 수 있으니 직원에게 확인해 보세요.",
+        "id": "scan-1",
+        "category": "category-1",
+        "photoUrl": null
+      }
+    ],
+    "source": "gemini",
+    "skipped": 0,
+    "coverCharge": null
+  }
+}

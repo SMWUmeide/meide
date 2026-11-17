@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.meide.preview",
+      "sha256_cert_fingerprints": [
+        "86:11:70:35:34:EF:33:F9:E1:39:BA:98:2D:0F:C8:8D:81:C9:45:3B:49:0F:6D:0E:73:8D:28:84:D8:E1:AD:62"
+      ]
+    }
+  }
+]

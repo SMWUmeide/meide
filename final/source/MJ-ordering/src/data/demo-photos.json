@@ -1,0 +1,78 @@
+{
+  "ceci": {
+    "query": "zuppa ceci porcini",
+    "photo": null
+  },
+  "porri": {
+    "query": "leek potato soup",
+    "photo": {
+      "reviewVersion": "dish-v5",
+      "reviewedFor": "ZUPPA DI PORRI E PATATE",
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-791806.jpg",
+      "page": "https://pixabay.com/photos/parsley-leek-potato-soup-food-791806/",
+      "photographer": "kaboompics",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/9b594d009b4c082a648a478fe75bc9b20d9b5d9acb196bd5b301c77bc0ff15e2.png"
+    }
+  },
+  "zucca": {
+    "query": "zucca farro",
+    "photo": null
+  },
+  "melanzane": {
+    "query": "smoked eggplant soup",
+    "photo": null
+  },
+  "ossobuco": {
+    "query": "ossobuco",
+    "photo": null
+  },
+  "peposo": {
+    "query": "peposo",
+    "photo": null
+  },
+  "baccala": {
+    "query": "cod tomato",
+    "photo": null
+  },
+  "wine-0": {
+    "query": "red wine bottle white background",
+    "photo": {
+      "reviewVersion": "dish-v5",
+      "reviewedFor": "ROSSO DELLA CASA",
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-4813256.jpg",
+      "page": "https://pixabay.com/photos/came-cups-alcohol-red-red-wine-4813256/",
+      "photographer": "Vinotecarium",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/bbcdcced546a236e8c450e68d8267457055d4ff7fbc962588ad57a40a6e40a7b.png"
+    }
+  },
+  "wine-1": {
+    "query": "white wine bottle isolated",
+    "photo": {
+      "reviewVersion": "dish-v5",
+      "reviewedFor": "BIANCO DELLA CASA",
+      "provider": "pixabay",
+      "url": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-photos/pixabay-4586615.jpg",
+      "page": "https://pixabay.com/photos/wine-bottle-drink-party-glass-4586615/",
+      "photographer": "blacksong",
+      "cutoutUrl": "https://xtxyobkbxpfyeuiuhbaf.supabase.co/storage/v1/object/public/menu-cutouts/84895a22ffe765c4bdb985f2be975ac8be43bd4046405d0a3b7eb83e45625f20.png"
+    }
+  },
+  "wine-2": {
+    "query": "chianti wine",
+    "photo": null
+  },
+  "wine-3": {
+    "query": "tuscan white wine",
+    "photo": null
+  },
+  "wine-4": {
+    "query": "sparkling wine glass",
+    "photo": null
+  },
+  "wine-5": {
+    "query": "grape juice glass",
+    "photo": null
+  }
+}

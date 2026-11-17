@@ -1,0 +1,4857 @@
+{
+  "source": "https://www.thermofisher.com/phadia/us/en/resources/allergen-encyclopedia.allergens.json?locale=en",
+  "retrievedAt": "2026-11-12",
+  "rootCount": 481,
+  "foodCount": 206,
+  "items": [
+    {
+      "code": "f258",
+      "name": "Squid",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f256",
+      "name": "Walnut",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f456",
+          "name": "Jug r 6"
+        },
+        {
+          "code": "f442",
+          "name": "Jug r 3"
+        },
+        {
+          "code": "f441",
+          "name": "Jug r 1"
+        },
+        {
+          "code": "f448",
+          "name": "Jug r 2"
+        }
+      ]
+    },
+    {
+      "code": "f255",
+      "name": "Plum",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f254",
+      "name": "Plaice",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f253",
+      "name": "Pine nut, pignoles",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "m70",
+      "name": "Pityrosporum orbiculare",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "ro213",
+      "name": "MBP (maltose binding protein)",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f259",
+      "name": "Grape",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f247",
+      "name": "Honey",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f246",
+      "name": "Guar, Guar gum",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f245",
+      "name": "Egg",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f323",
+          "name": "Gal d 3, conalbumin/ ovotransferrin, Gallus domesticus egg"
+        },
+        {
+          "code": "f233",
+          "name": "Gal d 1"
+        },
+        {
+          "code": "f232",
+          "name": "Gal d 2"
+        },
+        {
+          "code": "k208",
+          "name": "Gal d 4"
+        }
+      ]
+    },
+    {
+      "code": "f124",
+      "name": "Spelt wheat",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f244",
+      "name": "Cucumber",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "m80",
+      "name": "Staphylococcal enterotoxin A",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f000",
+      "name": "Common Carp",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f355",
+          "name": "Cyp c 1"
+        }
+      ]
+    },
+    {
+      "code": "f242",
+      "name": "Cherry",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "m81",
+      "name": "Staphylococcal enterotoxin B",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "c1",
+      "name": "Penicilloyl G",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c2",
+      "name": "Penicilloyl V",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c5",
+      "name": "Ampicilloyl",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c6",
+      "name": "Amoxicilloyl",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c7",
+      "name": "Cefaclor",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c8",
+      "name": "Chlorhexidine",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "f369",
+      "name": "Catfish",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f279",
+      "name": "Chili Pepper",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f278",
+      "name": "Bay leaf",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f277",
+      "name": "Dill",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f276",
+      "name": "Fennel, fresh",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f275",
+      "name": "Lovage",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f274",
+      "name": "Marjoram",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f273",
+      "name": "Thyme",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f272",
+      "name": "Tarragon",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e198-1",
+      "name": "Parakeet serum",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f271",
+      "name": "Anise/Aniseed",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f270",
+      "name": "Ginger",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "d1",
+      "name": "House dust mite",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "d209",
+          "name": "Der p 23"
+        },
+        {
+          "code": "d205",
+          "name": "Der p 10"
+        },
+        {
+          "code": "d202",
+          "name": "Der p 1"
+        },
+        {
+          "code": "d203",
+          "name": "Der p 2"
+        }
+      ]
+    },
+    {
+      "code": "d2",
+      "name": "American house dust mite",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "d3",
+      "name": "Dermatophagoides microceras",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f269",
+      "name": "Basil",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f268",
+      "name": "Clove",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f147",
+      "name": "Gulf flounder",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f267",
+      "name": "Cardamon",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f266",
+      "name": "Mace",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f265",
+      "name": "Caraway",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f264",
+      "name": "Eel",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f263",
+      "name": "Green pepper",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f384",
+      "name": "Whitefish (Inconnu)",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f262",
+      "name": "Aubergine, eggplant",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f261",
+      "name": "Asparagus",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f381",
+      "name": "Red snapper",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f260",
+      "name": "Broccoli",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e1",
+      "name": "Cat dander",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": [
+        {
+          "code": "e94",
+          "name": "Fel d 1"
+        },
+        {
+          "code": "e220",
+          "name": "Fel d 2"
+        },
+        {
+          "code": "e231",
+          "name": "Fel d 7"
+        },
+        {
+          "code": "e228",
+          "name": "Fel d 4"
+        }
+      ]
+    },
+    {
+      "code": "e3",
+      "name": "Horse dander",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": [
+        {
+          "code": "e227",
+          "name": "Equ c1, Horse dander"
+        }
+      ]
+    },
+    {
+      "code": "e4",
+      "name": "Cow dander",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e5",
+      "name": "Dog dander ",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": [
+        {
+          "code": "e102",
+          "name": "Can f 2"
+        },
+        {
+          "code": "e221",
+          "name": "Can f 3"
+        },
+        {
+          "code": "e101",
+          "name": "Can f 1"
+        },
+        {
+          "code": "e230",
+          "name": "Can f 6 "
+        },
+        {
+          "code": "e229",
+          "name": "Can f 4"
+        },
+        {
+          "code": "e226",
+          "name": "Can f 5"
+        }
+      ]
+    },
+    {
+      "code": "e6",
+      "name": "Guinea pig epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "i207",
+      "name": "Cockroach, Oriental",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f299",
+      "name": "Sweet chestnut",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k71",
+      "name": "Castor bean",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f298",
+      "name": "Tragacanth gum",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k70",
+      "name": "Green coffee bean",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f297",
+      "name": "Gum arabic",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k73",
+      "name": "Silk waste",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f296",
+      "name": "Carob bean gum",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k72",
+      "name": "Ispaghula",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f295",
+      "name": "Carambola",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f294",
+      "name": "Passion fruit",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k75",
+      "name": "Isocyanate TDI",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f293",
+      "name": "Papaya",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k74",
+      "name": "Silk",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "t201",
+      "name": "Spruce",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f292",
+      "name": "Guava",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k77",
+      "name": "Isocyanate HDI",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f291",
+      "name": "Cauliflower",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k76",
+      "name": "Isocyanate MDI",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f1",
+      "name": "Egg white",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f2",
+      "name": "Cow's milk",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f76",
+          "name": "nBos d 4 α-lactalbumin, Milk"
+        },
+        {
+          "code": "f78",
+          "name": "nBos d 8 Casein, Milk"
+        },
+        {
+          "code": "f77",
+          "name": "nBos d 5, β-lactoglobulin Milk"
+        },
+        {
+          "code": "e204",
+          "name": "nBos d 6, BSA Cow"
+        }
+      ]
+    },
+    {
+      "code": "k79",
+      "name": "Phthalic anhydride",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f290",
+      "name": "Oyster",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k78",
+      "name": "Ethylene oxide",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f3",
+      "name": "Cod",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f426",
+          "name": "Gad c 1"
+        }
+      ]
+    },
+    {
+      "code": "f4",
+      "name": "Wheat",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f433",
+          "name": "Tri a 14, nsLTP, Triticum aestivum"
+        },
+        {
+          "code": "f98",
+          "name": "Gliadin"
+        },
+        {
+          "code": "f416",
+          "name": "Tri a 19"
+        }
+      ]
+    },
+    {
+      "code": "f5",
+      "name": "Rye",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f6",
+      "name": "Barley",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f7",
+      "name": "Oat",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f8",
+      "name": "Maize/Corn",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f9",
+      "name": "Rice",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "i202",
+      "name": "Grain weevil",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "i203",
+      "name": "Mediterranean flour moth",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "i204",
+      "name": "Horse fly",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "i205",
+      "name": "Bumble bee",
+      "category": {
+        "name": "venom",
+        "value": "Venom"
+      },
+      "components": []
+    },
+    {
+      "code": "i206",
+      "name": "Cockroach, American",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f289",
+      "name": "Date",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k80",
+      "name": "Formaldehyde/Formalin",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f288",
+      "name": "Blueberry",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e197",
+      "name": "Parakeet droppings",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f287",
+      "name": "Red kidney bean",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k82",
+      "name": "Latex",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": [
+        {
+          "code": "k220",
+          "name": "Hev b 6.02, Latex"
+        },
+        {
+          "code": "k221",
+          "name": "Hev b 8 Profilin, Latex"
+        },
+        {
+          "code": "k224",
+          "name": "Hev b 11"
+        },
+        {
+          "code": "k215",
+          "name": "Hev b 1"
+        },
+        {
+          "code": "k217",
+          "name": "Hev b 3, Latex"
+        },
+        {
+          "code": "k218",
+          "name": "Hev b 5"
+        }
+      ]
+    },
+    {
+      "code": "f286",
+      "name": "Mare's milk",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k81",
+      "name": "Ficus spp.",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "k84",
+      "name": "Sunflower seed",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f285",
+      "name": "Elk/moose meat",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k83",
+      "name": "Cotton seed",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f284",
+      "name": "Turkey meat",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e196",
+      "name": "Parakeet feathers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f283",
+      "name": "Oregano",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k86",
+      "name": "Trimellitic anhydride, TMA",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "k85",
+      "name": "Chloramin T",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f281",
+      "name": "Curry (Santa Maria)",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "g1",
+      "name": "Sweet vernal grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f280",
+      "name": "Black pepper",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k87",
+      "name": "Aspergillus oryzae",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": [
+        {
+          "code": "k87",
+          "name": "Asp o 21, alpha-amylase"
+        }
+      ]
+    },
+    {
+      "code": "g2",
+      "name": "Bermuda grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "g216",
+          "name": "nCyn d 1, Bermuda grass"
+        }
+      ]
+    },
+    {
+      "code": "g3",
+      "name": "Cocksfoot",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g4",
+      "name": "Meadow fescue",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g5",
+      "name": "Rye grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g6",
+      "name": "Timothy grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "g215",
+          "name": "Phl p 5b"
+        },
+        {
+          "code": "g214",
+          "name": "Phl p 7, rPhl p 12, Phl p 12 Timothy"
+        },
+        {
+          "code": "g213",
+          "name": "Phl p 1, Phl p 5b, Timothy"
+        },
+        {
+          "code": "g212",
+          "name": "Phl p 12"
+        },
+        {
+          "code": "g211",
+          "name": "Phl p 11, Timothy"
+        },
+        {
+          "code": "g210",
+          "name": "Phl p 7"
+        },
+        {
+          "code": "g209",
+          "name": "Phl p 6"
+        },
+        {
+          "code": "g208",
+          "name": "Phl p 4"
+        },
+        {
+          "code": "g206",
+          "name": " Phl p 2"
+        },
+        {
+          "code": "g205",
+          "name": "  Phl p 1"
+        }
+      ]
+    },
+    {
+      "code": "g7",
+      "name": "Common reed",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g8",
+      "name": "Meadow grass (Kentucky blue)",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g9",
+      "name": "Redtop, Bentgrass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "re212",
+      "name": "Swine urine proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "g11",
+      "name": "Brome grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g10",
+      "name": "Johnson grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g13",
+      "name": "Velvet grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "h1",
+      "name": "House dust",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g12",
+      "name": "Cultivated rye",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g15",
+      "name": "Cultivated wheat",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t223",
+      "name": "Oil Palm",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "h2",
+      "name": "House dust",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g14",
+      "name": "Cultivated oat",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t222",
+      "name": "Arizona cypress pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "t226",
+          "name": "Cup a 1"
+        }
+      ]
+    },
+    {
+      "code": "g17",
+      "name": "Bahia grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g16",
+      "name": "Meadow foxtail",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t218",
+      "name": "Virginia live oak",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t217",
+      "name": "Peppertree",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t219",
+      "name": "Paloverde",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t214",
+      "name": "Date",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t213",
+      "name": "Pine",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w11",
+      "name": "Saltwort (prickly)/Russian thistle",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "w232",
+          "name": "Sal k 1"
+        }
+      ]
+    },
+    {
+      "code": "w10",
+      "name": "Goosefoot, Lamb's quarters",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w13",
+      "name": "Cocklebur",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w12",
+      "name": "Goldenrod",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w15",
+      "name": "Scale/Lenscale",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w14",
+      "name": "Common Pigweed",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w17",
+      "name": "Firebush (Kochia)",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w16",
+      "name": "Rough marshelder",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "i226",
+      "name": "Asian hornet",
+      "category": {
+        "name": "venom",
+        "value": "Venom"
+      },
+      "components": []
+    },
+    {
+      "code": "w19",
+      "name": "Wall pellitory",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w18",
+      "name": "Sheep sorrel",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "i1",
+      "name": "Honeybee",
+      "category": {
+        "name": "venom",
+        "value": "Venom"
+      },
+      "components": [
+        {
+          "code": "i208",
+          "name": "Api m 1"
+        },
+        {
+          "code": "i213",
+          "name": "Api m 4"
+        },
+        {
+          "code": "i214",
+          "name": "Api m 2"
+        },
+        {
+          "code": "i215",
+          "name": "Api m 3"
+        },
+        {
+          "code": "i216",
+          "name": "Api m 5"
+        },
+        {
+          "code": "i217",
+          "name": "Api m 10"
+        }
+      ]
+    },
+    {
+      "code": "t210",
+      "name": "Privet",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "i2",
+      "name": "White-faced hornet",
+      "category": {
+        "name": "venom",
+        "value": "Venom"
+      },
+      "components": []
+    },
+    {
+      "code": "i3",
+      "name": "Common wasp (Yellow jacket)",
+      "category": {
+        "name": "venom",
+        "value": "Venom"
+      },
+      "components": [
+        {
+          "code": "i209",
+          "name": "Ves v 5"
+        },
+        {
+          "code": "i211",
+          "name": "Ves v 1"
+        }
+      ]
+    },
+    {
+      "code": "t212",
+      "name": "Cedar",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f182",
+      "name": "Lima bean",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "i4",
+      "name": "Paper wasp",
+      "category": {
+        "name": "venom",
+        "value": "Venom"
+      },
+      "components": []
+    },
+    {
+      "code": "t211",
+      "name": "Sweet gum",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "i5",
+      "name": "Yellow hornet",
+      "category": {
+        "name": "venom",
+        "value": "Venom"
+      },
+      "components": []
+    },
+    {
+      "code": "i6",
+      "name": "Cockroach, German",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "i8",
+      "name": "Moth",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "t207",
+      "name": "Douglas fir",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t206",
+      "name": "Chestnut",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t209",
+      "name": "Horn beam",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t208",
+      "name": "Linden",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t203",
+      "name": "Horse chestnut",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w20",
+      "name": "Nettle",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w22",
+      "name": "Japanese Hop",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t205",
+      "name": "Elder",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w21",
+      "name": "Wall pellitory (judaica)",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "w211",
+          "name": "Par j 2"
+        }
+      ]
+    },
+    {
+      "code": "w23",
+      "name": "Yellow dock",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "i71",
+      "name": "Mosquito",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "i70",
+      "name": "Fire ant",
+      "category": {
+        "name": "venom",
+        "value": "Venom"
+      },
+      "components": []
+    },
+    {
+      "code": "f10",
+      "name": "Sesame seed",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f449",
+          "name": "Ses i 1"
+        }
+      ]
+    },
+    {
+      "code": "i73",
+      "name": "Blood worm ",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "i72",
+      "name": "Green nimitti",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "i75",
+      "name": "European hornet",
+      "category": {
+        "name": "venom",
+        "value": "Venom"
+      },
+      "components": []
+    },
+    {
+      "code": "f12",
+      "name": "Pea",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f11",
+      "name": "Buckwheat",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "i77",
+      "name": "European paper wasp",
+      "category": {
+        "name": "venom",
+        "value": "Venom"
+      },
+      "components": [
+        {
+          "code": "i210",
+          "name": "Pol d 5"
+        }
+      ]
+    },
+    {
+      "code": "f14",
+      "name": "Soybean",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f432",
+          "name": "Gly m 6"
+        },
+        {
+          "code": "f431",
+          "name": "Gly m 5"
+        },
+        {
+          "code": "f353",
+          "name": "Gly m 4 "
+        }
+      ]
+    },
+    {
+      "code": "f13",
+      "name": "Peanut",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f423",
+          "name": "Ara h 2"
+        },
+        {
+          "code": "f422",
+          "name": "Ara h 1"
+        },
+        {
+          "code": "f352",
+          "name": "Ara h 8"
+        },
+        {
+          "code": "f427",
+          "name": "Ara h 9 "
+        },
+        {
+          "code": "f447",
+          "name": "Ara h 6"
+        },
+        {
+          "code": "f458",
+          "name": "Ara h 18"
+        },
+        {
+          "code": "f424",
+          "name": "Ara h 3"
+        }
+      ]
+    },
+    {
+      "code": "i76",
+      "name": "Berlin beetle (Khapra beetle)",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f15",
+      "name": "White bean",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f18",
+      "name": "Brazil nut",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f354",
+          "name": "Ber e 1"
+        }
+      ]
+    },
+    {
+      "code": "f17",
+      "name": "Hazelnut",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f455",
+          "name": "Cor a 11"
+        },
+        {
+          "code": "f440",
+          "name": "Cor a 9"
+        },
+        {
+          "code": "f428",
+          "name": "Cor a 1"
+        },
+        {
+          "code": "f439",
+          "name": "Cor a 14"
+        },
+        {
+          "code": "f425",
+          "name": "Cor a 8"
+        },
+        {
+          "code": "f457",
+          "name": "Cor a 16"
+        }
+      ]
+    },
+    {
+      "code": "f20",
+      "name": "Almond",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f23",
+      "name": "Crab",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f25",
+      "name": "Tomato",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f24",
+      "name": "Shrimp",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f351",
+          "name": "Pen a 1, Tropomyosin, Shrimp"
+        }
+      ]
+    },
+    {
+      "code": "f27",
+      "name": "Beef",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "o215",
+          "name": "Alpha-Gal"
+        }
+      ]
+    },
+    {
+      "code": "f26",
+      "name": "Pork",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "k213",
+          "name": "nSus s, Pepsin, Swine"
+        }
+      ]
+    },
+    {
+      "code": "w46",
+      "name": "Dog fennel",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w45",
+      "name": "Alfalfa",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "k209",
+      "name": "Hexahydrophtalic anhydrid - HHPA",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f31",
+      "name": "Carrot",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f33",
+      "name": "Orange",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f36",
+      "name": "Coconut",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f35",
+      "name": "Potato",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "rf341",
+      "name": "Cranberry",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f37",
+      "name": "Blue mussel",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "k204",
+      "name": "Bacillus licheniformis",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": [
+        {
+          "code": "k204",
+          "name": "Maxatase"
+        }
+      ]
+    },
+    {
+      "code": "k206",
+      "name": "Bacillus spp",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": [
+        {
+          "code": "k206",
+          "name": "Savinase"
+        }
+      ]
+    },
+    {
+      "code": "k205",
+      "name": "Bacillus spp.",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f41",
+      "name": "Salmon (Atlantic)",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f40",
+      "name": "Tuna/Yellow fin",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "m1",
+      "name": "Penicillium chrysogenum",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f42",
+      "name": "Haddock",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "m2",
+      "name": "Cladosporium herbarum",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f45",
+      "name": "Yeast",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "m3",
+      "name": "Aspergillus fumigatus",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "m220",
+          "name": "Asp f 3"
+        },
+        {
+          "code": "m221",
+          "name": "Asp f 4"
+        },
+        {
+          "code": "m222",
+          "name": "Asp f 6"
+        },
+        {
+          "code": "m218",
+          "name": "Asp f 1"
+        },
+        {
+          "code": "m219",
+          "name": "Asp f 2"
+        }
+      ]
+    },
+    {
+      "code": "f44",
+      "name": "Strawberry",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "m4",
+      "name": "Mucor racemosus",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m5",
+      "name": "Candida albicans",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f47",
+      "name": "Garlic",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "m6",
+      "name": "Alternaria alternata",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "m229",
+          "name": "Alt a 1"
+        }
+      ]
+    },
+    {
+      "code": "m7",
+      "name": "Botrytis cinerea",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f49",
+      "name": "Apple",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f434",
+          "name": "Mal d 1"
+        },
+        {
+          "code": "f435",
+          "name": "Mal d 3"
+        }
+      ]
+    },
+    {
+      "code": "f48",
+      "name": "Onion",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "m8",
+      "name": "Setomelannoma rostrata Helminthosporum haledes Exserohilum rostratum",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m9",
+      "name": "Fusarium proliferatum",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "g71",
+      "name": "Canary grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f50",
+      "name": "Chub mackerel",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "g70",
+      "name": "Wild rye grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f51",
+      "name": "Bamboo shoot",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f54",
+      "name": "Sweet potato",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f56",
+      "name": "Foxtail millet",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f55",
+      "name": "Common millet",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f58",
+      "name": "Pacific Flying Squid",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f57",
+      "name": "Japanese millet",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f59",
+      "name": "Octopus",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "rf282",
+      "name": "Nutmeg",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "t10",
+      "name": "Walnut Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t12",
+      "name": "Willow",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t11",
+      "name": "Maple leaf sycamore, London plane Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "t241",
+          "name": "Pla a 1"
+        }
+      ]
+    },
+    {
+      "code": "t14",
+      "name": "Cottonwood Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t16",
+      "name": "White pine",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t15",
+      "name": "White Ash Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t18",
+      "name": "Eucalyptus, Gum-tree",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t17",
+      "name": "Japanese cedar",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t19",
+      "name": "Acacia Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f61",
+      "name": "Sardine",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f60",
+      "name": "Jack mackerel/Scad",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "o1",
+      "name": "Cotton, crude fibers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "w82",
+      "name": "Careless weed",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t21",
+      "name": "Melaleuca, Cajeput-tree",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t20",
+      "name": "Mesquite",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t23",
+      "name": "Italian/Mediterranean/Funeral cypress Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t22",
+      "name": "Pecan Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "k211",
+      "name": "Methyltetrahydrophtalic anhydrid",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "t25",
+      "name": "European ash",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t24",
+      "name": "Japanese cypress",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "k212",
+      "name": "Abachi wood dust",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "k214",
+      "name": "Bougainvillea",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "p1",
+      "name": "Ascaris (Common roundworm)",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "c10",
+      "name": "Atracurium",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "p4",
+      "name": "Anisakis",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "c12",
+      "name": "Penicillin minor determinants",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "f75",
+      "name": "Egg yolk",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f78",
+      "name": "Casein",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f79",
+      "name": "Gluten",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "w207",
+      "name": "Lupin",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w206",
+      "name": "Camomile",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t37",
+      "name": "Bald cypress",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f81",
+      "name": "Cheese, Cheddar type",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f80",
+      "name": "Lobster",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f83",
+      "name": "Chicken",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f82",
+      "name": "Cheese, mold type",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f85",
+      "name": "Celery",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f417",
+          "name": "Api g 1"
+        }
+      ]
+    },
+    {
+      "code": "f84",
+      "name": "Kiwi",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f430",
+          "name": "Act d 8, PR-10 protein, Actinidia deliciosa fruit"
+        }
+      ]
+    },
+    {
+      "code": "f87",
+      "name": "Melon",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f86",
+      "name": "Parsley",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f89",
+      "name": "Mustard",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f88",
+      "name": "Mutton",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "w203",
+      "name": "Rape",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w204",
+      "name": "Sunflower",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t41",
+      "name": "White hickory",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t45",
+      "name": "Cedar elm",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t44",
+      "name": "Hackberry",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f90",
+      "name": "Malt",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e71",
+      "name": "Mouse epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f92",
+      "name": "Banana",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e70",
+      "name": "Goose feathers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f91",
+      "name": "Mango",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e73",
+      "name": "Rat epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f94",
+      "name": "Pear",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e72",
+      "name": "Mouse urine proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f93",
+      "name": "Cacao",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e75",
+      "name": "Rat serum proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f96",
+      "name": "Avocado",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e74",
+      "name": "Rat urine proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f95",
+      "name": "Peach",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f421",
+          "name": "Pru p 4 "
+        },
+        {
+          "code": "f454",
+          "name": "Pru p 7"
+        },
+        {
+          "code": "f420",
+          "name": "Pru p 3"
+        },
+        {
+          "code": "f419",
+          "name": "Pru p 1 "
+        }
+      ]
+    },
+    {
+      "code": "e77",
+      "name": "Budgerigar droppings",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e76",
+      "name": "Mouse serum proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e78",
+      "name": "Budgerigar feathers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "t54",
+      "name": "Russian olive",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m201",
+      "name": "Tilletia tritici/Ustilago",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t56",
+      "name": "Bayberry",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m202",
+      "name": "Acremonium kiliense",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t55",
+      "name": "Scotch broom",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t57",
+      "name": "Red cedar",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m205",
+      "name": "Trichophyton rubrum",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m203",
+      "name": "Trichosporon pullulans",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m204",
+      "name": "Ulocladium chartarum",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m209",
+      "name": "Penicillium glabrum",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "e80",
+      "name": "Goat epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "m207",
+      "name": "Aspergillus niger",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "e82",
+      "name": "Rabbit epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e81",
+      "name": "Sheep epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "m208",
+      "name": "Chaetomium globosum",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "e84",
+      "name": "Hamster epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e83",
+      "name": "Swine epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": [
+        {
+          "code": "e222",
+          "name": "Sus s 1"
+        }
+      ]
+    },
+    {
+      "code": "e86",
+      "name": "Duck feathers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e85",
+      "name": "Chicken feathers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e88",
+      "name": "Mouse epithelium, serum proteins and urine proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e87",
+      "name": "Rat epithelium, serum proteins and urine proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e89",
+      "name": "Turkey feathers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "d70",
+      "name": "Acarus siro",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t1",
+      "name": "Box-elder Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "d72",
+      "name": "Tyrophagus putrescentiae",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t2",
+      "name": "Grey alder Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t3",
+      "name": "Common Silver Birch Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "t225",
+          "name": "Bet v 6"
+        },
+        {
+          "code": "t216",
+          "name": "Bet v 2"
+        },
+        {
+          "code": "t215",
+          "name": "Bet v 1"
+        },
+        {
+          "code": "t220",
+          "name": "Bet v 4"
+        }
+      ]
+    },
+    {
+      "code": "d71",
+      "name": "Lepidoglyphus destructor",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "d208",
+          "name": "Lep d 2"
+        }
+      ]
+    },
+    {
+      "code": "d74",
+      "name": "Euroglyphus maynei",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t4",
+      "name": "Hazel Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "d73",
+      "name": "Glycyphagus domesticus",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t5",
+      "name": "American beech Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t6",
+      "name": "Mountain juniper Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t7",
+      "name": "Oak Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t8",
+      "name": "Elm",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t9",
+      "name": "Olive Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "t224",
+          "name": "Ole e 1 "
+        },
+        {
+          "code": "t227",
+          "name": "Ole e 7"
+        },
+        {
+          "code": "t240",
+          "name": "Ole e 9"
+        }
+      ]
+    },
+    {
+      "code": "t70",
+      "name": "Mulberry Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t72",
+      "name": "Queen palm",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t71",
+      "name": "Red mulberry",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "t73",
+      "name": "Australian pine Pollen",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m223",
+      "name": "Staphylococcal enterotoxin C",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "c209",
+      "name": "Chymopapain",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c206",
+      "name": "ACTH (Adrenocorticotrophic hormone)",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "m227",
+      "name": "Malassezia spp.",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m228",
+      "name": "Aspergillus flavus",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "c208",
+      "name": "Tetanus toxoid",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "m226",
+      "name": "Staphylococcal enterotoxin TSST",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "c202",
+      "name": "Suxamethonium",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "m210",
+      "name": "Trichophyton ment. var goetzii",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m211",
+      "name": "Trichophyton ment. var interdigitale",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "c71",
+      "name": "Insulin bovine",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c70",
+      "name": "Insulin porcine",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c73",
+      "name": "Insulin human",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c74",
+      "name": "Gelatin",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "rk210",
+      "name": "Maleic anhydride",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "w1",
+      "name": "Common Ragweed",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w2",
+      "name": "Western ragweed",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w3",
+      "name": "Giant Ragweed",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "w230",
+          "name": "Amb a 1"
+        }
+      ]
+    },
+    {
+      "code": "w4",
+      "name": "False Ragweed",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w5",
+      "name": "Wormwood",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w6",
+      "name": "Mugwort",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "w233",
+          "name": "Art v 3"
+        },
+        {
+          "code": "w231",
+          "name": "Art v 1"
+        }
+      ]
+    },
+    {
+      "code": "w7",
+      "name": "Marguerite/Ox-eye daisy",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w8",
+      "name": "Dandelion",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "w9",
+      "name": "Ribwort Plantain",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "w234",
+          "name": "Pla l 1"
+        }
+      ]
+    },
+    {
+      "code": "o203",
+      "name": "TetraMin®, Fish feed",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "o202",
+      "name": "Artemia salina, Fish feed",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "o201",
+      "name": "Tobacco leaf",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "o207",
+      "name": "Daphnia, Fish feed",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "d201",
+      "name": "Blomia tropicalis",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": [
+        {
+          "code": "d207",
+          "name": "Blo t 5"
+        }
+      ]
+    },
+    {
+      "code": "f412",
+      "name": "Orange roughy",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e201",
+      "name": "Canary bird feathers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e202",
+      "name": "Reindeer epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f410",
+      "name": "Grouper",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e200",
+      "name": "Canary bird droppings",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "c260",
+      "name": "Morphine",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c262",
+      "name": "Rocuronium",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "c261",
+      "name": "Pholcodine",
+      "category": {
+        "name": "drugs",
+        "value": "Drugs"
+      },
+      "components": []
+    },
+    {
+      "code": "e209",
+      "name": "Gerbil epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e208",
+      "name": "Chinchilla epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e205",
+      "name": "Horse serum proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e206",
+      "name": "Rabbit serum proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f415",
+      "name": "Walleye pike",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e203",
+      "name": "Mink epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f414",
+      "name": "Tilapia",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f413",
+      "name": "Pollock",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "o211",
+      "name": "Mealworm",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "o212",
+      "name": "Streptavidin",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "o216",
+      "name": "Cannabis",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": [
+        {
+          "code": "o217",
+          "name": "Can s 3"
+        }
+      ]
+    },
+    {
+      "code": "f313",
+      "name": "Anchovy",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f312",
+      "name": "Swordfish",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f311",
+      "name": "Megrim",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f310",
+      "name": "Blue vetch",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "m11",
+      "name": "Rhizopus nigricans",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m10",
+      "name": "Stemphylium herbarum",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m13",
+      "name": "Phoma betae",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m12",
+      "name": "Aureobasidium pullulans",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m15",
+      "name": "Trichoderma viride",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m14",
+      "name": "Epicoccum purpurascens",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "m16",
+      "name": "Curvularia lunata",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f319",
+      "name": "Beetroot",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f318",
+      "name": "Jack fruit",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f317",
+      "name": "Coriander",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f316",
+      "name": "Rapeseed",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f315",
+      "name": "Green bean",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f314",
+      "name": "Snail",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f302",
+      "name": "Mandarin",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e213",
+      "name": "Parrot feathers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f301",
+      "name": "Persimon (kaki fruit, sharon)",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e210",
+      "name": "Fox epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f300",
+      "name": "Goat's milk",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e211",
+      "name": "Rabbit urine proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f309",
+      "name": "Chick pea",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e218",
+      "name": "Chicken droppings",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f308",
+      "name": "Sardine (Pilchard)",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e219",
+      "name": "Chicken serum proteins",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f307",
+      "name": "Hake",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e216",
+      "name": "Deer epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f306",
+      "name": "Lime",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f305",
+      "name": "Fenugreek",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e217",
+      "name": "Ferret epithelium",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "e214",
+      "name": "Finch feathers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f304",
+      "name": "Langust (spiny lobster)",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f303",
+      "name": "Halibut",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "e215",
+      "name": "Pigeon feathers",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f335",
+      "name": "Lupine seed",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f214",
+      "name": "Spinach",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f213",
+      "name": "Rabbit",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f333",
+      "name": "Linseed",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f212",
+      "name": "Mushroom (champignon)",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f332",
+      "name": "Mint",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f211",
+      "name": "Blackberry",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f331",
+      "name": "Saffron",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f210",
+      "name": "Pineapple",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "o214",
+          "name": "MUXF3 "
+        },
+        {
+          "code": "k202",
+          "name": "Ana c 2"
+        }
+      ]
+    },
+    {
+      "code": "f330",
+      "name": "Rose hip",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "o70",
+      "name": "Seminal fluid",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "m36",
+      "name": "Aspergillus terreus",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f219",
+      "name": "Fennel seed",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f339",
+      "name": "Allspice",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f218",
+      "name": "Paprika/Sweet Pepper",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "rc207",
+      "name": "Protamine",
+      "category": {
+        "name": "miscellaneous",
+        "value": "Miscellaneous"
+      },
+      "components": []
+    },
+    {
+      "code": "f338",
+      "name": "Scallop",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f217",
+      "name": "Brussel sprouts",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f216",
+      "name": "Cabbage",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f337",
+      "name": "Sole",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f336",
+      "name": "Jujube",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f215",
+      "name": "Lettuce",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f324",
+      "name": "Hop",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f203",
+      "name": "Pistachio",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f202",
+      "name": "Cashew nut",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": [
+        {
+          "code": "f443",
+          "name": "Ana o 3"
+        }
+      ]
+    },
+    {
+      "code": "f322",
+      "name": "Red currant",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f201",
+      "name": "Pecan nut",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f321",
+      "name": "Horse meat",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f320",
+      "name": "Crayfish",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f209",
+      "name": "Grapefruit",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f329",
+      "name": "Watermelon",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f208",
+      "name": "Lemon",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f328",
+      "name": "Fig",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f207",
+      "name": "Clam",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f206",
+      "name": "Mackerel",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f326",
+      "name": "Sheep's whey",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f205",
+      "name": "Herring",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f325",
+      "name": "Sheep's milk",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f204",
+      "name": "Trout, Rainbow trout",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "g204",
+      "name": "False oat-grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f236",
+      "name": "Cow's whey",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "g203",
+      "name": "Salt grass",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f235",
+      "name": "Lentil",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "g202",
+      "name": "Maize, Corn",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f234",
+      "name": "Vanilla",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "g201",
+      "name": "Barley",
+      "category": {
+        "name": "respiratory",
+        "value": "Respiratory"
+      },
+      "components": []
+    },
+    {
+      "code": "f231",
+      "name": "Cow's milk, boiled",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f237",
+      "name": "Apricot",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f346",
+      "name": "Abalone",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f225",
+      "name": "Pumpkin",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f345",
+      "name": "Macadamia nut",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f224",
+      "name": "Poppy seed",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f344",
+      "name": "Sage",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f343",
+      "name": "Raspberry",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f222",
+      "name": "Tea",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f221",
+      "name": "Coffee",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f342",
+      "name": "Olive",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f220",
+      "name": "Cinnamon",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f340",
+      "name": "Cochineal extract (Carmine red)",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f348",
+      "name": "Litchi",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f227",
+      "name": "Sugar-beet seed",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f226",
+      "name": "Pumpkin seed",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    },
+    {
+      "code": "f347",
+      "name": "Quinoa",
+      "category": {
+        "name": "food",
+        "value": "Food"
+      },
+      "components": []
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+import { createRoot } from 'react-dom/client';
+import { CompanionNotice } from '../../src/components/CompanionNotice';
+import { CartBar } from '../../src/components/CartBar';
+import '../../src/styles/fonts.css';
+import '../../src/styles/tokens.css';
+import '../../src/styles/global.css';
+import '../../src/styles/components.css';
+import '../../src/styles/screens.css';
+import '../../src/styles/figma-flow.css';
+createRoot(document.getElementById('root')!).render(<div className="app-shell figma-flow"><CompanionNotice activity={{id:'preview',message:'미영님이 ‘호박 수프’를 1개 담았어요'}} /><CartBar count={1} onOpen={()=>{}} iconSrc="/figma/ec2c3.svg" /></div>);
