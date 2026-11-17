@@ -10,7 +10,7 @@ import { ActivityIndicator, AppState, Image, Linking, Modal, Platform, Pressable
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SvgUri } from 'react-native-svg';
 import { useMenuPhotos } from '../../features/menu-camera/MenuPhotosProvider';
-import { MenuAnalysis } from '../../features/menu-camera/MenuAnalysis';
+import { Button } from '../../components/ui';
 import { useProgress } from '../../state/ProgressProvider';
 import { destination } from '../../state/model';
 const icons = {
@@ -114,7 +114,8 @@ export default function MenuCamera() {
     </View></SafeAreaView>
     <Modal visible={reviewing} animationType="slide" onRequestClose={closeReview}><SafeAreaView style={c.review}>
       <View style={c.header}><Pressable accessibilityRole="button" accessibilityLabel="사진 확인 닫기" onPress={closeReview} style={c.round}><SvgUri uri={icons.close} /></Pressable><Text style={c.title}>촬영한 사진 {photos.length}장</Text><View style={c.roundSpacer} /></View>
-      <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={c.reviewList}>{photos.map((photo,index) => <View key={photo.id} style={c.reviewItem}><Image accessibilityLabel={`메뉴판 사진 ${index+1}`} source={{uri:photo.uri}} resizeMode="contain" style={c.reviewPhoto} /><Pressable accessibilityRole="button" accessibilityLabel={`${index+1}번째 사진 삭제`} onPress={() => remove(photo.id)} style={c.delete}><Text style={c.title}>삭제</Text></Pressable><MenuAnalysis photo={photo} onRestaurantFound={() => { closeReview(); router.push({ pathname: '/menu/restaurant', params: { photoId: photo.id } }); }} /></View>)}</ScrollView>
+      <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={c.reviewList}>{photos.map((photo,index) => <View key={photo.id} style={c.reviewItem}><Image accessibilityLabel={`메뉴판 사진 ${index+1}`} source={{uri:photo.uri}} resizeMode="contain" style={c.reviewPhoto} /><Pressable accessibilityRole="button" accessibilityLabel={`${index+1}번째 사진 삭제`} onPress={() => remove(photo.id)} style={c.delete}><Text style={c.title}>삭제</Text></Pressable></View>)}</ScrollView>
+      <Button title="메뉴판 분석하기" disabled={!photos.length || photos.length > 6} onPress={() => { closeReview(); router.push('/menu/order'); }} />
     </SafeAreaView></Modal>
   </View>;
 }

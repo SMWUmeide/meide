@@ -1,5 +1,5 @@
 const variants = {
-  development: { name: 'Meide 개발', id: 'com.meide.mobile.dev', scheme: 'meide-dev' },
+  development: { name: 'meide', id: 'app.meide.preview', scheme: 'meide-dev' },
   preview: { name: 'Meide 테스트', id: 'com.meide.mobile.preview', scheme: 'meide-preview' },
   production: { name: 'Meide', id: 'com.meide.mobile', scheme: 'meide' },
 };

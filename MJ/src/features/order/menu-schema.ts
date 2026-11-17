@@ -1,0 +1,77 @@
+import { z } from "zod";
+import { menuPhotoSchema, cutoutUrlSchema, type MenuPhoto } from "./menu-photo";
+
+const text = z.string().trim().min(1).max(800);
+export const diningSchema = z.object({
+  partySize: z.number().int().min(1).max(30).nullable(),
+  region: z.enum(["UNKNOWN", "IT", "FR", "ES", "PT", "DE", "AT", "GR", "OTHER"]),
+});
+export type Dining = z.infer<typeof diningSchema>;
+export const coverChargeSchema = z.object({
+  name: text,
+  priceEur: z.number().min(0).max(10000).nullable(),
+  basis: z.enum(["per_person", "per_table", "unknown"]),
+  evidence: text.describe("가격과 부과 단위가 적힌 메뉴판 원문 그대로. 없으면 항목 자체를 null로 반환"),
+}).nullable();
+export const analysisSchema = z.object({
+  isMenu: z.boolean().describe("사진에서 실제 메뉴와 가격을 읽을 수 있으면 true"),
+  restaurantName: z.string().trim().max(160).describe("사진에 적힌 식당 이름. 안 보이면 빈 문자열"),
+  currency: z.enum(["EUR", "OTHER", "UNKNOWN"]),
+  coverCharge: coverChargeSchema.optional().describe("메뉴판에 명시된 자릿세/빵과 자리 준비 비용. 없으면 null. 포함/무료는 0. 조건부·복수 요금·단위 불명확은 priceEur=null 또는 basis=unknown. 요리 items에 중복 금지"),
+  items: z.array(z.object({
+    kind: z.enum(["food", "water"]).optional().describe("마시는 물 상품만 water. 물이 재료인 음식은 food"),
+    priceEvidence: z.string().max(400).optional().describe("water이면 물 이름·용량·단위·가격의 메뉴판 원문. 없으면 빈 문자열"),
+    categoryName: text.describe("메뉴판 섹션을 한국어로 번역한 이름"),
+    categoryOriginal: z.string().max(160),
+    originalName: text,
+    photoQuery: z.string().max(120).optional().describe("사진 검색용 구체적인 영어 음식명. 요리 이름을 정확히 모르면 빈 문자열"),
+    name: text.describe("한국어 메뉴명"),
+    priceEur: z.number().min(0).max(10000).nullable().describe("메뉴판에서 읽은 EUR 가격. 안 보이거나 모호하면 null. 추정 금지"),
+    analogy: text.describe("한국 음식에 빗댄 설명. 불확실하면 직원에게 확인하도록 안내"),
+    description: text,
+    ingredients: z.array(z.object({ name: text, original: text })).max(30).describe("메뉴 이름이나 원문에 실제 적힌 재료만. 추정 재료 금지"),
+    allergen: text.describe("원문에 명시된 알레르기만. 없으면 '메뉴판에서 확인되지 않았어요'"),
+    estimated: z.array(text).max(20).describe("일반 레시피 기준 추정 재료. 확인된 재료와 구분"),
+    method: text,
+    possibleAllergen: text.describe("추정 알레르기이며 반드시 직원에게 확인하도록 안내"),
+  })).max(80),
+});
+export type Analysis = z.infer<typeof analysisSchema>;
+export type MenuCategory = { id: string; name: string; original: string };
+export type Category = string;
+export type MenuItem = Omit<Analysis["items"][number], "categoryName" | "categoryOriginal" | "priceEur"> & { id: string; category: Category; priceEur: number; photoUrl: string | null; detailPhotoUrl?: string; photo?: MenuPhoto };
+export type MenuBoard = { restaurantName: string; categories: MenuCategory[]; items: MenuItem[]; source: "gemini" | "demo"; skipped: number; coverCharge?: z.infer<typeof coverChargeSchema>; dining?: Dining };
+
+export function normalizeAnalysis(value: unknown): MenuBoard {
+  const analysis = analysisSchema.parse(value);
+  if (!analysis.isMenu || analysis.currency !== "EUR") throw new Error("유로 메뉴판을 읽을 수 없어요");
+  const categories: MenuCategory[] = [];
+  const items: MenuItem[] = [];
+  const seen = new Set<string>();
+  let skipped = 0;
+  for (const item of analysis.items) {
+    if (item.priceEur === null || (item.kind === 'water' && !item.priceEvidence?.trim())) { skipped++; continue; }
+    const identity = `${item.originalName.toLocaleLowerCase()}|${item.priceEur}`;
+    if (seen.has(identity)) continue;
+    seen.add(identity);
+    let category = categories.find(category => category.name === item.categoryName);
+    if (!category) { category = { id: `category-${categories.length + 1}`, name: item.categoryName, original: item.categoryOriginal }; categories.push(category); }
+    const { categoryName: _name, categoryOriginal: _original, ...details } = item;
+    void _name; void _original;
+    items.push({ ...details, priceEur: Math.round(item.priceEur * 100) / 100, id: `scan-${items.length + 1}`, category: category.id, photoUrl: null });
+  }
+  if (!items.length) throw new Error("가격을 읽을 수 있는 메뉴가 없어요");
+  return { restaurantName: analysis.restaurantName || "촬영한 메뉴판", categories, items, source: "gemini", skipped, coverCharge: analysis.coverCharge ?? null };
+}
+
+const menuItemSchema = analysisSchema.shape.items.element.omit({ categoryName: true, categoryOriginal: true }).extend({ id: text, category: text, priceEur: z.number().min(0).max(10000), photoUrl: z.union([z.null(), menuPhotoSchema.shape.url, cutoutUrlSchema]), photo: menuPhotoSchema.optional() });
+export const menuBoardSchema = z.object({ restaurantName: text, coverCharge: coverChargeSchema.optional(), dining: diningSchema.optional(), categories: z.array(z.object({ id: text, name: text, original: z.string().max(160) })).min(1).max(80), items: z.array(menuItemSchema).min(1).max(80), source: z.literal("gemini"), skipped: z.number().int().min(0).max(80) }).refine(board => board.items.every(item => board.categories.some(category => category.id === item.category)) && new Set(board.items.map(item => item.id)).size === board.items.length && new Set(board.categories.map(category => category.id)).size === board.categories.length);
+
+// Historical search-only photos must never reappear through local storage or shared rooms.
+export function withReviewedPhotos(board:MenuBoard):MenuBoard {
+ return {...board,items:board.items.map(item=>{
+  const p=item.photo;
+  if(p?.reviewVersion==='dish-v5'&&p.reviewedFor===item.originalName&&p.cutoutUrl)return {...item,photoUrl:p.cutoutUrl,detailPhotoUrl:undefined};
+  return {...item,photo:undefined,photoUrl:null,detailPhotoUrl:undefined};
+ })};
+}

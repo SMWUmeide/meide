@@ -1,0 +1,11 @@
+{
+  "neutral": "#F2F4F6",
+  "surface": "#FFFFFF",
+  "on-surface": "#212121",
+  "secondary": "#626773",
+  "primary": "#212121",
+  "on-primary": "#FFFFFF",
+  "border": "#ECEEF1",
+  "error": "#CC3D3D",
+  "brand": "#28A745"
+}
