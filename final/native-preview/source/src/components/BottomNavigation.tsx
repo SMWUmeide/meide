@@ -1,14 +1,14 @@
-import { Asset } from 'expo-asset';
+import inlineSvg from '../assets/inline-svg.json';
 import { router } from 'expo-router';
 import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { SvgUri } from 'react-native-svg';
 
 // Original Figma paths at 28×28. State variants change fills, never geometry.
 const tabs = [
-  { key: 'home', label: '홈', outline: Asset.fromModule(require('../../assets/navigation/home-outline.svg')).uri, filled: Asset.fromModule(require('../../assets/home/imgFilled.svg')).uri },
-  { key: 'orders', label: '주문내역', outline: Asset.fromModule(require('../../assets/home/imgOutline.svg')).uri, filled: Asset.fromModule(require('../../assets/navigation/orders-filled.svg')).uri },
-  { key: 'companions', label: '동반인', outline: Asset.fromModule(require('../../assets/home/imgOutline1.svg')).uri, filled: Asset.fromModule(require('../../assets/navigation/companions-filled.svg')).uri },
-  { key: 'profile', label: '마이페이지', outline: Asset.fromModule(require('../../assets/home/imgOutline2.svg')).uri, filled: Asset.fromModule(require('../../assets/navigation/profile-filled.svg')).uri },
+  { key: 'home', label: '홈', outline: inlineSvg["assets/navigation/home-outline.svg"], filled: inlineSvg["assets/home/imgFilled.svg"] },
+  { key: 'orders', label: '주문내역', outline: inlineSvg["assets/home/imgOutline.svg"], filled: inlineSvg["assets/navigation/orders-filled.svg"] },
+  { key: 'companions', label: '동반인', outline: inlineSvg["assets/home/imgOutline1.svg"], filled: inlineSvg["assets/navigation/companions-filled.svg"] },
+  { key: 'profile', label: '마이페이지', outline: inlineSvg["assets/home/imgOutline2.svg"], filled: inlineSvg["assets/navigation/profile-filled.svg"] },
 ] as const;
 
 export function BottomNavigation({ active }: { active: (typeof tabs)[number]['key'] }) {

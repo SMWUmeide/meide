@@ -1,4 +1,4 @@
-import { Asset } from 'expo-asset';
+import inlineSvg from '../../assets/inline-svg.json';
 import { Redirect, router } from 'expo-router';
 import { useState } from 'react';
 import { ActivityIndicator, FlatList, Keyboard, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
@@ -11,10 +11,10 @@ import { useProgress } from '../../state/ProgressProvider';
 import { destination, toggleTravelDestination } from '../../state/model';
 
 const icons = {
-  status: Asset.fromModule(require('../../../assets/travel/status.svg')).uri,
-  back: Asset.fromModule(require('../../../assets/travel/back.svg')).uri,
-  search: Asset.fromModule(require('../../../assets/travel/search.svg')).uri,
-  check: Asset.fromModule(require('../../../assets/travel/check.svg')).uri,
+  status: inlineSvg["assets/travel/status.svg"],
+  back: inlineSvg["assets/travel/back.svg"],
+  search: inlineSvg["assets/travel/search.svg"],
+  check: inlineSvg["assets/travel/check.svg"],
 };
 
 function goHome() {

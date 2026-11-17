@@ -1,4 +1,4 @@
-import { Asset } from 'expo-asset';
+import inlineSvg from '../../assets/inline-svg.json';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRef, useState } from 'react';
 import { ActivityIndicator, FlatList, Modal, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
@@ -7,9 +7,9 @@ import { SvgUri } from 'react-native-svg';
 import type { Coordinates, NearbyCategory, NearbyPlace, NearbyResult } from './api';
 import { RestaurantMap } from './RestaurantMap';
 const icons={
-  back:Asset.fromModule(require('../../../assets/nearby/back.svg')).uri,
-  chevron:Asset.fromModule(require('../../../assets/nearby/chevron.svg')).uri,
-  target:Asset.fromModule(require('../../../assets/nearby/target.svg')).uri,
+  back:inlineSvg["assets/nearby/back.svg"],
+  chevron:inlineSvg["assets/nearby/chevron.svg"],
+  target:inlineSvg["assets/nearby/target.svg"],
 };
 const categories=[{id:'all',label:'전체'},{id:'asian',label:'아시안'},{id:'korean',label:'한식당'}] as const;
 export function NearbyRestaurantsView({result,center,radius,recenter,busy,message,settings,onBack,onLocate,onRadius,onOpenPlace,onSettings}:{

@@ -1,4 +1,4 @@
-import { Asset } from 'expo-asset';
+import inlineSvg from '../../assets/inline-svg.json';
 import { Redirect, router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { AppState, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -16,8 +16,8 @@ import { destination, toggleTravelCompanion, travelCompanions } from '../../stat
 
 // Verified identical to the provided companion-page SVGs, including root sizes.
 const icons = {
-  status: Asset.fromModule(require('../../../assets/travel/status.svg')).uri,
-  back: Asset.fromModule(require('../../../assets/travel/back.svg')).uri,
+  status: inlineSvg["assets/travel/status.svg"],
+  back: inlineSvg["assets/travel/back.svg"],
 };
 
 export default function CompanionsPage() {

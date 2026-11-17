@@ -1,4 +1,4 @@
-import { Asset } from 'expo-asset';
+import inlineSvg from '../../assets/inline-svg.json';
 import * as Clipboard from 'expo-clipboard';
 import { Redirect, router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -13,7 +13,7 @@ import { shareInvitation } from '../../features/companions/share';
 import { useProgress } from '../../state/ProgressProvider';
 import { destination, finishSetup } from '../../state/model';
 const copyIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#176B38" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>';
-const scannerIcon = Asset.fromModule(require('../../../assets/qr-scanner.svg')).uri;
+const scannerIcon = inlineSvg["assets/qr-scanner.svg"];
 export default function Companions() {
   const { from } = useLocalSearchParams<{ from?: string }>();
   const { progress, save, syncCompanions, busy, error } = useProgress();

@@ -1,10 +1,10 @@
-import { Asset } from 'expo-asset';
+import inlineSvg from '../../assets/inline-svg.json';
 import { Image, Pressable, StyleSheet, Text, View, type ImageSourcePropType } from 'react-native';
 import { SvgUri } from 'react-native-svg';
 import type { Companion } from './invite';
 
 export type CompanionDisplay = Companion & { foodSummary?: string; photo?: ImageSourcePropType };
-const addIcon = Asset.fromModule(require('../../../assets/companions/add.svg')).uri;
+const addIcon = inlineSvg["assets/companions/add.svg"];
 
 function Avatar({ person, onPress }: { person: CompanionDisplay; onPress: () => void }) {
   return <Pressable accessibilityRole="button" accessibilityLabel={`${person.name} 사진 보기`} onPress={onPress} hitSlop={2} style={s.avatar}>

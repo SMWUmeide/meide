@@ -1,4 +1,4 @@
-import { Asset } from 'expo-asset';
+import inlineSvg from '../../assets/inline-svg.json';
 import { useState } from 'react';
 import { Image, Linking, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -6,10 +6,10 @@ import { SvgUri } from 'react-native-svg';
 import { Button, ErrorText } from '../../components/ui';
 import type { RestaurantPlace, RestaurantSearch } from './menu-api';
 const icons = {
-  back: Asset.fromModule(require('../../../assets/restaurant/back.svg')).uri,
-  target: Asset.fromModule(require('../../../assets/restaurant/map-target.svg')).uri,
-  photo: Asset.fromModule(require('../../../assets/restaurant/photo-placeholder.svg')).uri,
-  dot: Asset.fromModule(require('../../../assets/restaurant/open-dot.svg')).uri,
+  back: inlineSvg["assets/restaurant/back.svg"],
+  target: inlineSvg["assets/restaurant/map-target.svg"],
+  photo: inlineSvg["assets/restaurant/photo-placeholder.svg"],
+  dot: inlineSvg["assets/restaurant/open-dot.svg"],
 };
 export function RestaurantConfirmation({ search, onBack, onConfirm, onSkip, busy, error }: {
   search: RestaurantSearch; onBack: () => void; onConfirm: (place: RestaurantPlace) => void;

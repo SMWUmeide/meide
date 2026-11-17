@@ -1,4 +1,4 @@
-import { Asset } from 'expo-asset';
+import inlineSvg from '../../assets/inline-svg.json';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { randomUUID } from 'expo-crypto';
 import * as ImagePicker from 'expo-image-picker';
@@ -14,12 +14,12 @@ import { Button } from '../../components/ui';
 import { useProgress } from '../../state/ProgressProvider';
 import { destination } from '../../state/model';
 const icons = {
-  close: Asset.fromModule(require('../../../assets/camera/imgFrame1.svg')).uri,
-  flash: Asset.fromModule(require('../../../assets/camera/imgFrame2.svg')).uri,
-  gallery: Asset.fromModule(require('../../../assets/camera/imgFrame3.svg')).uri,
-  guide: Asset.fromModule(require('../../../assets/camera/imgGroup.svg')).uri,
-  ring: Asset.fromModule(require('../../../assets/camera/img.svg')).uri,
-  shutter: Asset.fromModule(require('../../../assets/camera/img1.svg')).uri,
+  close: inlineSvg["assets/camera/imgFrame1.svg"],
+  flash: inlineSvg["assets/camera/imgFrame2.svg"],
+  gallery: inlineSvg["assets/camera/imgFrame3.svg"],
+  guide: inlineSvg["assets/camera/imgGroup.svg"],
+  ring: inlineSvg["assets/camera/img.svg"],
+  shutter: inlineSvg["assets/camera/img1.svg"],
 };
 export default function MenuCamera() {
   const { progress } = useProgress();

@@ -1,4 +1,4 @@
-import { Asset } from 'expo-asset';
+import inlineSvg from '../../assets/inline-svg.json';
 import * as ImagePicker from 'expo-image-picker';
 import { useRef, useState } from 'react';
 import { ActivityIndicator, Image, Modal, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
@@ -8,11 +8,11 @@ import { ErrorText } from '../../components/ui';
 import type { CompanionDisplay } from './CompanionLists';
 
 const icons = {
-  back: Asset.fromModule(require('../../../assets/travel/back.svg')).uri,
-  status: Asset.fromModule(require('../../../assets/travel/status.svg')).uri,
-  pencil: Asset.fromModule(require('../../../assets/companions/pencil.svg')).uri,
-  photo: Asset.fromModule(require('../../../assets/companions/photo.svg')).uri,
-  camera: Asset.fromModule(require('../../../assets/companions/camera.svg')).uri,
+  back: inlineSvg["assets/travel/back.svg"],
+  status: inlineSvg["assets/travel/status.svg"],
+  pencil: inlineSvg["assets/companions/pencil.svg"],
+  photo: inlineSvg["assets/companions/photo.svg"],
+  camera: inlineSvg["assets/companions/camera.svg"],
 };
 
 export function CompanionPhotoEditor({ person, ready, onClose, onSave }: {

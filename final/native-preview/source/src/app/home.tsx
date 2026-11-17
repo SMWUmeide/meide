@@ -1,4 +1,4 @@
-import { Asset } from 'expo-asset';
+import inlineSvg from '../assets/inline-svg.json';
 import { Redirect, router, useFocusEffect } from 'expo-router';
 import { useCallback } from 'react';
 import { Alert, BackHandler, Image, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -11,13 +11,13 @@ import { destination } from '../state/model';
 import { currentTravelDestination, destinationLabel } from '../features/travel/catalog';
 
 const icons = {
-  location: Asset.fromModule(require('../../assets/home/imgIcon.svg')).uri,
-  nearby: Asset.fromModule(require('../../assets/home/imgIcon1.svg')).uri,
-  arrow: Asset.fromModule(require('../../assets/home/img20.svg')).uri,
-  restaurant: Asset.fromModule(require('../../assets/home/img1.svg')).uri,
-  circle: Asset.fromModule(require('../../assets/home/imgVector4.svg')).uri,
-  scan: Asset.fromModule(require('../../assets/home/img.svg')).uri,
-  guide: Asset.fromModule(require('../../assets/home/guide-arrow.svg')).uri,
+  location: inlineSvg["assets/home/imgIcon.svg"],
+  nearby: inlineSvg["assets/home/imgIcon1.svg"],
+  arrow: inlineSvg["assets/home/img20.svg"],
+  restaurant: inlineSvg["assets/home/img1.svg"],
+  circle: inlineSvg["assets/home/imgVector4.svg"],
+  scan: inlineSvg["assets/home/img.svg"],
+  guide: inlineSvg["assets/home/guide-arrow.svg"],
 };
 // Figma content for the approved home. Replace with real ranking data in the ranking feature.
 const foods = [
