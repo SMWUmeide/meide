@@ -1,0 +1,447 @@
+[
+  {
+    "code": "IT",
+    "name": "Chiusi",
+    "ko": "키우시"
+  },
+  {
+    "code": "IT",
+    "name": "Chiusi",
+    "ko": "치우시"
+  },
+  {
+    "code": "RU",
+    "name": "Saint Petersburg",
+    "ko": "상트페테르부르크"
+  },
+  {
+    "code": "UA",
+    "name": "Kyiv",
+    "ko": "키이우"
+  },
+  {
+    "code": "FO",
+    "name": "Torshavn",
+    "ko": "토르스하운"
+  },
+  {
+    "code": "AX",
+    "name": "Mariehamn",
+    "ko": "마리함"
+  },
+  {
+    "code": "GI",
+    "name": "Gibraltar",
+    "ko": "지브롤터"
+  },
+  {
+    "code": "IT",
+    "name": "Matera",
+    "ko": "마테라"
+  },
+  {
+    "code": "FR",
+    "name": "Colmar",
+    "ko": "콜마르"
+  },
+  {
+    "code": "CH",
+    "name": "Lauterbrunnen",
+    "ko": "라우터브루넨"
+  },
+  {
+    "code": "SI",
+    "name": "Bled",
+    "ko": "블레드"
+  },
+  {
+    "code": "DE",
+    "name": "Rothenburg",
+    "ko": "로텐부르크"
+  },
+  {
+    "code": "FR",
+    "name": "Annecy",
+    "ko": "안시"
+  },
+  {
+    "code": "FR",
+    "name": "Eze",
+    "ko": "에즈"
+  },
+  {
+    "code": "FR",
+    "name": "Avignon",
+    "ko": "아비뇽"
+  },
+  {
+    "code": "FR",
+    "name": "Aix-en-Provence",
+    "ko": "액상프로방스"
+  },
+  {
+    "code": "FR",
+    "name": "Chamonix",
+    "ko": "샤모니"
+  },
+  {
+    "code": "CZ",
+    "name": "Cesky Krumlov",
+    "ko": "체스키크룸로프"
+  },
+  {
+    "code": "AT",
+    "name": "Hallstatt",
+    "ko": "할슈타트"
+  },
+  {
+    "code": "CH",
+    "name": "Grindelwald",
+    "ko": "그린델발트"
+  },
+  {
+    "code": "CH",
+    "name": "Zermatt",
+    "ko": "체르마트"
+  },
+  {
+    "code": "FR",
+    "name": "Lyon",
+    "ko": "리옹"
+  },
+  {
+    "code": "FR",
+    "name": "Bordeaux",
+    "ko": "보르도"
+  },
+  {
+    "code": "FR",
+    "name": "Strasbourg",
+    "ko": "스트라스부르"
+  },
+  {
+    "code": "IT",
+    "name": "Bologna",
+    "ko": "볼로냐"
+  },
+  {
+    "code": "IT",
+    "name": "Verona",
+    "ko": "베로나"
+  },
+  {
+    "code": "IT",
+    "name": "Siena",
+    "ko": "시에나"
+  },
+  {
+    "code": "IT",
+    "name": "Monterosso al Mare",
+    "ko": "몬테로소알마레"
+  },
+  {
+    "code": "IT",
+    "name": "Lecce",
+    "ko": "레체"
+  },
+  {
+    "code": "IT",
+    "name": "Bari",
+    "ko": "바리"
+  },
+  {
+    "code": "SK",
+    "name": "Bratislava",
+    "ko": "브라티슬라바"
+  },
+  {
+    "code": "SI",
+    "name": "Ljubljana",
+    "ko": "류블랴나"
+  },
+  {
+    "code": "ME",
+    "name": "Kotor",
+    "ko": "코토르"
+  },
+  {
+    "code": "BA",
+    "name": "Sarajevo",
+    "ko": "사라예보"
+  },
+  {
+    "code": "ES",
+    "name": "Bilbao",
+    "ko": "빌바오"
+  },
+  {
+    "code": "ES",
+    "name": "Toledo",
+    "ko": "톨레도"
+  },
+  {
+    "code": "ES",
+    "name": "Ronda",
+    "ko": "론다"
+  },
+  {
+    "code": "GB",
+    "name": "York",
+    "ko": "요크"
+  },
+  {
+    "code": "GB",
+    "name": "Oxford",
+    "ko": "옥스퍼드"
+  },
+  {
+    "code": "GB",
+    "name": "Cambridge",
+    "ko": "케임브리지"
+  },
+  {
+    "code": "IT",
+    "name": "Rome",
+    "ko": "로마"
+  },
+  {
+    "code": "FR",
+    "name": "Paris",
+    "ko": "파리"
+  },
+  {
+    "code": "ES",
+    "name": "Barcelona",
+    "ko": "바르셀로나"
+  },
+  {
+    "code": "GB",
+    "name": "London",
+    "ko": "런던"
+  },
+  {
+    "code": "CZ",
+    "name": "Prague",
+    "ko": "프라하"
+  },
+  {
+    "code": "PT",
+    "name": "Lisbon",
+    "ko": "리스본"
+  },
+  {
+    "code": "FR",
+    "name": "Nice",
+    "ko": "니스"
+  },
+  {
+    "code": "IT",
+    "name": "Florence",
+    "ko": "피렌체"
+  },
+  {
+    "code": "IT",
+    "name": "Venice",
+    "ko": "베네치아"
+  },
+  {
+    "code": "IT",
+    "name": "Venice",
+    "ko": "베니스"
+  },
+  {
+    "code": "IT",
+    "name": "Milan",
+    "ko": "밀라노"
+  },
+  {
+    "code": "IT",
+    "name": "Naples",
+    "ko": "나폴리"
+  },
+  {
+    "code": "ES",
+    "name": "Madrid",
+    "ko": "마드리드"
+  },
+  {
+    "code": "ES",
+    "name": "Seville",
+    "ko": "세비야"
+  },
+  {
+    "code": "ES",
+    "name": "Granada",
+    "ko": "그라나다"
+  },
+  {
+    "code": "PT",
+    "name": "Porto",
+    "ko": "포르투"
+  },
+  {
+    "code": "DE",
+    "name": "Berlin",
+    "ko": "베를린"
+  },
+  {
+    "code": "DE",
+    "name": "Munich",
+    "ko": "뮌헨"
+  },
+  {
+    "code": "DE",
+    "name": "Frankfurt",
+    "ko": "프랑크푸르트"
+  },
+  {
+    "code": "AT",
+    "name": "Vienna",
+    "ko": "비엔나"
+  },
+  {
+    "code": "AT",
+    "name": "Vienna",
+    "ko": "빈"
+  },
+  {
+    "code": "AT",
+    "name": "Salzburg",
+    "ko": "잘츠부르크"
+  },
+  {
+    "code": "CH",
+    "name": "Zurich",
+    "ko": "취리히"
+  },
+  {
+    "code": "CH",
+    "name": "Lucerne",
+    "ko": "루체른"
+  },
+  {
+    "code": "CH",
+    "name": "Interlaken",
+    "ko": "인터라켄"
+  },
+  {
+    "code": "CH",
+    "name": "Geneva",
+    "ko": "제네바"
+  },
+  {
+    "code": "NL",
+    "name": "Amsterdam",
+    "ko": "암스테르담"
+  },
+  {
+    "code": "BE",
+    "name": "Brussels",
+    "ko": "브뤼셀"
+  },
+  {
+    "code": "BE",
+    "name": "Bruges",
+    "ko": "브뤼헤"
+  },
+  {
+    "code": "HU",
+    "name": "Budapest",
+    "ko": "부다페스트"
+  },
+  {
+    "code": "GR",
+    "name": "Athens",
+    "ko": "아테네"
+  },
+  {
+    "code": "GR",
+    "name": "Santorini",
+    "ko": "산토리니"
+  },
+  {
+    "code": "TR",
+    "name": "Istanbul",
+    "ko": "이스탄불"
+  },
+  {
+    "code": "DK",
+    "name": "Copenhagen",
+    "ko": "코펜하겐"
+  },
+  {
+    "code": "SE",
+    "name": "Stockholm",
+    "ko": "스톡홀름"
+  },
+  {
+    "code": "NO",
+    "name": "Oslo",
+    "ko": "오슬로"
+  },
+  {
+    "code": "FI",
+    "name": "Helsinki",
+    "ko": "헬싱키"
+  },
+  {
+    "code": "IS",
+    "name": "Reykjavik",
+    "ko": "레이캬비크"
+  },
+  {
+    "code": "IE",
+    "name": "Dublin",
+    "ko": "더블린"
+  },
+  {
+    "code": "GB",
+    "name": "Edinburgh",
+    "ko": "에든버러"
+  },
+  {
+    "code": "HR",
+    "name": "Dubrovnik",
+    "ko": "두브로브니크"
+  },
+  {
+    "code": "HR",
+    "name": "Zagreb",
+    "ko": "자그레브"
+  },
+  {
+    "code": "PL",
+    "name": "Warsaw",
+    "ko": "바르샤바"
+  },
+  {
+    "code": "PL",
+    "name": "Krakow",
+    "ko": "크라쿠프"
+  },
+  {
+    "code": "EE",
+    "name": "Tallinn",
+    "ko": "탈린"
+  },
+  {
+    "code": "LV",
+    "name": "Riga",
+    "ko": "리가"
+  },
+  {
+    "code": "LT",
+    "name": "Vilnius",
+    "ko": "빌뉴스"
+  },
+  {
+    "code": "RU",
+    "name": "Moscow",
+    "ko": "모스크바"
+  },
+  {
+    "code": "GE",
+    "name": "Tbilisi",
+    "ko": "트빌리시"
+  }
+]

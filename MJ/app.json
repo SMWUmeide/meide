@@ -1,0 +1,75 @@
+{
+  "expo": {
+    "name": "Meide",
+    "slug": "minju",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.meide.mobile.dev"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.meide.mobile.dev"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "scheme": "meide-dev",
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "메뉴판과 동반인 사진을 촬영하고 QR 코드를 읽기 위해 카메라를 사용해요.",
+          "recordAudioAndroid": false,
+          "barcodeScannerEnabled": true
+        }
+      ],
+      "expo-asset",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "메뉴판과 동반인 사진을 선택하기 위해 사진에 접근해요.",
+          "cameraPermission": "메뉴판과 동반인 사진을 촬영하기 위해 카메라를 사용해요.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "주변 식당을 찾기 위해 현재 위치를 사용하고 Google에 전달해요.",
+          "isIosBackgroundLocationEnabled": false,
+          "isAndroidBackgroundLocationEnabled": false,
+          "isAndroidForegroundServiceEnabled": false
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "appVariant": "development",
+      "googleMapsAndroidConfigured": false,
+      "googleMapsIosConfigured": false,
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "aa8b8425-ed93-4b03-b206-ff648e6fc029"
+      }
+    },
+    "owner": "meide2026"
+  }
+}
