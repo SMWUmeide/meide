@@ -153,6 +153,9 @@
 
 ### 한 일
 
+- Claude Fable 모델을 활용해 주문 내역과 마이페이지 화면을 구현했어요.
+- 온보딩 화면에 사용되는 그림을 수정했어요.
+
 - Figma 디자인을 바탕으로 주문 화면 구현
 
   - 메뉴판 → 메뉴 상세 → 장바구니 → 주문 문장 → 예상 영수증 흐름을 구현하고 연결했어요.
@@ -204,7 +207,7 @@
 
 ### 사용한 도구
 
-- Codex, Figma
+- Codex, Claude Fable, Figma
 - React, TypeScript, Vite, Capacitor
 - Gemini API, Pixabay, SlimSAM, Supabase, Vercel
 - Android 빌드 도구와 Galaxy S21 실기기
