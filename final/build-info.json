@@ -1,0 +1,46 @@
+{
+  "app": "Meide",
+  "versionName": "0.1.0",
+  "versionCode": 8,
+  "applicationId": "com.meide.mobile",
+  "artifact": "Meide-final-0.1.0-8.aab",
+  "bytes": 93521274,
+  "sha256": "4eba857299af63714aaa0c1ee0f66e1b8bb552c53301c97b5a58eeba9e21c094",
+  "easBuildId": "347e0738-46a7-422e-ac69-d9a1f38872b0",
+  "sourceCommit": "6d45d1e86403e14b07d57d164e6b9833affdf6b0",
+  "sourceDirectories": [
+    "source/MJ",
+    "source/MJ-ordering"
+  ],
+  "backend": "https://meide-api-dxnbcriiga-du.a.run.app",
+  "cloudRunRevision": "meide-api-00010-quy",
+  "validation": {
+    "mobileTests": 92,
+    "orderingTests": 154,
+    "expoDoctorChecks": 20,
+    "lint": "passed",
+    "typecheck": "passed",
+    "designTokenCheck": "passed",
+    "liveMenuInterpretation": "passed",
+    "cloudAuthenticationAndStorage": "passed",
+    "webOrderPersistenceAndHomeNavigation": "passed with recorded menu fixture",
+    "bundletool": "passed",
+    "signed": true,
+    "native16KBAlignment": "passed",
+    "privateServerCredentialsBundled": false
+  },
+  "physicalAndroidDeviceTested": false,
+  "submittedToGooglePlay": false,
+  "remainingReleaseChecks": [
+    "Register the closed-test participants before using paid analysis APIs.",
+    "Verify Google Maps restrictions against the Google Play app-signing certificate after upload.",
+    "Test camera, native share, speech and WebView navigation on an Android device."
+  ],
+  "currentOrderScope": {
+    "menuCurrency": "EUR",
+    "orderLanguage": "Italian",
+    "sharedCart": "Join with its own invitation; native companions do not automatically join.",
+    "paymentProcessing": false
+  },
+  "generatedAt": "2026-11-17T04:18:04.126128+00:00"
+}
