@@ -1,0 +1,22 @@
+# Used with EAS_PROJECT_ROOT=apps/meide-mobile by scripts/eas.sh.
+# Only mobile sources are uploaded; server secrets and local records stay here.
+**
+!package.json
+!package-lock.json
+!app.json
+!app.config.js
+!eas.json
+!tsconfig.json
+!babel.config.js
+!metro.config.js
+!expo-env.d.ts
+!assets
+!assets/**
+!src
+!src/**
+!data
+!data/travel
+!data/travel/countries.json
+!LICENSE
+!scripts
+!scripts/eas.sh

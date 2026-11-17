@@ -1,0 +1,4 @@
+six==1.17.0
+hangulize==0.0.9
+phonemizer-fork==3.3.2
+espeakng-loader==0.2.4

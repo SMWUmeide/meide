@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "source": "GeoNames country gazetteer extracts",
+  "sourceUrl": "https://download.geonames.org/export/dump/",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "sourceBuiltAt": "2026-10-10",
+  "countries": 58,
+  "cities": 1022909,
+  "regions": 1292,
+  "koreanCityNames": 1022909,
+  "phoneticCityNames": 1019729,
+  "koreanRegionNames": 1292,
+  "phoneticRegionNames": 583,
+  "sha256": "90ac908301655e3c5a35e3efa6dbf078280c8e328ddbc3d63f0e3a61fdce4710",
+  "compressedSha256": "82429cd4475f6a469b4d82cde4a67aef5f90e0b610186b033a1113caf26854d7",
+  "databaseBytes": 338939904,
+  "compressedBytes": 118102553,
+  "files": [
+    "gazetteer-90ac90830165.part00",
+    "gazetteer-90ac90830165.part01",
+    "gazetteer-90ac90830165.part02",
+    "gazetteer-90ac90830165.part03"
+  ],
+  "missingCuratedAliases": [
+    {
+      "code": "GR",
+      "name": "Santorini",
+      "ko": "산토리니"
+    }
+  ],
+  "modifications": "Normalized search index, curated aliases and automatic Korean phonetic readings. Original spelling retained. Automatic readings are approximate, not official Korean names."
+}

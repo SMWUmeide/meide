@@ -1,0 +1,19 @@
+{
+  "name": "meide-server",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node start.mjs"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^9.4.1",
+    "@napi-rs/canvas": "^1.1.1",
+    "cheerio": "^1.2.0",
+    "ipaddr.js": "^2.5.0",
+    "robots-parser": "^3.0.1",
+    "unpdf": "^1.9.1"
+  }
+}

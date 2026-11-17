@@ -1,0 +1,15 @@
+**
+!Dockerfile
+!server/
+!server/*.mjs
+!server/package.json
+!server/package-lock.json
+!data/
+!data/travel/
+!data/travel/manifest.json
+!data/travel/countries.json
+!data/travel/gazetteer-*.part*
+!data/travel/NOTICE.md
+!dist/
+!dist/web/
+!dist/web/**
