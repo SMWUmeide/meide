@@ -34,8 +34,8 @@ module.exports = ({ config }) => {
     name: selected.name,
     scheme: selected.scheme,
     ios: { ...config.ios, bundleIdentifier: selected.id },
-    android: { ...config.android, package: selected.id },
-    plugins:[...(config.plugins??[]),['react-native-maps',{androidGoogleMapsApiKey:androidMapKey,iosGoogleMapsApiKey:iosMapKey}]],
+    android: { ...config.android, package: selected.id, ...(variant === 'production' ? { versionCode: 2 } : {}) },
+    plugins:[...(config.plugins??[]),['expo-build-properties',{android:{enableMinifyInReleaseBuilds:false,enableShrinkResourcesInReleaseBuilds:false}}],['react-native-maps',{androidGoogleMapsApiKey:androidMapKey,iosGoogleMapsApiKey:iosMapKey}]],
     extra: { ...config.extra, appVariant: variant, googleMapsAndroidConfigured:!!androidMapKey,googleMapsIosConfigured:!!iosMapKey },
   };
 };
