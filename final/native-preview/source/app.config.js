@@ -1,7 +1,7 @@
 const variants = {
   development: { name: 'meide', id: 'app.meide.preview', scheme: 'meide-dev' },
   preview: { name: 'Meide 테스트', id: 'com.meide.mobile.preview', scheme: 'meide-preview' },
-  production: { name: 'Meide', id: 'com.meide.mobile', scheme: 'meide' },
+  production: { name: 'meide', id: 'com.meide.travelguide', scheme: 'meide' },
 };
 
 module.exports = ({ config }) => {

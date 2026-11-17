@@ -1,3 +1,5 @@
+> 최신 Android 배포 빌드의 패키지 이름은 `com.meide.travelguide`예요. 아래의 기존 `com.meide.mobile` 및 팀원 빌드 설명은 이전 이력입니다. 새 서명 파일은 [native-release](../../native-release/)에 있어요.
+
 # Meide Mobile
 
 기존 `apps/hanip-android`와 독립적인 새 React Native / Expo / TypeScript 앱입니다.
