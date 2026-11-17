@@ -2,6 +2,7 @@ import inlineSvg from '../../assets/inline-svg.json';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { randomUUID } from 'expo-crypto';
 import * as ImagePicker from 'expo-image-picker';
+import * as ImageManipulator from 'expo-image-manipulator';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Redirect, router, useFocusEffect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -38,6 +39,7 @@ export default function MenuCamera() {
   const [attempt, setAttempt] = useState(0);
   const [message, setMessage] = useState<string | null>(null);
   const [reviewing, setReviewing] = useState(false);
+  const [previewSize, setPreviewSize] = useState({width: 0, height: 0});
   const [guideSize, setGuideSize] = useState({width:332,height:500});
   useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   useFocusEffect(useCallback(() => { setFocused(true); setReady(false); return () => { setFocused(false); setReady(false); setTorch(false); }; }, []));
@@ -63,7 +65,12 @@ export default function MenuCamera() {
     try {
       const photo = await camera.current.takePictureAsync({ quality: 0.8, exif: false, base64: true });
       if (!photo?.uri) throw new Error('empty-photo');
-      if (mounted.current) add([{ id: randomUUID(), uri: photo.uri, width: photo.width, height: photo.height, base64: photo.base64 }]);
+      const ratio = previewSize.width / previewSize.height;
+      if (!ratio || !photo.width || !photo.height) throw new Error('preview-not-ready');
+      const width = Math.min(photo.width, Math.round(photo.height * ratio));
+      const height = Math.min(photo.height, Math.round(photo.width / ratio));
+      const image = await ImageManipulator.manipulateAsync(photo.uri, [{ crop: { originX: Math.floor((photo.width - width) / 2), originY: Math.floor((photo.height - height) / 2), width, height } }], { compress: 0.8, base64: true });
+      if (mounted.current) add([{ id: randomUUID(), uri: image.uri, width: image.width, height: image.height, base64: image.base64 }]);
     } catch { if (mounted.current) setMessage('촬영하지 못했어요. 다시 눌러 주세요.'); }
     finally { working.current = false; if (mounted.current) setBusy(false); }
   }
@@ -84,7 +91,7 @@ export default function MenuCamera() {
   const scale = Math.min(guideSize.width / 331, guideSize.height / 499);
   return <View style={c.screen}>
     {focused && <StatusBar style="light" />}
-    {running && <CameraView key={attempt} ref={camera} style={StyleSheet.absoluteFill} facing="back" mode="picture" autofocus="on" enableTorch={torch} onCameraReady={() => setReady(true)} onMountError={() => { setReady(false); setFailed(true); setMessage('카메라를 시작하지 못했어요. 권한과 카메라 사용 상태를 확인해 주세요.'); }} />}
+    {running && <CameraView key={attempt} ref={camera} onLayout={event => setPreviewSize(event.nativeEvent.layout)} style={StyleSheet.absoluteFill} facing="back" mode="picture" autofocus="on" enableTorch={torch} onCameraReady={() => setReady(true)} onMountError={() => { setReady(false); setFailed(true); setMessage('카메라를 시작하지 못했어요. 권한과 카메라 사용 상태를 확인해 주세요.'); }} />}
     <LinearGradient pointerEvents="none" colors={['rgba(0,0,0,0.8)','rgba(0,0,0,0.35)','transparent']} style={c.topShade} />
     <LinearGradient pointerEvents="none" colors={['transparent','rgba(0,0,0,0.55)','rgba(0,0,0,0.9)']} locations={[0,0.45,1]} style={c.bottomShade} />
     <SafeAreaView style={c.safe}><View style={c.page}>
@@ -101,7 +108,7 @@ export default function MenuCamera() {
         </View>}
       </View>
       <View style={c.bottom}>
-        <Text style={c.hint}>여러 장이면 이어서 찍을 수 있어요</Text>
+        <Text style={c.hint}>여러 장이면 이어서 찍을 수 있어요. 분석 시 사진을 서버와 Google에 보내요.</Text>
         {message && permission?.granted && !failed && <Text accessibilityLiveRegion="polite" style={c.error}>{message}</Text>}
         <View style={c.controls}>
           <Pressable accessibilityRole="button" accessibilityLabel="갤러리에서 메뉴판 선택" disabled={busy} onPress={() => void pick()} style={c.gallery}><SvgUri uri={icons.gallery} /></Pressable>
@@ -115,7 +122,7 @@ export default function MenuCamera() {
     <Modal visible={reviewing} animationType="slide" onRequestClose={closeReview}><SafeAreaView style={c.review}>
       <View style={c.header}><Pressable accessibilityRole="button" accessibilityLabel="사진 확인 닫기" onPress={closeReview} style={c.round}><SvgUri uri={icons.close} /></Pressable><Text style={c.title}>촬영한 사진 {photos.length}장</Text><View style={c.roundSpacer} /></View>
       <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={c.reviewList}>{photos.map((photo,index) => <View key={photo.id} style={c.reviewItem}><Image accessibilityLabel={`메뉴판 사진 ${index+1}`} source={{uri:photo.uri}} resizeMode="contain" style={c.reviewPhoto} /><Pressable accessibilityRole="button" accessibilityLabel={`${index+1}번째 사진 삭제`} onPress={() => remove(photo.id)} style={c.delete}><Text style={c.title}>삭제</Text></Pressable></View>)}</ScrollView>
-      <Button title="메뉴판 분석하기" disabled={!photos.length || photos.length > 6} onPress={() => { closeReview(); router.push('/menu/order'); }} />
+      <Button title="메뉴판 분석하기" disabled={!photos.length || photos.length > 6} onPress={() => { closeReview(); setTimeout(() => router.push('/menu/order'), 400); }} />
     </SafeAreaView></Modal>
   </View>;
 }
