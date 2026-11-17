@@ -2,7 +2,7 @@ import { Buffer } from "node:buffer";
 import { build } from 'vite';
 import { readFileSync,writeFileSync,mkdirSync,existsSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, URL } from 'node:url';
 import { createHash } from 'node:crypto';
 process.chdir(fileURLToPath(new URL('../',import.meta.url)));
 const mobileRoot=resolve(process.env.MEIDE_MOBILE_DIR ?? (existsSync('../meide-mobile/package.json')?'../meide-mobile':'../MJ'));
