@@ -17,7 +17,8 @@ export class NearbyTestLimits {
       const policy=this.menuTest.check(id);
       if(!this.provider)return {ready:false,message:'주변 식당 연결을 준비하고 있어요.'};
       return this.menuTest.transaction(policy,ledger=>{
-        const jobs=ledger.nearbyJobs??[], used=jobs.filter(job=>job.id===id.toLowerCase()&&job.day===day(this.menuTest.now())).length;
+        const today = policy.day ?? day(this.menuTest.now());
+        const jobs=ledger.nearbyJobs??[], used=jobs.filter(job=>job.id===id.toLowerCase()&&job.day===today).length;
         const remaining=reservedTotal(ledger)+NEARBY_RESERVATION_MICRO_USD<=policy.budgetMicroUsd && jobs.length<600?Math.max(0,NEARBY_DAILY_LIMIT-used):0;
         return {ready:remaining>0,remaining,message:remaining?'':'오늘 사용할 수 있는 주변 검색 횟수 또는 테스트 비용 한도에 도달했어요.'};
       });
@@ -32,7 +33,7 @@ export class NearbyTestLimits {
     await this.menuTest.transaction(policy,ledger=>{
       ledger.nearbyJobs??=[];
       if(ledger.nearbyJobs.some(job=>job.id===id&&job.requestId===requestId))throw fail(409,'이미 요청한 주변 검색이에요. 자동 재시도하지 않았어요.');
-      const today=day(this.menuTest.now());
+      const today=policy.day ?? day(this.menuTest.now());
       if(ledger.nearbyJobs.filter(job=>job.id===id&&job.day===today).length>=NEARBY_DAILY_LIMIT)throw fail(429,'오늘은 주변 검색 2회를 모두 사용했어요. 받아둔 결과는 계속 볼 수 있어요.');
       if(ledger.nearbyJobs.length>=600||reservedTotal(ledger)+NEARBY_RESERVATION_MICRO_USD>policy.budgetMicroUsd)throw fail(429,'테스트 API 비용 한도에 도달했어요.');
       // Never persist coordinates or Google place content in the quota ledger.

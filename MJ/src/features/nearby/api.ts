@@ -12,12 +12,13 @@ export type NearbyGroup = { places:NearbyPlace[]; incomplete:boolean };
 export type NearbyResult = { center:Coordinates; radius:number; groups:Record<NearbyCategory,NearbyGroup>; fetchedAt:number };
 export type NearbyStatus = { ready:boolean; remaining?:number; message:string };
 type Profile = Pick<Progress,'profileId'|'profileToken'|'name'>;
-async function request(path:string,profile:Profile,body:object={}) {
+async function request(path:string,profile:Profile,body:object={},reviewCode?:string) {
   const base=process.env.EXPO_PUBLIC_COMPANION_API_URL?.replace(/\/$/,'') ?? (Platform.OS==='web'?'':null);
   if(base===null)throw Error('주변 식당 서버에 연결할 수 없어요.');
   const controller=new AbortController(), timer=setTimeout(()=>controller.abort(),45000);
   try {
-    const response=await fetch(base+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...body,id:profile.profileId,token:profile.profileToken}),signal:controller.signal});
+    const credentials = reviewCode ? { reviewCode } : { token:profile.profileToken };
+    const response=await fetch(base+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...body,id:profile.profileId,...credentials}),signal:controller.signal});
     const data=await response.json();
     if(!response.ok)throw Error(data.error??'주변 식당을 불러오지 못했어요.');
     return data;
@@ -27,13 +28,13 @@ async function request(path:string,profile:Profile,body:object={}) {
     throw error;
   } finally { clearTimeout(timer); }
 }
-export async function nearbyStatus(profile:Profile):Promise<NearbyStatus> {
+export async function nearbyStatus(profile:Profile,reviewCode?:string):Promise<NearbyStatus> {
   if(!profile.profileId||!profile.profileToken)throw Error('사용자 정보를 확인해 주세요.');
-  await issueInvite(profile.profileId,profile.profileToken,profile.name);
-  return request('/api/restaurants/status',profile);
+  if (!reviewCode) await issueInvite(profile.profileId,profile.profileToken,profile.name);
+  return request('/api/restaurants/status',profile,{},reviewCode);
 }
-export async function fetchNearby(profile:Profile,center:Coordinates,radius:number,requestId:string):Promise<NearbyResult> {
-  const data=await request('/api/restaurants/nearby',profile,{latitude:center.latitude,longitude:center.longitude,radius,requestId,consent:true});
+export async function fetchNearby(profile:Profile,center:Coordinates,radius:number,requestId:string,reviewCode?:string):Promise<NearbyResult> {
+  const data=await request('/api/restaurants/nearby',profile,{latitude:center.latitude,longitude:center.longitude,radius,requestId,consent:true},reviewCode);
   if(!data.result?.groups?.all || !data.result.groups.asian || !data.result.groups.korean)throw Error('검색 결과를 확인하지 못했어요.');
   return data.result;
 }

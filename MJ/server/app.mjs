@@ -2,7 +2,7 @@ import { Buffer } from 'node:buffer';
 import { createServer } from 'node:http';
 import { createReadStream, existsSync, statSync } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
-export function createApp({store, webRoot, allowedOrigins = [], menuAI, menuTest, nearbyTest, travelSearch, webMaps, health, requestLimit = 60, remoteApiOrigin}) {
+export function createApp({store, webRoot, allowedOrigins = [], menuAI, menuTest, nearbyTest, playReviewNearby, travelSearch, webMaps, health, requestLimit = 60, remoteApiOrigin}) {
   const remote=remoteApiOrigin?new URL(remoteApiOrigin):null;
   if(remote&&(remote.protocol!=='https:'||remote.username||remote.password||remote.pathname!=='/'||remote.search||remote.hash))throw Error('Use a public HTTPS API origin.');
   const buckets = new Map();
@@ -40,13 +40,26 @@ export function createApp({store, webRoot, allowedOrigins = [], menuAI, menuTest
           let body='';
           for await(const chunk of req) {body+=chunk;if(Buffer.byteLength(body)>2048)return send(413,{error:'입력 내용을 확인해 주세요.'});}
           let data;try{data=JSON.parse(body);}catch{return send(400,{error:'입력 내용을 확인해 주세요.'});}
-          const own=await store.authenticate(data??{});
           if(url.pathname==='/api/restaurants/map-access') {
             if(!webMaps)return send(503,{error:'지도 연결을 준비하고 있어요.'});
+            const own=await store.authenticate(data??{});
             return send(200,await webMaps.authorize({id:own.id,requestId:data.requestId}));
           }
-          if(url.pathname==='/api/restaurants/status')return send(200,await nearbyTest.status(own.id));
-          return send(200,{result:await nearbyTest.search({...data,id:own.id})});
+          let nearby = nearbyTest;
+          let id;
+          if (data?.reviewCode !== undefined) {
+            if (!playReviewNearby?.accepts(data.reviewCode)) return send(403, {error:'심사 코드를 확인해 주세요.'});
+            if (typeof data.id !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(data.id)) {
+              return send(400, {error:'사용자 정보를 확인해 주세요.'});
+            }
+            nearby = playReviewNearby;
+            id = data.id;
+          } else {
+            const own = await store.authenticate(data ?? {});
+            id = own.id;
+          }
+          if(url.pathname==='/api/restaurants/status')return send(200,await nearby.status(id));
+          return send(200,{result:await nearby.search({...data,id})});
         }
         if (req.method === 'POST' && ['/api/menu/process','/api/menu/status'].includes(url.pathname)) {
           if (!req.headers['content-type']?.startsWith('application/json')) return send(415,{error:'잘못된 요청이에요.'});
