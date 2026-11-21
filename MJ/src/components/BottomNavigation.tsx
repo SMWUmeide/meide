@@ -19,6 +19,7 @@ export function BottomNavigation({ active }: { active: (typeof tabs)[number]['ke
         if (tab.key === active) return;
         if (tab.key === 'home') router.navigate('/home');
         else if (tab.key === 'companions') router.navigate('/companions');
+        else if (tab.key === 'profile') router.navigate('/privacy');
         else Alert.alert(tab.label, '아직 준비 중인 기능이에요.');
       }}>
       <SvgUri uri={tab.key === active ? tab.filled : tab.outline} /><Text style={s.tabText}>{tab.label}</Text>
