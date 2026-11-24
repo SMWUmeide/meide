@@ -1,8 +1,12 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CryptoDigestAlgorithm, digestStringAsync } from 'expo-crypto';
 import { ImageManipulator, SaveFormat } from 'expo-image-manipulator';
 import { menuBoardSchema, type MenuBoard } from './menu-schema';
 import type { MenuPhoto } from '../menu-camera/MenuPhotosProvider';
 
 const maxBytes = 3_900_000;
+const cachePrefix = 'meide.menu-analysis.v1';
+
 export async function analyzePhotos(photos: MenuPhoto[], signal: AbortSignal): Promise<MenuBoard> {
   if (!photos.length || photos.length > 6) throw new Error('사진은 1~6장 선택해 주세요.');
   const images: { mediaType: 'image/jpeg'; data: string }[] = [];
@@ -26,10 +30,29 @@ export async function analyzePhotos(photos: MenuPhoto[], signal: AbortSignal): P
   const origin = process.env.EXPO_PUBLIC_MEIDE_API_URL || 'https://meide-meide1.vercel.app';
   const url = new URL('/api/analyze-menu', origin);
   if (url.protocol !== 'https:') throw new Error('안전한 분석 서버 주소가 필요해요.');
+
+  let cacheKey: string | undefined;
+  let cachedBoard: MenuBoard | undefined;
+  try {
+    // Photo IDs and URIs change when a file is picked again. The request body is stable.
+    const digest = await digestStringAsync(CryptoDigestAlgorithm.SHA256, `${url.href}\n${body}`);
+    cacheKey = `${cachePrefix}.${digest}`;
+    const stored = await AsyncStorage.getItem(cacheKey);
+    if (stored !== null) {
+      const cached = menuBoardSchema.safeParse(JSON.parse(stored));
+      if (cached.success) cachedBoard = cached.data;
+    }
+  } catch {
+    // A storage or hashing failure should leave menu analysis available.
+  }
+  if (signal.aborted) throw new Error('취소했어요.');
+  if (cachedBoard) return cachedBoard;
+
   const response = await fetch(url.toString(), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, signal });
   const json = await response.json().catch(() => null);
   if (!response.ok) throw new Error(typeof json?.message === 'string' ? json.message : '분석에 실패했어요.');
   const result = menuBoardSchema.safeParse(json?.board);
   if (!result.success) throw new Error('분석 결과를 확인하지 못했어요.');
+  if (cacheKey) await AsyncStorage.setItem(cacheKey, JSON.stringify(result.data)).catch(() => {});
   return result.data;
 }
