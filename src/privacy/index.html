@@ -12,7 +12,7 @@
   <main class="t-body-md">
     <header>
       <h1 class="t-headline-lg">meide 개인정보처리방침</h1>
-      <p class="t-label-md">시행일 <time datetime="2026-11-21">2026년 11월 21일</time></p>
+      <p class="t-label-md">시행일 <time datetime="2026-11-26">2026년 11월 26일</time></p>
       <p>Meide는 여행 중 외국어 메뉴판을 이해하고, 주변 식당을 찾고, 동반인과 메뉴를 고르는 앱 meide를 운영해요.</p>
       <a href="#account-deletion">계정 및 데이터 삭제 방법 보기</a>
     </header>
@@ -38,11 +38,12 @@
     <section>
       <h2 class="t-headline-md">어디에서 정보를 처리하나요?</h2>
       <ul>
-        <li><strong>Google</strong>은 Cloud Run·Firestore로 앱 서버와 동반인 정보를 처리하고, Vision·Cloud Translation·Gemini로 요청한 메뉴 사진이나 인식한 글자를 처리해요. Google Places·Maps에는 주변 검색 좌표, 식당명이나 식당 식별자, 지도 요청에 필요한 정보가 전달돼요.</li>
+        <li><strong>Render</strong>는 Android 비공개 테스트의 앱 서버를 미국 오리건에서 호스팅해요. 동반인 연결과 여행지·식당 검색 등을 처리할 때 이름, 프로필 ID, 연결 요청 정보, 검색어 또는 좌표, 이용 기록이 이 서버를 거칠 수 있어요.</li>
+        <li><strong>Google</strong>은 Firestore로 프로필, 초대·동반인 연결과 사용량 기록을 저장해요. 이전 테스트 버전의 앱 서버에는 Cloud Run이 사용돼요. Vision·Cloud Translation·Gemini는 요청한 메뉴 사진이나 글자를 처리할 수 있어요. Google Places·Maps에는 주변 검색 좌표, 식당명이나 식당 식별자, 지도 요청에 필요한 정보가 전달돼요.</li>
         <li><strong>Vercel</strong>은 메뉴판 분석 및 주문 요청사항 번역 서버와 이 방침 페이지를 호스팅해요. 분석을 요청한 메뉴 사진과 번역이 필요한 주문 요청 문장은 이 서버를 거쳐 Google Gemini로 전달될 수 있어요.</li>
         <li><strong>Supabase</strong>는 익명 인증과 공유 장바구니를 제공해요. 익명 계정 식별자, 인증 세션, 공유 방·참여자·장바구니 정보를 처리해요.</li>
       </ul>
-      <p>동반인 서버의 Cloud Run과 공유 장바구니 데이터베이스는 대한민국 서울 리전을 사용해요. Google과 Vercel의 글로벌 서비스는 기능 요청을 받을 때 위에 적은 사진, 글자, 위치 또는 접속 정보를 미국 등 해당 서비스가 운영되는 국가에서 처리할 수 있어요.</p>
+      <p>Firestore와 공유 장바구니 데이터베이스는 대한민국 서울 리전에 있어요. Android 비공개 테스트의 프로필 및 검색 요청은 암호화된 연결을 통해 미국의 Render 서버에서 처리될 수 있어요. Google과 Vercel의 글로벌 서비스도 기능 요청을 받을 때 사진, 글자, 위치 또는 접속 정보를 미국 등 해당 서비스가 운영되는 국가에서 처리할 수 있어요.</p>
       <p>서비스 제공업체의 정보 처리에 대해 문의하려면 아래 개인정보 문의처로 연락해 주세요. 메뉴 사진 전송이나 위치 제공을 선택하지 않으면 해당 사진 분석이나 위치 기반 검색을 사용할 수 없어요.</p>
     </section>
 
