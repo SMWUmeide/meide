@@ -1,6 +1,7 @@
 import { Redirect, router, useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Linking, Platform, View } from 'react-native';
+import { Linking, Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { NearbyRestaurantsView } from '../../features/nearby/NearbyRestaurantsView';
 import { PlayReviewCode } from '../../features/nearby/PlayReviewCode';
 import { useNearby } from '../../features/nearby/NearbyProvider';
@@ -49,7 +50,8 @@ export default function NearbyRestaurants() {
   }
   function openPlace(place:NearbyPlace) {void open(place.googleMapsUri??'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place.name)+'&query_place_id='+encodeURIComponent(place.id));}
   if(progress.stage!=='home')return <Redirect href={destination(progress)} />;
-  return <View style={{flex:1}}><NearbyRestaurantsView result={result} center={center} radius={radius} recenter={recenter} busy={busy} message={message} settings={settings} onBack={()=>router.replace('/home')} onLocate={()=>void locate()} onRadius={value=>void locate(value)} onOpenPlace={openPlace} onSettings={()=>{if(Platform.OS==='web')setMessage('브라우저의 이 사이트 권한에서 위치를 허용한 뒤 현재 위치 버튼을 눌러 주세요.');else void Linking.openSettings().catch(()=>setMessage('기기 설정에서 Meide의 위치 권한을 허용해 주세요.'));}} />
-    {Platform.OS==='android'&&!result&&<PlayReviewCode busy={busy} onApply={code=>void locate(radius,code)} />}
-  </View>;
+  const showReviewCode = Platform.OS === 'android' && !result;
+  return <SafeAreaView edges={showReviewCode ? ['bottom'] : []} style={{flex:1}}><NearbyRestaurantsView result={result} center={center} radius={radius} recenter={recenter} busy={busy} message={message} settings={settings} onBack={()=>router.replace('/home')} onLocate={()=>void locate()} onRadius={value=>void locate(value)} onOpenPlace={openPlace} onSettings={()=>{if(Platform.OS==='web')setMessage('브라우저의 이 사이트 권한에서 위치를 허용한 뒤 현재 위치 버튼을 눌러 주세요.');else void Linking.openSettings().catch(()=>setMessage('기기 설정에서 Meide의 위치 권한을 허용해 주세요.'));}} />
+    {showReviewCode&&<PlayReviewCode busy={busy} onApply={code=>void locate(radius,code)} />}
+  </SafeAreaView>;
 }
