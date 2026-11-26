@@ -50,8 +50,18 @@ export async function createFirestoreStorage(env=process.env) {
   const projectId=env.GOOGLE_CLOUD_PROJECT,namespace=env.FIRESTORE_NAMESPACE??'pilot-2026-11';
   if(!projectId||!/^[a-zA-Z0-9_-]{1,80}$/.test(namespace))throw Error('Set GOOGLE_CLOUD_PROJECT and a valid FIRESTORE_NAMESPACE.');
   if(env.K_SERVICE&&env.FIRESTORE_EMULATOR_HOST)throw Error('Cloud Run must not use an emulator.');
+  let credentials;
+  if (env.FIRESTORE_CREDENTIALS_BASE64) {
+    try {
+      const key = JSON.parse(Buffer.from(env.FIRESTORE_CREDENTIALS_BASE64, 'base64').toString('utf8'));
+      if (key.type !== 'service_account' || key.project_id !== projectId || !key.client_email || !key.private_key) throw Error();
+      credentials = { client_email: key.client_email, private_key: key.private_key };
+    } catch {
+      throw Error('Invalid Firestore credentials for the configured project.');
+    }
+  }
   const {Firestore}=await import('@google-cloud/firestore');
-  const db=new Firestore({projectId,databaseId:env.FIRESTORE_DATABASE_ID??'(default)'});
+  const db=new Firestore({projectId,databaseId:env.FIRESTORE_DATABASE_ID??'(default)',credentials});
   return {
     db,
     store:new FirestoreInviteStore(new FirestoreRecord(db,`meidePrivate/${namespace}-invites`)),
