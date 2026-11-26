@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { Buffer } from 'node:buffer';
 import { createHash, randomUUID } from 'node:crypto';
 import { once } from 'node:events';
 import test from 'node:test';
@@ -56,4 +57,39 @@ test('review access uses its own daily quota and only applies to nearby search',
   assert.equal((await (await post(status, review)).json()).remaining, 2);
   assert.equal(calls, 8);
   assert.deepEqual(usage.jobs, [{ reserved: 200000 }]);
+});
+
+test('the same reviewer code can read and translate menus in a separate quota', async t => {
+  const code = randomUUID();
+  const usage = { jobs: [] };
+  const playReviewNearby = createPlayReviewNearby({
+    codeHash: createHash('sha256').update(code).digest('hex'),
+    ledger: { shared: true, transaction: change => change(usage) },
+    menuProviders: { ocr: async () => ({ text: 'pasta' }), translate: async () => ({ text: '파스타' }) },
+  });
+  const server = createApp({
+    webRoot: '.', playReviewNearby, menuTest: {},
+    store: { authenticate() { throw Object.assign(Error('Missing credentials'), { status: 401 }); } },
+  });
+  server.listen(0, '127.0.0.1');
+  await once(server, 'listening');
+  t.after(() => server.close());
+  const base = `http://127.0.0.1:${server.address().port}/api/menu`;
+  const post = (path, body) => fetch(base + path, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+  });
+  const review = { id: randomUUID(), reviewCode: code };
+  assert.equal((await post('/status', { id: review.id })).status, 401);
+  assert.equal((await post('/status', { ...review, reviewCode: randomUUID() })).status, 403);
+  assert.equal((await post('/status', { ...review, id: 'invalid' })).status, 400);
+  assert.equal((await (await post('/status', review)).json()).remaining, 2);
+  const job = { ...review, requestId: randomUUID() };
+  const imageBase64 = Buffer.from([255, 216, 255, 224, 0, 0, 0, 0, 255, 217]).toString('base64');
+  const ocr = { ...job, operation: 'ocr', payload: { imageBase64, consent: true } };
+  assert.deepEqual(await (await post('/process', ocr)).json(), { result: { text: 'pasta' } });
+  assert.equal((await post('/process', ocr)).status, 409);
+  const translate = { ...job, operation: 'translate', payload: { text: 'pasta' } };
+  assert.deepEqual(await (await post('/process', translate)).json(), { result: { text: '파스타' } });
+  assert.equal((await (await post('/status', review)).json()).remaining, 1);
+  assert.deepEqual(usage.jobs, []);
 });

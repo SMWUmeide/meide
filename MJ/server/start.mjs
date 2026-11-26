@@ -24,10 +24,11 @@ if(cloud)await cloud.ready();
 const store = cloud?.store??new InviteStore(process.env.INVITE_DB_PATH ?? resolve(root,'.local-data/invites.json'));
 // Google search includes at most five photos and one map; no automatic retry.
 // The old GPT route remains disabled even if historical GPT env flags are set.
-const menuTest = new MenuTestLimits({file:process.env.MENU_TEST_LEDGER_PATH ?? resolve(root,'.local-data/menu-test-usage.json'),providers:createGoogleMenuProviders(),ledger:cloud?.ledger});
+const menuProviders = createGoogleMenuProviders();
+const menuTest = new MenuTestLimits({file:process.env.MENU_TEST_LEDGER_PATH ?? resolve(root,'.local-data/menu-test-usage.json'),providers:menuProviders,ledger:cloud?.ledger});
 const nearbyProvider = createGoogleNearbyProvider();
 const nearbyTest = new NearbyTestLimits({menuTest,provider:nearbyProvider});
-const playReviewNearby = createPlayReviewNearby({codeHash:process.env.PLAY_REVIEW_CODE_SHA256,ledger:cloud?.ledger,provider:nearbyProvider});
+const playReviewNearby = createPlayReviewNearby({codeHash:process.env.PLAY_REVIEW_CODE_SHA256,ledger:cloud?.ledger,provider:nearbyProvider,menuProviders});
 const travelSearch = new TravelService(process.env.TRAVEL_CACHE_DIR??resolve(root,'.local-data'));
 await travelSearch.ready;
 const webMaps=new WebMapLimits({menuTest,key:process.env.GOOGLE_MAPS_WEB_API_KEY});

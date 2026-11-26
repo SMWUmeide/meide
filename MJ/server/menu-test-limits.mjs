@@ -83,7 +83,8 @@ export class MenuTestLimits {
       const policy = this.check(id);
       if (!this.providers.ocr || !this.providers.translate) return { ready: false, message: 'Google 연결 키를 준비 중이에요.' };
       return this.transaction(policy, ledger => {
-        const used = ledger.jobs.filter(job => job.id === id.toLowerCase() && job.day === koreanDay(this.now())).length;
+        const day = policy.day ?? koreanDay(this.now());
+        const used = ledger.jobs.filter(job => job.id === id.toLowerCase() && job.day === day).length;
         const available = ledger.jobs.length < TEST_LIMITS.total && reservedTotal(ledger) + JOB_RESERVATION_MICRO_USD <= policy.budgetMicroUsd;
         const remaining = available ? Math.max(0, TEST_LIMITS.perDay - used) : 0;
         return { ready: remaining > 0, remaining, message: remaining > 0 ? '' : '오늘 사용할 수 있는 분석 횟수를 모두 사용했어요.' };
@@ -131,7 +132,7 @@ export class MenuTestLimits {
       let job = ledger.jobs.find(item => item.id === id && item.requestId === requestId);
       if (!job) {
         if (operation !== 'ocr') throw fail(409, '먼저 메뉴판 사진의 글자를 읽어 주세요.');
-        const day = koreanDay(this.now());
+        const day = policy.day ?? koreanDay(this.now());
         if (ledger.jobs.filter(item => item.id === id && item.day === day).length >= TEST_LIMITS.perDay) throw fail(429, '오늘은 메뉴판 2개를 모두 분석했어요. 내일 다시 이용해 주세요.');
         if (ledger.jobs.length >= TEST_LIMITS.total) throw fail(429, '전체 테스트 한도인 600회에 도달했어요.');
         if (reservedTotal(ledger) + JOB_RESERVATION_MICRO_USD > policy.budgetMicroUsd) throw fail(429, '테스트 API 비용 한도에 도달했어요.');

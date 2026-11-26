@@ -9,7 +9,7 @@ import { restaurantMenuPatch } from '../../features/menu-camera/menu-source';
 export default function RestaurantScreen() {
   const { photoId } = useLocalSearchParams<{ photoId: string }>();
   const { menus, setMenu } = useMenuPhotos();
-  const { progress } = useProgress();
+  const { progress, reviewCode } = useProgress();
   const [busy, setBusy] = useState(false);
   const lock = useRef(false);
   const mounted = useRef(true);
@@ -28,7 +28,7 @@ export default function RestaurantScreen() {
     if (!menu.detailsAttempted) {
       setMenu(photoId, { detailsAttempted:true });
       try {
-        const detail = await confirmRestaurant(place.id, photoId, progress);
+        const detail = await confirmRestaurant(place.id, photoId, { ...progress, reviewCode });
         setMenu(photoId, restaurantMenuPatch(menu, detail));
       } catch {
         setMenu(photoId, restaurantMenuPatch(menu));

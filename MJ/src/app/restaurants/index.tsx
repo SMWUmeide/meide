@@ -5,22 +5,26 @@ import { NearbyRestaurantsView } from '../../features/nearby/NearbyRestaurantsVi
 import { PlayReviewCode } from '../../features/nearby/PlayReviewCode';
 import { useNearby } from '../../features/nearby/NearbyProvider';
 import { currentCoordinates, LocationUnavailable } from '../../features/nearby/location';
-import { type Coordinates, type NearbyPlace, type NearbyResult } from '../../features/nearby/api';
+import { nearbyStatus, type Coordinates, type NearbyPlace, type NearbyResult } from '../../features/nearby/api';
 import { useProgress } from '../../state/ProgressProvider';
 import { destination } from '../../state/model';
 const reviewLocation = { latitude: 43.7731, longitude: 11.2560 };
 export default function NearbyRestaurants() {
-  const {progress}=useProgress(),{last,search}=useNearby();
+  const {progress,reviewCode,setReviewCode}=useProgress(),{last,search}=useNearby();
   const [center,setCenter]=useState<Coordinates|null>(null),[result,setResult]=useState<NearbyResult|null>(null);
   const [radius,setRadius]=useState(last?.radius??500),[recenter,setRecenter]=useState(0);
   const [busy,setBusy]=useState(false),[message,setMessage]=useState<string|null>(null),[settings,setSettings]=useState(false);
-  const [reviewCode,setReviewCode]=useState('');
   const working=useRef(false),generation=useRef(0);
   async function locate(nextRadius=radius,code=reviewCode) {
     if(working.current)return;working.current=true;
     const run=++generation.current;
     setBusy(true);setMessage(null);setSettings(false);setResult(null);setCenter(null);
     try {
+      if (code && code !== reviewCode) {
+        await nearbyStatus(progress, code);
+        if (run !== generation.current) return;
+        setReviewCode(code);
+      }
       const measured:Coordinates=code ? reviewLocation : await currentCoordinates();
       if(run!==generation.current)return;
       setCenter(measured);setRadius(nextRadius);setRecenter(value=>value+1);
@@ -46,6 +50,6 @@ export default function NearbyRestaurants() {
   function openPlace(place:NearbyPlace) {void open(place.googleMapsUri??'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place.name)+'&query_place_id='+encodeURIComponent(place.id));}
   if(progress.stage!=='home')return <Redirect href={destination(progress)} />;
   return <View style={{flex:1}}><NearbyRestaurantsView result={result} center={center} radius={radius} recenter={recenter} busy={busy} message={message} settings={settings} onBack={()=>router.replace('/home')} onLocate={()=>void locate()} onRadius={value=>void locate(value)} onOpenPlace={openPlace} onSettings={()=>{if(Platform.OS==='web')setMessage('브라우저의 이 사이트 권한에서 위치를 허용한 뒤 현재 위치 버튼을 눌러 주세요.');else void Linking.openSettings().catch(()=>setMessage('기기 설정에서 Meide의 위치 권한을 허용해 주세요.'));}} />
-    {Platform.OS==='android'&&!result&&<PlayReviewCode busy={busy} onApply={code=>{setReviewCode(code);void locate(radius,code);}} />}
+    {Platform.OS==='android'&&!result&&<PlayReviewCode busy={busy} onApply={code=>void locate(radius,code)} />}
   </View>;
 }

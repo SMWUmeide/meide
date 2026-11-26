@@ -6,6 +6,7 @@ import { initialProgress, parseProgress, withCompanions, type Progress } from '.
 const KEY = 'meide.first-run.v1';
 const Context = createContext<{
   progress: Progress; ready: boolean; error: string | null; busy: boolean;
+  reviewCode: string; setReviewCode: (code: string) => void;
   syncCompanions: (people: Companion[]) => Promise<boolean>;
   save: (value: Progress) => Promise<boolean>; retry: () => void;
 } | null>(null);
@@ -15,6 +16,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [reviewCode, setReviewCode] = useState('');
   const lock = useRef(false);
   const [attempt, setAttempt] = useState(0);
   useEffect(() => {
@@ -37,7 +39,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     if (JSON.stringify(current.current.companions ?? []) === JSON.stringify(people)) return true;
     return save(withCompanions(current.current, people));
   }, [save]);
-  return <Context.Provider value={{ progress, ready, error, busy, save, syncCompanions, retry: () => setAttempt(v => v + 1) }}>{children}</Context.Provider>;
+  return <Context.Provider value={{ progress, ready, error, busy, reviewCode, setReviewCode, save, syncCompanions, retry: () => setAttempt(v => v + 1) }}>{children}</Context.Provider>;
 }
 export function useProgress() {
   const value = useContext(Context);

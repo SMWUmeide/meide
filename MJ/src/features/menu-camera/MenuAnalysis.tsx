@@ -4,7 +4,7 @@ import { useProgress } from '../../state/ProgressProvider';
 import { useMenuPhotos, type MenuPhoto } from './MenuPhotosProvider';
 import { getMenuTestStatus, readMenu, searchRestaurants, translateMenu, type MenuTestStatus } from './menu-api';
 export function MenuAnalysis({ photo, onRestaurantFound, autoTranslate = false }: { photo: MenuPhoto; onRestaurantFound?: () => void; autoTranslate?: boolean }) {
-  const { progress } = useProgress();
+  const { progress, reviewCode } = useProgress();
   const { menus, setMenu } = useMenuPhotos();
   const menu = menus[photo.id];
   const [consented, setConsented] = useState(false);
@@ -18,14 +18,15 @@ export function MenuAnalysis({ photo, onRestaurantFound, autoTranslate = false }
   useEffect(() => {
     alive.current = true;
     let active = true;
-    void getMenuTestStatus({ profileId, profileToken, name })
+    void getMenuTestStatus({ profileId, profileToken, name, reviewCode })
       .then(value => { if (active) setStatus(value); })
       .catch(e => { if (active) setStatus({ ready: false, message: e instanceof Error ? e.message : '연결을 확인해 주세요.' }); });
     return () => { active = false; alive.current = false; };
-  }, [profileId, profileToken, name]);
+  }, [profileId, profileToken, name, reviewCode]);
   async function run() {
     if (lock.current || (!menu && (!consented || !status?.ready))) return;
     lock.current = true; setBusy(true); setError('');
+    const profile = { profileId, profileToken, name, reviewCode };
     try {
       let current = menu;
       let original = current?.originalText;
@@ -34,7 +35,7 @@ export function MenuAnalysis({ photo, onRestaurantFound, autoTranslate = false }
         const base64 = raw.replace(/^data:image\/[a-zA-Z0-9.+-]+;base64,/, '');
         if (!base64) throw new Error('사진을 다시 촬영하거나 선택해 주세요.');
         setStep('메뉴판 글자를 읽고 있어요');
-        const read = await readMenu(base64, photo.id, progress);
+        const read = await readMenu(base64, photo.id, profile);
         original = read.text;
         current = { originalText: original, restaurantName: read.restaurantName, restaurantQuery: read.restaurantQuery };
         setMenu(photo.id, current);
@@ -44,7 +45,7 @@ export function MenuAnalysis({ photo, onRestaurantFound, autoTranslate = false }
         setStep('식당 정보를 찾고 있어요');
         setMenu(photo.id, { searchAttempted: true });
         try {
-          const restaurantSearch = await searchRestaurants(current.restaurantQuery, photo.id, progress);
+          const restaurantSearch = await searchRestaurants(current.restaurantQuery, photo.id, profile);
           current = { ...current, searchAttempted: true, restaurantSearch };
           setMenu(photo.id, { restaurantSearch, restaurantNotice: restaurantSearch.places.length ? undefined : '식당을 찾지 못해 메뉴판의 글자를 번역했어요.' });
         } catch {
@@ -56,7 +57,7 @@ export function MenuAnalysis({ photo, onRestaurantFound, autoTranslate = false }
         return;
       }
       setStep('한국어로 번역하고 있어요');
-      const translatedText = await translateMenu(editedText ?? original, photo.id, progress);
+      const translatedText = await translateMenu(editedText ?? original, photo.id, profile);
       setMenu(photo.id, { originalText: original, translatedText });
     } catch (e) { if (alive.current) setError(e instanceof Error ? e.message : '번역을 완료하지 못했어요.'); }
     finally { lock.current = false; if (alive.current) { setBusy(false); setStep(''); } }

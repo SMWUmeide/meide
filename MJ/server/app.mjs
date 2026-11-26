@@ -2,6 +2,7 @@ import { Buffer } from 'node:buffer';
 import { createServer } from 'node:http';
 import { createReadStream, existsSync, statSync } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
+const profileId = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 export function createApp({store, webRoot, allowedOrigins = [], menuAI, menuTest, nearbyTest, playReviewNearby, travelSearch, webMaps, health, requestLimit = 60, remoteApiOrigin}) {
   const remote=remoteApiOrigin?new URL(remoteApiOrigin):null;
   if(remote&&(remote.protocol!=='https:'||remote.username||remote.password||remote.pathname!=='/'||remote.search||remote.hash))throw Error('Use a public HTTPS API origin.');
@@ -49,7 +50,7 @@ export function createApp({store, webRoot, allowedOrigins = [], menuAI, menuTest
           let id;
           if (data?.reviewCode !== undefined) {
             if (!playReviewNearby?.accepts(data.reviewCode)) return send(403, {error:'심사 코드를 확인해 주세요.'});
-            if (typeof data.id !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(data.id)) {
+            if (typeof data.id !== 'string' || !profileId.test(data.id)) {
               return send(400, {error:'사용자 정보를 확인해 주세요.'});
             }
             nearby = playReviewNearby;
@@ -67,9 +68,19 @@ export function createApp({store, webRoot, allowedOrigins = [], menuAI, menuTest
           const chunks=[]; let size=0;
           for await (const chunk of req) { size+=chunk.length; if (size>5700000) return send(413,{error:'메뉴판 사진 1장, 4MB 이하로 선택해 주세요.'}); chunks.push(chunk); }
           let data; try { data=JSON.parse(Buffer.concat(chunks).toString('utf8')); } catch { return send(400,{error:'입력 내용을 확인해 주세요.'}); }
-          const own=await store.authenticate(data ?? {});
-          if (url.pathname === '/api/menu/status') return send(200,await menuTest.status(own.id));
-          const result=await menuTest.process({id:own.id,requestId:data.requestId,operation:data.operation,payload:data.payload});
+          let menu = menuTest;
+          let id;
+          if (data?.reviewCode !== undefined && playReviewNearby?.menu) {
+            if (!playReviewNearby.accepts(data.reviewCode)) return send(403, {error:'심사 코드를 확인해 주세요.'});
+            if (typeof data.id !== 'string' || !profileId.test(data.id)) return send(400, {error:'사용자 정보를 확인해 주세요.'});
+            menu = playReviewNearby.menu;
+            id = data.id;
+          } else {
+            const own = await store.authenticate(data ?? {});
+            id = own.id;
+          }
+          if (url.pathname === '/api/menu/status') return send(200,await menu.status(id));
+          const result=await menu.process({id,requestId:data.requestId,operation:data.operation,payload:data.payload});
           return send(200,{result});
         }
         if (req.method === 'POST' && url.pathname === '/api/menu/analyze') {

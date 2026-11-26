@@ -21,7 +21,7 @@ export type MenuTranslation = {
 };
 export type ReadMenuResult = { text: string; restaurantName: string | null; restaurantQuery: string | null };
 export type MenuTestStatus = { ready: boolean; remaining?: number; message: string };
-type MenuProfile = Pick<Progress, 'profileId' | 'profileToken' | 'name'>;
+type MenuProfile = Pick<Progress, 'profileId' | 'profileToken' | 'name'> & { reviewCode?: string };
 function baseUrl() {
   const base = process.env.EXPO_PUBLIC_COMPANION_API_URL?.replace(/\/$/, '') ?? (Platform.OS === 'web' ? '' : null);
   if (base === null) throw new Error('메뉴 번역 서버에 연결할 수 없어요.');
@@ -29,12 +29,13 @@ function baseUrl() {
 }
 async function request(path: string, profile: MenuProfile, body: object = {}) {
   if (!profile.profileId || !profile.profileToken) throw new Error('사용자 정보를 확인해 주세요.');
+  const credentials = profile.reviewCode ? { reviewCode: profile.reviewCode } : { token: profile.profileToken };
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 60000);
   try {
     const response = await fetch(`${baseUrl()}${path}`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: controller.signal,
-      body: JSON.stringify({ ...body, id: profile.profileId, token: profile.profileToken }),
+      body: JSON.stringify({ ...body, id: profile.profileId, ...credentials }),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(typeof data.error === 'string' ? data.error : '요청을 완료하지 못했어요.');
@@ -47,7 +48,7 @@ async function request(path: string, profile: MenuProfile, body: object = {}) {
 }
 export async function getMenuTestStatus(profile: MenuProfile): Promise<MenuTestStatus> {
   if (!profile.profileId || !profile.profileToken) throw new Error('사용자 정보를 확인해 주세요.');
-  await issueInvite(profile.profileId, profile.profileToken, profile.name);
+  if (!profile.reviewCode) await issueInvite(profile.profileId, profile.profileToken, profile.name);
   return request('/api/menu/status', profile);
 }
 export async function readMenu(imageBase64: string, requestId: string, profile: MenuProfile): Promise<ReadMenuResult> {
